@@ -1,2 +1,0 @@
-# progettoPrenotazioneVisitaMedica
-ssssssssssssssssssss
