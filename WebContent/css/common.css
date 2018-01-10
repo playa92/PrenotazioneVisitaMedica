@@ -1,0 +1,15 @@
+.navbar{
+	background-color: #0099ff;
+}
+
+#navbar-text{
+	color: white;
+}
+
+.nav > li > a:hover { 
+    background-color: #80ccff;
+}
+
+#rightFields{
+	margin-right: 10px;
+}
