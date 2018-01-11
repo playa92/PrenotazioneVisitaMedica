@@ -41,6 +41,27 @@ $(document).ready(function() {
 	})
 });
 
+function pulisci() {
+	alert("Attenzione! I dati inseriti verrano puliti");
+}
+
+function controllo() {
+	
+	var valori = ["nome", "cognome", "matricola", "handicap"];
+	
+	for(var i = 0; i < 4; i++) {
+		
+		var v = document.forms["form"][valori[i]].value;
+	
+		if(v == "") {  
+			
+			alert("Attenzione! Alcuni campi sono vuoti");  
+			return false;  
+		}
+	}
+	return true;
+} 
+
 //login form
 $(document).ready(function() {
 
