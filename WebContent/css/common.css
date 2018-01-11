@@ -8,7 +8,7 @@ body {
 	background-color: #0099ff;
 }
 
-#navbar-text {
+#navbar-text, #loginform{
 	color: white;
 }
 
@@ -16,22 +16,15 @@ body {
 	margin-right: 10px;
 }
 
-/* LOGIN SULLA STESSA PAGINA */
-#navthing {
-  margin-left: 50px;
-}
 
-h2 {
-  padding: 20px;
-  color: #ecf0f1;
-}
+/* LOGIN VELOCE */
 
 fieldset {
   border: none;
 }
 
 .login {
-  position: relative;
+  position: absolute;
   width: 350px;
   display: none;
 }
@@ -48,14 +41,16 @@ fieldset {
 }
 
 .formholder {
-  background: #ecf0f1;
+  background: #cce6ff;
   width: 350px;
-  border-radius: 5px;
+  border: 2px solid #80bfff;
   padding-top: 5px;
+  position: absolute;
+  color: #001a33;
 }
-.formholder input[type="email"], .formholder input[type="password"] {
+.formholder input[type="text"], .formholder input[type="password"] {
   padding: 7px 5px;
-  margin: 10px 0;
+  margin: 10px 0px 10px 7px;
   width: 96%;
   display: block;
   font-size: 18px;
@@ -66,12 +61,12 @@ fieldset {
   -o-transition: 0.3s linear;
   transition: 0.3s linear;
 }
-.formholder input[type="email"]:focus, .formholder input[type="password"]:focus {
+.formholder input[type="text"]:focus, .formholder input[type="password"]:focus {
   outline: none;
   box-shadow: 0 0 1px 1px #1abc9c;
 }
 .formholder input[type="submit"] {
-  background: #1abc9c;
+  background: #0099ff;
   padding: 10px;
   font-size: 20px;
   display: block;
@@ -80,7 +75,5 @@ fieldset {
   color: #fff;
   border-radius: 5px;
 }
-.formholder input[type="submit"]:hover {
-  background: #1bc6a4;
-}
+
 /* FINE LOGIN */

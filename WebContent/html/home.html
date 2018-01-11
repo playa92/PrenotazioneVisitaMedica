@@ -37,8 +37,24 @@
 			        </ul>
 			     </li>  
 			</ol>
-			 <ul id="rightFields" class="nav navbar-nav navbar-right">
-				  <li id="navbar-text" ><a id="navbar-text" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		    <ul id="right-fields" class="nav navbar-nav navbar-right">
+		<!--  LOGIN VELOCE -->	
+				  <li class="dropdown nav-item" >
+					  <a href="#" id="loginform"><span class="glyphicon glyphicon-log-in"></span> Login</a>      
+					    <div class="login">
+					      <div class="arrow-up"></div>
+					       <div class="formholder">  
+					           <fieldset>
+					             <label >Username</label>
+					             <input type="text"/>
+					             <label >Password</label>
+					             <input type="password" />
+					             <input type="submit"/>
+					           </fieldset>
+					        </div>
+					    </div>
+				</li>
+		<!-- RICERCA -->
 				  <li id="navbar-text" >
 			        <form class="navbar-form" role="search">
 				        <div class="input-group">
@@ -50,6 +66,7 @@
 			        </form>
 			 	</li>
 			</ul>
+			
 		</div>	
 	</nav>
 	
@@ -57,31 +74,6 @@
 	  <h1>My First Bootstrap Page</h1>
   	  <p>Resize this responsive page to see the effect!</p> 
 	</div>
-	
-<!--  LOGIN SULLA STESSA PAGINA  -->
-	
-<div id="wrap">
-  <div id="regbar">
-    <div id="navthing">
-      <h2><a href="#" id="loginform">Login</a></h2>
-    <div class="login">
-      <div class="arrow-up"></div>
-      <div class="formholder">
-        <div class="randompad">
-           <fieldset>
-             <label name="user">User</label>
-             <input type="email" value="example@example.com" />
-             <label name="password">Password</label>
-             <input type="password" />
-             <input type="submit" value="Login" />
-           </fieldset>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-
-	
+		
 </body>
 </html>
