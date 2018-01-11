@@ -6,39 +6,51 @@ $(document).ready(function() {
 	}, function() {
   		$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
 	})	
-});
-
-$(document).ready(function() {
 	
 	$(this).find('ol.nav li.dropdown #navbar-text').click(
 	function(){
 		$(this).css('background-color', '#0066ff');
 	}) 
-});
-
-$(document).ready(function() {
 
 	$(this).find('ol.nav li.dropdown #navbar-text').mouseleave(
 	function() {    
 	   $(this).css('background-color', '#0099ff');
 	})
-});
 
 // questi riguardano solo la navbar del login
-$(document).ready(function() {
-
 	$(this).find('ul.nav li.dropdown a#login-form').click(
 	function() {    
 	   $(this).css('background-color', '#0066ff');
 	})
-});
-
-$(document).ready(function() {
  
 	$(this).find('ul.nav li.dropdown a#login-form').mouseleave(
 	function() {    
 	   $(this).css('background-color', '#0099ff');
 	})
+
+//login form
+	$('#login-form').click(function() {
+	  $('.login').fadeToggle('slow');
+	  $(this).toggleClass('green');
+	})
+		
+	$(document).mouseup(function (e)
+	{
+	    var container = $(".login");
+
+	    if (!container.is(e.target) // if the target of the click isn't the container...
+	        && container.has(e.target).length === 0) // ... not a descendant of the container
+	    {
+	        container.hide();
+	        $('#login-form').removeClass('green');
+	    }
+	})
+
+//loader
+	$("#show").hide(); 
+	$("#stop").delay(1000).fadeOut(300); 
+	$("#show").delay(1001).fadeIn(300);
+	
 });
 
 function pulisci() {
@@ -62,28 +74,3 @@ function controllo() {
 	return true;
 } 
 
-//login form
-$(document).ready(function() {
-
-	$('#login-form').click(function() {
-	  $('.login').fadeToggle('slow');
-	  $(this).toggleClass('green');
-	})
-		
-	$(document).mouseup(function (e)
-	{
-	    var container = $(".login");
-
-	    if (!container.is(e.target) // if the target of the click isn't the container...
-	        && container.has(e.target).length === 0) // ... not a descendant of the container
-	    {
-	        container.hide();
-	        $('#login-form').removeClass('green');
-	    }
-	})
-});
-
-//loader
-$(document).ready(function(){
-	$("#stop").delay(5000).fadeOut(300); 
-});
