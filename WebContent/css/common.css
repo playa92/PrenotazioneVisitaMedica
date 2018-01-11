@@ -17,10 +17,6 @@ body {
 }
 
 /* LOGIN SULLA STESSA PAGINA */
-#wrap {
-  margin: 0 auto 30px;
-}
-
 #navthing {
   margin-left: 50px;
 }
@@ -87,5 +83,4 @@ fieldset {
 .formholder input[type="submit"]:hover {
   background: #1bc6a4;
 }
-
 /* FINE LOGIN */
