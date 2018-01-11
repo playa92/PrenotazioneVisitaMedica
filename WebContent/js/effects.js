@@ -46,18 +46,21 @@ function pulisci() {
 
 function controllo() {
 	
-	var valori = ["nome", "cognome", "matricola", "handicap"];
-	
-	for(var i = 0; i < 4; i++) {
+	$('#form input').each(
 		
-		var v = document.forms["form"][valori[i]].value;
-	
-		if(v == "") {  
+		function(index) {  
+				
+		var input = $(this);
+		var a = String(input.attr('type'));
 			
-			alert("Attenzione! Alcuni campi sono vuoti");  
-			return false;  
-		}
-	}
+		if(a == "text") {
+			
+			if(input.val() == "") {
+				
+				alert("Attenzione! Alcuni campi sono vuoti"); 
+				return false;
+			}
+		}		
+	});
 	return true;
-} 
-
+}
