@@ -4,18 +4,17 @@ body {
   font-family: Sans-serif;
 }
 
-.nav > li > a:hover, .navbar{
+.nav > li > a:hover, .navbar {
 	background-color: #0099ff;
 }
 
-#navbar-text{
+#navbar-text {
 	color: white;
 }
 
-#right-fields{
+#right-fields {
 	margin-right: 10px;
 }
-
 
 /* LOGIN SULLA STESSA PAGINA */
 #wrap {
