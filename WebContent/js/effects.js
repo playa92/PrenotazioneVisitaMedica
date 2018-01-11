@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
 	
 	$('ol.nav li.dropdown').hover(
 	function() {
@@ -8,7 +8,7 @@ $(document).ready(function(){
 	})	
 });
 
-$(document).ready(function(){
+$(document).ready(function() {
 	
 	$(this).find('ol.nav li.dropdown #navbar-text').click(
 	function(){
@@ -16,35 +16,35 @@ $(document).ready(function(){
 	}) 
 });
 
-$(document).ready(function(){
+$(document).ready(function() {
 
 	$(this).find('ol.nav li.dropdown #navbar-text').mouseleave(
-	function(){    
+	function() {    
 	   $(this).css('background-color', '#0099ff');
 	})
 });
 
 // questi riguardano solo la navbar del login
-$(document).ready(function(){
+$(document).ready(function() {
 
-	$(this).find('ul.nav li#navbar-text a#navbar-text').click(
-	function(){    
+	$(this).find('ul.nav li.dropdown a#login-form').click(
+	function() {    
 	   $(this).css('background-color', '#0066ff');
 	})
 });
 
-$(document).ready(function(){
+$(document).ready(function() {
  
-	$(this).find('ul.nav li#navbar-text a#navbar-text').mouseleave(
-	function(){    
+	$(this).find('ul.nav li.dropdown a#login-form').mouseleave(
+	function() {    
 	   $(this).css('background-color', '#0099ff');
 	})
 });
 
 //login form
-$(document).ready(function(){
+$(document).ready(function() {
 
-	$('#loginform').click(function(){
+	$('#login-form').click(function() {
 	  $('.login').fadeToggle('slow');
 	  $(this).toggleClass('green');
 	})
@@ -54,10 +54,10 @@ $(document).ready(function(){
 	    var container = $(".login");
 
 	    if (!container.is(e.target) // if the target of the click isn't the container...
-	        && container.has(e.target).length === 0) // ... nor a descendant of the container
+	        && container.has(e.target).length === 0) // ... not a descendant of the container
 	    {
 	        container.hide();
-	        $('#loginform').removeClass('green');
+	        $('#login-form').removeClass('green');
 	    }
 	})
 });
