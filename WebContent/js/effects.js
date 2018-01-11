@@ -82,3 +82,8 @@ $(document).ready(function() {
 	    }
 	})
 });
+
+//loader
+$(document).ready(function(){
+	$("#stop").delay(5000).fadeOut(300); 
+});
