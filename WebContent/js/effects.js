@@ -39,11 +39,6 @@ $(document).ready(function() {
 	  $('.login').fadeToggle('slow');
 	});
 
-	//loader
-	$("#show").hide(); 
-	$("#stop").delay(1000).fadeOut(300); 
-	$("#show").delay(1001).fadeIn(300);
-
 });
 
 $(window).on('load', function () {
