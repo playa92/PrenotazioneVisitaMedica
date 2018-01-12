@@ -1,46 +1,29 @@
 
 /* NAVBAR LEFT ELEMENTS*/
 $(document).ready(function() {
+		
+	$('ol.nav li.dropdown').click(
+		function() {
+			$(this).children('.dropdown-menu').slideToggle('fast'),
+	        $(this).toggleClass("dropdown-active");
+			$(this).find('#navbar-text').css('background-color', '#0066ff');
+	});
 	
 	$("ol.nav li.dropdown").focusout(
-	function() {
-		$(this).children('.dropdown-menu').slideUp('fast');
+		function() {
+			$(this).children('.dropdown-menu').slideUp('fast');
+			$(this).find('#navbar-text').css('background-color', '#0099ff');
 	});
-	
-	$('ol.nav li.dropdown').click(
-	function() {
-		$(this).children('.dropdown-menu').slideToggle('fast'),
-        $(this).toggleClass("dropdown-active");
-	});
-	
-	$(this).find('ol.nav li.dropdown #navbar-text').click(
-	function(){
-		$(this).css('background-color', '#0066ff');
-	}) 
-
-	$(this).find('ol.nav li.dropdown #navbar-text').mouseleave(
-	function() {    
-	   $(this).css('background-color', '#0099ff');
-	})
-	
+		
 });
 
 /* NAVBAR LOGIN */
 $(document).ready(function() {
 	
-	$(this).find('ul.nav li.dropdown a#login-form').click(
-	function() {    
-	   $(this).css('background-color', '#0066ff');
-	})
-	
-	$(this).find('ul.nav li.dropdown a#login-form').mouseleave(
-	function() {    
-	   $(this).css('background-color', '#0099ff');
-	})
-	
 	$("#login-form").click(function(e){
 		$(".login").show();
 		e.stopPropagation();
+		$(this).css('background-color', '#0066ff');
 	});
 	
 	$(".login").click(function(e){
@@ -49,6 +32,7 @@ $(document).ready(function() {
 });
 $(document).click(function(){ // fa parte del NAVBAR LOGIN ma deve stare cosi
 	$(".login").hide();
+	$(this).find('ul.nav li.dropdown a#login-form').css('background-color', '#0099ff');
 });
 
 /* PRELOADER */
