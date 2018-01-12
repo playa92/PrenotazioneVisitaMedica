@@ -1,11 +1,17 @@
+var v = 0; //visibilità file
+
 $(document).ready(function() {
 	
-	$('ol.nav li.dropdown').hover(
+	$("ol.nav li.dropdown").focusout(
 	function() {
-  		$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-	}, function() {
-  		$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-	})	
+		$(this).children('.dropdown-menu').slideUp('fast');
+	});
+	
+	$('ol.nav li.dropdown').click(
+	function() {
+		$(this).children('.dropdown-menu').slideDown('fast'),
+        $(this).toggleClass("dropdown-active");
+	});
 	
 	$(this).find('ol.nav li.dropdown #navbar-text').click(
 	function(){
@@ -17,7 +23,7 @@ $(document).ready(function() {
 	   $(this).css('background-color', '#0099ff');
 	})
 
-//navbar login
+	//navbar login
 	$(this).find('ul.nav li.dropdown a#login-form').click(
 	function() {    
 	   $(this).css('background-color', '#0066ff');
@@ -28,10 +34,15 @@ $(document).ready(function() {
 	   $(this).css('background-color', '#0099ff');
 	})
 
-//login form
+	//login form
 	$('#login-form').click(function() {
-	  $('.login').fadeToggle("slow");
-	})
+	  $('.login').fadeToggle('slow');
+	});
+
+	//loader
+	$("#show").hide(); 
+	$("#stop").delay(1000).fadeOut(300); 
+	$("#show").delay(1001).fadeIn(300);
 
 });
 
@@ -48,13 +59,20 @@ function controllo() {
 	
 	$('#form input').each(		
 		function(index) {  			
+			
 			var input = $(this);
 			var a = String(input.attr('type'));
 				
 			if(a == "text") {
+				
 				if(input.val() == "") {				
-					alert("Attenzione! Alcuni campi sono vuoti"); 
-					return false;
+					
+//					alert("before " + input.attr('style'));
+//					input.attr({'style': 'border:1px solid red'});
+//					alert("after " + input.attr('style'));
+					alert("Attenzione! Alcuni campi sono vuoti");
+						
+//					return false;
 				}
 			}		
 	});
