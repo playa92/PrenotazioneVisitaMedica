@@ -1,39 +1,19 @@
 
-///* NAVBAR LEFT ELEMENTS*/
-//$(document).ready(function() {
-//		
-//	$('ol.nav li.dropdown').click(
-//		function(e) {
-//			$(this).children('.dropdown-menu').slideToggle('slow'),
-//			e.stopPropagation();
-//			$(this).find('#navbar-text').css('background-color', '#0066ff');
-//	});
-//	
-//	$("ol.nav li.dropdown ul.dropdown-menu").focusout(
-//		function(e) {
-//			$(this).children('.dropdown-menu').slideUp('fast');
-//			$(this).find('#navbar-text').css('background-color', '#0099ff');
-//	});
-//		
-//});
-//
-/////* NAVBAR LOGIN */
-//$(document).ready(function() {
-//	
-//	$("#login-form").click(function(e){
-//		$(".login").fadeToggle();
-//		e.stopPropagation();
-//		$(this).css('background-color', '#0066ff');
-//	});
-//	
-//	$(".login").click(function(e){
-//		e.stopPropagation();
-//	});
-//});
-//$(document).click(function(){
-//	$(".login").fadeOut();
-//	$(this).find('ul.nav li.dropdown a#login-form').css('background-color', '#0099ff');
-//});
+/* NAVBAR LOGIN */
+$(document).ready(function() {
+	
+	$("#login-form").click(function(e){
+		$(".login").fadeToggle();
+		e.stopPropagation();
+	});
+	
+	$(".login").click(function(e){
+		e.stopPropagation();
+	});
+});
+$(document).click(function(){
+	$(".login").fadeOut();
+});
 
 /* PRELOADER */
 $(window).on('load', function () {
