@@ -50,7 +50,7 @@ fieldset {
   margin-top: 3px;
   border: 2px solid #80bfff;
   padding-top: 5px;
-  position: absolute;
+  position: relative;
   color: #001a33;
   border-radius: 5px;
 }

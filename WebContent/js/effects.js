@@ -48,20 +48,19 @@ function pulisci() {
 var entra = false;
 function controllo() {
 	
-	$('#form input').each(		
-		function(index) {  			
-			var input = $(this);
-			var a = String(input.attr('type'));
-				
-			if(a == "text") {		
-				if(input.val() == "") {				
-					//TODO GIOVANNI: al momento funziona solo con FIREFOX
-					entra = true;
-					input.attr({'style': 'border:1px solid red'});
-				}
-			}		
-	});
-	
-	if(entra) 
-		alert("Attenzione! Alcuni campi sono vuoti");
+	$('#form input').each(function(){
+	    if(!$(this).val().trim()){
+	        $(this).css({
+	        	"border":"1px solid red"
+	        })
+	        entra=true;
+	    }else{
+	        $(this).css({
+	        	"border":"1px solid white"
+	    	})
+	    }
+	})
+	if(entra)
+	alert("Attenzione! Alcuni campi sono vuoti");
 }
+
