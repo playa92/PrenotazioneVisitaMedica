@@ -77,4 +77,8 @@ fieldset {
 .formholder input[type="submit"]:active {
    background-color: #0066ff;
 }
-/* FINE LOGIN VELOCE*/
+
+#navbar-text:focus {
+   background-color: #0066ff;
+}
+/* FINE LOGIN VELOCE */
