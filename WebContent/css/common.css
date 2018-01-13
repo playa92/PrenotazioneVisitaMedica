@@ -24,7 +24,21 @@ body {
 	margin-right: 10px;
 }
 
-/* LOGIN VELOCE */
+/* SEARCH */
+.input-group-btn > .btn {
+	background-color: #092147;
+	color: #bcc4f2;
+}
+.input-group-btn > .btn:hover {
+	color:white;
+}
+.navbar-form > .input-group > .form-control {
+	background-color: #bcc4f2;
+	font-weight:bold;
+	font-size: 15px;
+}
+
+/* LOGIN */
 fieldset {
   border: none;
 }
@@ -86,5 +100,3 @@ fieldset {
 .formholder input[type="submit"]:active {
    background-color: #0066ff;
 }
-
-/* FINE LOGIN VELOCE */
