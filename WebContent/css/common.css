@@ -38,16 +38,17 @@ fieldset {
 .formholder {
   background: #cce6ff;
   width: 300px;
-  height: 213px;
+  height: 199px;
   margin-top: 3px;
   border: 2px solid #80bfff;
   padding-top: 5px;
   position: absolute;
   color: #001a33;
+  border-radius: 5px;
 }
 .formholder input[type="text"], .formholder input[type="password"] {
   padding: 7px 5px;
-  margin: 0px 0px 15px 6px;
+  margin: 0px 0px 5px 6px;
   width: 96%;
   display: block;
   font-size: 18px;
@@ -60,17 +61,20 @@ fieldset {
 }
 .formholder input[type="text"]:focus, .formholder input[type="password"]:focus {
   outline: none;
-  box-shadow: 0 0 1px 1px #1abc9c;
+  box-shadow: 0 0 2px 2px #1abc9c;
 }
 .formholder input[type="submit"] {
   background: #0099ff;
   padding: 8px;
   font-size: 20px;
   display: block;
-  width: 98%;
-  margin: 0px -4px 0px 3px;
+  width: 97%;
+  margin: 10px 0px 0px 4px;
   border: none;
   color: #fff;
   border-radius: 5px;
+}
+.formholder input[type="submit"]:active {
+   background-color: #0066ff;
 }
 /* FINE LOGIN VELOCE*/

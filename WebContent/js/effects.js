@@ -21,7 +21,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 	
 	$("#login-form").click(function(e){
-		$(".login").show();
+		$(".login").fadeToggle();
 		e.stopPropagation();
 		$(this).css('background-color', '#0066ff');
 	});
@@ -31,7 +31,7 @@ $(document).ready(function() {
 	});
 });
 $(document).click(function(){
-	$(".login").hide();
+	$(".login").fadeOut();
 	$(this).find('ul.nav li.dropdown a#login-form').css('background-color', '#0099ff');
 });
 
