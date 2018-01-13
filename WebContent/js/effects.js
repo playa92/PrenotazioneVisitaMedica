@@ -4,7 +4,7 @@
 //		
 //	$('ol.nav li.dropdown').click(
 //		function(e) {
-//			$(this).children('.dropdown-menu').slideToggle('fast'),
+//			$(this).children('.dropdown-menu').slideToggle('slow'),
 //			e.stopPropagation();
 //			$(this).find('#navbar-text').css('background-color', '#0066ff');
 //	});
@@ -16,8 +16,8 @@
 //	});
 //		
 //});
-
-///* NAVBAR LOGIN */
+//
+/////* NAVBAR LOGIN */
 //$(document).ready(function() {
 //	
 //	$("#login-form").click(function(e){

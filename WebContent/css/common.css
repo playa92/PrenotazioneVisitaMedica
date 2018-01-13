@@ -1,15 +1,23 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #bcc4f2;
   font-family: Sans-serif;
 }
 
-.nav > li > a:hover, .navbar {
-	background-color: #0099ff;
+.navbar {
+	background-color: #092147;
+	border: none;
+	box-shadow: 0 0 2px 2px #0b102d
 }
 
-#slide-navbar-l, #slide-navbar-r, #navbar-text, #login-form {
-  color: white;
+#navbar-text, #login-form {
+  color: #bcc4f2;
+  background-color: #092147;
+}
+
+#navbar-text:hover, #login-form:hover, #navbar-text:focus, #login-form:focus {
+   color: white;
 }
 
 #right-fields {
@@ -78,7 +86,4 @@ fieldset {
    background-color: #0066ff;
 }
 
-#navbar-text:focus {
-   background-color: #0066ff;
-}
 /* FINE LOGIN VELOCE */
