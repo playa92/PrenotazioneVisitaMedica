@@ -6,19 +6,19 @@ $(document).ready(function() {
 		e.stopPropagation();
 	});
 	
-	$(".login").click(function(e){
+	$(".login").click(function(e) {
 		e.stopPropagation();
 	});
 });
 
-$(document).click(function(){
+$(document).click(function() {
 	$(".login").fadeOut();
 });
 
 /* PRELOADER */
-$(window).on('load', function () {
+$(window).on("load", function () {
 	// executes when complete page is fully loaded, including all frames, objects and images
-	$('#preloader').fadeOut('slow',function(){$(this).remove();});
+	$("#preloader").fadeOut("slow",function(){$(this).remove();});
 });
 
 function pulisci() {
@@ -28,11 +28,13 @@ function pulisci() {
 function controllo() {
 	
 	var entra = false;
-	$('#form input').each(function() {
+	$("#form input").each(function() {
 	    if(!$(this).val().trim()) {
-	    	
-	        $(this).css({"border":"1px solid red"});
-	        entra=true;
+	        
+	    	if($(this).attr("name") != "matricola") {
+	    		$(this).css({"border":"1px solid red"});
+	        	entra=true;
+	    	}
 	    }
 	});
 	
