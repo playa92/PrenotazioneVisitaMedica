@@ -1,10 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #bcc4f2;
   font-family: Sans-serif;
 }
 
+.jumbotron {
+	background-color: #bcc4f2;
+	color: #092147;
+}
 .navbar {
 	background-color: #092147;
 	border: none;
@@ -31,10 +34,25 @@ footer {
    text-align: left;
 }
 
-/* LOGIN VELOCE */
+/* SEARCH */
+.input-group-btn > .btn {
+	background-color: #092147;
+	color: #bcc4f2;
+}
+.input-group-btn > .btn:hover {
+	color:white;
+}
+.navbar-form > .input-group > .form-control {
+	background-color: white;
+	font-weight:bold;
+	color: #092147;
+}
+
+/* LOGIN */
 fieldset {
   border: none;
 }
+
 .login {
   position: absolute;
   width: 350px;
@@ -51,7 +69,7 @@ fieldset {
   top: -10px;
 }
 .formholder {
-  background: #cce6ff;
+  background: #bcc4f2;
   width: 300px;
   height: 199px;
   margin-top: 3px;
@@ -77,7 +95,7 @@ fieldset {
 }
 .formholder input[type="text"]:focus, .formholder input[type="password"]:focus {
   outline: none;
-  box-shadow: 0 0 2px 2px #1abc9c;
+  box-shadow: 0 0 2px 2px #092147;
 }
 .formholder input[type="submit"] {
   background: #092147;
@@ -87,11 +105,10 @@ fieldset {
   width: 97%;
   margin: 10px 0px 0px 4px;
   border: none;
-  color: #fff;
+  color: #bcc4f2;
   border-radius: 5px;
+  box-shadow: 0 0 5px 5px #bcc4f2;
 }
-.formholder input[type="submit"]:active {
-   background-color: #0066ff;
+.formholder input[type="submit"]:focus {
+   color: white;
 }
-
-/* FINE LOGIN VELOCE */
