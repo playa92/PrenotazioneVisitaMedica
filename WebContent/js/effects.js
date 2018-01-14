@@ -33,8 +33,6 @@ function controllo() {
 	    	
 	        $(this).css({"border":"1px solid red"});
 	        entra=true;
-	    }else {
-	        $(this).css({"border":"1px solid white"});
 	    }
 	});
 	
@@ -45,7 +43,7 @@ function controllo() {
 $(document).ready(function() {
     $("#form").click(function(e) {
         if(e.target.style.border == "1px solid red") {
-        	$("#form input").css({"border":"1px solid white"});
+        	$("#form input").css({"border":"1px solid gray"});
         }
     });
 });

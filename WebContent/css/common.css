@@ -34,6 +34,10 @@ footer {
    text-align: left;
 }
 
+input[type=text] {
+	border: 1px solid #808080;
+}
+
 /* SEARCH */
 .input-group-btn > .btn {
 	background-color: #092147;
