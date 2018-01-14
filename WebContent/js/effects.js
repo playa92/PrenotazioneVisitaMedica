@@ -1,32 +1,12 @@
-/* NAVBAR LEFT ELEMENTS*/
-$(document).ready(function() {
-		
-	$('ul.nav li.dropdown').click(
-		function() {
-			$(this).children('.dropdown-menu').slideToggle('fast');
-			 $(this).toggleClass("dropdown-active");
-	});
+/* LOGIN */
+$(document).on('click', function(event) {
 	
-	$("ul.nav li.dropdown").focusout(
-		function() {
-			$(this).children('.dropdown-menu').slideUp('fast');		
-	});
-		
-});
-/* NAVBAR LOGIN */
-$(document).ready(function() {
-	
-	$("#login-form").click(function(e){
-		$(".login").fadeToggle();
-		e.stopPropagation();
-	});
-	
-	$(".login").click(function(e){
-		e.stopPropagation();
-	});
-});
-$(document).click(function(){
-	$(".login").fadeOut();
+    if (event.target.id == "login-form") {
+    	$(".login").fadeToggle();
+    }else{
+    	 $(".login").fadeOut();
+    }  
+
 });
 
 /* PRELOADER */
