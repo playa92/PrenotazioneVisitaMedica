@@ -1,18 +1,26 @@
-/* NAVBAR LOGIN */
-$(document).ready(function() {
-	
-	$("#login-form").click(function(e) {
-		$(".login").fadeToggle();
-		e.stopPropagation();
-	});
-	
-	$(".login").click(function(e) {
-		e.stopPropagation();
-	});
+/* NAVBAR */
+$(document).on('click', function(event) {
+    if (event.target.id == "login-form") {
+      $(".login").fadeToggle();
+    }else{
+      $(".login").fadeOut();
+    }  
+    
+    if (event.target.id == "navbar-text") {
+      $(this).fadeIn();
+    }else {
+      $(this).fadeOut();
+    }  
 });
 
-$(document).click(function() {
-	$(".login").fadeOut();
+$(document).on('click', '#navbar-text', function(event) {
+    
+    //mettere if solo se è aperto il form
+    $(".login").fadeOut(); // si deve chiudere il login se clicco su un navbar-text
+  
+    if (event.target.id == "navbar-text") {  
+      $(this).siblings('.dropdown-menu').fadeToggle('fast');
+    }
 });
 
 /* PRELOADER */
