@@ -53,9 +53,6 @@ input[type=text] {
 }
 
 /* LOGIN */
-fieldset {
-  border: none;
-}
 
 .login {
   position: absolute;
@@ -70,21 +67,23 @@ fieldset {
   border-bottom: 15px solid #bcc4f2;
   left: 6%;
   position: absolute;
-  top: -10px;
+  top: -21px;
 }
-.formholder {
+.dropdown-menu {
   background: #bcc4f2;
   width: 300px;
-  height: 199px;
+  height: 220px;
   margin-top: 3px;
   border: 2px solid #80bfff;
   padding-top: 5px;
-  position: relative;
+  position: absolute;
   color: #001a33;
   border-radius: 5px;
-  box-shadow: 0 0 1px 1px #0b102d
+  box-shadow: 0 0 1px 1px #0b102d;
+  margin: -220px;
+  top: 55px;
 }
-.formholder input[type="text"], .formholder input[type="password"] {
+.dropdown-menu input[type="text"], .dropdown-menu input[type="password"] {
   padding: 7px 5px;
   margin: 0px 0px 5px 6px;
   width: 96%;
@@ -97,11 +96,11 @@ fieldset {
   -o-transition: 0.3s linear;
   transition: 0.3s linear;
 }
-.formholder input[type="text"]:focus, .formholder input[type="password"]:focus {
+.dropdown-menu input[type="text"]:focus, .dropdown-menu input[type="password"]:focus {
   outline: none;
   box-shadow: 0 0 2px 2px #092147;
 }
-.formholder input[type="submit"] {
+.dropdown-menu input[type="submit"] {
   background: #092147;
   padding: 8px;
   font-size: 20px;
@@ -113,6 +112,6 @@ fieldset {
   border-radius: 5px;
   box-shadow: 0 0 5px 5px #bcc4f2;
 }
-.formholder input[type="submit"]:focus {
+.dropdown-menu input[type="submit"]:focus {
    color: white;
 }
