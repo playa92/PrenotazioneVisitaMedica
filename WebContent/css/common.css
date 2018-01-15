@@ -52,8 +52,6 @@ input[type=text] {
 	color: #092147;
 }
 
-/* LOGIN */
-
 .login {
   position: absolute;
   width: 350px;
@@ -66,6 +64,16 @@ input[type=text] {
   border-right: 20px solid transparent;
   border-bottom: 15px solid #bcc4f2;
   left: 6%;
+  position: absolute;
+  top: -21px;
+}
+.arrow-up-2 {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 15px solid #bcc4f2;
+  left: 30%;
   position: absolute;
   top: -21px;
 }
@@ -83,6 +91,7 @@ input[type=text] {
   margin: -220px;
   top: 55px;
 }
+
 .dropdown-menu input[type="text"], .dropdown-menu input[type="password"] {
   padding: 7px 5px;
   margin: 0px 0px 5px 6px;
