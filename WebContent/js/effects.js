@@ -32,3 +32,30 @@ $(document).ready(function() {
         }
     });
 });
+
+var s = "";
+$(document).on('click', function(event){
+
+  var name = $(event.target).prop("tagName").toLowerCase();
+  
+  if(!event.target.matches('.dropbtn')) {
+    
+	  $(".dropdown-content").eq(2).html($('.dropdown-content').fadeOut());  
+    s="";
+    
+  } else {
+    $(name).each(function() {
+    		if(event.target.id != $(this).attr('id') && $(this).attr('id') != undefined) {
+        
+    	  		if(event.target.id != s)
+    	  			$(".dropdown-content").fadeOut();
+        
+    	  		s = event.target.id;
+      		}
+    	});
+    
+		var tag = $(event.target).prop("id").toLowerCase();
+		var curr = $(name+'#'+tag).siblings().attr('id');
+		$('#'+curr).fadeToggle();
+    }
+});
