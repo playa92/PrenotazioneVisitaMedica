@@ -41,7 +41,7 @@ $(document).on('click', function(event){
   if(!event.target.matches('.dropbtn')) {
     
 	  $(".dropdown-content").eq(2).html($('.dropdown-content').fadeOut());  
-    s="";
+	  s="";
     
   } else {
     $(name).each(function() {
