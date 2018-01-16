@@ -8,24 +8,6 @@ body {
 	background-color: #bcc4f2;
 	color: #092147;
 }
-.navbar {
-	background-color: #092147;
-	border: none;
-	box-shadow: 0 0 2px 2px #0b102d
-}
-
-#navbar-text, #login-form {
-  color: #bcc4f2;
-  background-color: #092147;
-}
-
-#navbar-text:hover, #login-form:hover, #navbar-text:focus, #login-form:focus {
-   color: white;
-}
-
-#right-fields {
-	margin-right: 10px;
-}
 
 footer {
    position: fixed;
@@ -34,8 +16,32 @@ footer {
    text-align: left;
 }
 
-input[type=text] {
+#res-form input[type=text] {
 	border: 1px solid #808080;
+}
+
+/* /////////////////////////////////////////////////// */
+/* //////////////////// NAVBAR /////////////////////// */
+/* /////////////////////////////////////////////////// */
+
+.navbar {
+	background-color: #092147;
+	border: none;
+	box-shadow: 0 0 2px 2px #0b102d
+}
+
+.nav-element a, #login-form {
+  color: #bcc4f2;
+  background-color: #092147;
+}
+
+#nav-text:hover, #nav-text:focus, #login-form:hover, #login-form:focus {
+   color: white;
+   background-color: #092147;
+}
+
+#right-fields {
+	margin-right: 10px;
 }
 
 /* SEARCH */
@@ -52,6 +58,7 @@ input[type=text] {
 	color: #092147;
 }
 
+/* LOGIN */
 .login {
   position: absolute;
   width: 350px;
@@ -123,4 +130,41 @@ input[type=text] {
 }
 .dropdown-menu input[type="submit"]:focus {
    color: white;
+}
+
+/* DROPDOWN */
+
+.drop-element {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.show {
+	display:block;
 }

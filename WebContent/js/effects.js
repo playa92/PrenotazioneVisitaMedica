@@ -36,26 +36,25 @@ $(document).ready(function() {
 var s = "";
 $(document).on('click', function(event){
 
-  var name = $(event.target).prop("tagName").toLowerCase();
-  
-  if(!event.target.matches('.dropbtn')) {
-    
-	  $(".dropdown-content").eq(2).html($('.dropdown-content').fadeOut());  
-	  s="";
-    
+  var name = $(event.target).prop("tagName").toLowerCase(); //tag in cui avviene l'evento "a"
+ 
+  if(!event.target.matches('.dropdown')) {
+	  	$(".dropdown-content").eq(2).html($('.dropdown-content').fadeOut());  
+	  	s="";
   } else {
-    $(name).each(function() {
-    		if(event.target.id != $(this).attr('id') && $(this).attr('id') != undefined) {
-        
-    	  		if(event.target.id != s)
-    	  			$(".dropdown-content").fadeOut();
-        
-    	  		s = event.target.id;
-      		}
+    $(name).each(function() { //cicla per ogni tag 'a' (migliorare)
+    	
+	    	if($(this).siblings().attr('class') == 'dropdown-content'){ //entra solo nei div (fratelli di a) con "dropdown-content"		
+	    		if($(event.target).siblings().attr("id") != $(this).siblings().attr('id')) {
+	    	  		if($(event.target).siblings().attr("id") != s)
+	    	  			$(".dropdown-content").fadeOut();
+	        
+	    	  		s = $(event.target).siblings().attr("id");
+	      		}
+	    	}
     	});
     
-		var tag = $(event.target).prop("id").toLowerCase();
-		var curr = $(name+'#'+tag).siblings().attr('id');
-		$('#'+curr).fadeToggle();
+		var id = $(event.target).siblings().prop("id").toLowerCase(); //tag corrente il fratello
+		$('#'+id).fadeToggle();
     }
 });
