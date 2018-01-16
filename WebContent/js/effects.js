@@ -35,15 +35,16 @@ $(document).ready(function() {
 
 var s = "";
 $(document).on('click', function(event){
-
+  var index = $('.dropdown-content').length;
   var name = $(event.target).prop("tagName").toLowerCase(); //tag in cui avviene l'evento "a"
  
-  if(!event.target.matches('.dropdown')) {
-	  	$(".dropdown-content").eq(2).html($('.dropdown-content').fadeOut());  
+  if(!event.target.matches('.drop-element')) {
+	  
+	  	$(".dropdown-content").eq(index).html($('.dropdown-content').fadeOut());  //il 3 va calcolato
 	  	s="";
   } else {
     $(name).each(function() { //cicla per ogni tag 'a' (migliorare)
-    	
+ 
 	    	if($(this).siblings().attr('class') == 'dropdown-content'){ //entra solo nei div (fratelli di a) con "dropdown-content"		
 	    		if($(event.target).siblings().attr("id") != $(this).siblings().attr('id')) {
 	    	  		if($(event.target).siblings().attr("id") != s)
@@ -51,6 +52,7 @@ $(document).on('click', function(event){
 	        
 	    	  		s = $(event.target).siblings().attr("id");
 	      		}
+	    		
 	    	}
     	});
     
