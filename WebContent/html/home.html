@@ -5,9 +5,9 @@
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Prenota Visita Medica</title>
 	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="../css/loader.css">
- 	<script src="../js/jquery-3.2.1.min.js"></script>
- 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
  	<link rel="stylesheet" href="../css/common.css">
  	<script src="../js/effects.js"></script>
 </head>
@@ -24,112 +24,71 @@
 			</div>
 		</div>
 	</div>
-	
-	<nav role="navigation" class="navbar">
-		<ul class="nav navbar-nav">
-			   		    
-      		<li class="nav-element">
-      		   	<a id="nav-text" href="home.html"><span class="glyphicon glyphicon-home"></span> Home</a>
-			</li>
-			<li class="nav-element">
-				<a id="nav-text" href="prenotazione.html">Prenotazione</a>
-			</li>
-			<li class="nav-element">
-				<div class="dropdown">
-					<a id="nav-text" class="drop-element" >Statistiche<b class="caret"></b></a>
-					<div id="drop_statistiche" class="dropdown-content">
-		    		 	<a href="#">1</a>
-				       	<a href="#">2</a>
-				       	<a href="#">3</a>
-		  		    </div>
-	  		    </div>
-			</li>
-			<li class="nav-element">
-				<div class="dropdown">
-					<a id="nav-text" class="drop-element">Assistenza<b class="caret"></b></a>
-					<div id="drop_assistenza" class="dropdown-content">
-		    		 	<a href="#">1</a>
-				       	<a href="#">2</a>
-				       	<a href="#">3</a>
-		  		    </div>
-	  		    </div>
-			</li>
-										
-	    </ul>
-		<ul id="right-fields" class="nav navbar-nav navbar-right">
-		
-		  <!-- LOGIN -->
-		 <li class="nav-element" >
-		   <div class="dropdown">
-		 	  <a id="login-form" class="drop-element"><span class="glyphicon glyphicon-log-in" ></span> Login</a>      
-		      <div id="drop_login" class="dropdown-content login">
-			      <div class="arrow-up"></div>
-			     	 <div class="formholder"> 
-				          <form id="formLogin" class="form container-fluid">
-				             <label>Username</label>
-				             <input type="text"/>
-				             <label>Password</label>
-				             <input type="password" />
-				             <input type="submit" />
-				             <a class="small" href="#">Forgot password?</a>
-					      </form>
-				      </div>
-			      </div>
-		     </div>
-		 </li>	 
-
-		 <!-- RICERCA -->
-		 <li>
-        	<form class="navbar-form" role="search">
-	        	<div class="input-group">
-	            	<input type="text" class="form-control" placeholder="Search..." name="q">
-	            	<div class="input-group-btn" > 
-		                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-	            	</div>
-	       	    </div>
-        	</form>
-	 	</li>
-		</ul>
+	<!-- Navbar -->
+	<nav role="navigation" role="navigation" class="navbar">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li class="dropdown nav-item">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="home.html">Home</a>
+			     </li>
+			    <li class="dropdown nav-item">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="prenotazione.html">Prenotazione</a>
+			     </li>
+			     <li class="dropdown nav-item ">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Assistenza <b class="caret"></b></a>
+			        <ul class="dropdown-menu">
+				       	<li><a id="list-text" href="#">1</a></li>
+				       	<li><a id="list-text" href="#">2</a></li>
+				       	<li><a id="list-text" href="#">3</a></li>
+			        </ul>
+			     </li>
+			      <li class="dropdown nav-item">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
+			        <ul class="dropdown-menu">
+				       	<li><a id="list-text" href="#">1</a></li>
+				       	<li><a id="list-text" href="#">2</a></li>
+				       	<li><a id="list-text" href="#">3</a></li>
+			        </ul>
+			     </li>  
+			</ul>
+		    <ul id="right-fields" class="nav navbar-nav navbar-right">
+				<!--  Login -->	
+				 <li class="dropdown nav-item">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Login <b class="caret"></b></a>
+			       	<div class="dropdown-menu login">
+<!-- 					      <div class="arrow-up"></div> -->
+					       <div class="formholder">  
+					           <form id="form-field">
+					             <label >Username</label>
+					             <input type="text"/>
+					             <label >Password</label>
+					             <input type="password" />
+					             <input type="submit"/>
+					             <a class="small" href="#">Forgot password?</a>
+					           </form>
+					        </div>
+					    </div>
+			     </li>
+				   <!-- Ricerca -->
+				  <li id="navbar-text" >
+			        <form class="navbar-form" role="search">
+				        <div class="input-group">
+				            <input type="text" class="form-control" placeholder="Search..." name="q">
+				            <div class="input-group-btn" > 
+					                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				            </div>
+				        </div>
+			        </form>
+			 	</li>
+			</ul>
+			
+		</div>	
 	</nav>
 	
 	<div class="jumbotron text-center">
 	  <h1>Benvenuto nel Sito di Prenotazione</h1>
   	  <p>Prenota subito la tua visita medica!</p> 
 	</div>
-	
-<!-- 	<div class="dropdown"> -->
-<!-- 	<button id="btn1" class="dropbtn">Dropdown1</button> -->
-<!-- 	  <div id="dropbtn1" class="dropdown-content"> -->
-<!-- 	    <a href="#home">Home</a> -->
-<!-- 	    <a href="#about">About</a> -->
-<!-- 	    <a href="#contact">Contact</a> -->
-<!-- 	  </div> -->
-<!-- 	</div> -->
-
-<!-- 	<div class="dropdown"> -->
-<!-- 	<button id="btn2" class="dropbtn">Dropdown2</button> -->
-<!-- 	  <div id="dropbtn2" class="dp dropdown-content"> -->
-<!-- 	    <a href="#home">Home</a> -->
-<!-- 	    <a href="#about">About</a> -->
-<!-- 	    <a href="#contact">Contact</a> -->
-<!-- 	  </div> -->
-<!-- 	</div> -->
-
-
-<!-- 		 <li class="nav-element" > -->
-<!-- 		 	<a id="login-form" class="dropdown" href="#"><span class="glyphicon glyphicon-log-in" ></span> Login</a>       -->
-<!-- 		      <div id="drop3" class="dropdown-content"> -->
-<!-- 		      <div class="arrow-up"></div> -->
-<!-- 		          <form id="formLogin" class="form container-fluid"> -->
-<!-- 		             <label>Username</label> -->
-<!-- 		             <input type="text"/> -->
-<!-- 		             <label>Password</label> -->
-<!-- 		             <input type="password" /> -->
-<!-- 		             <input type="submit" /> -->
-<!-- 		             <a class="small" href="#">Forgot password?</a> -->
-<!-- 			      </form> -->
-<!-- 		    </div> -->
-<!-- 		 </li>	  -->
 		
 </body>
 </html>

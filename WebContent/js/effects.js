@@ -33,30 +33,30 @@ $(document).ready(function() {
     });
 });
 
-var s = "";
-$(document).on('click', function(event){
-  var index = $('.dropdown-content').length;
-  var name = $(event.target).prop("tagName").toLowerCase(); //tag in cui avviene l'evento "a"
- 
-  if(!event.target.matches('.drop-element')) {
-	  
-	  	$(".dropdown-content").eq(index).html($('.dropdown-content').fadeOut());  //il 3 va calcolato
-	  	s="";
-  } else {
-    $(name).each(function() { //cicla per ogni tag 'a' (migliorare)
- 
-	    	if($(this).siblings().attr('class') == 'dropdown-content'){ //entra solo nei div (fratelli di a) con "dropdown-content"		
-	    		if($(event.target).siblings().attr("id") != $(this).siblings().attr('id')) {
-	    	  		if($(event.target).siblings().attr("id") != s)
-	    	  			$(".dropdown-content").fadeOut();
-	        
-	    	  		s = $(event.target).siblings().attr("id");
-	      		}
-	    		
-	    	}
-    	});
-    
-		var id = $(event.target).siblings().prop("id").toLowerCase(); //tag corrente il fratello
-		$('#'+id).fadeToggle();
-    }
-});
+//var s = "";
+//$(document).on('click', function(event){
+//  var index = $('.dropdown-content').length;
+//  var name = $(event.target).prop("tagName").toLowerCase(); //tag in cui avviene l'evento "a"
+// 
+//  if(!event.target.matches('.drop-element')) {
+//	  
+//	  	$(".dropdown-content").eq(index).html($('.dropdown-content').fadeOut());  //il 3 va calcolato
+//	  	s="";
+//  } else {
+//    $(name).each(function() { //cicla per ogni tag 'a' (migliorare)
+// 
+//	    	if($(this).siblings().attr('class') == 'dropdown-content'){ //entra solo nei div (fratelli di a) con "dropdown-content"		
+//	    		if($(event.target).siblings().attr("id") != $(this).siblings().attr('id')) {
+//	    	  		if($(event.target).siblings().attr("id") != s)
+//	    	  			$(".dropdown-content").fadeOut();
+//	        
+//	    	  		s = $(event.target).siblings().attr("id");
+//	      		}
+//	    		
+//	    	}
+//    	});
+//    
+//		var id = $(event.target).siblings().prop("id").toLowerCase(); //tag corrente il fratello
+//		$('#'+id).fadeToggle();
+//    }
+//});
