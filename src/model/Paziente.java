@@ -2,50 +2,50 @@ package model;
 
 public class Paziente {
 
-	private String name;
-	private String surname;
-	private Long id;
-	private String invalidity;
+	private String nome;
+	private String cognome;
+	private Long matricola;
+	private String invalidita;
 	
 	public Paziente() {}
 	
-	public Paziente(String name, String surname, Long id, String invalidity) {
+	public Paziente(String nome, String cognome, Long matricola, String invalidita) {
 		
-		this.name = name;
-		this.surname = surname;
-		this.id = id;
-		this.invalidity = invalidity;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.matricola = matricola;
+		this.invalidita = invalidita;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getCognome() {
+		return cognome;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getMatricola() {
+		return matricola;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setMatricola(Long matricola) {
+		this.matricola = matricola;
 	}
 
-	public String getInvalidity() {
-		return invalidity;
+	public String getInvalidita() {
+		return invalidita;
 	}
 
-	public void setInvalidity(String invalidity) {
-		this.invalidity = invalidity;
+	public void setInvalidita(String invalidita) {
+		this.invalidita = invalidita;
 	}
 }

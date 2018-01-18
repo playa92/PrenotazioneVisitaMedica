@@ -25,10 +25,10 @@ public class PazienteDaoJDBC implements PazienteDao {
 		try {
 			String insert = "insert into paziente(nome, cognome, matricola, invalidità) values (?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setString(1, paziente.getName());
-			statement.setString(2, paziente.getSurname());
-			statement.setLong(3, paziente.getId());
-			statement.setString(4, paziente.getInvalidity());
+			statement.setString(1, paziente.getNome());
+			statement.setString(2, paziente.getCognome());
+			statement.setLong(3, paziente.getMatricola());
+			statement.setString(4, paziente.getInvalidita());
 			statement.executeUpdate();
 		
 		} catch(SQLException e) {
@@ -58,10 +58,10 @@ public class PazienteDaoJDBC implements PazienteDao {
 			if(result.next()) {
 				
 				paziente = new Paziente();
-				paziente.setName(result.getString("nome"));				
-				paziente.setSurname(result.getString("cognome"));
-				paziente.setId(result.getLong("matricola"));
-				paziente.setInvalidity(result.getString("invalidità"));
+				paziente.setNome(result.getString("nome"));				
+				paziente.setCognome(result.getString("cognome"));
+				paziente.setMatricola(result.getLong("matricola"));
+				paziente.setInvalidita(result.getString("invalidità"));
 			}
 			
 		} catch(SQLException e) {
@@ -92,10 +92,10 @@ public class PazienteDaoJDBC implements PazienteDao {
 			while(result.next()) {
 				
 				paziente = new Paziente();
-				paziente.setName(result.getString("nome"));				
-				paziente.setSurname(result.getString("cognome"));
-				paziente.setId(result.getLong("matricola"));
-				paziente.setInvalidity(result.getString("invalidità"));
+				paziente.setNome(result.getString("nome"));				
+				paziente.setCognome(result.getString("cognome"));
+				paziente.setMatricola(result.getLong("matricola"));
+				paziente.setInvalidita(result.getString("invalidità"));
 				pazienti.add(paziente);
 			}
 		} catch(SQLException e) {
@@ -118,10 +118,10 @@ public class PazienteDaoJDBC implements PazienteDao {
 		try {
 			String update = "update paziente SET nome = ?, cognome = ?, matricola = ?, invalidità = ? WHERE matricola = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, paziente.getName());
-			statement.setString(2, paziente.getSurname());
-			statement.setLong(3, paziente.getId());
-			statement.setString(4, paziente.getInvalidity());
+			statement.setString(1, paziente.getNome());
+			statement.setString(2, paziente.getCognome());
+			statement.setLong(3, paziente.getMatricola());
+			statement.setString(4, paziente.getInvalidita());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -143,7 +143,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 		try {
 			String delete = "delete FROM paziente WHERE matricola = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setLong(3, paziente.getId());
+			statement.setLong(3, paziente.getMatricola());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {

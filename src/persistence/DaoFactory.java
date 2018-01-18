@@ -7,7 +7,7 @@ public abstract class DaoFactory {
 	public static final int HSQLDB = 1;
 	public static final int POSTGRESQL = 2;
 	
-	public static DaoFactory getDAOFactory(int whichFactory) {
+	public static DaoFactory getDaoFactory(int whichFactory) {
 		
 		switch(whichFactory) {
 		case HSQLDB:

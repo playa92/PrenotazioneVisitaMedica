@@ -8,4 +8,25 @@
     	<welcome-file>default.htm</welcome-file>
     	<welcome-file>default.jsp</welcome-file>
   	</welcome-file-list>
+  	
+  	<servlet>
+    	<servlet-name>CheckLogin</servlet-name>
+    	<servlet-class>servlet.CheckLogin</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>CheckLogin</servlet-name>
+    	<url-pattern>/checkLogin</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+    	<servlet-name>FormPrenotazione</servlet-name>
+    	<servlet-class>servlet.FormPrenotazione</servlet-class>
+  	</servlet>
+  
+  	<servlet-mapping>
+    	<servlet-name>FormPrenotazione</servlet-name>
+    	<url-pattern>/formPrenotazione</url-pattern>
+  	</servlet-mapping>
+  	 
 </web-app>

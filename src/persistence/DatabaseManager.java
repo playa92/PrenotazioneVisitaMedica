@@ -6,7 +6,7 @@ public class DatabaseManager {
 	private DaoFactory daoFactory;
 	
 	private DatabaseManager() {
-		daoFactory = DaoFactory.getDAOFactory(DaoFactory.POSTGRESQL);
+		daoFactory = DaoFactory.getDaoFactory(DaoFactory.POSTGRESQL);
 	}
 	
 	//Singleton Pattern
@@ -18,7 +18,7 @@ public class DatabaseManager {
 		return database;
 	}
 	
-	public DaoFactory getDAOFactory() {
+	public DaoFactory getDaoFactory() {
 		return daoFactory;
 	}
 }
