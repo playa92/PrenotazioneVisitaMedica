@@ -30,14 +30,13 @@ footer {
 	box-shadow: 0 0 2px 2px #0b102d
 }
 
-.nav-item a {
+.nav-item #navbar-text {
   color: #bcc4f2;
   background-color: #092147;
 }
 
 #navbar-text:hover, #navbar-text:focus {
    color: white;
-   background-color: #092147;
 }
      
 #right-fields {
@@ -58,16 +57,24 @@ footer {
 	color: #092147;
 }
 
-
-/* LOGIN VELOCE */
+/* LOGIN */
 #form-field {
   border: none;
 }
 
-.login {
-  position: absolute;
-  width: 350px;
-  display: none;
+#checkbox{
+	margin-left:6px;
+	margin-top:4px;
+}
+
+.small{
+	margin-top:10px;
+	float: right;
+	margin-right:6px;
+}
+
+.text-user{
+	margin-left:6px;
 }
 
 .arrow-up {
@@ -75,24 +82,30 @@ footer {
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-bottom: 15px solid #ECF0F1;
-  left: 10%;
+  border-bottom: 15px solid #bcc4f2;
+  left: 5%;
   position: absolute;
-  top: -10px;
+  top: -16px;
 }
 
-.formholder {
+.login-form {
   background: #cce6ff;
-  width: 350px;
+  width: 300px;
   border: 2px solid #80bfff;
   padding-top: 5px;
   position: absolute;
   color: #001a33;
+  margin: -214px;
+  top: 56px;
+  box-shadow: 0 0 2px 2px #0b102d;
+  
 }
-.formholder input[type="text"], .formholder input[type="password"] {
+
+.login-form input[type="text"], .login-form input[type="password"] {
   padding: 7px 5px;
-  margin: 10px 0px 10px 7px;
-  width: 96%;
+  margin-left: 7px;
+  margin-bottom:5px;
+  width: 95%;
   display: block;
   font-size: 18px;
   border-radius: 5px;
@@ -102,20 +115,34 @@ footer {
   -o-transition: 0.3s linear;
   transition: 0.3s linear;
 }
-.formholder input[type="text"]:focus, .formholder input[type="password"]:focus {
+
+.login-form input[type="text"]:focus, .login-form input[type="password"]:focus {
   outline: none;
   box-shadow: 0 0 1px 1px #1abc9c;
 }
-.formholder input[type="submit"] {
-  background: #0099ff;
+
+.login-form input[type="submit"] {
+  background: #092147;
   padding: 10px;
   font-size: 20px;
   display: block;
-  width: 100%;
+  width: 95%;
   border: none;
-  color: #fff;
+  color: #bcc4f2;
   border-radius: 5px;
+  margin-left: 7px;
+  margin-top: 10px;
 }
-.formholder input[type="submit"]:focus {
+
+#form-field input::placeholder {
+  color: #ffc299s;
+}
+
+.login-form input[type="submit"]:active {
+   background: #103b7f;
+}
+.login-form input[type="submit"]:hover {
    color: white;
 }
+
+/* */
