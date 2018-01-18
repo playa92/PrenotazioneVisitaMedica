@@ -41,7 +41,7 @@ public class CheckLogin extends HttpServlet {
 				out.println("</body>");
 				out.println("</html>");
 				
-			} else {
+			} else {//TODO Da modificare
 				out.println("<html>");
 				out.println("<head><title>Effettual il Login</title></head>");
 				out.println("<body>");
@@ -88,12 +88,12 @@ public class CheckLogin extends HttpServlet {
 //				out.println("</html>");	
 //				
 //			} else {
-//				out.println("<html>");
-//				out.println("<head><title>Login</title></head>");
-//				out.println("<body>");
-//				out.println("<h1>Spiacente, password non corrispondente per l'amministratore " + username + "</h1>");			
-//				out.println("</body>");
-//				out.println("</html>");	
+				out.println("<html>");
+				out.println("<head><title>Login</title></head>");
+				out.println("<body>");
+				out.println("<h1>Spiacente, password non corrispondente per l'amministratore " + username + "</h1>");			
+				out.println("</body>");
+				out.println("</html>");	
 //			}				
 //		}
 	}

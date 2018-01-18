@@ -13,7 +13,6 @@
     	<servlet-name>CheckLogin</servlet-name>
     	<servlet-class>servlet.CheckLogin</servlet-class>
   	</servlet>
-  
   	<servlet-mapping>
     	<servlet-name>CheckLogin</servlet-name>
     	<url-pattern>/checkLogin</url-pattern>
@@ -23,7 +22,6 @@
     	<servlet-name>FormPrenotazione</servlet-name>
     	<servlet-class>servlet.FormPrenotazione</servlet-class>
   	</servlet>
-  
   	<servlet-mapping>
     	<servlet-name>FormPrenotazione</servlet-name>
     	<url-pattern>/formPrenotazione</url-pattern>

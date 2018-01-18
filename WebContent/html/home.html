@@ -57,12 +57,12 @@
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Login <b class="caret"></b></a>	
 			       	<div class="dropdown-menu login-form">
 			       	<div class="arrow-up"></div>
-			           <form id="form-field" action="/action_page.php">
+			           <form id="form-field" method="post" action="../checkLogin">
 			             <label class="text-user">Username</label>
 			             <input type="text" placeholder="Enter Username" name="username" required>
 			             <label class="text-user">Password</label>
 			             <input type="password" placeholder="Enter Password" name="password" required>
-			             <input type="submit" value="Accedi" onclick="checkLogin"/>
+			             <input type="submit" value="Accedi"/>
 			             <label id="checkbox"> <input type="checkbox" checked="checked"> Remember me </label>
 			             <a class="small" href="#">Forgot password?</a>
 			           </form>
