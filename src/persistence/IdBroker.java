@@ -17,7 +17,8 @@ public class IdBroker {
 			ResultSet result = statement.executeQuery();
 			result.next();
 			id = result.getLong("matricola");
-		} catch (SQLException e) {
+			
+		} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		}
 		return id;

@@ -1,5 +1,8 @@
 package persistence;
 
+import java.sql.DriverManager;
+
+import persistence.dao.AmministratoreDao;
 import persistence.dao.PazienteDao;
 
 public class PostgresDaoFactory extends DaoFactory {
@@ -9,8 +12,9 @@ public class PostgresDaoFactory extends DaoFactory {
 	static {
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();
+//			DriverManager.registerDriver(new org.postgresql.Driver());
 			//questi vanno messi in un file di configurazione!!!	
-			dataSource = new DataSource("jdbc:postgresql://52.39.164.176:5432/xx","xx","p@xx");
+//			dataSource = new DataSource("jdbc:postgresql://52.39.164.176:5432/xx","xx","p@xx");
 			dataSource = new DataSource("jdbc:postgresql://localhost:5432/Prenotazione","postgres","postgres");
 		
 		} catch(Exception e) {
@@ -22,6 +26,11 @@ public class PostgresDaoFactory extends DaoFactory {
 	@Override
 	public PazienteDao getPazienteDao() {
 		return new PazienteDaoJDBC(dataSource);
+	}
+	
+	@Override
+	public AmministratoreDao getAmministratoreDao() {
+		return new AmministratoreDaoJDBC(dataSource);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package persistence;
 
+import persistence.dao.AmministratoreDao;
 import persistence.dao.PazienteDao;
 
 public abstract class DaoFactory {
@@ -20,6 +21,8 @@ public abstract class DaoFactory {
 	}
 	
 	public abstract PazienteDao getPazienteDao();
+	
+	public abstract AmministratoreDao getAmministratoreDao();
 	
 	public abstract UtilDao getUtilDao();
 }

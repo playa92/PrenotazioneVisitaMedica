@@ -2,15 +2,15 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import persistence.AmministratoreCredenziali;
 import persistence.DatabaseManager;
-import persistence.dao.PazienteDao;
+import persistence.PersistenceException;
+import persistence.dao.AmministratoreDao;
 
 @SuppressWarnings("serial")
 public class CheckLogin extends HttpServlet {
@@ -65,36 +65,49 @@ public class CheckLogin extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		PazienteDao dao = DatabaseManager.getInstance().getDaoFactory().getPazienteDao();
-//		AmministratoreCredenziali amministratore = dao.findByPrimaryKeyCredential(username);
+		AmministratoreDao dao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();
+//		System.out.println(dao.toString());
+		AmministratoreCredenziali amministratore = null;
+		try {
+			amministratore = dao.findByPrimaryKeyCredential(username);
+		} catch (PersistenceException e) {
+//			 TODO Auto-generated catch block
+			System.out.println("---> " + amministratore.toString());
+			e.printStackTrace();
 		
-//		if(amministratore == null) {
-//			
-//			out.println("<html>");
-//			out.println("<head><title>Login</title></head>");
-//			out.println("<body>");
-//			out.println("<h1>Nessun amministratore è registrato come " + username + "</h1>");			
-//			out.println("</body>");
-//			out.println("</html>");				
-//		} else {
-//			if(password.equals(amministratore.getPassword())){
-//				session.setAttribute("username", username);
-//				out.println("<html>");
-//				out.println("<head><title>Login</title></head>");
-//				out.println("<body>");
-//				out.println("<h1>Login effettuato con successo</h1></br>");
-//				out.println("<h2>Bentornato!</h2>");
-//				out.println("</body>");
-//				out.println("</html>");	
-//				
-//			} else {
+		}
+		
+		System.out.println("---> " + amministratore.toString());
+		
+		if(amministratore == null) {
+			
+			out.println("<html>");
+			out.println("<head><title>Login</title></head>");
+			out.println("<body>");
+			out.println("<h1>Nessun amministratore è registrato come " + username + "</h1>");
+			out.println("<p>"+ password + "<p>");
+			out.println("</body>");
+			out.println("</html>");				
+		} else {
+			if(password.equals(amministratore.getPassword())) {
+				
+				session.setAttribute("username", username);
+				out.println("<html>");
+				out.println("<head><title>Login</title></head>");
+				out.println("<body>");
+				out.println("<h1>Login effettuato con successo</h1></br>");
+				out.println("<h2>Bentornato!</h2>");
+				out.println("</body>");
+				out.println("</html>");	
+				
+			} else {
 				out.println("<html>");
 				out.println("<head><title>Login</title></head>");
 				out.println("<body>");
 				out.println("<h1>Spiacente, password non corrispondente per l'amministratore " + username + "</h1>");			
 				out.println("</body>");
 				out.println("</html>");	
-//			}				
-//		}
+			}				
+		}
 	}
 }

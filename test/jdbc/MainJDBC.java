@@ -3,10 +3,13 @@ package jdbc;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Amministratore;
 import model.Paziente;
+import persistence.AmministratoreDaoJDBC;
 import persistence.DaoFactory;
 import persistence.PersistenceException;
 import persistence.UtilDao;
+import persistence.dao.AmministratoreDao;
 import persistence.dao.PazienteDao;
 
 public class MainJDBC {
@@ -19,6 +22,7 @@ public class MainJDBC {
 		util.createDatabase();
 		
 		PazienteDao pazienteDao = factory.getPazienteDao();
+		AmministratoreDao amministratoreDao = factory.getAmministratoreDao();
 		
 		//CREATE
 		List<Paziente> p = new ArrayList<>();
@@ -47,6 +51,21 @@ public class MainJDBC {
 		for(int i = 0; i < p.size(); i++) {
 			pazienteDao.save(p.get(i));
 		}
-//		System.out.println("Finished");
+		
+		/////////////////////////////////
+		Amministratore a1 = new Amministratore();
+		a1.setUsername("giocos");
+		a1.setPassword("1234");
+		
+		amministratoreDao.save(a1);
+		
+		Amministratore a2 = new Amministratore();
+		a2.setUsername("playa92");
+		a2.setPassword("1234");
+		
+		amministratoreDao.save(a2);
+		
+		Amministratore tmp = amministratoreDao.findByPrimaryKey("giocos");
+		System.out.println(tmp.getUsername());
 	}
 }
