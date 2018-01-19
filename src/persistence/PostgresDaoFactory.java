@@ -1,7 +1,10 @@
 package persistence;
 
 import persistence.dao.AmministratoreDao;
+import persistence.dao.CodiceQRDao;
 import persistence.dao.PazienteDao;
+import persistence.dao.UniversitaDao;
+import persistence.dao.VisitaMedicaDao;
 
 public class PostgresDaoFactory extends DaoFactory {
 
@@ -30,6 +33,21 @@ public class PostgresDaoFactory extends DaoFactory {
 		return new AmministratoreDaoJDBC(dataSource);
 	}
 
+	@Override
+	public UniversitaDao getUniversitaDao() {
+		return new UniversitaDaoJDBC(dataSource);
+	}
+
+	@Override
+	public CodiceQRDao getCodiceQR() {
+		return new CodiceQRDaoJDBC(dataSource);
+	}
+
+	@Override
+	public VisitaMedicaDao getVisitaMedica() {
+		return new VisitaMedicaDaoJDBC(dataSource);
+	}
+	
 	@Override
 	public UtilDao getUtilDao() {
 		return new UtilDao(dataSource);

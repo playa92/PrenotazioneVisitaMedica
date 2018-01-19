@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" 
+prefix="c" %>
+
 <html>
 
 <head>
@@ -10,9 +13,13 @@
 	<link rel="stylesheet" href="css/loader.css">
  	<link rel="stylesheet" href="css/common.css">
  	<script src="js/effects.js"></script>
+ 	<script src="js/login.js"></script>
 </head>
 
 <body>
+
+
+
 	<!-- Loader -->
 	<div id="preloader" class="container">
 		<div class="row">
@@ -28,7 +35,7 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="home.html">Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="home.html"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 			    <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/prenotazione.html">Prenotazione</a>
@@ -53,15 +60,20 @@
 		    <ul id="right-fields" class="nav navbar-nav navbar-right">
 				<!--  Login -->	
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Login <b class="caret"></b></a>	
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Accedi<b class="caret"></b></a>	
 			       		<div class="dropdown-menu login-form">
 			       			<div class="arrow-up"></div>
-			           		<form id="form-field" class="text-form" method="post" action="checkLogin">
+			           		<form id="form-field" class="text-form" method="post" action="login">
 		             			<label>Username</label>
 			             		<input type="text" placeholder="Enter Username" name="username" required>
 			             		<label>Password</label>
 			             		<input type="password" placeholder="Enter Password" name="password" required>
-			             		<input type="submit" value="Accedi"/>
+			             			<c:if test="${loggato}">
+										<input id="inp" onclick="login();" type="submit" value="Logout"/>
+									</c:if>
+									<c:if test="${not loggato}">
+										<input id="inp" onclick="login();" type="submit" value="Login"/>
+									</c:if>
 			             		<label id="checkbox"> <input type="checkbox" checked="checked"> Remember me </label>
 			             		<a class="small" href="#">Forgot password?</a>
 			           		</form>

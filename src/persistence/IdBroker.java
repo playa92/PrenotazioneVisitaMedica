@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//assegna in modo progressivo un id per ogni tabella presente nel nostro DB
 public class IdBroker {
 
-	private static final String query = "SELECT nextval('id') AS matricola";
+	private static final String query = "SELECT nextval('sequenza_id') AS id";
 
 	public static Long getId(Connection connection) throws PersistenceException {
 		
@@ -16,7 +17,7 @@ public class IdBroker {
 			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			result.next();
-			id = result.getLong("matricola");
+			id = result.getLong("id");
 			
 		} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());

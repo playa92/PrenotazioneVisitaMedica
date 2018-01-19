@@ -6,15 +6,17 @@ public class Paziente {
 	private String cognome;
 	private Long matricola;
 	private String invalidita;
+	private CodiceQR codice;
 	
 	public Paziente() {}
 	
-	public Paziente(String nome, String cognome, Long matricola, String invalidita) {
+	public Paziente(String nome, String cognome, Long matricola, String invalidita, CodiceQR codice) {
 		
 		this.nome = nome;
 		this.cognome = cognome;
 		this.matricola = matricola;
 		this.invalidita = invalidita;
+		this.codice = codice;
 	}
 
 	public String getNome() {
@@ -47,5 +49,13 @@ public class Paziente {
 
 	public void setInvalidita(String invalidita) {
 		this.invalidita = invalidita;
+	}
+
+	public CodiceQR getCodice() {
+		return codice;
+	}
+
+	public void setCodice(CodiceQR codice) {
+		this.codice = codice;
 	}
 }
