@@ -2,10 +2,8 @@ package jdbc;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Amministratore;
 import model.Paziente;
-import persistence.AmministratoreDaoJDBC;
 import persistence.DaoFactory;
 import persistence.PersistenceException;
 import persistence.UtilDao;
@@ -65,7 +63,7 @@ public class MainJDBC {
 		
 		amministratoreDao.save(a2);
 		
-		Amministratore tmp = amministratoreDao.findByPrimaryKey("giocos");
-		System.out.println(tmp.getUsername());
+//		Amministratore tmp = amministratoreDao.findByPrimaryKey("giocos");
+		
 	}
 }

@@ -1,9 +1,10 @@
 package persistence;
 
-@SuppressWarnings("serial")
-public class PersistenceException extends Exception {
+public class PersistenceException extends RuntimeException {
 
-    public PersistenceException(String message) {
+	private static final long serialVersionUID = 1L;
+
+	public PersistenceException(String message) {
         super(message);
     }
     

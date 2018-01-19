@@ -17,7 +17,8 @@ public class UtilDao {
 		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "drop SEQUENCE if EXISTS id;"
-					+ "drop table if exists paziente;";
+					+ "drop table if EXISTS paziente;"
+					+ "drop table if EXISTS amministratore";
 				
 			PreparedStatement statement = connection.prepareStatement(delete);
 			
@@ -43,7 +44,8 @@ public class UtilDao {
 		try {
 			String delete = "create SEQUENCE id; "
 					+ "create table paziente(nome VARCHAR(255), cognome VARCHAR(255),"
-					+ "\"matricola\" bigint primary key, invalidità VARCHAR(255));";
+					+ "\"matricola\" bigint primary key, invalidità VARCHAR(255));"
+					+ "create table amministratore(\"username\" VARCHAR(255) primary key, password VARCHAR(255));";
 			PreparedStatement statement = connection.prepareStatement(delete);
 	
 			statement.executeUpdate();		
@@ -69,6 +71,11 @@ public class UtilDao {
 			try {
 				String delete = "delete FROM paziente";
 				PreparedStatement statement = connection.prepareStatement(delete);
+				
+				statement.executeUpdate();
+				
+				delete = "delete FROM amministratore";
+				statement = connection.prepareStatement(delete);
 				
 				statement.executeUpdate();
 				

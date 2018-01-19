@@ -66,18 +66,13 @@ public class CheckLogin extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		AmministratoreDao dao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();
-//		System.out.println(dao.toString());
 		AmministratoreCredenziali amministratore = null;
 		try {
 			amministratore = dao.findByPrimaryKeyCredential(username);
-		} catch (PersistenceException e) {
-//			 TODO Auto-generated catch block
-			System.out.println("---> " + amministratore.toString());
+		} catch(PersistenceException e) {
 			e.printStackTrace();
 		
 		}
-		
-		System.out.println("---> " + amministratore.toString());
 		
 		if(amministratore == null) {
 			
@@ -85,7 +80,6 @@ public class CheckLogin extends HttpServlet {
 			out.println("<head><title>Login</title></head>");
 			out.println("<body>");
 			out.println("<h1>Nessun amministratore è registrato come " + username + "</h1>");
-			out.println("<p>"+ password + "<p>");
 			out.println("</body>");
 			out.println("</html>");				
 		} else {
@@ -95,7 +89,7 @@ public class CheckLogin extends HttpServlet {
 				out.println("<html>");
 				out.println("<head><title>Login</title></head>");
 				out.println("<body>");
-				out.println("<h1>Login effettuato con successo</h1></br>");
+				out.println("<h1>Login effettuato con successo</h1>");
 				out.println("<h2>Bentornato!</h2>");
 				out.println("</body>");
 				out.println("</html>");	

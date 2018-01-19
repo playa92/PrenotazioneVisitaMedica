@@ -19,11 +19,11 @@ public class PazienteDaoJDBC implements PazienteDao {
 	}
 
 	@Override
-	public void save(Paziente paziente) throws PersistenceException {
+	public void save(Paziente paziente) {
 			
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into paziente(nome, cognome, matricola, invalidità) values (?,?,?,?)";
+			String insert = "insert INTO paziente(nome, cognome, matricola, invalidità) values (?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, paziente.getNome());
 			statement.setString(2, paziente.getCognome());
@@ -44,13 +44,13 @@ public class PazienteDaoJDBC implements PazienteDao {
 	}  
 
 	@Override
-	public Paziente findByPrimaryKey(Long id) throws PersistenceException {
+	public Paziente findByPrimaryKey(Long id) {
 		
 		Connection connection = this.dataSource.getConnection();
 		Paziente paziente = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * from paziente where matricola = ?";
+			String query = "select * FROM paziente WHERE matricola = ?";
 			statement = connection.prepareStatement(query);
 			statement.setLong(3, id);
 			ResultSet result = statement.executeQuery();
@@ -78,14 +78,14 @@ public class PazienteDaoJDBC implements PazienteDao {
 	}
 
 	@Override
-	public List<Paziente> findAll() throws PersistenceException {
+	public List<Paziente> findAll() {
 		
 		Connection connection = this.dataSource.getConnection();
 		List<Paziente> pazienti = new LinkedList<>();
 		Paziente paziente = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * from paziente";
+			String query = "select * FROM paziente";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
@@ -112,7 +112,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 	}
 
 	@Override
-	public void update(Paziente paziente) throws PersistenceException {
+	public void update(Paziente paziente) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
@@ -137,7 +137,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 	}
 
 	@Override
-	public void delete(Paziente paziente) throws PersistenceException {
+	public void delete(Paziente paziente) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {

@@ -13,11 +13,11 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 	}
 	
 	@Override
-	public void save(Amministratore amministratore) throws PersistenceException {
+	public void save(Amministratore amministratore) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert into amministratore(username, password) values (?,?)";
+			String insert = "insert INTO amministratore(username, password) values (?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, amministratore.getUsername());
 			statement.setString(2, amministratore.getPassword());
@@ -37,14 +37,13 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 	}
 	
 	@Override
-	public Amministratore findByPrimaryKey(String username) throws PersistenceException {
+	public Amministratore findByPrimaryKey(String username) {
 		
-		System.out.println("data: "+ this.dataSource.toString());
 		Connection connection = this.dataSource.getConnection();
 		Amministratore amministratore = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * from amministratore where username = ?";
+			String query = "select * FROM amministratore WHERE username = ?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, username);
 			ResultSet result = statement.executeQuery();
@@ -54,7 +53,6 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 				amministratore.setUsername(result.getString("username"));				
 				amministratore.setPassword(result.getString("password"));
 			}
-			System.out.println("dopo creazione: " + amministratore.getPassword() + " " + amministratore.getUsername());
 			
 		} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -71,7 +69,7 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 	}
 
 	@Override
-	public AmministratoreCredenziali findByPrimaryKeyCredential(String username) throws PersistenceException {
+	public AmministratoreCredenziali findByPrimaryKeyCredential(String username) {
 		
 		Amministratore admin = findByPrimaryKey(username);
 		AmministratoreCredenziali adminCred = null;
@@ -82,6 +80,28 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 			adminCred.setPassword(admin.getPassword());
 		}
 		return adminCred;
+	}
+	
+	@Override
+	public void delete(Amministratore amministratore) {
+		
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String delete = "delete FROM amministratore WHERE username = ? ";
+			PreparedStatement statement = connection.prepareStatement(delete);
+			statement.setString(1, amministratore.getUsername());
+			statement.executeUpdate();
+			
+		} catch(SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			
+			try {
+				connection.close();
+			} catch(SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
 	}
 
 }
