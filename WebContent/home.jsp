@@ -60,24 +60,30 @@ prefix="c" %>
 		    <ul id="right-fields" class="nav navbar-nav navbar-right">
 				<!--  Login -->	
 				<li class="dropdown nav-item">
+					<c:if test="${not loggato}">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Accedi<b class="caret"></b></a>	
 			       		<div class="dropdown-menu login-form">
 			       			<div class="arrow-up"></div>
 			           		<form id="form-field" class="text-form" method="post" action="login">
-		             			<label>Username</label>
-			             		<input type="text" placeholder="Enter Username" name="username" required>
-			             		<label>Password</label>
-			             		<input type="password" placeholder="Enter Password" name="password" required>
-			             			<c:if test="${loggato}">
-										<input id="inp" onclick="login();" type="submit" value="Logout"/>
-									</c:if>
-									<c:if test="${not loggato}">
-										<input id="inp" onclick="login();" type="submit" value="Login"/>
-									</c:if>
-			             		<label id="checkbox"> <input type="checkbox" checked="checked"> Remember me </label>
-			             		<a class="small" href="#">Forgot password?</a>
+			             			<label>Username</label>
+				             		<input type="text" placeholder="Enter Username" name="username" required>
+				             		<label>Password</label>
+				             		<input type="password" placeholder="Enter Password" name="password" required>
+				             		<label id="checkbox"> <input type="checkbox" checked="checked"> Remember me </label>
+				             		<a class="small" href="#">Forgot password?</a>
+									<input id="inp" type="submit" value="Login" onclick="login()"/>
 			           		</form>
 						</div>
+					</c:if>
+					<c:if test="${loggato}">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-out"></span> Disconnetti<b class="caret"></b></a>	
+			       		<div class="dropdown-menu login-form">
+			       			<div class="arrow-up"></div>
+			           		<form id="form-field" class="text-form" method="get" action="login?logout=true">      			
+								<input id="inp2" type="submit" value="Logout"/>
+			           		</form>
+						</div>			
+					</c:if>
 				</li>
 			   	<!-- Ricerca -->
 			  	<li id="navbar-text" >
