@@ -25,11 +25,7 @@ public class Login extends HttpServlet {
 		if((req.getParameter("logout") != null) && (req.getParameter("logout").equals("true"))) {
 			
 			session.setAttribute("username", null);
-			
-			String messaggio = "Login";
-			req.setAttribute("loggato", false);
-			req.setAttribute("mex", messaggio);
-			
+			req.setAttribute("loggato", false);		
 			RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 			dispacher.forward(req, resp);
 			
@@ -46,20 +42,22 @@ public class Login extends HttpServlet {
 //				out.println("<a href=\"checkLogin?logout=true\">Logout</a>");
 //				out.println("</body>");
 //				out.println("</html>");
-				
-			} else {
+				           
+			} else { 
 				
 //				out.println("<html>");
 //				out.println("<head><title>Effettual il Login</title></head>");
 //				out.println("<body>");
 //				out.println("<h1>Effettua il login</h1>");
-//				out.println("<form method=\"post\" action=\"checkLogin\">");
+//				out.println("<form method=\"post\" action=\"login\">");
 //				out.println("Username : <input name=\"username\" type=\"text\" />");
 //				out.println("Password : <input name=\"password\" type=\"password\" />");
 //				out.println("<input type=\"submit\" />");
 //				out.println("</form>");
 //				out.println("</body>");
 //				out.println("</html>");
+//				
+//				System.out.println("OOOO");
 			}
 		}
 	}
@@ -76,7 +74,6 @@ public class Login extends HttpServlet {
 		AmministratoreCredenziali amministratore = null;//DA ELIMINARE
 		amministratore = dao.findByPrimaryKeyCredential(username);
 		
-		
 		if(amministratore == null) {
 			
 			out.println("<html>");
@@ -89,19 +86,8 @@ public class Login extends HttpServlet {
 		} else {
 			if(password.equals(amministratore.getPassword())) {
 				
-				session.setAttribute("username", username);
-//				out.println("<html>");
-//				out.println("<head><title>Login</title></head>");
-//				out.println("<body>");
-//				out.println("<h1>Login effettuato con successo</h1>");
-//				out.println("<h2>Bentornato!</h2>");
-//				out.println("</body>");
-//				out.println("</html>");	
-				
-				String messaggio = "Login";
+				session.setAttribute("username", username);				
 				req.setAttribute("loggato", true);
-				req.setAttribute("mex", messaggio);
-				
 				RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 				dispacher.forward(req, resp);
 				

@@ -71,18 +71,14 @@ prefix="c" %>
 				             		<input type="password" placeholder="Enter Password" name="password" required>
 				             		<label id="checkbox"> <input type="checkbox" checked="checked"> Remember me </label>
 				             		<a class="small" href="#">Forgot password?</a>
-									<input id="inp" type="submit" value="Login" onclick="login()"/>
+									<input type="submit" value="Conferma"/>									
 			           		</form>
 						</div>
 					</c:if>
 					<c:if test="${loggato}">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><span class="glyphicon glyphicon-log-out"></span> Disconnetti<b class="caret"></b></a>	
-			       		<div class="dropdown-menu login-form">
-			       			<div class="arrow-up"></div>
-			           		<form id="form-field" class="text-form" method="get" action="login?logout=true">      			
-								<input id="inp2" type="submit" value="Logout"/>
-			           		</form>
-						</div>			
+					<li class="dropdown nav-item">
+			       		<a id="navbar-text" type="submit" href="login?logout=true"><span class="glyphicon glyphicon-log-out"></span> Disconnetti</a>		
+					</li>
 					</c:if>
 				</li>
 			   	<!-- Ricerca -->
