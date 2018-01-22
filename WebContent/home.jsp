@@ -29,6 +29,9 @@ prefix="c" %>
 		</div>
 	</div>
 		
+		
+		
+	
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
 		<div class="container-fluid">
@@ -89,7 +92,7 @@ prefix="c" %>
 					</li>
 					</c:if>
 		
-				</li>
+				</li> 
 			   	<!-- Ricerca -->
 			  	<li id="navbar-text" >
 		        	<form class="navbar-form" role="search">
@@ -101,7 +104,7 @@ prefix="c" %>
 				        </div>
 			        </form>
 			 	</li>
-			</ul>
+			</ul> 
 			
 		</div>	
 	</nav>
@@ -110,7 +113,6 @@ prefix="c" %>
 	  <h1>Benvenuto nel Sito di Prenotazione</h1>
   	  <h5>Prenota subito la tua visita medica!</h5> 
 	</div>
-	
-				
+					
 </body>
 </html>
