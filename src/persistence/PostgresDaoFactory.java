@@ -46,6 +46,11 @@ public class PostgresDaoFactory extends DaoFactory {
 	}
 	
 	@Override
+	public ImpiegatoDaoJDBC getImpiegatoDao() {
+		return new ImpiegatoDaoJDBC(dataSource);
+	}
+	
+	@Override
 	public UtilDao getUtilDao() {
 		return new UtilDao(dataSource);
 	}

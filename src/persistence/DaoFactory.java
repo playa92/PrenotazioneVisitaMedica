@@ -33,5 +33,7 @@ public abstract class DaoFactory {
 	
 	public abstract VisitaMedicaDao getVisitaMedicaDao();
 	
+	public abstract ImpiegatoDaoJDBC getImpiegatoDao();
+	
 	public abstract UtilDao getUtilDao();
 }
