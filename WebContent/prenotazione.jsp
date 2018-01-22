@@ -19,29 +19,29 @@ prefix="c" %>
 
 	<div class="col-lg-3">
 		<form id="form" class="text-form" method="post" action="formPrenotazione">
-				<div class="form-group"><label for="nome">Codice Fiscale *</label><input name="codice fiscale" type="text" class="form-control"  placeholder="Enter SSN" required/></div>
+				<div class="form-group"><label for="codice fiscale">Codice Fiscale *</label><input name="codice fiscale" type="text" class="form-control"  placeholder="Enter SSN" required/></div>
 				<div class="form-group"><label for="nome">Nome *</label><input name="nome" type="text" class="form-control"  placeholder="Enter Name" required/></div> 
 				<div class="form-group"><label for="cognome">Cognome *</label><input name="cognome" type="text" class="form-control"  placeholder="Enter Surname" required/></div>  
-				<div class="form-group"><label for="matricola">Matricola</label><input name="matricola" type="text" class="form-control"  placeholder="Enter Id"></div>  
-				<div class="form-group"><label for="handicap">Handicap</label><input name="handicap" type="text" class="form-control"  placeholder="Enter Invalidity"></div>		
+				<div class="form-group"><label for="matricola">Matricola **</label><input name="matricola" type="text" class="form-control"  placeholder="Enter Id" required/></div>  
+				<div class="form-group"><label for="invalidità">Invalidità</label>
+					<select name="invalidità" class="form-control">	 
+						<option>Nessuna</option>
+						<option>Lesione Muscolare</option>
+						<option>Malformazione</option>
+						<option>Malattia Generica</option>
+					</select>		
+				</div>		
 				<div class="form-group">
 					<input name="conferma" type="submit" value="Conferma"  class="btn btn-success"/>
 					<input name="annulla" type="reset" value="Annulla"  class="btn btn-danger" onclick="avviso();"/>
 				</div>
 		</form>
-		<c:if test="${submit}">
-		<script type="text/javascript">
-			function reset() {	
-				$('#form').trigger("reset"); 
-			}
-			</script>
-		</c:if>
 	</div>	
-	
 	<div>
 	<footer>
   		<h5><strong>* Campi Obbligatori</strong></h5>
-	</footer>
+		<h5><strong>** Se non si possiede una matricola specificare completare con l'inserimento del valore "0"</strong></h5>
+	</footer>	
 	</div>
 	
 </body>

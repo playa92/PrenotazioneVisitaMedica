@@ -2,8 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
-import javax.servlet.RequestDispatcher;
+//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +43,8 @@ public class FormPrenotazione extends HttpServlet {
 		p.setInvalidita(invalidita);
 		p.setCodice(new CodiceQR()); //gestire la creazione del codice QR
 		
-		if(universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null) {
+		if(universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null ||
+				!invalidita.equals("Nessuna")) {
 			p.setImporto(new Double(0.0));
 		} else {
 			p.setImporto(new Double(25.00));
@@ -52,7 +52,6 @@ public class FormPrenotazione extends HttpServlet {
 		universitaDao.save(p);
 		visitaMedicaDao.save(p);
 		pazienteDao.save(p);
-		
 		
 		out.println("<html>");
 		out.println("<head><title>Riepilogo Dati</title></head>");
