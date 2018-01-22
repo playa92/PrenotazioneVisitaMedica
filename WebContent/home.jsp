@@ -12,14 +12,12 @@ prefix="c" %>
 	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/loader.css">
  	<link rel="stylesheet" href="css/common.css">
+ 	<script src="js/jquery.cookie.js"></script>
  	<script src="js/effects.js"></script>
  	<script src="js/login.js"></script>
 </head>
 
 <body>
-
-
-
 	<!-- Loader -->
 	<div id="preloader" class="container">
 		<div class="row">
@@ -69,9 +67,9 @@ prefix="c" %>
 				             		<input type="text" placeholder="Enter Username" name="username" required>
 				             		<label>Password</label>
 				             		<input type="password" placeholder="Enter Password" name="password" required>
-				             		<label id="checkbox"> <input type="checkbox" checked="checked"> Remember me </label>
-				             		<a class="small" href="#">Forgot password?</a>
-									<input type="submit" value="Conferma"/>									
+				             		<label id="checkbox"> <input id="rememberChkBox" type="checkbox" checked="checked"> Ricordami </label>
+									<input id="sign" type="submit" value="Conferma"/>	
+                                    <a href="#forgot" data-toggle="modal"> Password dimenticata? </a>
 			           		</form>
 						</div>
 					</c:if>
@@ -85,7 +83,7 @@ prefix="c" %>
 			  	<li id="navbar-text" >
 		        	<form class="navbar-form" role="search">
 				        <div class="input-group">
-				            <input type="text" class="form-control" placeholder="Search..." name="q">
+				            <input type="text" class="form-control" placeholder="Search" name="q">
 				            <div class="input-group-btn" > 
 					           	<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 				            </div>
@@ -102,5 +100,55 @@ prefix="c" %>
   	  <p>Prenota subito la tua visita medica!</p> 
 	</div>
 		
+		
+		
+  <div class="modal fade" id="forgot">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss='modal' aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
+               <h4 class="modal-title" style="font-size: 32px; padding: 12px;"> Ripristina la password </h4>
+            </div>
+
+            <div class="modal-body">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                           <div class="input-group">
+                              <div class="input-group-addon iga2">
+                                 <span class="glyphicon glyphicon-user"></span>
+                              </div>
+                              <input type="email" class="form-control" placeholder="Inserisci il tuo ID" name="id">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="row">
+                     <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                           <div class="input-group">
+                              <div class="input-group-addon iga2">
+                                 <span class="glyphicon glyphicon-lock"></span>
+                              </div>
+                              <input type="password" class="form-control" placeholder="Inserisci la tua nuova password" name="newpwd">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="modal-footer">
+               <div class="form-group">
+                  <button type="submit" id="buttonForgot" class="btn btn-lg btn-info"> Salva <span class="glyphicon glyphicon-saved"></span></button>
+                  <button type="button" id="buttonForgot" data-dismiss="modal" class="btn btn-lg btn-default"> Annulla <span class="glyphicon glyphicon-remove"></span></button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
 </body>
 </html>

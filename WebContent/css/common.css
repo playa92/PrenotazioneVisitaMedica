@@ -30,12 +30,12 @@ footer {
 	box-shadow: 0 0 2px 2px #0b102d
 }
 
-.nav-item #navbar-text {
+.nav-item #navbar-text, #buttonForgot{
   color: #bcc4f2;
   background-color: #092147;
 }
 
-#navbar-text:hover, #navbar-text:focus {
+#navbar-text:hover, #navbar-text:focus, #buttonForgot:hover {
    color: white;
 }
      
@@ -47,6 +47,7 @@ footer {
 .input-group-btn > .btn {
 	background-color: #092147;
 	color: #bcc4f2;
+	height: 34px;
 }
 .input-group-btn > .btn:hover {
 	color:white;
@@ -57,6 +58,7 @@ footer {
 	color: #092147;
 }
 
+
 /* LOGIN */
 #form-field {
   border: none;
@@ -65,12 +67,6 @@ footer {
 #checkbox{
 	margin-left:6px;
 	margin-top:4px;
-}
-
-.small{
-	margin-top:10px;
-	float: right;
-	margin-right:6px;
 }
 
 .text-form{
@@ -91,21 +87,21 @@ footer {
 .login-form {
   background: #cce6ff;
   width: 300px;
+  height: 255px;
   border: 2px solid #80bfff;
   padding-top: 5px;
   position: absolute;
   color: #001a33;
   margin: -214px;
   top: 56px;
-  box-shadow: 0 0 2px 2px #0b102d;
-  
+  box-shadow: 0 0 1px 1px #0b102d;
 }
 
 .login-form input[type="text"], .login-form input[type="password"] {
   padding: 7px 5px;
   margin-left: 7px;
   margin-bottom:5px;
-  width: 95%;
+  width: 93%;
   display: block;
   font-size: 18px;
   border-radius: 5px;
@@ -119,6 +115,7 @@ footer {
 .login-form input[type="text"]:focus, .login-form input[type="password"]:focus {
   outline: none;
   box-shadow: 0 0 1px 1px #1abc9c;
+    opacity:2.0;
 }
 
 .login-form input[type="submit"] {
@@ -130,8 +127,8 @@ footer {
   border: none;
   color: #bcc4f2;
   border-radius: 5px;
-  margin-left: 7px;
-  margin-top: 10px;
+  margin-left: 4px;
+  margin-top: 3px;
 }
 
 #form-field input::placeholder {
