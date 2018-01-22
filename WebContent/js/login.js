@@ -8,8 +8,8 @@ $(document).on(ready, function() {
     }
     
     doLogin();
-  });
-
+  	});
+ 
 });
 
 function rememberMe() {

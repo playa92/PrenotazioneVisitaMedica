@@ -33,7 +33,7 @@ prefix="c" %>
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="home.html"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="home.jsp"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 			    <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/prenotazione.html">Prenotazione</a>
@@ -68,8 +68,10 @@ prefix="c" %>
 				             		<label>Password</label>
 				             		<input type="password" placeholder="Enter Password" name="password" required>
 				             		<label id="checkbox"> <input id="rememberChkBox" type="checkbox" checked="checked"> Ricordami </label>
-									<input id="sign" type="submit" value="Conferma"/>	
-                                    <a href="#forgot" data-toggle="modal"> Password dimenticata? </a>
+									<input id="sign" data-toggle="modal" data-target="#edit-modal" type="submit" value="Conferma"/>	
+                                    <a id="forgotText" href="#forgot" data-toggle="modal"> Password dimenticata? (DIALOG) </a><br>
+								    <a id="forgotText" href="html/ripristino-password.html"> Password dimenticata? (.html)</a>
+									
 			           		</form>
 						</div>
 					</c:if>
@@ -78,6 +80,7 @@ prefix="c" %>
 			       		<a id="navbar-text" type="submit" href="login?logout=true"><span class="glyphicon glyphicon-log-out"></span> Disconnetti</a>		
 					</li>
 					</c:if>
+		
 				</li>
 			   	<!-- Ricerca -->
 			  	<li id="navbar-text" >
@@ -100,8 +103,7 @@ prefix="c" %>
   	  <p>Prenota subito la tua visita medica!</p> 
 	</div>
 		
-		
-		
+  <!-- 	FORGOT PASSWORD -->
   <div class="modal fade" id="forgot">
       <div class="modal-dialog">
          <div class="modal-content">
@@ -109,7 +111,7 @@ prefix="c" %>
                <button type="button" class="close" data-dismiss='modal' aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></button>
                <h4 class="modal-title" style="font-size: 32px; padding: 12px;"> Ripristina la password </h4>
             </div>
-
+		
             <div class="modal-body">
                <div class="container-fluid">
                   <div class="row">
