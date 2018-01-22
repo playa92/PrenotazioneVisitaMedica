@@ -54,13 +54,13 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 	}
 
 	@Override
-	public void update(CodiceQR paziente) {
+	public void update(CodiceQR codice) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(CodiceQR paziente) {
+	public void delete(CodiceQR codice) {
 		// TODO Auto-generated method stub
 		
 	}

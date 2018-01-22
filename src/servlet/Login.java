@@ -2,16 +2,14 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import persistence.AmministratoreCredenziali;
+import model.Amministratore;
 import persistence.DatabaseManager;
-import persistence.PersistenceException;
 import persistence.dao.AmministratoreDao;
 
 @SuppressWarnings("serial")
@@ -21,7 +19,6 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
-		PrintWriter out = resp.getWriter();
 		if((req.getParameter("logout") != null) && (req.getParameter("logout").equals("true"))) {
 			
 			session.setAttribute("username", null);
@@ -56,8 +53,6 @@ public class Login extends HttpServlet {
 //				out.println("</form>");
 //				out.println("</body>");
 //				out.println("</html>");
-//				
-//				System.out.println("OOOO");
 			}
 		}
 	}
@@ -71,8 +66,7 @@ public class Login extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		AmministratoreDao dao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();
-		AmministratoreCredenziali amministratore = null;//DA ELIMINARE
-		amministratore = dao.findByPrimaryKeyCredential(username);
+		Amministratore amministratore = dao.findByPrimaryKey(username);
 		
 		if(amministratore == null) {
 			

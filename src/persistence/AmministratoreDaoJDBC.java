@@ -67,20 +67,6 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 		}	
 		return amministratore;
 	}
-
-	@Override
-	public AmministratoreCredenziali findByPrimaryKeyCredential(String username) {
-		
-		Amministratore admin = findByPrimaryKey(username);
-		AmministratoreCredenziali adminCred = null;
-		if(admin != null) {
-			
-			adminCred = new AmministratoreCredenziali(dataSource);
-			adminCred.setUsername(admin.getUsername());
-			adminCred.setPassword(admin.getPassword());
-		}
-		return adminCred;
-	}
 	
 	@Override
 	public void delete(Amministratore amministratore) {

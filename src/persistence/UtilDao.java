@@ -18,6 +18,7 @@ public class UtilDao {
 		try {
 			String delete = "drop SEQUENCE if EXISTS id;"
 					+ "drop table if EXISTS paziente;"
+					+ "drop table if EXISTS università;"
 					+ "drop table if EXISTS amministratore;"
 					+ "drop table if EXISTS visitaMedica;"
 					+ "drop table if EXISTS codiceQr;"
@@ -45,14 +46,14 @@ public class UtilDao {
 		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "create SEQUENCE id;"
-					+ "create table codiceQr(\"id\" VARCHAR(255) primary key, data_scadenza DATE, valido boolean);"
-					+ "create table paziente(\"matricola\" bigint primary key, nome VARCHAR(255),"
-					+ "cognome VARCHAR(255), invalidità VARCHAR(255), id_codiceQr VARCHAR(255));"
-					+ "create table amministratore(\"username\" VARCHAR(255) primary key, password VARCHAR(255));";
-//					+ "create table universita(matricola_p bigint REFERENCES paziente(\"matricola\"), "
-//					+ "nome_p VARCHAR(255) REFERENCES paziente(nome), cognome_p VARCHAR(255) REFERENCES paziente(cognome));"
-//					+ "create table visitaMedica(id_qr bigint REFERENCES codiceQr(\"id\"), "
-//					+ "nome_p VARCHAR(255) REFERENCES paziente(nome), cognome_p VARCHAR(255) REFERENCES paziente(cognome));";
+					+ "create table codiceQr(\"id\" VARCHAR(255) primary key, data_scadenza DATE, convalida BOOLEAN);"
+					+ "create table università(matricola_p bigint primary key, nome_p VARCHAR(255), cognome_p VARCHAR(255));"
+					+ "create table paziente(\"cf\" VARCHAR(255) primary key, nome VARCHAR(255),"
+					+ "cognome VARCHAR(255), matricola bigint REFERENCES università(\"matricola_p\"), invalidità VARCHAR(255), "
+					+ "id_codiceQr VARCHAR(255) REFERENCES codiceQr(\"id\"), importo bigint);"
+					+ "create table amministratore(\"username\" VARCHAR(255) primary key, password VARCHAR(255));"
+					+ "create table visitaMedica(id_qr VARCHAR(255) REFERENCES codiceQr(\"id\"),"
+					+ "nome_p VARCHAR(255), cognome_p VARCHAR(255));";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();		
 			System.out.println("Executed create database");
@@ -79,7 +80,7 @@ public class UtilDao {
 				PreparedStatement statement = connection.prepareStatement(delete);
 				statement.executeUpdate();
 				
-				delete = "delete FROM universita";
+				delete = "delete FROM università";
 				statement = connection.prepareStatement(delete);
 				statement.executeUpdate();
 				

@@ -7,9 +7,8 @@ $(window).on("load", function () {
 	});
 });
 
-
 //RESERVATION FORM
-function pulisci() {
+function avviso() {
 	alert("Attenzione! I dati inseriti verrano puliti");
 }
 

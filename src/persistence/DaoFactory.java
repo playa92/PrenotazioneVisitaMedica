@@ -29,9 +29,9 @@ public abstract class DaoFactory {
 	
 	public abstract UniversitaDao getUniversitaDao();
 	
-	public abstract CodiceQRDao getCodiceQR();
+	public abstract CodiceQRDao getCodiceQRDao();
 	
-	public abstract VisitaMedicaDao getVisitaMedica();
+	public abstract VisitaMedicaDao getVisitaMedicaDao();
 	
 	public abstract UtilDao getUtilDao();
 }

@@ -2,21 +2,26 @@ package model;
 
 public class Paziente {
 
+	private String codiceFiscale;
 	private String nome;
 	private String cognome;
 	private Long matricola;
 	private String invalidita;
 	private CodiceQR codice;
+	private Double importo;
 	
 	public Paziente() {}
 	
-	public Paziente(String nome, String cognome, Long matricola, String invalidita, CodiceQR codice) {
+	public Paziente(String codiceFiscale, String nome, String cognome, Long matricola, String invalidita, 
+			CodiceQR codice, Double importo) {
 		
+		this.codiceFiscale = codiceFiscale;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.matricola = matricola;
 		this.invalidita = invalidita;
 		this.codice = codice;
+		this.importo = importo;
 	}
 
 	public String getNome() {
@@ -57,5 +62,21 @@ public class Paziente {
 
 	public void setCodice(CodiceQR codice) {
 		this.codice = codice;
+	}
+
+	public String getCodiceFiscale() {
+		return codiceFiscale;
+	}
+
+	public void setCodiceFiscale(String codiceFiscale) {
+		this.codiceFiscale = codiceFiscale;
+	}
+
+	public Double getImporto() {
+		return importo;
+	}
+
+	public void setImporto(Double importo) {
+		this.importo = importo;
 	}
 }

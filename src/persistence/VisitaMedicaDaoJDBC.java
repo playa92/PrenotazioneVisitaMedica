@@ -43,7 +43,7 @@ public class VisitaMedicaDaoJDBC implements VisitaMedicaDao {
 	}
 
 	@Override
-	public Paziente findByPrimaryKey(Long id) {
+	public Paziente findByPrimaryKey(String codiceFiscale) {
 		// TODO Auto-generated method stub
 		return null;
 	}

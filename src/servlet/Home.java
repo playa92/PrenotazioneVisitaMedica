@@ -16,13 +16,13 @@ public class Home extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		String username = (String) session.getAttribute("username");
-
+		
 		if(username == null) {
 			req.setAttribute("loggato", false);
 		} else {
 			req.setAttribute("loggato", true);
 		}
-
+		
 		RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 		dispacher.forward(req, resp);
 	}

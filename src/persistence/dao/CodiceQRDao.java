@@ -8,6 +8,6 @@ public interface CodiceQRDao {
 	public void save(CodiceQR codice);
 	public CodiceQR findByPrimaryKey(String codice);
 	public List<CodiceQR> findAll();
-	public void update(CodiceQR paziente);
-	public void delete(CodiceQR paziente);
+	public void update(CodiceQR codice);
+	public void delete(CodiceQR codice);
 }
