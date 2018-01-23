@@ -18,6 +18,7 @@ prefix="c" %>
 </head>
 
 <body>
+
 	<!-- Loader -->
 	<div id="preloader" class="container">
 		<div class="row">
@@ -28,10 +29,7 @@ prefix="c" %>
 			</div>
 		</div>
 	</div>
-		
-		
-		
-	
+			
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
 		<div class="container-fluid">

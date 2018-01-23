@@ -36,7 +36,14 @@ prefix="c" %>
 					<input name="annulla" type="reset" value="Annulla"  class="btn btn-danger" onclick="avviso();"/>
 				</div>
 		</form>
-	</div>	
+	</div>
+	
+	<!-- RANDOM QR CODE -->
+	   <button type="submit" id="submitButton" onclick="generate();">clicca shampà</button>		
+	   <img id="resultImage" src="" alt="">
+	   <a id="resultHex" ></a>
+	
+		
 	<div>
 	<footer>
   		<h5><strong>* Campi Obbligatori</strong></h5>
