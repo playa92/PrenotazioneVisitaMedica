@@ -42,6 +42,16 @@ footer {
 	margin-right: 10px;
 }
 
+#list-element:link, #list-element:visited {
+    color:  #092147;
+    text-decoration: none;
+}
+
+#list-element:hover {
+    color: white;
+    background: #092147;
+}
+
 /* SEARCH */  
 .input-group-btn > .btn {
 	background-color: #092147;
@@ -74,10 +84,15 @@ footer {
 
 #forgotText {
 	margin-left:5px;
+	color: red;
+}
+
+.modal-header {
+	color: #092147;
 }
 
 .login-form {
-  background: #cce6ff;
+  background-color: #bcc4f2;
   width: 350px;
   height: 335px;
   border: 2px solid #80bfff;
@@ -131,4 +146,11 @@ footer {
    color: white;
 }
 
-/* */
+/* /////////////////////////////////////////////////// */
+/* ///////////////// Statistiche ///////////////////// */
+/* /////////////////////////////////////////////////// */
+
+
+/* /////////////////////////////////////////////////// */
+/* //////////////// Prenotazione ///////////////////// */
+/* /////////////////////////////////////////////////// */

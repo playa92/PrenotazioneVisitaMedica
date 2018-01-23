@@ -43,17 +43,16 @@ prefix="c" %>
 			     <li class="dropdown nav-item ">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Assistenza <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				       	<li><a id="list-text" href="#">1</a></li>
-				       	<li><a id="list-text" href="#">2</a></li>
-				       	<li><a id="list-text" href="#">3</a></li>
+				       	<li><a id="list-element" href="#">1</a></li>
+				       	<li><a id="list-element" href="#">2</a></li>
+				       	<li><a id="list-element" href="#">3</a></li>
 			        </ul>
 			     </li>
 			      <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				       	<li><a id="list-text" href="#">1</a></li>
-				       	<li><a id="list-text" href="#">2</a></li>
-				       	<li><a id="list-text" href="#">3</a></li>
+				     	<li><a id="list-element" href="html/cerca_prenotazione.html">Cerca prenotazione</a></li>
+				       	<li><a id="list-element" href="html/visualizza_prenotazioni.html">Visualizza statistiche prenotazioni</a></li>
 			        </ul>
 			     </li>  
 	   		</ul>
