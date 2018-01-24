@@ -24,16 +24,16 @@ prefix="c" %>
 				<div class="form-group"><label for="cognome">Cognome *</label><input name="cognome" type="text" class="form-control"  placeholder="Enter Surname" required/></div>  
 				<div class="form-group"><label for="matricola">Matricola **</label><input name="matricola" type="text" class="form-control"  placeholder="Enter Id" required/></div>  
 				<div class="form-group"><label for="invalidità">Invalidità</label>
-					
 					<select name="invalidità" class="form-control">	 
 						<option>Nessuna</option>
 						<option>Lesione Muscolare</option>
 						<option>Malformazione</option>
 						<option>Malattia Generica</option>
 					</select>		
-				</div>		
+				</div>
+				<div class="form-group"><input id="hex" name="hexCode" type="hidden" class="form-control"></div>	
 				<div class="form-group">
-					<input name="conferma" type="submit" value="Conferma"  class="btn btn-success"/>
+					<input name="conferma" type="submit" value="Conferma"  class="btn btn-success" onclick="generate();"/>
 					<input name="annulla" type="reset" value="Annulla"  class="btn btn-danger" onclick="avviso();"/>
 				</div>
 		</form>

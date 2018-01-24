@@ -16,48 +16,37 @@ function avviso() {
 function generate() {
 	
 	var rand = randHex(12);					
-	var button = document.getElementById('submitButton');
-//	var image = document.getElementById('resultImage');
-//	var hexcode = document.getElementById('resultHex');
+	document.getElementById("hex").value = rand;
+}
 
-    var resultValue = "http://api.qrserver.com/v1/create-qr-code/?data=" + rand;
-    image.setAttribute("src", resultValue);
-//    hexcode.innerHTML = rand;
-    
-    return rand;
+function randHex(len) {
+	
+  var maxlen = 8,
+      min = Math.pow(16,Math.min(len,maxlen)-1) 
+      max = Math.pow(16,Math.min(len,maxlen)) - 1,
+      n   = Math.floor( Math.random() * (max-min+1) ) + min,
+      r   = n.toString(16);
+  while(r.length < len) {  
+	  r = r + randHex( len - maxlen );
+  }
+  return r;
 }
 
 $(document).ready(function() {
-    var frm = $('#form');
-    frm.submit(function (ev) {
-        $.ajax({
-            type: frm.attr('method'),
-            url: frm.attr('action'),
-//            data: frm.serialize(),
-            data: {"hex=": +generate()},
-            success: function (data) {
-//               
-                alert(data);
-            }
-        });
-
-        ev.preventDefault();
-        return false;
-    });
-});
-
-function  randHex(len) {
 	
-	  var maxlen = 8,
-	      min = Math.pow(16,Math.min(len,maxlen)-1) 
-	      max = Math.pow(16,Math.min(len,maxlen)) - 1,
-	      n   = Math.floor( Math.random() * (max-min+1) ) + min,
-	      r   = n.toString(16);
-	  while ( r.length < len ) {  
-		  r = r + randHex( len - maxlen );
-	  }
-	  return r;
-}
+    frm.submit(function(ev) {
+    	$.ajax({
+            type: frm.method('method'),
+            url: frm.action('action'), 
+            data: frm.serializable(), 
+	        success: function(data, status) {
+	            	//do something
+	        }
+    	});
+        ev.preventDefault();
+//        return false;
+    	});
+});
 
 //SLIDESHOW
 //var slideIndex = 1;

@@ -1,6 +1,8 @@
 package servlet;
 
+//import java.io.BufferedReader;
 import java.io.IOException;
+//import java.io.InputStreamReader;
 import java.io.PrintWriter;
 //import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,6 +30,17 @@ public class FormPrenotazione extends HttpServlet {
 		String cognome = req.getParameter("cognome");
 		String matricola = req.getParameter("matricola");
 		String invalidita = req.getParameter("invalidità");
+		String hexcode = req.getParameter("hexCode");
+		
+//		StringBuffer jsonReceived = new StringBuffer();
+//		BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));		
+//		String line = reader.readLine();
+//		while (line != null){
+//			jsonReceived.append(line);
+//			line = reader.readLine();
+//		}
+//		System.out.println(jsonReceived.toString());
+		
 		PrintWriter out = resp.getWriter();
 		UniversitaDao universitaDao = DatabaseManager.getInstance().
 					getDaoFactory().getUniversitaDao();
@@ -44,7 +57,7 @@ public class FormPrenotazione extends HttpServlet {
 		p.setCodice(new CodiceQR()); //gestire la creazione del codice QR
 		
 		if(universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null ||
-				!invalidita.equals("Nessuna")) {
+				invalidita != null) {
 			p.setImporto(new Double(0.0));
 		} else {
 			p.setImporto(new Double(25.00));
@@ -63,6 +76,7 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<h4>matricola: " + matricola + "</h4>");
 		out.println("<h4>invalidità: " + invalidita + "</h4>");
 		out.println("<h4>importo: " + String.valueOf(p.getImporto()) + " &euro;</h4>");
+		out.println("<h4>esadecimale: " + hexcode + "</h4>");
 		out.println("</body>");
 		out.println("</html>");
 		
