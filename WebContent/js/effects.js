@@ -15,7 +15,9 @@ function avviso() {
 //HEX CODE GENERATING	
 function generate() {
 	
-	var rand = randHex(12);					
+	var rand = randHex(12);
+//	var resultValue = "http://api.qrserver.com/v1/create-qr-code/?data=" + rand;
+//    image.setAttribute("src", resultValue);
 	document.getElementById("hex").value = rand;
 }
 
@@ -29,12 +31,12 @@ function randHex(len) {
   while(r.length < len) {  
 	  r = r + randHex( len - maxlen );
   }
-  return r;
+  return r.toUpperCase();
 }
 
 $(document).ready(function() {
 	
-    frm.submit(function(ev) {
+    frm.submit(function(e) {
     	$.ajax({
             type: frm.method('method'),
             url: frm.action('action'), 
@@ -43,7 +45,7 @@ $(document).ready(function() {
 	            	//do something
 	        }
     	});
-        ev.preventDefault();
+        e.preventDefault();
 //        return false;
     	});
 });

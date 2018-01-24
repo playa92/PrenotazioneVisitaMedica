@@ -65,7 +65,7 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 				paziente.setCognome(result.getString("cognome"));
 				paziente.setMatricola(result.getLong("matricola"));
 				paziente.setInvalidita(result.getString("invalidità"));
-				paziente.setCodice((CodiceQR) result.getObject("id_codiceQr"));
+//				paziente.setCodice((CodiceQR) result.getObject("id_codiceQr"));
 			}
 			
 		} catch(SQLException e) {

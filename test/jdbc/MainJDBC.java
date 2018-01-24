@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import model.Amministratore;
+import model.Paziente;
 import persistence.DaoFactory;
 import persistence.PersistenceException;
 import persistence.UtilDao;
 import persistence.dao.AmministratoreDao;
+import persistence.dao.UniversitaDao;
 
 public class MainJDBC {
 
@@ -54,5 +56,15 @@ public class MainJDBC {
 			admin.setPassword(curr[1]);	
 			amministratoreDao.save(admin);
 		}
+		
+		//CREAZIONE PAZIENTI UNIVERSITARI
+		UniversitaDao universitaDao = factory.getUniversitaDao();
+		Paziente p = new Paziente();
+		p.setCodiceFiscale("CF123");
+		p.setNome("Giovanni");
+		p.setCognome("Cosentino");
+		p.setMatricola(new Long(161782));
+		
+		universitaDao.save(p);
 	}
 }
