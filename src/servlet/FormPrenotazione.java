@@ -69,7 +69,7 @@ public class FormPrenotazione extends HttpServlet {
 		p.setInvalidita(invalidita);
 		p.setCodice(c);
 		
-		System.out.println(universitaDao.findByPrimaryKey(Long.parseLong(matricola)).toString());
+//		System.out.println(universitaDao.findByPrimaryKey(Long.parseLong(matricola)).toString());
 		
 		if(matricola != null && 
 				(universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null || invalidita != null)) {
@@ -83,6 +83,7 @@ public class FormPrenotazione extends HttpServlet {
 		visitaMedicaDao.save(p);
 		
 		out.println("<html>");
+		out.println("<div id=\"content\">");
 		out.println("<head><title>Riepilogo Dati</title></head>");
 		out.println("<body>");
 		out.println("<h1>Abbiamo registrato la prenotazione di:</h1>");
@@ -95,6 +96,14 @@ public class FormPrenotazione extends HttpServlet {
 		final String link = "http://api.qrserver.com/v1/create-qr-code/?data=" + hexcode;
 		out.println("<img width=\"100\" height=\"100\" src=" + link + " alt=\"\">");
 		out.println("<h3>esadecimale: " + hexcode + "</h3>");
+		out.println("</div>");
+		out.println("<div id='editor'></div>");
+		out.println("<button id='cmd'>generate PDF</button>");
+		
+//		out.println("<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>");
+//		out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js'></script>");
+//		out.println("script src='../WebContent/js/pdf-save.js'></script>");
+		
 		out.println("</body>");
 		out.println("</html>");
 		

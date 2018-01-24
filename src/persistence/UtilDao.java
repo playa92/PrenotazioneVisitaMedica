@@ -50,7 +50,7 @@ public class UtilDao {
 					+ "create table codiceQr(\"id\" VARCHAR(255) primary key, data_scadenza DATE, convalida BOOLEAN);"
 					+ "create table università(matricola_p bigint primary key, nome_p VARCHAR(255), cognome_p VARCHAR(255));"
 					+ "create table paziente(\"cf\" VARCHAR(255) primary key, nome VARCHAR(255),"
-					+ "cognome VARCHAR(255), matricola bigint REFERENCES università(\"matricola_p\"), invalidità VARCHAR(255), "
+					+ "cognome VARCHAR(255), matricola bigint, invalidità VARCHAR(255), "
 					+ "id_codiceQr VARCHAR(255) REFERENCES codiceQr(\"id\"), importo bigint);"
 					+ "create table amministratore(\"username\" VARCHAR(255) primary key, password VARCHAR(255));"
 					+ "create table visitaMedica(id_qr VARCHAR(255) REFERENCES codiceQr(\"id\"),"
