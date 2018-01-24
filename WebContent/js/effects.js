@@ -23,6 +23,8 @@ function generate() {
     var resultValue = "http://api.qrserver.com/v1/create-qr-code/?data=" + rand;
     image.setAttribute("src", resultValue);
     hexcode.innerHTML = rand;
+    document.getElementById('resultHex').value = rand;
+    
     return false; 
 			
 	function  randHex(len) {
@@ -38,3 +40,75 @@ function generate() {
 		  return r;
 	}
 }
+
+//SLIDESHOW
+//var slideIndex = 1;
+//showSlides(slideIndex);
+//
+//function plusSlides(n) {
+//  showSlides(slideIndex += n);
+//}
+//
+//function currentSlide(n) {
+//  showSlides(slideIndex = n);
+//}
+//
+//function showSlides(n) {
+//  var i;
+//  var slides = document.getElementsByClassName("mySlides");
+//  var dots = document.getElementsByClassName("dot");
+//  if (n > slides.length) {slideIndex = 1}    
+//  if (n < 1) {slideIndex = slides.length}
+//  for (i = 0; i < slides.length; i++) {
+//      slides[i].style.display = "none";  
+//  }
+//  for (i = 0; i < dots.length; i++) {
+//      dots[i].className = dots[i].className.replace(" active", "");
+//  }
+//  slides[slideIndex-1].style.display = "block";  
+//  dots[slideIndex-1].className += " active";
+//}
+
+//COUNTDOWN
+//  var count = 0;
+//  var counter = null;
+//
+//  window.onload = function() {
+//    initCounter();
+//  };
+//
+//function initCounter() {
+//  // get count from localStorage, or set to initial value of 1000
+//  count = getLocalStorage('count') || 20;
+//  counter = setInterval(timer, 1000); //1000 will  run it every 1 second
+//}
+//
+//function setLocalStorage(key, val) {
+//  if (window.localStorage) {
+//    window.localStorage.setItem(key, val);
+//  }
+//
+//  return val;
+//}
+//
+//function getLocalStorage(key) {
+//  return window.localStorage ? window.localStorage.getItem(key) : '';
+//}
+//
+//function timer() {
+//  count = setLocalStorage('count', count - 1);
+//  if (count <= -1) {
+//    clearInterval(counter);
+//	  localStorage.removeItem("count");
+//    return;
+//  }
+//
+//  var seconds = count % 60;
+//  var minutes = Math.floor(count / 60);
+//  var hours = Math.floor(minutes / 60);
+//  minutes %= 60;
+//  hours %= 60;
+//
+//  document.getElementById("timer").innerHTML = minutes +  " : "   + seconds;
+//  
+//}

@@ -38,12 +38,12 @@ prefix="c" %>
 		</form>
 	</div>
 	
+
 	<!-- RANDOM QR CODE -->
 	   <button type="submit" id="submitButton" onclick="generate();">clicca shampà</button>		
 	   <img id="resultImage" src="" alt="">
 	   <a id="resultHex" ></a>
-	
-		
+			
 	<div>
 	<footer>
   		<h5><strong>* Campi Obbligatori</strong></h5>
