@@ -18,12 +18,13 @@ prefix="c" %>
 	<h2>Compila il seguente form per prenotare una visita medica</h2>
 
 	<div class="col-lg-3">
-		<form id="form" class="text-form" method="post" action="formPrenotazione">
+		<form id="form" method="post" action="formPrenotazione">
 				<div class="form-group"><label for="codice fiscale">Codice Fiscale *</label><input name="codice fiscale" type="text" class="form-control"  placeholder="Enter SSN" required/></div>
 				<div class="form-group"><label for="nome">Nome *</label><input name="nome" type="text" class="form-control"  placeholder="Enter Name" required/></div> 
 				<div class="form-group"><label for="cognome">Cognome *</label><input name="cognome" type="text" class="form-control"  placeholder="Enter Surname" required/></div>  
 				<div class="form-group"><label for="matricola">Matricola **</label><input name="matricola" type="text" class="form-control"  placeholder="Enter Id" required/></div>  
 				<div class="form-group"><label for="invalidità">Invalidità</label>
+					
 					<select name="invalidità" class="form-control">	 
 						<option>Nessuna</option>
 						<option>Lesione Muscolare</option>
@@ -37,12 +38,13 @@ prefix="c" %>
 				</div>
 		</form>
 	</div>
+	<div id="resultHex"></div>
 	
 
-	<!-- RANDOM QR CODE -->
-	   <button type="submit" id="submitButton" onclick="generate();">clicca shampà</button>		
-	   <img id="resultImage" src="" alt="">
-	   <a id="resultHex" ></a>
+			<!-- RANDOM QR CODE -->
+<!-- 	   <button type="submit" id="submitButton" onclick="generate();">clicca shampà</button>		 -->
+<!-- 	   <img id="resultImage" src="" alt=""> -->
+<!-- 	   <a id="resultHex" ></a> -->
 			
 	<div>
 	<footer>
