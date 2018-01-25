@@ -1,5 +1,4 @@
 // PDF-PRINT
-
 $(document).ready(function(){
 	
 	var doc = new jsPDF();
@@ -18,5 +17,4 @@ $(document).ready(function(){
 	    });
 	    doc.save('riepilogo-prenotazione visita medica.pdf');
 	});
-
 }) 

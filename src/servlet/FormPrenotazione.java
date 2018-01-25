@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.Instant;
 import java.util.Date;
-//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -93,8 +92,8 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<h3>Importo:" + String.valueOf(p.getImporto()) + " &euro;</h3>");
 		
 		// NON VA IL PRINT CON QUESTO
-//		final String link = "http://api.qrserver.com/v1/create-qr-code/?data=" + hexcode;
-//		out.println("<img width=\"100\" height=\"100\" src=" + link +" alt='QR-Code'/>");
+		final String link = "http://api.qrserver.com/v1/create-qr-code/?data=" + hexcode;
+		out.println("<img width=\"100\" height=\"100\" src=" + link +" alt='QR-Code'/>");
 		out.println("<h3>Codice:" + hexcode + "</h3>");
 		out.println("</div>");
 		out.println("<div id='editor'></div>");
@@ -104,11 +103,5 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<script src='js/pdf_print.js'></script>");
 		out.println("</body>");
 		out.println("</html>");
-		
-		req.setAttribute("submit", true);
-		
-//		RequestDispatcher dispacher = 
-//				req.getRequestDispatcher("prenotazione.jsp");
-//		dispacher.forward(req, resp);
 	}
 }

@@ -22,8 +22,7 @@ public class UtilDao {
 					+ "drop table if EXISTS amministratore;"
 					+ "drop table if EXISTS impiegato;"
 					+ "drop table if EXISTS visitaMedica;"
-					+ "drop table if EXISTS codiceQr;"
-					+ "drop table if EXISTS universita;";
+					+ "drop table if EXISTS codiceQr;";
 				
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();
@@ -55,7 +54,7 @@ public class UtilDao {
 					+ "create table amministratore(\"username\" VARCHAR(255) primary key, password VARCHAR(255));"
 					+ "create table visitaMedica(id_qr VARCHAR(255) REFERENCES codiceQr(\"id\"),"
 					+ "nome_p VARCHAR(255), cognome_p VARCHAR(255));"
-					+ "create table impiegato(\"id\" bigint primary key, nome VARCHAR(255), ruolo VARCHAR(255));";
+					+ "create table impiegato(\"id\" bigint primary key, username VARCHAR(255), password VARCHAR(255), ruolo VARCHAR(255));";
 			
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();		

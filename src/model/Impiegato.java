@@ -3,15 +3,17 @@ package model;
 public class Impiegato {
 
 	private Long id;
-	private String nome;
+	private String username;
+	private String password;
 	private String ruolo;
 	
 	public Impiegato() {}
 	
-	public Impiegato(Long id, String nome, String ruolo) {
+	public Impiegato(Long id, String username, String password, String ruolo) {
 		
 		this.id = id;
-		this.nome = nome;
+		this.username = username;
+		this.password = password;
 		this.ruolo = ruolo;
 	}
 	
@@ -23,14 +25,22 @@ public class Impiegato {
 		this.id = id;
 	}
 	
-	public String getNome() {
-		return nome;
+	public String getUsername() {
+		return username;
 	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getRuolo() {
 		return ruolo;
 	}
