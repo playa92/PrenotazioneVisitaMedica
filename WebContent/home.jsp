@@ -105,7 +105,7 @@ prefix="c" %>
 	  <h1>Benvenuto nel Sito di Prenotazione</h1>
   	  <h5>Prenota subito la tua visita medica!</h5> 
 	</div>
-			
+
 	
 <!-- 	COSI DA NON RALLENTARE IL CARICAMENTO -->
 	<script src="js/jquery-3.2.1.min.js"></script>
@@ -113,6 +113,7 @@ prefix="c" %>
  	<script src="js/jquery.cookie.js"></script>
  	<script src="js/effects.js"></script>
  	<script src="js/login.js"></script>
+
 	 
 </body>
 </html>

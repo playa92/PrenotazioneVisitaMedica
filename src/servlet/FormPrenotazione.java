@@ -70,40 +70,41 @@ public class FormPrenotazione extends HttpServlet {
 		p.setCodice(c);
 		
 //		System.out.println(universitaDao.findByPrimaryKey(Long.parseLong(matricola)).toString());
-		
+		 
 		if(matricola != null && 
 				(universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null || invalidita != null)) {
 				p.setImporto(new Double(0.0));
 		} else {
 			p.setImporto(new Double(25.00));
 		}
-		
+		 
 		codiceQRDao.save(c);
 		pazienteDao.save(p);
 		visitaMedicaDao.save(p);
 		
 		out.println("<html>");
-		out.println("<div id=\"content\">");
 		out.println("<head><title>Riepilogo Dati</title></head>");
 		out.println("<body>");
-		out.println("<h1>Abbiamo registrato la prenotazione di:</h1>");
-		out.println("<h3>nome: " + nome + "</h3>");
-		out.println("<h3>cognome: " + cognome + "</h3>");
-		out.println("<h3>cf: " + codiceFiscale + " </h3>");
-		out.println("<h3>matricola: " + matricola + "</h3>");
-		out.println("<h3>invalidità: " + invalidita + "</h3>");
-		out.println("<h3>importo: " + String.valueOf(p.getImporto()) + " &euro;</h3>");
-		final String link = "http://api.qrserver.com/v1/create-qr-code/?data=" + hexcode;
-		out.println("<img width=\"100\" height=\"100\" src=" + link + " alt=\"\">");
-		out.println("<h3>esadecimale: " + hexcode + "</h3>");
+		out.println("<div id='content' style='border:1px solid black; display: inline-block'>");
+		out.println("<h1>Abbiamo registrato la tua prenotazione:</h1>");
+		out.println("<h3>Nome:" + nome + "</h3>");
+		out.println("<h3>Cognome:" + cognome + "</h3>");
+		out.println("<h3>C.F.:" + codiceFiscale + " </h3>");
+		out.println("<h3>Matricola:" + matricola + "</h3>");
+		out.println("<h3>Invalidità:" + invalidita + "</h3>");
+		out.println("<h3>Importo:" + String.valueOf(p.getImporto()) + " &euro;</h3>");
+		
+		// NON VA IL PRINT CON QUESTO
+//		final String link = "http://api.qrserver.com/v1/create-qr-code/?data=" + hexcode;
+//		out.println("<img width=\"100\" height=\"100\" src=" + link +" alt='QR-Code'/>");
+		
+		out.println("<h3>Codice:" + hexcode + "</h3>");
 		out.println("</div>");
 		out.println("<div id='editor'></div>");
 		out.println("<button id='cmd'>generate PDF</button>");
-		
-//		out.println("<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>");
-//		out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js'></script>");
-//		out.println("script src='../WebContent/js/pdf-save.js'></script>");
-		
+		out.println("<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>");
+		out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js'></script>");
+		out.println("<script src='js/pdf_print.js'></script>");
 		out.println("</body>");
 		out.println("</html>");
 		
