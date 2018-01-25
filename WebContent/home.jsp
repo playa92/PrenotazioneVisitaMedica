@@ -9,7 +9,12 @@ prefix="c" %>
 	<title>Prenota Visita Medica</title>
 	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/loader.css">
- 	<link rel="stylesheet" href="css/common.css"> 	
+ 	<link rel="stylesheet" href="css/common.css"> 
+ 	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+ 	<script src="js/jquery.cookie.js"></script>
+ 	<script src="js/effects.js"></script>
+ 	<script src="js/login.js"></script>	
 </head>
 
 <body>
@@ -54,7 +59,8 @@ prefix="c" %>
 		    <ul id="right-fields" class="nav navbar-nav navbar-right">
 				<!--  Login -->	
 				<li class="dropdown nav-item">
-					<c:if test="${not loggato}">						
+					<c:if test="${not loggato}">
+						  <!-- login -->						
 						  <a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Accedi<b class="caret"></b></a>       		 
 				       		  <div class="modal fade" id="myModal" role="dialog">
 							    <div class="modal-dialog modal-sm">
@@ -66,12 +72,12 @@ prefix="c" %>
 							          <div class="modal-body">
 				           			 	<form id="form-field" class="text-form" method="post" action="login">
 					             		  <label>Username</label>
-						             	  <input type="text" placeholder="Enter Username" name="username" required>
+						             	  <input id="signinId" type="text" placeholder="Enter Username" name="username" required>
 						             	  <label>Password</label>
-						             	  <input type="password" placeholder="Enter Password" name="password" required>
+						             	  <input id="signinPwd" type="password" placeholder="Enter Password" name="password" required>
 						             	  <label id="checkbox"> <input id="rememberChkBox" type="checkbox" checked="checked"> Ricordami </label>
-										  <input id="sign" data-toggle="modal" data-target="#edit-modal" type="submit" value="Conferma"/>	
-										  <a id="forgotText" href="html/ripristino-password.html"> Password dimenticata?</a>
+										  <input id="sign" type="submit" value="Conferma" onclick="checkLogin();"/>	
+										  <a id="forgotText" href="html/ripristino_password.html"> Password dimenticata?</a>
 				           			 	</form>
 							        </div>
 							      </div>
@@ -79,41 +85,67 @@ prefix="c" %>
 							</div>
 					</c:if>
 					<c:if test="${loggato}">
-					<li class="dropdown nav-item">
-			       		<a id="navbar-text" type="submit" href="login?logout=true"><span class="glyphicon glyphicon-log-out"></span> Disconnetti</a>		
+					<!-- logout -->
+					<li id="dialog" class="dropdown nav-item">
+			       			<a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Disconnetti<b class="caret"></b></a>       		 
+				       		  <div class="modal fade" id="myModal" role="dialog">
+							    <div class="modal-dialog modal-md">
+							      <div class="modal-content">
+							          <div class="modal-header">
+										<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+							            <h3 class="modal-title" style="text-align:center">Sei sicuro di voler effettuare la disconnessione</h3>
+							          </div>
+							   		  <div class="modal-body" style="text-align:center; background-color:#bcc4f2">
+							   		 		<button type="button" style="background-color: #092147; color:white" class="btn btn-default" data-dismiss="modal" onclick="window.location='login?logout=true'">Yes</button>
+								    		<button type="button" style="background-color: #092147; color:white" class="btn btn-defualt" data-dismiss="modal" onclick="window.location='#'">No</button>
+								      </div>
+							     </div>
+							   </div>
+							</div>
 					</li>
 					</c:if>
-		
 				</li> 
 			   	<!-- Ricerca -->
 			  	<li id="navbar-text" >
-		        	<form class="navbar-form" role="search">
+		        	<form id="searchForm" class="navbar-form" role="search" action="javascript:search();">
 				        <div class="input-group">
-				            <input type="text" class="form-control" placeholder="Search" name="q">
-				            <div class="input-group-btn" > 
-					           	<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				            <input id="searchItem" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+				            <div class="input-group-btn">
+				                <button class="btn btn-default" type="submit" onclick="document.getElementById('searchForm').submit(); return false;"><i class="glyphicon glyphicon-search"></i></button>
 				            </div>
 				        </div>
-			        </form>
+				    </form>
 			 	</li>
 			</ul> 
 			
 		</div>	
 	</nav>
 	
+	<script>
+		function search() {
+		 
+		   var name = document.getElementById("searchForm").elements["searchItem"].value;
+		   var pattern = name.toLowerCase();
+		   var targetId = "";
+		 
+		   var divs = document.getElementsByClassName("col-md-2");
+		   for (var i = 0; i < divs.length; i++) {
+		      var para = divs[i].getElementsByTagName("p");
+		      var index = para[0].innerText.toLowerCase().indexOf(pattern);
+		      if (index != -1) {
+		         targetId = divs[i].parentNode.id;
+		         document.getElementById(targetId).scrollIntoView();
+		         break;
+		      }
+		   }  
+		}
+</script>
+	
 	<div class="jumbotron text-center">
 	  <h1>Benvenuto nel Sito di Prenotazione</h1>
   	  <h5>Prenota subito la tua visita medica!</h5> 
 	</div>
 
-	
-<!-- 	COSI DA NON RALLENTARE IL CARICAMENTO -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
- 	<script src="js/jquery.cookie.js"></script>
- 	<script src="js/effects.js"></script>
- 	<script src="js/login.js"></script>
 
-	 
 </body>
 </html>

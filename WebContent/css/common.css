@@ -44,6 +44,7 @@ body {
 }
 
 /* SEARCH */  
+
 .input-group-btn > .btn {
 	background-color: #092147;
 	color: #bcc4f2;
@@ -58,8 +59,49 @@ body {
 	color: #092147;
 }
 
-
 /* LOGIN */
+
+body { 
+	font-family: sans-serif; 
+}
+
+#confirmBox
+{
+    display: none;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    position: fixed;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    padding: 6px 8px 8px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#confirmBox button {
+    background-color: #ccc;
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    padding: 2px;
+    text-align: center;
+    width: 80px;
+    cursor: pointer;
+}
+
+#confirmBox button:hover
+{
+    background-color: #ddd;
+}
+
+#confirmBox .message
+{
+    text-align: left;
+    margin-bottom: 8px;
+}
+
 #form-field {
   border: none;
 }
@@ -109,8 +151,6 @@ body {
 
 .login-form input[type="text"]:focus, .login-form input[type="password"]:focus {
   outline: none;
-  box-shadow: 0 0 1px 1px #1abc9c;
-    opacity:2.0;
 }
 
 .login-form input[type="submit"] {
@@ -137,10 +177,18 @@ body {
    color: white;
 }
 
+.green-border {
+  border: 1px solid green !important;  
+}
 
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+input:required:focus {
+  border: 1px solid red;
+  outline: none;
+}
+
+textarea:required:focus {
+  border: 1px solid red;
+  outline: none;
 }
 
 /* /////////////////////////////////////////////////// */

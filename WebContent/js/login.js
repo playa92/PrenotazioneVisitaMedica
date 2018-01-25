@@ -1,26 +1,29 @@
-$(document).on(ready, function() {
+// REMEMBER ME
+$(function () {
+	
+    if (localStorage.chkbox && localStorage.chkbox != '') {
 
-  fillByMemory()
-  $('input#sign').on('click', function() {
+        $('#rememberChkBox').attr('checked', 'checked');
+        $('#signinId').val(localStorage.username);
+        $('#signinPwd').val(localStorage.pass);
+    } else {
 
-    if ($('#rememberChkBox').val()) {
-      rememberMe();
+        $('#rememberChkBox').removeAttr('checked');
+        $('#signinId').val('');
+        $('#signinPwd').val('');
     }
-    
-    doLogin();
-  	});
- 
+
+    $('#rememberChkBox').click(function () {
+
+        if ($('#rememberChkBox').is(':checked')) {
+            // save username and password
+            localStorage.username = $('#signinId').val();
+            localStorage.pass = $('#signinPwd').val();
+            localStorage.chkbox = $('#rememberChkBox').val();
+        } else {
+            localStorage.username = '';
+            localStorage.pass = '';
+            localStorage.chkbox = '';
+        }
+    });
 });
-
-function rememberMe() {
-  $.cookie('id', $('#signinId').val());
-  $.cookie('pass', $('#signinPwd').val());
-}
-
-function fillByMemory() {
-  if (!!$.cookie('id'))
-    $('#signinId').val($.cookie('id'));
-
-  if (!!$.cookie('pass'))
-    $('#signinPwd').val($.cookie('pass'));
-}
