@@ -19,22 +19,22 @@ prefix="c" %>
 
 	<div class="col-lg-3">
 		<form id="form" method="post" action="formPrenotazione">
-				<div class="form-group"><label for="codice fiscale">Codice Fiscale *</label><input name="codice fiscale" type="text" class="form-control"  placeholder="Enter SSN" required/></div>
-				<div class="form-group"><label for="nome">Nome *</label><input name="nome" type="text" class="form-control"  placeholder="Enter Name" required/></div> 
-				<div class="form-group"><label for="cognome">Cognome *</label><input name="cognome" type="text" class="form-control"  placeholder="Enter Surname" required/></div>  
-				<div class="form-group"><label for="matricola">Matricola **</label><input name="matricola" type="text" class="form-control"  placeholder="Enter Id" required/></div>  
-				<div class="form-group"><label for="invalidità">Invalidità</label>
-					<select name="invalidità" class="form-control">	 
-						<option>Nessuna</option>
-						<option>Lesione Muscolare</option>
+				<div class="form-group"><label for="codice fiscale">Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codice fiscale" type="text" class="form-control"  placeholder="Enter SSN" required/></div>
+				<div class="form-group"><label for="nome">Nome *</label><input id="s1" onblur="correct(id);" name="nome" type="text" class="form-control"  placeholder="Enter Name" required/></div> 
+				<div class="form-group"><label for="cognome">Cognome *</label><input id="s2" onblur="correct(id);" name="cognome" type="text" class="form-control"  placeholder="Enter Surname" required/></div>  
+				<div class="form-group"><label for="matricola">Matricola **</label><input id="n" onblur="correct(id);" name="matricola" type="text" class="form-control"  placeholder="Enter Id" required/></div>  
+				<div class="form-group"><label for="invalidita">Invalidità</label>
+					<select name="invalidita" class="form-control">	 
+						<option selected="selected">Nessuna</option>
 						<option>Malformazione</option>
+						<option>Lesione Muscolare</option>
 						<option>Malattia Generica</option>
 					</select>		
 				</div>
 				<div class="form-group"><input id="hex" name="hexCode" type="hidden" class="form-control"></div>	
 				<div class="form-group">
-					<input name="conferma" type="submit" value="Conferma"  class="btn btn-success" onclick="generate();"/>
-					<input name="annulla" type="reset" value="Annulla"  class="btn btn-danger" onclick="avviso();"/>
+					<input name="conferma" type="submit" value="Conferma"  class="btn-success" onclick="generate();"/>
+					<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
 				</div>
 		</form>
 	</div>
@@ -42,7 +42,7 @@ prefix="c" %>
 	<div>
 	<footer>
   		<h5><strong>* Campi Obbligatori</strong></h5>
-		<h5><strong>** Se non si possiede una matricola specificare completare con l'inserimento del valore "0"</strong></h5>
+		<h5><strong>** Il seguente campo deve essere completato solo se si possiede realmente una matricola</strong></h5>
 	</footer>	
 	</div>
 	

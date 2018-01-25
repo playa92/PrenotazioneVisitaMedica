@@ -32,7 +32,7 @@ public class FormPrenotazione extends HttpServlet {
 		String nome = req.getParameter("nome");
 		String cognome = req.getParameter("cognome");
 		String matricola = req.getParameter("matricola");
-		String invalidita = req.getParameter("invalidità");
+		String invalidita = req.getParameter("invalidita");
 		String hexcode = req.getParameter("hexCode");
 		
 //		StringBuffer jsonReceived = new StringBuffer();
@@ -46,7 +46,7 @@ public class FormPrenotazione extends HttpServlet {
 		
 		PrintWriter out = resp.getWriter();
 		UniversitaDao universitaDao = DatabaseManager.getInstance().
-					getDaoFactory().getUniversitaDao();
+				getDaoFactory().getUniversitaDao();
 		VisitaMedicaDao visitaMedicaDao = DatabaseManager.getInstance().
 				getDaoFactory().getVisitaMedicaDao();
 		PazienteDao pazienteDao = DatabaseManager.getInstance().
@@ -69,10 +69,8 @@ public class FormPrenotazione extends HttpServlet {
 		p.setInvalidita(invalidita);
 		p.setCodice(c);
 		
-//		System.out.println(universitaDao.findByPrimaryKey(Long.parseLong(matricola)).toString());
-		 
-		if(matricola != null && 
-				(universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null || invalidita != null)) {
+		if(matricola != null && (universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null
+				|| !invalidita.equals("Nessuna"))) {
 				p.setImporto(new Double(0.0));
 		} else {
 			p.setImporto(new Double(25.00));
@@ -97,7 +95,6 @@ public class FormPrenotazione extends HttpServlet {
 		// NON VA IL PRINT CON QUESTO
 //		final String link = "http://api.qrserver.com/v1/create-qr-code/?data=" + hexcode;
 //		out.println("<img width=\"100\" height=\"100\" src=" + link +" alt='QR-Code'/>");
-		
 		out.println("<h3>Codice:" + hexcode + "</h3>");
 		out.println("</div>");
 		out.println("<div id='editor'></div>");

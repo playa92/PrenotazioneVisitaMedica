@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import model.CodiceQR;
+//import model.CodiceQR;
 import model.Paziente;
 import persistence.dao.UniversitaDao;
 
@@ -65,7 +65,7 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 				paziente.setCognome(result.getString("cognome"));
 				paziente.setMatricola(result.getLong("matricola"));
 				paziente.setInvalidita(result.getString("invalidità"));
-//				paziente.setCodice((CodiceQR) result.getObject("id_codiceQr"));
+//TODO			paziente.setCodice((CodiceQR) result.getObject("id_codiceQr"));
 			}
 			
 		} catch(SQLException e) {
