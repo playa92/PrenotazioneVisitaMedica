@@ -78,11 +78,20 @@ public class FormPrenotazione extends HttpServlet {
 		codiceQRDao.save(c);
 		pazienteDao.save(p);
 		visitaMedicaDao.save(p);
-		
+				
 		out.println("<html>");
-		out.println("<head><title>Riepilogo Dati</title></head>");
+		out.println("<head><title>Riepilogo Dati</title>");
+		
+		out.println("<script src='js/jquery/jquery-3.2.1.min.js'></script>");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js\"></script>");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js\"></script>");
+		out.println("<script type=\"text/javascript\" src=\"js/jquery/jquery.qrcode.min.js\"></script>");	
+		out.println("<script src='js/pdf_print.js'></script>");
+		out.println("<script src=\"js/qr_code.js\"></script>");
+		
+		out.println("</head>");
 		out.println("<body>");
-		out.println("<div id='content' style='border:1px solid black; display: inline-block'>");
+		out.println("<div id=\"content\" style=\"background-color: white;\">");
 		out.println("<h1>Abbiamo registrato la tua prenotazione:</h1>");
 		out.println("<h3>Nome:" + nome + "</h3>");
 		out.println("<h3>Cognome:" + cognome + "</h3>");
@@ -90,16 +99,12 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<h3>Matricola:" + matricola + "</h3>");
 		out.println("<h3>Invalidità:" + invalidita + "</h3>");
 		out.println("<h3>Importo:" + String.valueOf(p.getImporto()) + " &euro;</h3>");
-		out.println("<div id='#output'></div>");
-		out.println("<script>'jQuery(function(){ jQuery(#output).qrcode(hexcode); })'</script>");
+		
+		out.println("<p id=\"#output\"></p>");
+		
 		out.println("<h3>Codice:" + hexcode + "</h3>");
 		out.println("</div>");
-		out.println("<div id='editor'></div>");
 		out.println("<button id='cmd'>generate PDF</button>");
-		out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js'></script>");
-		out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js'></script>");
-		out.println("<script src='js/jquery/jquery.qrcode.min.js'></script>");
-		out.println("<script src='js/pdf_print.js'></script>");
 		out.println("</body>");
 		out.println("</html>");
 	}

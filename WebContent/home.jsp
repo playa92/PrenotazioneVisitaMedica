@@ -15,6 +15,11 @@ prefix="c" %>
  	<script src="js/jquery/jquery.cookie.js"></script>
  	<script src="js/effects.js"></script>
  	<script src="js/login.js"></script>	
+ 	
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+  <script type="text/javascript" src="js/jquery/jquery.qrcode.min.js"></script>
+ <script src="js/qr_code.js"></script>		
 </head>
 
 <body>
@@ -120,32 +125,13 @@ prefix="c" %>
 			
 		</div>	
 	</nav>
-	
-	<script>
-		function search() {
-		 
-		   var name = document.getElementById("searchForm").elements["searchItem"].value;
-		   var pattern = name.toLowerCase();
-		   var targetId = "";
-		 
-		   var divs = document.getElementsByClassName("col-md-2");
-		   for (var i = 0; i < divs.length; i++) {
-		      var para = divs[i].getElementsByTagName("p");
-		      var index = para[0].innerText.toLowerCase().indexOf(pattern);
-		      if (index != -1) {
-		         targetId = divs[i].parentNode.id;
-		         document.getElementById(targetId).scrollIntoView();
-		         break;
-		      }
-		   }  
-		}
-</script>
-	
+		
 	<div class="jumbotron text-center">
 	  <h1>Benvenuto nel Sito di Prenotazione</h1>
   	  <h5>Prenota subito la tua visita medica!</h5> 
 	</div>
-
+	
+  <p id="output"></p>
 
 </body>
 </html>
