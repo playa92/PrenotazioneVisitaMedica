@@ -87,7 +87,7 @@ public class MainJDBC {
 		universitaDao.save(p1);
 		
 		Paziente p2 = new Paziente();
-		p2.setCodiceFiscale("LAODVD92S07");
+		p2.setCodiceFiscale("LAODVD92S07Z112K");
 		p2.setNome("Davide");
 		p2.setCognome("Aloia");
 		p2.setMatricola(new Long(164889));
