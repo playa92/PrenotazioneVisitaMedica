@@ -20,11 +20,11 @@ prefix="c" %>
 
 	<div class="col-lg-3">
 		<form id="form" method="post" action="formPrenotazione">
-				<div class="form-group"><label for="codice fiscale">Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codice fiscale" type="text" class="form-control"  placeholder="Enter SSN" required/></div>
-				<div class="form-group"><label for="nome">Nome *</label><input id="s1" onblur="correct(id);" name="nome" type="text" class="form-control"  placeholder="Enter Name" required/></div> 
-				<div class="form-group"><label for="cognome">Cognome *</label><input id="s2" onblur="correct(id);" name="cognome" type="text" class="form-control"  placeholder="Enter Surname" required/></div>  
-				<div class="form-group"><label for="matricola">Matricola **</label><input id="n" onblur="correct(id);" name="matricola" type="text" class="form-control"  placeholder="Enter Id" required/></div>  
-				<div class="form-group"><label for="invalidita">Invalidità</label>
+				<div class="form-group"><label>Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codice fiscale" type="text" class="form-control"  placeholder="Enter SSN" required/></div>
+				<div class="form-group"><label>Nome *</label><input id="s1" onblur="correct(id);" name="nome" type="text" class="form-control"  placeholder="Enter Name" required/></div> 
+				<div class="form-group"><label>Cognome *</label><input id="s2" onblur="correct(id);" name="cognome" type="text" class="form-control"  placeholder="Enter Surname" required/></div>  
+				<div class="form-group"><label>Matricola **</label><input id="n" onblur="correct(id);" name="matricola" type="text" class="form-control"  placeholder="Enter Id"></div>  
+				<div class="form-group"><label>Invalidità</label>
 					<select name="invalidita" class="form-control">	 
 						<option selected="selected">Nessuna</option>
 						<option>Malformazione</option>

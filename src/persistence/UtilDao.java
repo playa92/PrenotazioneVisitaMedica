@@ -46,15 +46,15 @@ public class UtilDao {
 		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "create SEQUENCE id;"
-					+ "create table codiceQr(\"id\" VARCHAR(255) primary key, data_scadenza DATE, convalida BOOLEAN);"
-					+ "create table università(matricola_p bigint primary key, nome_p VARCHAR(255), cognome_p VARCHAR(255));"
-					+ "create table paziente(\"cf\" VARCHAR(255) primary key, nome VARCHAR(255),"
-					+ "cognome VARCHAR(255), matricola bigint, invalidità VARCHAR(255), "
-					+ "id_codiceQr VARCHAR(255) REFERENCES codiceQr(\"id\"), importo bigint);"
-					+ "create table amministratore(\"username\" VARCHAR(255) primary key, password VARCHAR(255));"
-					+ "create table visitaMedica(id_qr VARCHAR(255) REFERENCES codiceQr(\"id\"),"
-					+ "nome_p VARCHAR(255), cognome_p VARCHAR(255));"
-					+ "create table impiegato(\"id\" bigint primary key, username VARCHAR(255), password VARCHAR(255), ruolo VARCHAR(255));";
+					+ "create table codiceQr(id VARCHAR(255) primary key, data_scadenza DATE, convalida BOOLEAN);"
+					+ "create table università(matricola BIGINT primary key, nome_paziente VARCHAR(255), cognome_paziente VARCHAR(255));"
+					+ "create table paziente(\"codice_fiscale\" VARCHAR(255) primary key, nome VARCHAR(255),"
+					+ "cognome VARCHAR(255), matricola BIGINT, invalidità VARCHAR(255), "
+					+ "id_codice VARCHAR(255) REFERENCES codiceQr(\"id\"));"
+					+ "create table amministratore(username VARCHAR(255) primary key, password VARCHAR(255));"
+					+ "create table visitaMedica(id_visita VARCHAR(255) REFERENCES codiceQr(\"id\"),"
+					+ "nome_paziente VARCHAR(255), cognome_paziente VARCHAR(255), importo BIGINT);"
+					+ "create table impiegato(id BIGINT primary key, username VARCHAR(255), password VARCHAR(255), ruolo VARCHAR(255));";
 			
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();		

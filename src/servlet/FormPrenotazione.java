@@ -35,6 +35,10 @@ public class FormPrenotazione extends HttpServlet {
 		String invalidita = req.getParameter("invalidita");
 		String hexcode = req.getParameter("hexCode");
 		
+		if(matricola.equals("")) {
+			matricola = "N/A";
+		}
+		
 //		StringBuffer jsonReceived = new StringBuffer();
 //		BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));		
 //		String line = reader.readLine();
@@ -65,25 +69,37 @@ public class FormPrenotazione extends HttpServlet {
 		p.setCodiceFiscale(codiceFiscale);
 		p.setNome(nome);
 		p.setCognome(cognome);
-		p.setMatricola(Long.parseLong(matricola));
+		if(!matricola.equals("N/A"))
+			p.setMatricola(Long.parseLong(matricola));
+		else 
+			p.setMatricola(null);
 		p.setInvalidita(invalidita);
 		p.setCodice(c);
 		
-		if(matricola != null && (universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null
-				|| !invalidita.equals("Nessuna"))) {
+		if(!matricola.equals("N/A")) { 
+			if(universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null
+					|| !invalidita.equals("Nessuna"))
 				p.setImporto(new Double(0));
+			else
+				p.setImporto(new Double(25));
 		} else {
-			p.setImporto(new Double(25));
+			if(!invalidita.equals("Nessuna"))
+				p.setImporto(new Double(0));
+			else
+				p.setImporto(new Double(25));
 		}
+		
+		//formattazione dell'importo
         DecimalFormat format = new DecimalFormat("0.00");
-        String formatted = format.format(p.getImporto());
+        String formattedImp = format.format(p.getImporto());
 		 
 		codiceQRDao.save(c);
 		pazienteDao.save(p);
 		visitaMedicaDao.save(p);
-				
+
 		out.println("<html>");
 		out.println("<head><title>Riepilogo Dati</title>");
+		out.println("<link rel='stylesheet' href='bootstrap-3.3.7-dist/css/bootstrap.min.css'>");
 		out.println("<script src='js/jquery/jquery-3.2.1.min.js'></script>");
 		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js\"></script>");
 		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js\"></script>");
@@ -92,20 +108,22 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<script src='js/jquery/jquery.qrcode.js'></script>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<div id=\"content\" style=\"background-color: white;\">");
+		out.println("<div id='content' style='background-color: white;'>");
 		out.println("<h1>Abbiamo registrato la tua prenotazione:</h1>");
 		out.println("<h3>Codice Fiscale: " + codiceFiscale + " </h3>");
 		out.println("<h3>Nome: " + nome + "</h3>");
 		out.println("<h3>Cognome: " + cognome + "</h3>");
 		out.println("<h3>Matricola: " + matricola + "</h3>");
 		out.println("<h3>Invalidità: " + invalidita + "</h3>");
-		out.println("<h3>Importo: " + formatted + " &euro;</h3>");
+		out.println("<h3>Importo: " + formattedImp + " &euro;</h3>");
 		out.println("<input id='text' type='hidden' value=" + hexcode + "/>");
 		out.println("<div id='qrcode'></div>");
 		out.println("<script src='js/qr_code.js'></script>");
 		out.println("<h3>Codice: " + hexcode + "</h3>");
 		out.println("</div>");
-		out.println("<button id='cmd'>stampa promemoria</button><img style='position:absolute;' src='images/print.png' width='32' height='32'>");
+		out.println("<h3 style='color:red'>stampa promemoria "
+				+ "<button id='cmd' type='button' class='btn btn-default btn-sm'>"
+				+ "<span class='glyphicon glyphicon-print'></span> PDF</button></h3>");
 		out.println("</body>");
 		out.println("</html>");
 	}

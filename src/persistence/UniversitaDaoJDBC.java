@@ -22,15 +22,11 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-		String query = "insert INTO università(matricola_p, nome_p, cognome_p) values(?,?,?)";
+		String query = "insert INTO università(matricola, nome_paziente, cognome_paziente) values(?,?,?)";
 		PreparedStatement statement = connection.prepareStatement(query);
-		
-		if(paziente.getMatricola() != null) { 
-			
-			statement.setLong(1, paziente.getMatricola());
-			statement.setString(2, paziente.getNome());
-			statement.setString(3, paziente.getCognome());
-		}
+		statement.setLong(1, paziente.getMatricola());
+		statement.setString(2, paziente.getNome());
+		statement.setString(3, paziente.getCognome());
 		statement.executeUpdate();
 		
 		} catch(SQLException e) {
@@ -60,7 +56,7 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 			if(result.next()) {
 				
 				paziente = new Paziente();	
-				paziente.setCodiceFiscale(result.getString("cf"));
+				paziente.setCodiceFiscale(result.getString("codice_fiscale"));
 				paziente.setNome(result.getString("nome"));				
 				paziente.setCognome(result.getString("cognome"));
 				paziente.setMatricola(result.getLong("matricola"));

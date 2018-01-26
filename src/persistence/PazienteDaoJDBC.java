@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,15 +25,17 @@ public class PazienteDaoJDBC implements PazienteDao {
 			
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert INTO paziente(cf, nome, cognome, matricola, invalidità, id_codiceQr, importo) values (?,?,?,?,?,?,?)";
+			String insert = "insert INTO paziente(codice_fiscale, nome, cognome, matricola, invalidità, id_codice) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, paziente.getCodiceFiscale());
 			statement.setString(2, paziente.getNome());
 			statement.setString(3, paziente.getCognome());
-			statement.setLong(4, paziente.getMatricola());
+			if(paziente.getMatricola() != null)
+				statement.setLong(4, paziente.getMatricola());
+			else
+				statement.setNull(4, Types.BIGINT);
 			statement.setString(5, paziente.getInvalidita());
 			statement.setString(6, paziente.getCodice().getCodice());
-			statement.setDouble(7, paziente.getImporto());
 			statement.executeUpdate();
 		
 		} catch(SQLException e) {
@@ -54,7 +57,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 		Paziente paziente = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM paziente WHERE cf = ?";
+			String query = "select * FROM paziente WHERE codice_fiscale = ?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, codiceFiscale);
 			ResultSet result = statement.executeQuery();
@@ -62,13 +65,12 @@ public class PazienteDaoJDBC implements PazienteDao {
 			if(result.next()) {
 				
 				paziente = new Paziente();
-				paziente.setCodiceFiscale(result.getString("cf"));
+				paziente.setCodiceFiscale(result.getString("codice_fiscale"));
 				paziente.setNome(result.getString("nome"));				
 				paziente.setCognome(result.getString("cognome"));
 				paziente.setMatricola(result.getLong("matricola"));
 				paziente.setInvalidita(result.getString("invalidità"));
-				paziente.setCodice((CodiceQR) result.getObject("id_codiceQr"));
-				paziente.setImporto(result.getDouble("importo"));
+				paziente.setCodice((CodiceQR) result.getObject("id_codice"));
 			}
 			
 		} catch(SQLException e) {
@@ -99,12 +101,12 @@ public class PazienteDaoJDBC implements PazienteDao {
 			while(result.next()) {
 				
 				paziente = new Paziente();
+				paziente.setCodiceFiscale(result.getString("codice_fiscale"));
 				paziente.setNome(result.getString("nome"));				
 				paziente.setCognome(result.getString("cognome"));
 				paziente.setMatricola(result.getLong("matricola"));
 				paziente.setInvalidita(result.getString("invalidità"));
-				paziente.setCodice((CodiceQR) result.getObject("id_codiceQr"));
-				paziente.setImporto(result.getDouble("importo"));
+//				paziente.setCodice((CodiceQR) result.getObject("id_codice"));
 				pazienti.add(paziente);
 			}
 		} catch(SQLException e) {
@@ -125,7 +127,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update paziente SET cf = ?, nome = ?, cognome = ?, matricola = ?, invalidità = ?, id_codiceQr = ? importo = ? WHERE cf = ?";
+			String update = "update paziente SET codice_fiscale = ?, nome = ?, cognome = ?, matricola = ?, invalidità = ?, id_codice = ? WHERE cf = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, paziente.getCodiceFiscale());
 			statement.setString(2, paziente.getNome());
@@ -133,7 +135,6 @@ public class PazienteDaoJDBC implements PazienteDao {
 			statement.setLong(4, paziente.getMatricola());
 			statement.setString(5, paziente.getInvalidita());
 			statement.setString(6, paziente.getCodice().getCodice());
-			statement.setDouble(7, paziente.getImporto());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -153,7 +154,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM paziente WHERE cf = ? ";
+			String delete = "delete FROM paziente WHERE codice_fiscale = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setString(1, paziente.getCodiceFiscale());
 			statement.executeUpdate();

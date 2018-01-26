@@ -3,6 +3,7 @@ package persistence;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+//import java.text.DecimalFormat;
 import java.util.List;
 
 import model.Paziente;
@@ -21,13 +22,12 @@ public class VisitaMedicaDaoJDBC implements VisitaMedicaDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String query = "insert INTO visitaMedica(id_qr, nome_p, cognome_p) values (?,?,?)";
+			String query = "insert INTO visitaMedica(id_visita, nome_paziente, cognome_paziente, importo) values (?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(query);
-			if(paziente.getCodice() != null) {
-				statement.setString(1, paziente.getCodice().getCodice());
-				statement.setString(2, paziente.getNome());
-				statement.setString(3, paziente.getCognome());
-			}
+			statement.setString(1, paziente.getCodice().getCodice());
+			statement.setString(2, paziente.getNome());
+			statement.setString(3, paziente.getCognome());
+			statement.setDouble(4, paziente.getImporto());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
