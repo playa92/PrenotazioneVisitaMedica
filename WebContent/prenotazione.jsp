@@ -8,9 +8,10 @@ prefix="c" %>
 	<title>Prenotazione Visita Medica</title>
 	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/common.css">
-	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script src="js/effects.js"></script>
+	<script src="js/reservation_controls.js"></script>
+	<script src="js/hex_code.js"></script>
 </head>
 
 <body>

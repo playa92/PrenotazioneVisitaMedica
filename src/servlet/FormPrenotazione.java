@@ -90,16 +90,15 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<h3>Matricola:" + matricola + "</h3>");
 		out.println("<h3>Invalidità:" + invalidita + "</h3>");
 		out.println("<h3>Importo:" + String.valueOf(p.getImporto()) + " &euro;</h3>");
-		
-		// NON VA IL PRINT CON QUESTO
-		final String link = "http://api.qrserver.com/v1/create-qr-code/?data=" + hexcode;
-		out.println("<img width=\"100\" height=\"100\" src=" + link +" alt='QR-Code'/>");
+		out.println("<div id='#output'></div>");
+		out.println("<script>'jQuery(function(){ jQuery(#output).qrcode(hexcode); })'</script>");
 		out.println("<h3>Codice:" + hexcode + "</h3>");
 		out.println("</div>");
 		out.println("<div id='editor'></div>");
 		out.println("<button id='cmd'>generate PDF</button>");
-		out.println("<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>");
-		out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js'></script>");
+		out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js'></script>");
+		out.println("<script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js'></script>");
+		out.println("<script src='js/jquery/jquery.qrcode.min.js'></script>");
 		out.println("<script src='js/pdf_print.js'></script>");
 		out.println("</body>");
 		out.println("</html>");
