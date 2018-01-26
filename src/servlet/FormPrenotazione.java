@@ -4,6 +4,7 @@ package servlet;
 import java.io.IOException;
 //import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.time.Instant;
 import java.util.Date;
 import javax.servlet.ServletException;
@@ -70,10 +71,12 @@ public class FormPrenotazione extends HttpServlet {
 		
 		if(matricola != null && (universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null
 				|| !invalidita.equals("Nessuna"))) {
-				p.setImporto(new Double(0.0));
+				p.setImporto(new Double(0));
 		} else {
-			p.setImporto(new Double(25.00));
+			p.setImporto(new Double(25));
 		}
+        DecimalFormat format = new DecimalFormat("0.00");
+        String formatted = format.format(p.getImporto());
 		 
 		codiceQRDao.save(c);
 		pazienteDao.save(p);
@@ -81,32 +84,28 @@ public class FormPrenotazione extends HttpServlet {
 				
 		out.println("<html>");
 		out.println("<head><title>Riepilogo Dati</title>");
-		
 		out.println("<script src='js/jquery/jquery-3.2.1.min.js'></script>");
 		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js\"></script>");
 		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js\"></script>");
 		out.println("<script type=\"text/javascript\" src=\"js/jquery/jquery.qrcode.min.js\"></script>");	
 		out.println("<script src='js/pdf_print.js'></script>");
-		out.println("<script src='js/jquery/qrcode.js'></script>");
-		
+		out.println("<script src='js/jquery/jquery.qrcode.js'></script>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<div id=\"content\" style=\"background-color: white;\">");
 		out.println("<h1>Abbiamo registrato la tua prenotazione:</h1>");
-		out.println("<h3>Nome:" + nome + "</h3>");
-		out.println("<h3>Cognome:" + cognome + "</h3>");
-		out.println("<h3>C.F.:" + codiceFiscale + " </h3>");
-		out.println("<h3>Matricola:" + matricola + "</h3>");
-		out.println("<h3>Invalidità:" + invalidita + "</h3>");
-		out.println("<h3>Importo:" + String.valueOf(p.getImporto()) + " &euro;</h3>");
-		
-		out.println("<input id='text' type='hidden' value=" + hexcode + " style='width:80%' />");
+		out.println("<h3>Codice Fiscale: " + codiceFiscale + " </h3>");
+		out.println("<h3>Nome: " + nome + "</h3>");
+		out.println("<h3>Cognome: " + cognome + "</h3>");
+		out.println("<h3>Matricola: " + matricola + "</h3>");
+		out.println("<h3>Invalidità: " + invalidita + "</h3>");
+		out.println("<h3>Importo: " + formatted + " &euro;</h3>");
+		out.println("<input id='text' type='hidden' value=" + hexcode + "/>");
 		out.println("<div id='qrcode'></div>");
 		out.println("<script src='js/qr_code.js'></script>");
-		
-		out.println("<h3>Codice:" + hexcode + "</h3>");
+		out.println("<h3>Codice: " + hexcode + "</h3>");
 		out.println("</div>");
-		out.println("<button id='cmd'>generate PDF</button>");
+		out.println("<button id='cmd'>stampa promemoria</button><img style='position:absolute;' src='images/print.png' width='32' height='32'>");
 		out.println("</body>");
 		out.println("</html>");
 	}
