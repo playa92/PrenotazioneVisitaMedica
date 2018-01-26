@@ -87,7 +87,7 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js\"></script>");
 		out.println("<script type=\"text/javascript\" src=\"js/jquery/jquery.qrcode.min.js\"></script>");	
 		out.println("<script src='js/pdf_print.js'></script>");
-		out.println("<script src=\"js/qr_code.js\"></script>");
+		out.println("<script src='js/jquery/qrcode.js'></script>");
 		
 		out.println("</head>");
 		out.println("<body>");
@@ -100,7 +100,9 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<h3>Invalidità:" + invalidita + "</h3>");
 		out.println("<h3>Importo:" + String.valueOf(p.getImporto()) + " &euro;</h3>");
 		
-		out.println("<p id=\"#output\"></p>");
+		out.println("<input id='text' type='hidden' value=" + hexcode + " style='width:80%' />");
+		out.println("<div id='qrcode'></div>");
+		out.println("<script src='js/qr_code.js'></script>");
 		
 		out.println("<h3>Codice:" + hexcode + "</h3>");
 		out.println("</div>");

@@ -15,11 +15,9 @@ prefix="c" %>
  	<script src="js/jquery/jquery.cookie.js"></script>
  	<script src="js/effects.js"></script>
  	<script src="js/login.js"></script>	
- 	
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-  <script type="text/javascript" src="js/jquery/jquery.qrcode.min.js"></script>
- <script src="js/qr_code.js"></script>		
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="js/qrcode.js"></script>	
 </head>
 
 <body>
@@ -131,7 +129,5 @@ prefix="c" %>
   	  <h5>Prenota subito la tua visita medica!</h5> 
 	</div>
 	
-  <p id="output"></p>
-
 </body>
 </html>

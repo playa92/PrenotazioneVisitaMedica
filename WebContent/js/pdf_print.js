@@ -10,4 +10,6 @@ $(document).ready(function(){
 		    pdf.save('pageContent.pdf');
 		  });
 		});
+		
 }) 
+
