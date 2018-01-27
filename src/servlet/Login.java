@@ -26,35 +26,7 @@ public class Login extends HttpServlet {
 			RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 			dispacher.forward(req, resp);
 			
-		} else {//TODO DA GESTIRE
-			
-			String username = (String) session.getAttribute("username");		
-			
-			if(username != null) {
-				
-//				out.println("<html>");
-//				out.println("<head><title>Login</title></head>");
-//				out.println("<body>");
-//				out.println("<h1>Sei già loggato come " + username + "</h1>");
-//				out.println("<a href=\"checkLogin?logout=true\">Logout</a>");
-//				out.println("</body>");
-//				out.println("</html>");
-				           
-			} else { 
-				
-//				out.println("<html>");
-//				out.println("<head><title>Effettual il Login</title></head>");
-//				out.println("<body>");
-//				out.println("<h1>Effettua il login</h1>");
-//				out.println("<form method=\"post\" action=\"login\">");
-//				out.println("Username : <input name=\"username\" type=\"text\" />");
-//				out.println("Password : <input name=\"password\" type=\"password\" />");
-//				out.println("<input type=\"submit\" />");
-//				out.println("</form>");
-//				out.println("</body>");
-//				out.println("</html>");
-			}
-		}
+		} 
 	}
 	
 	@Override
@@ -70,12 +42,13 @@ public class Login extends HttpServlet {
 		
 		if(amministratore == null) {
 			
-			out.println("<html>");
-			out.println("<head><title>Login</title></head>");
-			out.println("<body>");
-			out.println("<h1>Nessun amministratore è registrato come " + username + "</h1>");
-			out.println("</body>");
-			out.println("</html>");	
+			resp.setContentType("text/html;charset=UTF-8");
+			  
+		    try {
+		        out.println("Nessunn amministratore registrato come "+username);
+		    } finally {
+		        out.close();
+		    } 
 			
 		} else {
 			if(password.equals(amministratore.getPassword())) {

@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" 
-prefix="c" %>
+prefix="jstl" %>
 
 <html>
 
@@ -62,7 +62,7 @@ prefix="c" %>
 		    <ul id="right-fields" class="nav navbar-nav navbar-right">
 				<!--  Login -->	
 				<li class="dropdown nav-item">
-					<c:if test="${not loggato}">
+					<jstl:if test="${not loggato}">
 						  <!-- login -->						
 						  <a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Accedi<b class="caret"></b></a>       		 
 				       		  <div class="modal fade" id="myModal" role="dialog">
@@ -74,20 +74,25 @@ prefix="c" %>
 							          </div>
 							          <div class="modal-body">
 				           			 	<form id="form-field" class="text-form" method="post" action="login">
+				           			 		
+				           			 <div id="avviso" >Nothing to show yet</div>
+				           			 		
+				           			 		
+				           			 		
 					             		  <label>Username</label>
 						             	  <input id="signinId" type="text" placeholder="Enter Username" name="username" required>
 						             	  <label>Password</label>
 						             	  <input id="signinPwd" type="password" placeholder="Enter Password" name="password" required>
 						             	  <label id="checkbox"> <input id="rememberChkBox" type="checkbox" checked="checked"> Ricordami </label>
-										  <input id="sign" type="submit" value="Conferma" onclick="checkLogin();"/>	
+										  <input id="sign" type="submit" value="Conferma" onclick="ajaxPostForm();"/>	
 										  <a id="forgotText" href="html/ripristino_password.html"> Password dimenticata?</a>
 				           			 	</form>
 							        </div>
 							      </div>
 							    </div>
 							</div>
-					</c:if>
-					<c:if test="${loggato}">
+					</jstl:if>
+					<jstl:if test="${loggato}">
 					<!-- logout -->
 					<li id="dialog" class="dropdown nav-item">
 			       			<a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Disconnetti<b class="caret"></b></a>       		 
@@ -106,21 +111,20 @@ prefix="c" %>
 							   </div>
 							</div>
 					</li>
-					</c:if>
+					</jstl:if>
 				</li> 
 			   	<!-- Ricerca -->
 			  	<li id="navbar-text" >
 		        	<form id="searchForm" class="navbar-form" role="search" action="javascript:search();">
-				        <div class="input-group">
-				            <input id="searchItem" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-				            <div class="input-group-btn">
-				                <button class="btn btn-default" type="submit" onclick="document.getElementById('searchForm').submit(); return false;"><i class="glyphicon glyphicon-search"></i></button>
-				            </div>
-				        </div>
+				    <div class="input-group">
+			            <input id="searchItem" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+			            <div class="input-group-btn">
+			                <button class="btn btn-default" type="submit" onclick="document.getElementById('searchForm').submit(); return false;"><i class="glyphicon glyphicon-search"></i></button>
+			            </div>
+			        </div>
 				    </form>
 			 	</li>
 			</ul> 
-			
 		</div>	
 	</nav>
 		
@@ -128,6 +132,48 @@ prefix="c" %>
 	  <h1>Benvenuto nel Sito di Prenotazione</h1>
   	  <h5>Prenota subito la tua visita medica!</h5> 
 	</div>
+		
+		
+	<div id="mainContainer" >Nothing to show yet</div>
+	<input id="sign" type="submit" value="Conferma" onclick="ajaxPost()"/>	
+		
+	<script>
+	
+		// prova 
+		function ajaxPost(){
+		
+		  $.ajax({
+			    type: 'post',
+			    url: 'login',
+			    data: {
+			    	prova:'ciao'
+			    }, 
+			    success: function(data) {
+			        $('#mainContainer').text(data);
+			    }
+			  });
+		}
+		
+		// per il form login
+
+			$("#form-field").submit(function(e) {
+				  $.ajax({
+					  type: frm.method('method'),
+			          url: frm.action('action'), 
+			          data: frm.serializable(),
+					  success: function(data) {
+					       $('#avviso').text(data);
+					  }
+				  });
+				
+			    e.preventDefault();
+			});
+			
+
+	
+	</script>
+
+	
 	
 </body>
 </html>
