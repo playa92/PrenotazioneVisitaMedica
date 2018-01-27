@@ -75,16 +75,14 @@ prefix="jstl" %>
 							          <div class="modal-body">
 				           			 	<form id="form-field" class="text-form" method="post" action="login">
 				           			 		
-				           			 <div id="avviso" >Nothing to show yet</div>
-				           			 		
-				           			 		
-				           			 		
+				           			      <span id="avviso" class="label label-danger">Nothing to show yet</span><br> 
+				           			 	
 					             		  <label>Username</label>
 						             	  <input id="signinId" type="text" placeholder="Enter Username" name="username" required>
 						             	  <label>Password</label>
 						             	  <input id="signinPwd" type="password" placeholder="Enter Password" name="password" required>
 						             	  <label id="checkbox"> <input id="rememberChkBox" type="checkbox" checked="checked"> Ricordami </label>
-										  <input id="sign" type="submit" value="Conferma" onclick="ajaxPostForm();"/>	
+										  <input id="sign" type="submit" value="Conferma"/>	
 										  <a id="forgotText" href="html/ripristino_password.html"> Password dimenticata?</a>
 				           			 	</form>
 							        </div>
@@ -134,43 +132,30 @@ prefix="jstl" %>
 	</div>
 		
 		
-	<div id="mainContainer" >Nothing to show yet</div>
-	<input id="sign" type="submit" value="Conferma" onclick="ajaxPost()"/>	
-		
 	<script>
-	
-		// prova 
-		function ajaxPost(){
-		
-		  $.ajax({
-			    type: 'post',
-			    url: 'login',
-			    data: {
-			    	prova:'ciao'
-			    }, 
-			    success: function(data) {
-			        $('#mainContainer').text(data);
-			    }
-			  });
-		}
-		
-		// per il form login
-
-			$("#form-field").submit(function(e) {
-				  $.ajax({
-					  type: frm.method('method'),
-			          url: frm.action('action'), 
-			          data: frm.serializable(),
+				
+		$(document).ready(function(){
+		    $("#form-field").submit(function(e){
+		    	  $.ajax({
+					  type: 'post',
+			          url: 'login', 
+			          
+			          // CON SERIALIZABLE APRE UNA NUOVA PAGINA
+			          // SENZA INVECE FUNZIONA (prova a decommentare l'altro XD)
+			          
+ 			          data: this.serializable(), 
+// 			          data: {
+// 							prova:'ciao',
+// 							prova2:'ciao2'
+// 					  },
 					  success: function(data) {
 					       $('#avviso').text(data);
 					  }
 				  });
-				
-			    e.preventDefault();
-			});
-			
-
-	
+		        e.preventDefault();
+		    });
+		});
+		
 	</script>
 
 	
