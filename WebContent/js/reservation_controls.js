@@ -39,18 +39,20 @@
 	}
 
 //FORM INPUT DATA SEND TO SERVLET
-	$(document).ready(function() {
-		
-	    frm.submit(function(e) {
-	    	$.ajax({
-	            type: frm.method('method'),
-	            url: frm.action('action'), 
-	            data: frm.serializable(), 
-		        success: function(data, status) {
-		            	//do something
-		        }
-	    	});
-	        e.preventDefault();
-	//        return false;  ??
-	    	});
-	});
+//	$(document).ready(function() {
+//		
+//		var frm = $("#form");
+//		
+//	    frm.submit(function(e) {
+//	    	$.ajax({
+//	            type: frm.method('method'),
+//	            url: frm.action('action'), 
+//	            data: frm.serializable(), 
+//		        success: function(data, status) {
+//		            	//do something
+//		        }
+//	    	});
+//	        e.preventDefault();
+//	//        return false;  ??
+//	    	});
+//	});
