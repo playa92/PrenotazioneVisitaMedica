@@ -74,9 +74,6 @@ prefix="jstl" %>
 							          </div>
 							          <div class="modal-body">
 				           			 	<form id="form-field" class="text-form" method="post" action="login">
-				           			 		
-				           			      <span id="avviso" class="label label-danger">Nothing to show yet</span><br> 
-				           			 	
 					             		  <label>Username</label>
 						             	  <input id="signinId" type="text" placeholder="Enter Username" name="username" required>
 						             	  <label>Password</label>
@@ -94,6 +91,8 @@ prefix="jstl" %>
 					<!-- logout -->
 					<li id="dialog" class="dropdown nav-item">
 			       			<a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Disconnetti<b class="caret"></b></a>       		 
+				       		<div style="color:yellow; margin:0px 40px"><jstl:out value="${user}"/> </div>
+				       		
 				       		  <div class="modal fade" id="myModal" role="dialog">
 							    <div class="modal-dialog modal-md">
 							      <div class="modal-content">
@@ -130,35 +129,25 @@ prefix="jstl" %>
 	  <h1>Benvenuto nel Sito di Prenotazione</h1>
   	  <h5>Prenota subito la tua visita medica!</h5> 
 	</div>
-		
-		
-	<script>
-				
-		$(document).ready(function(){
-		    $("#form-field").submit(function(e){
-		    	  $.ajax({
-					  type: 'post',
-			          url: 'login', 
-			          
-			          // CON SERIALIZABLE APRE UNA NUOVA PAGINA
-			          // SENZA INVECE FUNZIONA (prova a decommentare l'altro XD)
-			          
- 			          data: this.serializable(), 
-// 			          data: {
-// 							prova:'ciao',
-// 							prova2:'ciao2'
-// 					  },
-					  success: function(data) {
-					       $('#avviso').text(data);
-					  }
-				  });
-		        e.preventDefault();
-		    });
-		});
-		
-	</script>
-
 	
-	
+<!-- TEMPORANEO -->
+		<div id="dialog">
+      	  <div class="modal fade" id="wrong" role="dialog">
+		    <div class="modal-dialog modal-md">
+		      <div class="modal-content">
+		         <div class="modal-header" style="text-align:center; background-color: #bcc4f2">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+		        	<h3 id="wrong" class="modal-title" style="text-align:center"> 
+		        	<jstl:out value="${wrong_user}"/> </h3>
+	          </div>
+		     </div>
+		   </div>
+		 </div>
+	   </div>
+	   
+	   <jstl:if test="${wrong}">
+	   		<script> $("#wrong").modal('show'); </script>  
+	   </jstl:if>
+			
 </body>
 </html>

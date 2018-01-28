@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,46 +40,32 @@ public class Login extends HttpServlet {
 		String password = req.getParameter("password");
 		AmministratoreDao dao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();
 		Amministratore amministratore = dao.findByPrimaryKey(username);
-
-		System.out.println( req.getParameter("prova") );
-
-		System.out.println( req.getParameter("prova2") );
-
-		
+		 
 		if(amministratore == null) {
-			
-			resp.setContentType("text/html;charset=UTF-8");
-		  
-		    try { 
-		        out.println("Nessunn amministratore registrato come "+username);
-		    } finally {
-		        out.close();
-		    } 
-			 
+
+			req.setAttribute("wrong", true);
+			req.setAttribute("wrong_user", "Nessun utente registrato come "+ username);			
+			RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
+			dispacher.forward(req, resp);
+					 
 		} else { 
-			
-			
-			System.out.println("else");
+
 			//connessione
 			if(password.equals(amministratore.getPassword())) {
-	
+				
 				session.setAttribute("username", username);				
 				req.setAttribute("loggato", true);
+				req.setAttribute("user", username);
 				RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 				dispacher.forward(req, resp);
-				
+								
 			} else {
-//				out.println("<html>");
-//				out.println("<head><title>Login</title></head>");
-//				out.println("<body>");
-//				out.println("<h1>Spiacente, password non corrispondente per l'amministratore " + username + "</h1>");			
-//				out.println("</body>");
-//				out.println("</html>");	
 				
-				System.out.println("Spiacente, password non corrispondente per: "+username);
-				req.setAttribute("corrispondente", false);
+				req.setAttribute("wrong", true);
+				req.setAttribute("wrong_user", "Spiacente, password non corrispondente per "+username);			
 				RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 				dispacher.forward(req, resp);
+				
 			}				
 		}
 	}
