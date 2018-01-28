@@ -40,8 +40,8 @@ public class Login extends HttpServlet {
 		 
 		if(amministratore == null) {
 
-			req.setAttribute("wrong", true);
-			req.setAttribute("wrong_user", "Nessun utente registrato come "+ username);			
+			req.setAttribute("popUp", true);
+			req.setAttribute("popUpMessage", "Nessun utente registrato come "+ username);			
 			RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 			dispacher.forward(req, resp);
 					 
@@ -58,8 +58,8 @@ public class Login extends HttpServlet {
 								
 			} else {
 				
-				req.setAttribute("wrong", true);
-				req.setAttribute("wrong_user", "Spiacente, password non corrispondente per "+username);			
+				req.setAttribute("popUp", true);
+				req.setAttribute("popUpMessage", "Spiacente, password non corrispondente per "+username);			
 				RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 				dispacher.forward(req, resp);
 				
