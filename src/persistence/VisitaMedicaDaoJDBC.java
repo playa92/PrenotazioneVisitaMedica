@@ -2,8 +2,8 @@ package persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.text.DecimalFormat;
 import java.util.List;
 
 import model.Paziente;
@@ -64,6 +64,33 @@ public class VisitaMedicaDaoJDBC implements VisitaMedicaDao {
 	public void delete(Paziente paziente) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public int getTotalVisits() {
+		
+		int total = 0;
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String query = "SELECT COUNT(*) AS total FROM visitaMedica";
+			PreparedStatement statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			
+			if(result.next()) {
+				total = result.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			
+			try {
+				connection.close();
+			} catch(SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return total;
 	}
 
 }

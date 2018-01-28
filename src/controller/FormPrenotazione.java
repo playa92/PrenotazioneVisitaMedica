@@ -5,7 +5,7 @@ import java.io.IOException;
 //import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
-import java.time.Instant;
+import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,9 +21,6 @@ import persistence.dao.VisitaMedicaDao;
 
 @SuppressWarnings("serial")
 public class FormPrenotazione extends HttpServlet {
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException {
@@ -58,7 +55,12 @@ public class FormPrenotazione extends HttpServlet {
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().
 				getDaoFactory().getCodiceQRDao();
 		
-		Date date = Date.from(Instant.now());
+		int t = visitaMedicaDao.getTotalVisits();
+//		System.out.println("total: " + t);
+		
+		//DATA SCADENZA = TEMPO CORRENTE + (totale visite * 15 (tempo per ogni visita)) 
+		Date date = new Date(Calendar.getInstance().getTimeInMillis() + (t * 15) * 60000);
+//		System.out.println("date: " + date.toString());
 		
 		CodiceQR c = new CodiceQR();
 		c.setCodice(hexcode);
@@ -108,7 +110,7 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<script src='js/jquery/jquery.qrcode.js'></script>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<div id='content' style='background-color: white;'>");
+//		out.println("<div id='content' style='background-color: white;'>");
 		out.println("<h1>Abbiamo registrato la tua prenotazione:</h1>");
 		out.println("<h3>Codice Fiscale: " + codiceFiscale + " </h3>");
 		out.println("<h3>Nome: " + nome + "</h3>");
@@ -116,6 +118,7 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<h3>Matricola: " + matricola + "</h3>");
 		out.println("<h3>Invalidità: " + invalidita + "</h3>");
 		out.println("<h3>Importo: " + formattedImp + " &euro;</h3>");
+		out.println("<div id='content' style='background-color: white;'>");
 		out.println("<input id='text' type='hidden' value=" + hexcode + "/>");
 		out.println("<div id='qrcode'></div>");
 		out.println("<script src='js/qr_code.js'></script>");

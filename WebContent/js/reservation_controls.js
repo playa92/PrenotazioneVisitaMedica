@@ -38,6 +38,7 @@ function avviso() {
 }
 
 //CONFIRM DIALOG
+var MAX_VALUE = 5;
 var count = localStorage.getItem("count");
 var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
 
@@ -47,18 +48,26 @@ $(document).on("click", "#conferma", function() {
 		count = 0;
 	}
 	
+	if(count == MAX_VALUE) {
+		
+		alert("Attenzione: Limite Prenotazione Raggiunto");
+		$("#form").attr("action","home.jsp");
+		return;
+	}
+	
 	var d = new Date();
 	d.setMinutes(d.getMinutes() + 15 * count);
 
-	var toString = months[d.getMonth()] + " " + d.getDate() + " " 
-		+ d.getHours() + ':' + d.getMinutes();
+	var toString = months[d.getMonth()] + " " + d.getDate() 
+		+ " " + d.getHours() + ':' + d.getMinutes();
 	
-	var result = confirm("Prenotazione " + (++count) + "/50"
-			+ "\norario visita: " + toString
+	var result = confirm("Prenotazione: " + (++ count) + "/" + MAX_VALUE
+			+ "\nOrario visita: " + toString
 			+ "\nVuoi continuare?");
 	
 	if(!result) {
 		$("#form").attr("action","home.jsp");
+		localStorage.removeItem("count");
 	} else {
 		localStorage.setItem("count", count);
 	}

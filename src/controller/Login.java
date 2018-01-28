@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
 				
 				session.setAttribute("username", username);				
 				req.setAttribute("loggato", true);
-				req.setAttribute("user", username);
+				req.setAttribute("username", username);//JSTL
 				RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 				dispacher.forward(req, resp);
 								

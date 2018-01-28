@@ -20,7 +20,8 @@ public class Home extends HttpServlet {
 		if(username == null) {
 			req.setAttribute("loggato", false);
 		} else {
-			req.setAttribute("loggato", true);
+			req.setAttribute("loggato", true);			
+			req.setAttribute("username", username);//JSTL
 		}
 		
 		RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");

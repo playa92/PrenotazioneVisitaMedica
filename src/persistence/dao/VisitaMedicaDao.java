@@ -10,4 +10,5 @@ public interface VisitaMedicaDao {
 	public List<Paziente> findAll();
 	public void update(Paziente paziente);
 	public void delete(Paziente paziente);
+	public int getTotalVisits();
 }

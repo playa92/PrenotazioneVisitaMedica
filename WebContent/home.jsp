@@ -38,7 +38,7 @@ prefix="jstl" %>
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="home.jsp"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 			    <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="prenotazione.jsp">Prenotazione</a>
@@ -91,7 +91,7 @@ prefix="jstl" %>
 					<!-- logout -->
 					<li id="dialog" class="dropdown nav-item">
 			       			<a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Disconnetti<b class="caret"></b></a>       		 
-				       		<div style="color:yellow; margin:0px 40px"><jstl:out value="${user}"/> </div>
+				       		<div style="color:yellow; margin:0px 40px"><jstl:out value="${username}"/> </div>
 				       		
 				       		  <div class="modal fade" id="myModal" role="dialog">
 							    <div class="modal-dialog modal-md">
@@ -138,7 +138,8 @@ prefix="jstl" %>
 		         <div class="modal-header" style="text-align:center; background-color: #bcc4f2">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 		        	<h3 class="modal-title" style="text-align:center"> 
-		        	<jstl:out value="${popUpMessage}"/> </h3>
+		        		<jstl:out value="${popUpMessage}"/>
+		        	</h3>
 	          </div>
 		     </div>
 		   </div>

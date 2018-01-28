@@ -27,7 +27,7 @@ public class MainJDBC {
 			
 			while(line != null) {
 
-				if(!line.equals("ADMIN:") && !line.equals("EMPLOYEE:")) {
+				if(!line.matches("^[A-Z]+:$")) {
 					credential[i ++] = line;
 				}
 				line = b.readLine();
