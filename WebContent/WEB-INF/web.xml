@@ -8,41 +8,36 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <servlet-name>CheckLogin</servlet-name>
-    <servlet-class>servlet.CheckLogin</servlet-class>
+    <servlet-class>controller.CheckLogin</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CheckLogin</servlet-name>
     <url-pattern>/checkLogin</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>FormPrenotazione</servlet-name>
-    <servlet-class>servlet.FormPrenotazione</servlet-class>
+    <servlet-class>controller.FormPrenotazione</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>FormPrenotazione</servlet-name>
     <url-pattern>/formPrenotazione</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Login</servlet-name>
-    <servlet-class>servlet.Login</servlet-class>
+    <servlet-class>controller.Login</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
     <url-pattern>/login</url-pattern>
-  </servlet-mapping> 
-  
+  </servlet-mapping>
   <servlet>
     <servlet-name>Home</servlet-name>
-    <servlet-class>servlet.Home</servlet-class>
+    <servlet-class>controller.Home</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Home</servlet-name>
     <url-pattern></url-pattern>
-  </servlet-mapping> 
-  
+  </servlet-mapping>
 </web-app>
