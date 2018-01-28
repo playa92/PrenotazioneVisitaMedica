@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
 		 
 		HttpSession session = req.getSession();
 		session.setAttribute("username", null);
-		PrintWriter out = resp.getWriter();
+//		PrintWriter out = resp.getWriter();
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		AmministratoreDao dao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();
@@ -43,8 +43,8 @@ public class Login extends HttpServlet {
 		 
 		if(amministratore == null) {
 
-			req.setAttribute("wrong", true);
-			req.setAttribute("wrong_user", "Nessun utente registrato come "+ username);			
+			req.setAttribute("popUp", true);
+			req.setAttribute("popUpMessage", "Nessun utente registrato come "+ username);			
 			RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 			dispacher.forward(req, resp);
 					 
@@ -61,8 +61,8 @@ public class Login extends HttpServlet {
 								
 			} else {
 				
-				req.setAttribute("wrong", true);
-				req.setAttribute("wrong_user", "Spiacente, password non corrispondente per "+username);			
+				req.setAttribute("popUp", true);
+				req.setAttribute("popUpMessage", "Spiacente, password non corrispondente per "+username);			
 				RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
 				dispacher.forward(req, resp);
 				

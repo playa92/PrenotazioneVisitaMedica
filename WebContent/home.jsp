@@ -132,21 +132,21 @@ prefix="jstl" %>
 	
 <!-- TEMPORANEO -->
 		<div id="dialog">
-      	  <div class="modal fade" id="wrong" role="dialog">
+      	  <div class="modal fade" id="notice" role="dialog">
 		    <div class="modal-dialog modal-md">
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color: #bcc4f2">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-		        	<h3 id="wrong" class="modal-title" style="text-align:center"> 
-		        	<jstl:out value="${wrong_user}"/> </h3>
+		        	<h3 class="modal-title" style="text-align:center"> 
+		        	<jstl:out value="${popUpMessage}"/> </h3>
 	          </div>
 		     </div>
 		   </div>
 		 </div>
 	   </div>
 	   
-	   <jstl:if test="${wrong}">
-	   		<script> $("#wrong").modal('show'); </script>  
+	   <jstl:if test="${popUp}">
+	   		<script> $("#notice").modal('show'); </script>  
 	   </jstl:if>
 			
 </body>
