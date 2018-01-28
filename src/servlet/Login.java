@@ -1,9 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Enumeration;
-
+//import java.util.Enumeration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +33,6 @@ public class Login extends HttpServlet {
 		 
 		HttpSession session = req.getSession();
 		session.setAttribute("username", null);
-		PrintWriter out = resp.getWriter();
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		AmministratoreDao dao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();

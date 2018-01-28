@@ -1,6 +1,5 @@
-//RESERVATION FORM
-	function CFRegex() {
-		
+function CFRegex() {
+	
 //		var regex = new RegExp("^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}" +
 //				"[0-7LMNPQRSTUV]{1}[0-9LMNPQRSTUV]{1}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$");
 //		var code = $("#cf").val();
@@ -9,10 +8,10 @@
 //			alert("Attenzione: CF non valido");
 //			$("#cf").val("");
 //		}
-	}
+}
 
-	function correct(message) {
-		
+function correct(message) {
+	
 //		var id = String (message);
 //		
 //		if(id == "n") {
@@ -24,7 +23,7 @@
 //				$("#n").val("");
 //			}
 //		} else {
-//			var characters = new RegExp("^[A-Za-z]+$");
+//			var characters = new RegExp("^[A-zÀ-ú]+$");
 //			var s = $("#"+id).val();
 //			
 //			if(s.length > 0 && !characters.test(s)) {
@@ -32,9 +31,36 @@
 //				$("#"+id).val("");
 //			}
 //		}
+}
+
+function avviso() {
+	alert("Attenzione! I dati inseriti verrano puliti");
+}
+
+//CONFIRM DIALOG
+var count = localStorage.getItem("count");
+var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
+
+$(document).on("click", "#conferma", function() {
+	
+	if(count == null) {
+		count = 0;
 	}
 	
-	function avviso() {
-		alert("Attenzione! I dati inseriti verrano puliti");
+	var d = new Date();
+	d.setMinutes(d.getMinutes() + 15 * count);
+
+	var toString = months[d.getMonth()] + " " + d.getDate() + " " 
+		+ d.getHours() + ':' + d.getMinutes();
+	
+	var result = confirm("Prenotazione " + (++count) + "/50"
+			+ "\norario visita: " + toString
+			+ "\nVuoi continuare?");
+	
+	if(!result) {
+		$("#form").attr("action","home.jsp");
+	} else {
+		localStorage.setItem("count", count);
 	}
+});
 
