@@ -103,14 +103,14 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<head><title>Riepilogo Dati</title>");
 		out.println("<link rel='stylesheet' href='bootstrap-3.3.7-dist/css/bootstrap.min.css'>");
 		out.println("<script src='js/jquery/jquery-3.2.1.min.js'></script>");
-		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js\"></script>");
-		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js\"></script>");
-		out.println("<script type=\"text/javascript\" src=\"js/jquery/jquery.qrcode.min.js\"></script>");	
+		out.println("<script src='js/jquery/jspdf.min.js'></script>");
+		out.println("<script src='js/jquery/html2canvas'></script>");
+		out.println("<script src='js/jquery/jquery.qrcode.min.js'></script>");	
 		out.println("<script src='js/pdf_print.js'></script>");
 		out.println("<script src='js/jquery/jquery.qrcode.js'></script>");
 		out.println("</head>");
 		out.println("<body>");
-//		out.println("<div id='content' style='background-color: white;'>");
+		out.println("<div id='content' style='background-color: white;'>");
 		out.println("<h1>Abbiamo registrato la tua prenotazione:</h1>");
 		out.println("<h3>Codice Fiscale: " + codiceFiscale + " </h3>");
 		out.println("<h3>Nome: " + nome + "</h3>");
@@ -118,12 +118,13 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<h3>Matricola: " + matricola + "</h3>");
 		out.println("<h3>Invalidità: " + invalidita + "</h3>");
 		out.println("<h3>Importo: " + formattedImp + " &euro;</h3>");
-		out.println("<div id='content' style='background-color: white;'>");
 		out.println("<input id='text' type='hidden' value=" + hexcode + "/>");
+		out.println("<div id='print'>");
 		out.println("<div id='qrcode'></div>");
 		out.println("<script src='js/qr_code.js'></script>");
 		out.println("<h3>Codice: " + hexcode + "</h3>");
 		out.println("</div>");
+		out.println("</div>"); 
 		out.println("<h3 style='color:red'>stampa promemoria "
 				+ "<button id='cmd' type='button' class='btn btn-default btn-sm'>"
 				+ "<span class='glyphicon glyphicon-print'></span> PDF</button></h3>");
