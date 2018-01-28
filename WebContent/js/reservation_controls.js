@@ -38,7 +38,7 @@ function avviso() {
 }
 
 //CONFIRM DIALOG
-var MAX_VALUE = 5;
+var MAX_VALUE = 50;
 var count = localStorage.getItem("count");
 var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
 

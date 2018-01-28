@@ -104,10 +104,10 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<link rel='stylesheet' href='bootstrap-3.3.7-dist/css/bootstrap.min.css'>");
 		out.println("<script src='js/jquery/jquery-3.2.1.min.js'></script>");
 		out.println("<script src='js/jquery/jspdf.min.js'></script>");
-		out.println("<script src='js/jquery/html2canvas'></script>");
-		out.println("<script src='js/jquery/jquery.qrcode.min.js'></script>");	
+		out.println("<script src='js/jquery/html2canvas.js'></script>");
 		out.println("<script src='js/pdf_print.js'></script>");
 		out.println("<script src='js/jquery/jquery.qrcode.js'></script>");
+		out.println("<script src='js/qr_code.js'></script>");
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<div id='content' style='background-color: white;'>");
@@ -121,7 +121,6 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<input id='text' type='hidden' value=" + hexcode + "/>");
 		out.println("<div id='print'>");
 		out.println("<div id='qrcode'></div>");
-		out.println("<script src='js/qr_code.js'></script>");
 		out.println("<h3>Codice: " + hexcode + "</h3>");
 		out.println("</div>");
 		out.println("</div>"); 

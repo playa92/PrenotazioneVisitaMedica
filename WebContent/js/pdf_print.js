@@ -23,7 +23,6 @@ $(document).ready(function(){
 		 doc.addImage(img,'JPEG',300,50);
 		 doc.save('qr_code.pdf');
 	 	}
-
 	 });
 		
 }) 
