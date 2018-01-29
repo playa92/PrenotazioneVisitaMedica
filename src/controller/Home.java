@@ -12,19 +12,19 @@ import javax.servlet.http.HttpSession;
 public class Home extends HttpServlet {
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = req.getSession();
+		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
 		
 		if(username == null) {
-			req.setAttribute("loggato", false);
+			request.setAttribute("loggato", false);
 		} else {
-			req.setAttribute("loggato", true);			
-			req.setAttribute("username", username);//JSTL
+			request.setAttribute("loggato", true);			
+			request.setAttribute("username", username);//JSTL
 		}
 		
-		RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
-		dispacher.forward(req, resp);
+		RequestDispatcher dispacher = request.getRequestDispatcher("home.jsp");
+		dispacher.forward(request, response);
 	}
 }

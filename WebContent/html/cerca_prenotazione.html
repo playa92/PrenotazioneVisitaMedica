@@ -31,9 +31,9 @@
 	  <div class="row">
 		<h2>Inserisci qui il tuo codice:</h2>
               <div class="input-group col-md-4">
-                 <input type="text" class="  search-query form-control" placeholder="Search" />
+                 <input id="input" type="text" name="hex_code" class="search-query form-control" placeholder="Search" />
                  <span class="input-group-btn">
-                     <button class="btn btn-danger" type="button">
+                     <button id="search" class="btn btn-danger" type="button" onclick="ciao()">
                          <span class=" glyphicon glyphicon-search"></span>
                      </button>
                  </span>
@@ -41,6 +41,35 @@
 	   </div>
    </div>
 
+	<div id="result">CIAO DAVIDE</div>
+
+	<script type="text/javascript">
+	alert("SCRIPT")
+	function ciao() {	
+		alert("ENTRO1")
+	$("#search").click(function(e) {
+			alert("ENTRO")
+		    e.preventDefault();
+			$ajax({
+				type:'GET',
+				url:'../ricercaPrenotazione',
+				data: $("#input").val(),
+				success: function(data) {
+// 					var a = new Array();
+// 					a = data.split(';');
+// 					if(a[0] == "true") {
+// 						$("#result").text(a[1]);
+// 					} else {
+// 						alert(a[1]);
+// // 						$("#result").text("")
+// 					}
+// 				}
+			
+				}
+			});
+		});
+	})
+	</script>
   
 </body>
 </html>

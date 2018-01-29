@@ -9,12 +9,12 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <servlet-name>CheckLogin</servlet-name>
-    <servlet-class>controller.CheckLogin</servlet-class>
+    <servlet-name>RicercaPrenotazione</servlet-name>
+    <servlet-class>controller.RicercaPrenotazione</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CheckLogin</servlet-name>
-    <url-pattern>/checkLogin</url-pattern>
+    <servlet-name>RicercaPrenotazione</servlet-name>
+    <url-pattern>/ricercaPrenotazione</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>FormPrenotazione</servlet-name>

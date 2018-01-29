@@ -56,11 +56,11 @@ public class Paziente {
 		this.invalidita = invalidita;
 	}
 
-	public CodiceQR getCodice() {
+	public CodiceQR getCodiceQR() {
 		return codice;
 	}
 
-	public void setCodice(CodiceQR codice) {
+	public void setCodiceQR(CodiceQR codice) {
 		this.codice = codice;
 	}
 

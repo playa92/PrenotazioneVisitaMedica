@@ -148,8 +148,6 @@ prefix="jstl" %>
  	<script src="js/jquery/jquery.cookie.js"></script>
  	<script src="js/effects.js"></script>
  	<script src="js/login.js"></script>	
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
     <script src="js/qrcode.js"></script>	
 			
 </body>

@@ -23,14 +23,14 @@ import persistence.dao.VisitaMedicaDao;
 public class FormPrenotazione extends HttpServlet {
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException ,IOException {
 		
-		String codiceFiscale = req.getParameter("codice fiscale");
-		String nome = req.getParameter("nome");
-		String cognome = req.getParameter("cognome");
-		String matricola = req.getParameter("matricola");
-		String invalidita = req.getParameter("invalidita");
-		String hexcode = req.getParameter("hexCode");
+		String codiceFiscale = request.getParameter("codice fiscale");
+		String nome = request.getParameter("nome");
+		String cognome = request.getParameter("cognome");
+		String matricola = request.getParameter("matricola");
+		String invalidita = request.getParameter("invalidita");
+		String hexcode = request.getParameter("hexCode");
 		
 		if(matricola.equals("")) {
 			matricola = "N/A";
@@ -45,7 +45,7 @@ public class FormPrenotazione extends HttpServlet {
 //		}
 //		System.out.println(jsonReceived.toString());
 		
-		PrintWriter out = resp.getWriter();
+		PrintWriter out = response.getWriter();
 		UniversitaDao universitaDao = DatabaseManager.getInstance().
 				getDaoFactory().getUniversitaDao();
 		VisitaMedicaDao visitaMedicaDao = DatabaseManager.getInstance().
@@ -76,7 +76,7 @@ public class FormPrenotazione extends HttpServlet {
 		else 
 			p.setMatricola(null);
 		p.setInvalidita(invalidita);
-		p.setCodice(c);
+		p.setCodiceQR(c);
 		
 		if(!matricola.equals("N/A")) { 
 			if(universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null
@@ -129,5 +129,8 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<script src='js/pdf_print.js'></script>");
 		out.println("</body>");
 		out.println("</html>");
+		
+		CodiceQR tmp = codiceQRDao.findByPrimaryKey(c.getCodice());
+		System.out.println("time: " + tmp.getScadenza());
 	}
 }

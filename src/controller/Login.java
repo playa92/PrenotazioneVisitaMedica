@@ -16,15 +16,15 @@ import persistence.dao.AmministratoreDao;
 public class Login extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = req.getSession();
+		HttpSession session = request.getSession();
 		//disconnessione
-		if((req.getParameter("logout") != null) && (req.getParameter("logout").equals("true"))) {
+		if((request.getParameter("logout") != null) && (request.getParameter("logout").equals("true"))) {
 			session.setAttribute("username", null);
-			req.setAttribute("loggato", false);		
-			RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
-			dispacher.forward(req, resp);
+			request.setAttribute("loggato", false);		
+			RequestDispatcher dispacher = request.getRequestDispatcher("home.jsp");
+			dispacher.forward(request, response);
 		}
 	}
 	

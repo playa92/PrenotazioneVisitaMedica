@@ -35,7 +35,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 			else
 				statement.setNull(4, Types.BIGINT);
 			statement.setString(5, paziente.getInvalidita());
-			statement.setString(6, paziente.getCodice().getCodice());
+			statement.setString(6, paziente.getCodiceQR().getCodice());
 			statement.executeUpdate();
 		
 		} catch(SQLException e) {
@@ -70,7 +70,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 				paziente.setCognome(result.getString("cognome"));
 				paziente.setMatricola(result.getLong("matricola"));
 				paziente.setInvalidita(result.getString("invalidità"));
-				paziente.setCodice((CodiceQR) result.getObject("id_codice"));
+				paziente.setCodiceQR((CodiceQR) result.getObject("id_codice"));
 			}
 			
 		} catch(SQLException e) {
@@ -127,14 +127,14 @@ public class PazienteDaoJDBC implements PazienteDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update paziente SET codice_fiscale = ?, nome = ?, cognome = ?, matricola = ?, invalidità = ?, id_codice = ? WHERE cf = ?";
+			String update = "update paziente SET codice_fiscale = ?, nome = ?, cognome = ?, matricola = ?, invalidità = ?, id_codice = ? WHERE codice_fiscale = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, paziente.getCodiceFiscale());
 			statement.setString(2, paziente.getNome());
 			statement.setString(3, paziente.getCognome());
 			statement.setLong(4, paziente.getMatricola());
 			statement.setString(5, paziente.getInvalidita());
-			statement.setString(6, paziente.getCodice().getCodice());
+			statement.setString(6, paziente.getCodiceQR().getCodice());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
