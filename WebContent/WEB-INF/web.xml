@@ -8,14 +8,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>RicercaPrenotazione</servlet-name>
-    <servlet-class>controller.RicercaPrenotazione</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RicercaPrenotazione</servlet-name>
-    <url-pattern>/ricercaPrenotazione</url-pattern>
-  </servlet-mapping>
+
   <servlet>
     <servlet-name>FormPrenotazione</servlet-name>
     <servlet-class>controller.FormPrenotazione</servlet-class>
@@ -41,4 +34,14 @@
     <url-pattern>/home</url-pattern>
     <url-pattern></url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>RicercaPrenotazione</servlet-name>
+    <servlet-class>controller.RicercaPrenotazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RicercaPrenotazione</servlet-name>
+    <url-pattern>/ricerca</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
