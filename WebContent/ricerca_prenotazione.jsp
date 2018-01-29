@@ -27,25 +27,26 @@ prefix="jstl" %>
 	</div>
 	
 	<div class="jumbotron text-center">
-		<h1> Cerca la tua prenotazione</h1> <br>
-		<h3> semplicemente inserendo nell'apposito campo sottostante il codice generato durante la fase di prenotazione: </h3>
+		<h1>Cerca la tua prenotazione</h1>
+		<h3>semplicemente inserendo nell'apposito campo sottostante il codice generato durante la fase di prenotazione:</h3>
 	</div>
 		
 	<div align="center" class="container">
 	  <div class="row">
 		<h2>Inserisci qui il tuo codice:</h2>
-              <div class="input-group col-md-4">
-                 <input id="input_h" type="text" class="search-query form-control" placeholder="Search" />
+            <div class="input-group col-md-4">
+                 <input id="input" type="text" class="search-query form-control" placeholder="Search"/>
                  <span class="input-group-btn">
-                     <button class="btn btn-danger" type="button" onclick="search()">
+                     <button class="btn btn-danger" type="button" onclick="search();">
                          <span class=" glyphicon glyphicon-search"></span>
                      </button>
                  </span>
-           </div>
-	   </div>
-   </div>
+           	</div>
+	  </div>
+   	</div>
 	
-	<label id="countdown">Tempo rimasto:</label>
-
+	<div align="center">
+   		<label id="countdown">Tempo rimasto: </label>
+	</div>
 </body>
 </html>

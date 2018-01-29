@@ -46,7 +46,7 @@ public class UtilDao {
 		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "create SEQUENCE id;"
-					+ "create table codiceQr(id VARCHAR(255) primary key, data_scadenza DATE, valido BOOLEAN);"
+					+ "create table codiceQr(id VARCHAR(255) primary key, orario_scadenza VARCHAR(255), valido BOOLEAN);"
 					+ "create table università(matricola BIGINT primary key, nome_paziente VARCHAR(255), cognome_paziente VARCHAR(255));"
 					+ "create table paziente(\"codice_fiscale\" VARCHAR(255) primary key, nome VARCHAR(255),"
 					+ "cognome VARCHAR(255), matricola BIGINT, invalidità VARCHAR(255), "

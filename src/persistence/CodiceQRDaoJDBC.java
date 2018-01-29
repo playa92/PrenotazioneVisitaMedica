@@ -1,7 +1,7 @@
 package persistence;
 
 import java.sql.Connection;
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,11 +23,11 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert INTO codiceQr(id, data_scadenza, valido) values (?,?,?)";
+			String insert = "insert INTO codiceQr(id, orario_scadenza, valido) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, codice.getCodice());
-			long seconds = codice.getScadenza().getTime();
-			statement.setDate(2, new Date(seconds));
+//			long seconds = codice.getScadenza().getTime();
+			statement.setString(2, codice.getScadenza());
 			statement.setBoolean(3, codice.getValido());
 			statement.executeUpdate();
 		
@@ -59,7 +59,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 				
 				codiceQr = new CodiceQR();
 				codiceQr.setCodice(result.getString("id"));
-				codiceQr.setScadenza(result.getDate("data_Scadenza"));				
+				codiceQr.setScadenza(result.getString("orario_Scadenza"));				
 				codiceQr.setValido(result.getBoolean("valido"));
 			}
 			
@@ -92,7 +92,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 				
 				c = new CodiceQR();
 				c.setCodice(result.getString("id"));
-				c.setScadenza(result.getDate("data_Scadenza"));				
+				c.setScadenza(result.getString("orario_Scadenza"));				
 				c.setValido(result.getBoolean("valido"));
 				codici.add(c);
 			}
@@ -115,11 +115,11 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update codiceQr SET id = ?, data_scadenza = ?, valido = ? WHERE id = ?";
+			String update = "update codiceQr SET id = ?, orario_scadenza = ?, valido = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, codice.getCodice());
-			long seconds = codice.getScadenza().getTime();
-			statement.setDate(2, new Date(seconds));
+//			long seconds = codice.getScadenza().getTime();
+			statement.setString(2, codice.getScadenza());
 			statement.setBoolean(3, codice.getValido());
 			statement.executeUpdate();
 			

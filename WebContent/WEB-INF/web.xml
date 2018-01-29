@@ -34,8 +34,7 @@
     <url-pattern>/home</url-pattern>
     <url-pattern></url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>RicercaPrenotazione</servlet-name>
     <servlet-class>controller.RicercaPrenotazione</servlet-class>
   </servlet>

@@ -1,6 +1,17 @@
 //HEX CODE GENERATING	
+	var codes = localStorage.getItem("array");
+
 	function generate() {
 		var rand = randHex(12);
+		
+		if(codes == null) {
+			codes = new Array();
+		}
+		while(codes.indexOf(rand) != -1) {
+			rand = randHex(12);
+		}
+		codes.push(rand);
+		localStorage.setItem("array", codes);
 		document.getElementById("hex").value = rand;
 	}
 

@@ -56,15 +56,15 @@ public class FormPrenotazione extends HttpServlet {
 				getDaoFactory().getCodiceQRDao();
 		
 		int t = visitaMedicaDao.getTotalVisits();
-//		System.out.println("total: " + t);
-		
+
 		//DATA SCADENZA = TEMPO CORRENTE + (totale visite * 15 (tempo per ogni visita)) 
 		Date date = new Date(Calendar.getInstance().getTimeInMillis() + (t * 15) * 60000);
-		System.out.println("date: " + date.toString());
+		String scadenza = date.toString().substring(12, 19); //prendo solo l'ora nel formato hh:mm:ss
 		
 		CodiceQR c = new CodiceQR();
 		c.setCodice(hexcode);
-		c.setScadenza(date);
+//		c.setScadenza(date);
+		c.setScadenza(scadenza);
 		c.setValido(true);
 		
 		Paziente p = new Paziente();

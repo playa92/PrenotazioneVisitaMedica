@@ -1,19 +1,17 @@
 package model;
 
-//import java.awt.Image;
-import java.util.Date;
+//import java.util.Date;
 
 public class CodiceQR {
 
 	private String codice;//esadecimale
 	private Boolean valido;
-	private Date scadenza;
-	
-//	private Image img; se vogliamo possiamo aggiungere l'immagine
-	
+//	private Date scadenza;
+	private String scadenza;
+
 	public CodiceQR() {}
 	
-	public CodiceQR(Date scadenza, String codice, Boolean valido) {
+	public CodiceQR(String codice, String scadenza, Boolean valido) {
 		
 		this.codice = codice;
 		this.valido = valido;
@@ -36,11 +34,11 @@ public class CodiceQR {
 		this.valido = valido;
 	}
 
-	public Date getScadenza() {
+	public String getScadenza() {
 		return scadenza;
 	}
 
-	public void setScadenza(Date scadenza) {
+	public void setScadenza(String scadenza) {
 		this.scadenza = scadenza;
 	}
 }
