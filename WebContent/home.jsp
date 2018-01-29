@@ -149,6 +149,6 @@ prefix="jstl" %>
  	<script src="js/effects.js"></script>
  	<script src="js/login.js"></script>	
     <script src="js/qrcode.js"></script>	
-			
+					
 </body>
 </html>

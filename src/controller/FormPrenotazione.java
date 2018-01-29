@@ -60,7 +60,7 @@ public class FormPrenotazione extends HttpServlet {
 		
 		//DATA SCADENZA = TEMPO CORRENTE + (totale visite * 15 (tempo per ogni visita)) 
 		Date date = new Date(Calendar.getInstance().getTimeInMillis() + (t * 15) * 60000);
-//		System.out.println("date: " + date.toString());
+		System.out.println("date: " + date.toString());
 		
 		CodiceQR c = new CodiceQR();
 		c.setCodice(hexcode);

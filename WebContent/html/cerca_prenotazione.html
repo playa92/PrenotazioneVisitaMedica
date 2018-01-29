@@ -5,9 +5,10 @@
 	<title>Cerca Prenotazione</title>
 	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/common.css">
-	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../js/effects.js"></script>
+	<script src="../js/search.js"></script>
 </head>
 
 <body>
@@ -29,47 +30,19 @@
 	
 	<div align="center" class="container">
 	  <div class="row">
-		<h2>Inserisci qui il tuo codice:</h2>
-              <div class="input-group col-md-4">
-                 <input id="input" type="text" name="hex_code" class="search-query form-control" placeholder="Search" />
-                 <span class="input-group-btn">
-                     <button id="search" class="btn btn-danger" type="button" onclick="ciao()">
-                         <span class=" glyphicon glyphicon-search"></span>
-                     </button>
-                 </span>
-           </div>
-	   </div>
-   </div>
+		<h2>Inserisci qui il tuo codice:</h2>   
+           <form id="form" class="input-group col-md-4" method="get" action="../ricercaPrenotazione">
+                 <input type="text" name="hex_code" class="search-query form-control" placeholder="Search" />
+                 	<span id="span" class="input-group-btn">
+                    	 <button id="search" class="btn btn-success" type="submit">
+                 			 <span class=" glyphicon glyphicon-search"></span>
+                 	 	</button>
+                 	</span>
+           </form>
+      </div>
+	</div>
 
-	<div id="result">CIAO DAVIDE</div>
+   	<div id="result">CIAO DAVIDE</div>
 
-	<script type="text/javascript">
-	alert("SCRIPT")
-	function ciao() {	
-		alert("ENTRO1")
-	$("#search").click(function(e) {
-			alert("ENTRO")
-		    e.preventDefault();
-			$ajax({
-				type:'GET',
-				url:'../ricercaPrenotazione',
-				data: $("#input").val(),
-				success: function(data) {
-// 					var a = new Array();
-// 					a = data.split(';');
-// 					if(a[0] == "true") {
-// 						$("#result").text(a[1]);
-// 					} else {
-// 						alert(a[1]);
-// // 						$("#result").text("")
-// 					}
-// 				}
-			
-				}
-			});
-		});
-	})
-	</script>
-  
 </body>
 </html>
