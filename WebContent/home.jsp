@@ -10,14 +10,6 @@ prefix="jstl" %>
 	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/loader.css">
  	<link rel="stylesheet" href="css/common.css"> 
- 	<script src="js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
- 	<script src="js/jquery/jquery.cookie.js"></script>
- 	<script src="js/effects.js"></script>
- 	<script src="js/login.js"></script>	
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-    <script src="js/qrcode.js"></script>	
 </head>
 
 <body>
@@ -149,6 +141,16 @@ prefix="jstl" %>
 	   <jstl:if test="${popUp}">
 	   		<script> $("#notice").modal('show'); </script>  
 	   </jstl:if>
+	   
+	   
+	<script src="js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+ 	<script src="js/jquery/jquery.cookie.js"></script>
+ 	<script src="js/effects.js"></script>
+ 	<script src="js/login.js"></script>	
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="js/qrcode.js"></script>	
 			
 </body>
 </html>
