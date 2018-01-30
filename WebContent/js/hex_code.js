@@ -7,12 +7,13 @@
 		if(codes == null) {
 			codes = new Array();
 		}
+		alert(codes.length)
 		while(codes.indexOf(rand) != -1) {
 			rand = randHex(12);
 		}
+		document.getElementById("hex").value = rand;
 		codes.push(rand);
 		localStorage.setItem("array", codes);
-		document.getElementById("hex").value = rand;
 	}
 
 	function randHex(len) {
