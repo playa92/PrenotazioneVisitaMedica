@@ -46,7 +46,7 @@ prefix="jstl" %>
 			      <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				     	<li><a id="list-element" href="ricerca_prenotazione.jsp">Cerca prenotazione</a></li>
+				     	<li><a id="list-element" href="cerca_prenotazione.jsp">Cerca prenotazione</a></li>
 				       	<li><a id="list-element" href="html/visualizza_prenotazioni.html">Visualizza statistiche prenotazioni</a></li>
 			        </ul>
 			     </li>  

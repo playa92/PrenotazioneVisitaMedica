@@ -47,48 +47,15 @@ prefix="jstl" %>
 	  </div>
    	</div>
 	
-	<div align="center">
+	<div>
+	    <label>Countdown:</label>	
    		<label id="countdown"></label>
 	</div>
 	
-	<button class="btn btn-success" onclick="init();">Clicca per sapere il tempo rimasto:</button>
-	<p id="countdown">null</p> 
-
 <!--46953D594425 -->
 <!--CDF17D61B3BF -->
 
-	<script>
-// 	TODO
-	var result = 0;
-	
-		function init(){
-			result = document.getElementById('countdown').innerHTML;
-			currentTime();
-		}
-		
-	// 	TEMPO CORRENTE
-		function currentTime() {
-			
-			var then =  result;
-			
-			var ms = moment(then,"HH:mm:ss").diff(moment(moment(),"HH:mm:ss"));
-			var d = moment.duration(ms);
-			var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
 
-		    document.getElementById('countdown').innerHTML = s;
-		    t = setTimeout(function () {
-		        currentTime()
-		    }, 1000);
-		}
-		
-		function checkTime(i) {
-		    if (i < 10) {
-		        i = "0" + i;
-		    }
-		    return i;
-		}
-				
-	</script>
 
 </body>
 </html>
