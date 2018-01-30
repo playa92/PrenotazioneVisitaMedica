@@ -22,6 +22,9 @@ import persistence.dao.VisitaMedicaDao;
 @SuppressWarnings("serial")
 public class FormPrenotazione extends HttpServlet {
 	
+	private final int CONVALIDA = 20;
+	private final int TEMPO_VISITA = 15;
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException ,IOException {
 		
@@ -58,14 +61,16 @@ public class FormPrenotazione extends HttpServlet {
 		int t = visitaMedicaDao.getTotalVisits();
 
 		//DATA SCADENZA = TEMPO CORRENTE + (totale visite * 15 (tempo per ogni visita)) 
-		Date date = new Date(Calendar.getInstance().getTimeInMillis() + (t * 15) * 60000);
+		Date date = new Date(Calendar.getInstance().getTimeInMillis() + (t * TEMPO_VISITA * 60000));
+		Date date2 = new Date(Calendar.getInstance().getTimeInMillis() + (t * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
 		int indexOf = date.toString().indexOf(":") - 2;
-		String scadenza = date.toString().substring(indexOf, indexOf + 8); //considero il tempo nel formato hh:mm:ss
+		String visita = date.toString().substring(indexOf, indexOf + 8); //considero il tempo nel formato hh:mm:ss
+		String convalida = date2.toString().substring(indexOf, indexOf + 8);
 		
 		CodiceQR c = new CodiceQR();
 		c.setCodice(hexcode);
 //		c.setScadenza(date);
-		c.setScadenza(scadenza);
+		c.setScadenza(visita + ";" + convalida); //TEMPORANEO
 		c.setValido(true);
 		
 		Paziente p = new Paziente();
@@ -105,9 +110,14 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<link rel='stylesheet' href='bootstrap-3.3.7-dist/css/bootstrap.min.css'>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<div id='content' style='background-color: white;'>");
+		out.println("<div style='position:relative;float:right;'>");
+		out.println("<button type='button'class='btn btn-default btn-md' onclick=\"window.location='home.jsp'\">");
+		out.println("<span class='glyphicon glyphicon-home'> Home</span>");
+		out.println("</button>");
+		out.println("</div>");
+		out.println("<div id='content style='background-color:white;'>");
 		out.println("<h1>Abbiamo registrato la tua prenotazione:</h1>");
-		out.println("<h3>Codice Fiscale: " + codiceFiscale + " </h3>");
+		out.println("<h3>Codice Fiscale: " + codiceFiscale + "</h3>");
 		out.println("<h3>Nome: " + nome + "</h3>");
 		out.println("<h3>Cognome: " + cognome + "</h3>");
 		out.println("<h3>Matricola: " + matricola + "</h3>");

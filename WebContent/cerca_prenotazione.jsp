@@ -47,15 +47,13 @@ prefix="jstl" %>
 	  </div>
    	</div>
 	
+	
 	<div>
+		<label>Orario visita:</label>	
+   		<label id="orario"></label><br>
 	    <label>Countdown:</label>	
    		<label id="countdown"></label>
 	</div>
 	
-<!--46953D594425 -->
-<!--CDF17D61B3BF -->
-
-
-
 </body>
 </html>

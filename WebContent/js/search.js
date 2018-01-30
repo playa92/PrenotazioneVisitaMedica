@@ -4,16 +4,17 @@ function search() {
           url:"ricerca",  
           data:{hexcode : $("#input").val()},
 		  success:function(data) {
-
 			var a = data.split(";");
 			
 			if(a[0] == "true") {
-				$("#countdown").text("Tempo rimasto: " + a[1]);
-				$("#countdown").css({color:"black"});
-				init();
+				$("#orario").text(a[1]);
+//				$("#countdown").text(a[2]);
+				orario_visita = a[1];
+				orario_inizio_countdown = a[2];
+				start();
 			} else {
-				$("#countdown").text(a[1]);
-				$("#countdown").css({color:"red"});
+				$("#orario").text(a[1]);
+				$("#orario").css({color:"red"});
 			}
 		  },
 		  error:function(data){
@@ -22,27 +23,33 @@ function search() {
 	  });
 }
 
+//questi dati devono essere inizializzati con ajax
+	var orario_visita = null;
+	var orario_inizio_countdown = null;
 
-var result = 0;
-
-	function init(){
-		result = document.getElementById('countdown').innerHTML;
-		currentTime();
+	function start(){		
+		
+		var orario_corrente = moment(moment()).format("hh:mm:ss");
+		if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
+			countDown();
+			alert("si")
+		}else{
+			alert("no")
+			
+			//TODO se timer attivo disattivare
+		}
 	}
 	
-// 	TEMPO CORRENTE
-	function currentTime() {
+	function countDown() {
 		
-		var then =  result;
-		
-		var ms = moment(then,"HH:mm:ss").diff(moment(moment(),"HH:mm:ss"));
+		var ms = moment(orario_visita,"HH:mm:ss").diff(moment(moment(),"HH:mm:ss"));
 		var d = moment.duration(ms);
-		var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+		var s = moment.utc(ms).format("mm:ss");
 
 	    document.getElementById('countdown').innerHTML = s;
 	    t = setTimeout(function () {
-	        currentTime()
-	    }, 1000);
+	        countDown()
+	    }, 500);
 	}
 	
 	function checkTime(i) {

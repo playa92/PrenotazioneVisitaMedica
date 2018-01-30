@@ -7,7 +7,7 @@
 		if(codes == null) {
 			codes = new Array();
 		}
-		alert(codes.length)
+		
 		while(codes.indexOf(rand) != -1) {
 			rand = randHex(12);
 		}
