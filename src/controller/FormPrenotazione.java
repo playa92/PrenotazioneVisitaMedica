@@ -59,7 +59,8 @@ public class FormPrenotazione extends HttpServlet {
 
 		//DATA SCADENZA = TEMPO CORRENTE + (totale visite * 15 (tempo per ogni visita)) 
 		Date date = new Date(Calendar.getInstance().getTimeInMillis() + (t * 15) * 60000);
-		String scadenza = date.toString().substring(12, 19); //prendo solo l'ora nel formato hh:mm:ss
+		int indexOf = date.toString().indexOf(":") - 2;
+		String scadenza = date.toString().substring(indexOf, indexOf + 8); //considero il tempo nel formato hh:mm:ss
 		
 		CodiceQR c = new CodiceQR();
 		c.setCodice(hexcode);
@@ -129,8 +130,5 @@ public class FormPrenotazione extends HttpServlet {
 		out.println("<script src='js/pdf_print.js'></script>");
 		out.println("</body>");
 		out.println("</html>");
-		
-		CodiceQR tmp = codiceQRDao.findByPrimaryKey(c.getCodice());
-		System.out.println("time: " + tmp.getScadenza());
 	}
 }

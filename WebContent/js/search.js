@@ -4,18 +4,19 @@ function search() {
           url:"ricerca",  
           data:{hexcode : $("#input").val()},
 		  success:function(data) {
-// 			alert("success");
+
 			var a = data.split(";");
 			
 			if(a[0] == "true") {
-				$("#countdown").text(a[1]);
+				$("#countdown").text("Tempo rimasto: " + a[1]);
+				$("#countdown").css({color:"black"});
 			} else {
-//				$("#countdown").css({"style":"color:red"});
 				$("#countdown").text(a[1]);
+				$("#countdown").css({color:"red"});
 			}
 		  },
 		  error:function(data){
-// 			alert("error");
+			  alert("Errore");
 		  }
 	  });
 }

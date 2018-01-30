@@ -46,7 +46,7 @@ prefix="jstl" %>
    	</div>
 	
 	<div align="center">
-   		<label id="countdown">Tempo rimasto: </label>
+   		<label id="countdown"></label>
 	</div>
 </body>
 </html>
