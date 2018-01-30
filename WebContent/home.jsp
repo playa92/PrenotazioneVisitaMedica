@@ -38,8 +38,8 @@ prefix="jstl" %>
 			     <li class="dropdown nav-item ">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Assistenza <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				       	<li><a id="list-element" href="#">1</a></li>
-				       	<li><a id="list-element" href="#">2</a></li>
+				       	<li><a id="list-element" href="html/assistenza.html">Contattaci</a></li>
+				       	<li><a id="list-element" href="html/giovanniCosentino.html">G-I-O-V-A-N-N-I</a></li>
 				       	<li><a id="list-element" href="#">3</a></li>
 			        </ul>
 			     </li>

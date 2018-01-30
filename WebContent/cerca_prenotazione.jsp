@@ -48,7 +48,8 @@ prefix="jstl" %>
    	</div>
 	
 	
-	<div>
+	<div style="width: 300px;height: 100px;border: 1px solid blue;  padding: 25px 25px; background-color: 
+		lightblue; margin: 25px auto 75px auto;">
 		<label>Orario visita:</label>	
    		<label id="orario"></label><br>
 	    <label>Countdown:</label>	

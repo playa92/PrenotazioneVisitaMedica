@@ -196,6 +196,15 @@ textarea:required:focus {
 /* //////////////// Prenotazione ///////////////////// */
 /* /////////////////////////////////////////////////// */
 
+#form{
+	width: 600px;
+	height: 450px;
+/* 	border: 1px solid blue;   */
+	padding: 25px 25px; 
+	background-color: lightblue; 
+	margin: 25px auto 75px auto;
+}
+
 footer {
    position: fixed;
    left: 0;

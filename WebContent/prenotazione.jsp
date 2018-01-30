@@ -11,10 +11,17 @@
 </head>
 
 <body>
-
+<div class="jumbotron text-center">
 	<h2>Compila il seguente form per prenotare una visita medica</h2>
+</div>
 
-	<div class="col-lg-3">
+	<div style="position:relative;float:left;">
+		<button type='button'class='btn btn-default btn-md' onclick="window.location='home.jsp'">
+		<span class='glyphicon glyphicon-home'> Home</span>
+		</button>
+	</div><br>
+
+	<div id="formDiv">
 		<form id="form" method="post" action="formPrenotazione">
 				<div class="form-group"><label for="codice fiscale">Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codice fiscale" type="text" class="form-control"  placeholder="Enter SSN" required/></div>
 				<div class="form-group"><label for="nome">Nome *</label><input id="s1" onblur="correct(id);" name="nome" type="text" class="form-control"  placeholder="Enter Name" required/></div> 
@@ -29,7 +36,7 @@
 					</select>		
 				</div>
 				<div class="form-group"><input id="hex" name="hexCode" type="hidden" class="form-control"></div>	
-				<div class="form-group">
+				<div id="divButton" class="form-group">
 					<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick="generate();"/>
 					<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
 				</div>

@@ -29,13 +29,15 @@ function search() {
 
 	function start(){		
 		
-		var orario_corrente = moment(moment()).format("hh:mm:ss");
+		var orario_corrente = moment(moment()).format("HH:mm:ss");
+		
 		if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
 			countDown();
 			alert("si")
 		}else{
 			alert("no")
-			
+			 document.getElementById('countdown').innerHTML = "non disponibile"
+		     $("#countdown").css({color:"red"});
 			//TODO se timer attivo disattivare
 		}
 	}
