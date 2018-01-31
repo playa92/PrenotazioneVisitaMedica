@@ -9,125 +9,64 @@
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../js/report.js"></script> 	
 
-<style type="text/css">
-	
-	.form2 {
-		width: 400px;
-		height: 450px;
-/* 		padding: 25px 25px; */
-		padding-left: 25px;
-		padding-right: 25px;
-		padding-top: 12px;
-		background-color: #bcc4f2;
-		margin: 10px auto 10px auto;
-/* 		margin-right:auto; */
-	}
-	
-  	.form2 label {  
-  	    display: block;  
-  	    margin-bottom: 8px;
-  	    color: #092147;
-  	} 
-	
-	.form2 input[type="text"], 
- 	.form2 input[type="date"], 
- 	.form2 input[type="datetime"], 
- 	.form2 input[type="email"], 
- 	.form2 input[type="number"], 
- 	.form2 input[type="search"], 
- 	.form2 input[type="time"], 
- 	.form2 input[type="url"], 
- 	.form2 textarea, 
- 	.form2 select { 
- 	    
- 	    border-radius: 4px; 
- 		border: 1px solid #808080; 
- 	    font-size: 16px; 
- 	    margin: 0; 
- 	    outline: 0; 
- 	    padding: 4px;
- 	    width: 100%; 
- 	    box-sizing: border-box; 
-/*  	    -webkit-box-sizing: border-box;  */
-/*  	    -moz-box-sizing: border-box;  */
- 	    background-color: #ffffff;  
- 	    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
- 	    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; 
- 	    margin-bottom: 30px;    
-	}
-	
- 	.form2 input[type="text"]:focus, 
- 	.form2 textarea:focus,
- 	.form2 select:focus
- 	{ 
- 	    background: #ffffff;
- 	} 
-	
- 	.form2 select { 
- 	    -webkit-appearance: menulist-button; 
- 	    height:35px; 
- 	} 
-	
- 	.form2 input[type="submit"] 
- 	{ 
- 	    position: relative; 
- 	    display: block;
- 	    padding: 10px 39px 10px 39px;
- 	    color: #ffffff; 
- 	    margin: 0 auto; 
- 	    background: #1abc9c; 
- 	    font-size: 18px; 
- 	    text-align: center; 
- 	    font-style: normal; 
- 	    width: 100%; 
- 	    border: 1px solid #16a085; 
-	} 
-	
- 	.form2 input[type="submit"]:hover, 
- 	.form2 input[type="button"]:hover 
- 	{ 
- 	    background: #092147; 
- 	} 
-	
- 	.form2 input[type="submit"] {
- 		background-color: #092147;
- 		border: 1px solid #092147; 
- 	} 
-</style>
 </head>
 
 <body>
-	<!-- Loader -->
-	<div id="preloader" class="container">
-		<div class="row">
-			<div class="load-overlay">
-				<div class="loader">
-				  <i></i><i></i><i></i><i></i><i></i>
-				</div>
-			</div>
-		</div>
-	</div>
+	
+	<!-- Navbar -->
+	<nav role="navigation" role="navigation" class="navbar">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li class="dropdown nav-item">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+			     </li>
+	   		</ul>
+		</div>	
+	</nav>
 	
 	<div class="jumbotron text-center">
-		<h1>Contattaci</h1><br>
-	</div>
-
-	<div class="form2">
-		<form>
-			<input id="input" type="text" name="name" placeholder="Name" required/>
-			<input type="text" name="surname" placeholder="Surname" required/>
-			<input type="text" name="email" placeholder="Email" >
-			<textarea id="textarea" name="motivation"></textarea>
-			<label>Motivazione: </label>
-			<select id="select">
-		  		<option>Assenza Connessione</option>
-		  		<option>Errore prenotazione</option>
-		  		<option>Prenotazione non trovata</option>
-		  		<option>Altro</option>
-			</select>		
-			<input type="submit" value="Invia" onclick="send();"/>
-		</form>
+		<h1>Benvenuto all'Assistenza</h1><br>
+		<h4>(Qualche frase strategica =) )</h4><br>
 	</div>
 	
+	<a class="btn btn-info" data-toggle="modal" data-target="#contattaci" href="#">Contattaci</a>       		 
+				       		
+     <div class="modal fade" id="contattaci" role="dialog">
+	    <div class="modal-dialog modal-md">
+	      <div class="modal-content">
+	          <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+	            <h3 class="modal-title" style="text-align:center">Contattaci</h3>
+	          </div>
+	   		  <div class="modal-body" style="text-align:center; background-color:#bcc4f2">
+	   		 		
+				 <div class="form2">
+					<form>
+						<input id="input" type="text" name="name" placeholder="Name" required/>
+						<input type="text" name="surname" placeholder="Surname" required/>
+						<input type="text" name="email" placeholder="Email" >
+						<textarea id="textarea" name="motivation"></textarea>
+						<label>Motivazione: </label>
+						<select id="select">
+					  		<option>Assenza Connessione</option>
+					  		<option>Errore prenotazione</option>
+					  		<option>Prenotazione non trovata</option>
+					  		<option>Altro</option>
+						</select>
+			      		<input type="submit" value="Invia" onclick="send();"/>
+								
+					</form>
+				 </div>
+				 
+		      </div>
+		       <div class="modal-footer">
+		       		<input type="submit" value="Invia" onclick="send();"/>
+		    		<button type="button" style="background-color: #092147; color:white" class="btn btn-defualt" data-dismiss="modal" onclick="window.location='#'">No</button>
+	    	  </div>
+	     </div>
+	   </div>
+	</div>
+
+
 </body>
 </html>

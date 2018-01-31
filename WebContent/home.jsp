@@ -127,7 +127,7 @@ prefix="jstl" %>
 		
 	<div class="title" align="center">
 	  <p id="primary">Benvenuto nel Sito di Prenotazione</p>
-	  <p id="secondary">(Scriviamo qualcosa'altro)</p>
+	  <p id="secondary">(Scriviamo qualcos'altro)</p>
 	</div>
 	
 	<!-- BOOTSTRAP CAROUSEL -->
@@ -176,7 +176,7 @@ prefix="jstl" %>
 	 	</div>
 	</div>
 	
-<!-- TEMPORANEO -->
+		<!-- Dialog -->
 		<div id="dialog">
       	  <div class="modal fade" id="notice" role="dialog">
 		    <div class="modal-dialog modal-md">
