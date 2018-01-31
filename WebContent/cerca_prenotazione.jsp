@@ -14,6 +14,7 @@ prefix="jstl" %>
 	<script src="js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="js/effects.js"></script>
+	<script src="js/scroll_up.js"> </script>
 	<style>
 	.scrollup {
 	    width: 80px;
@@ -91,8 +92,6 @@ prefix="jstl" %>
 	<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
 	
-<!--  	46429BA1F391 -->
-
 	<script>
 	$('#cmd').click(function() {
 		

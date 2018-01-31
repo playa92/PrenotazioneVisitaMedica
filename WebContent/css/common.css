@@ -1,5 +1,5 @@
 /* /////////////////////////////////////////////////// */
-/* /////////////////////// HOME ////////////////////// */
+/* ///////////////////// GENERIC ///////////////////// */
 /* /////////////////////////////////////////////////// */
 
 body {
@@ -7,10 +7,12 @@ body {
   padding: 0;
   font-family: Sans-serif;    
 }
+
 .jumbotron {
 	background-color: #bcc4f2;
 	color: #092147;
 }
+
 .title{
 	background-color: #bcc4f2;
 	color: #092147;
@@ -20,9 +22,25 @@ body {
 #primary{
 	font-size:70px;
 }
+
 #secondary{
 	font-size:20px;
 }
+
+.scrollup {
+    width: 80px;
+    height: 80px;
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+    display: none;
+    text-indent: -9999px;
+    background: url('../images/arrow-up.png') no-repeat;
+}
+
+/* /////////////////////////////////////////////////// */
+/* /////////////////////// HOME ////////////////////// */
+/* /////////////////////////////////////////////////// */
 
 /* CAROUSEL */
 #myCarousel{

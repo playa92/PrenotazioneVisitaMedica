@@ -91,7 +91,7 @@ prefix="jstl" %>
 					<!-- logout -->
 					<li id="dialog" class="dropdown nav-item">
 			       			<a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Disconnetti<b class="caret"></b></a>       		 
-				       		<div style="color:yellow; margin:0px 40px"><jstl:out value="${username}"/> </div>
+				       		<div style="color:yellow; margin:-34px -300px; position:absolute">Benvenuto <jstl:out value="${username}"/>!</div>
 				       		
 				       		  <div class="modal fade" id="myModal" role="dialog">
 							    <div class="modal-dialog modal-md">

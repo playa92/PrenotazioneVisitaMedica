@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,20 +7,35 @@
 	<title>Visualizza prenotazioni</title>
 	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/common.css">
-	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../js/effects.js"></script>
+	<script src="../js/scroll_up.js"> </script>
 </head>
 
-<body>
+<body style="height:1150px">
+	
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 	   		</ul>
+	   		<ul id="right-fields" class="nav navbar-nav navbar-right"> 
+			   	<!-- Ricerca -->
+			  	<li id="navbar-text" >
+		        	<form id="searchForm" class="navbar-form" role="search" action="javascript:search();">
+				    <div class="input-group">
+			            <input id="searchItem" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+			            <div class="input-group-btn">
+			                <button class="btn btn-default" type="submit" onclick="document.getElementById('searchForm').submit(); return false;"><i class="glyphicon glyphicon-search"></i></button>
+			            </div>
+			        </div>
+				    </form>
+			 	</li>
+			</ul> 
 		</div>	
 	</nav>
 	
@@ -54,8 +71,109 @@
       	<td>the Bird</td>
       	<td>12:23:00</td>
     </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+     <tr>
+      	<th scope="row">3</th>
+      	<td>Larry</td>
+      	<td>the Bird</td>
+      	<td>12:23:00</td>
+    </tr>
+    
   </tbody>
 </table>
+
+	<!-- SCROLLING -->
+	<a href="#" class="scrollup">Scroll</a>
+	
 
 </body>
 </html>
