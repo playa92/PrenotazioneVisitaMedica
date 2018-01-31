@@ -8,7 +8,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-
   <servlet>
     <servlet-name>FormPrenotazione</servlet-name>
     <servlet-class>controller.FormPrenotazione</servlet-class>
@@ -40,7 +39,14 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>RicercaPrenotazione</servlet-name>
-    <url-pattern>/ricerca</url-pattern>
+    <url-pattern>/ricercaPrenotazione</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>Segnalazione</servlet-name>
+    <servlet-class>controller.Segnalazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Segnalazione</servlet-name>
+    <url-pattern>/segnalazione</url-pattern>
+  </servlet-mapping>
 </web-app>

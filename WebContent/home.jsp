@@ -10,6 +10,12 @@ prefix="jstl" %>
 	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/loader.css">
  	<link rel="stylesheet" href="css/common.css"> 
+ 	<script src="js/jquery/jquery-3.2.1.min.js"></script>
+ 	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+ 	<script src="js/jquery/jquery.cookie.js"></script>
+ 	<script src="js/effects.js"></script>
+ 	<script src="js/login.js"></script>	
+    <script src="js/qrcode.js"></script>	
 </head>
 
 <body>
@@ -36,20 +42,22 @@ prefix="jstl" %>
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="prenotazione.jsp">Prenotazione</a>
 			     </li>
 			     <li class="dropdown nav-item ">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Assistenza <b class="caret"></b></a>
-			        <ul class="dropdown-menu">
-				       	<li><a id="list-element" href="html/assistenza.html">Contattaci</a></li>
-				       	<li><a id="list-element" href="html/giovanniCosentino.html">G-I-O-V-A-N-N-I</a></li>
-				       	<li><a id="list-element" href="#">3</a></li>
-			        </ul>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/assistenza.html">Assistenza</a>
 			     </li>
-			      <li class="dropdown nav-item">
+			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
 				     	<li><a id="list-element" href="cerca_prenotazione.jsp">Cerca prenotazione</a></li>
 				       	<li><a id="list-element" href="html/visualizza_prenotazioni.html">Visualizza statistiche prenotazioni</a></li>
 			        </ul>
-			     </li>  
+			     </li>
+			     <jstl:if test="${loggato}">
+			     	<li class="dropdown nav-item">
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="html/segnalazioni.html">Segnalazioni 
+							<span class="badge badge-notify" style="background:orange">1</span>
+						</a>
+			     	</li>
+			     </jstl:if>   
 	   		</ul>
 		    <ul id="right-fields" class="nav navbar-nav navbar-right">
 				<!--  Login -->	
@@ -165,8 +173,8 @@ prefix="jstl" %>
 	      <span class="glyphicon glyphicon-chevron-right"></span>
 	      <span class="sr-only">Next</span>
 	    </a>
-	 </div>
-</div>
+	 	</div>
+	</div>
 	
 <!-- TEMPORANEO -->
 		<div id="dialog">
@@ -187,14 +195,6 @@ prefix="jstl" %>
 	   <jstl:if test="${popUp}">
 	   		<script> $("#notice").modal('show'); </script>  
 	   </jstl:if>
-	   
-	   
-	<script src="js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
- 	<script src="js/jquery/jquery.cookie.js"></script>
- 	<script src="js/effects.js"></script>
- 	<script src="js/login.js"></script>	
-    <script src="js/qrcode.js"></script>	
 					
 </body>
 </html>

@@ -8,8 +8,8 @@ body {
   font-family: Sans-serif;    
 }
 
-.title {
-	background-color: #e6ccff;
+.title, .jumbotron {
+	background-color: #bcc4f2;
 	color: #092147;
 	height:150px;
 }
@@ -248,7 +248,7 @@ textarea:required:focus {
 	height: 450px;
 /* 	border: 1px solid blue;   */
 	padding: 25px 25px; 
-	background-color: lightblue; 
+	background-color: #bcc4f2; 
 	margin: 25px auto 75px auto;
 }
 

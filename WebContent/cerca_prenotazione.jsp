@@ -14,19 +14,16 @@ prefix="jstl" %>
 	<script src="js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="js/effects.js"></script>
-	
 	<style>
 	.scrollup {
-    width: 80px;
-    height: 80px;
-    position: fixed;
-    bottom: 50px;
-    right: 100px;
-    display: none;
-    text-indent: -9999px;
-    background: url('images/arrow-up.png') no-repeat;
-
-
+	    width: 80px;
+	    height: 80px;
+	    position: fixed;
+	    bottom: 50px;
+	    right: 100px;
+	    display: none;
+	    text-indent: -9999px;
+	    background: url('images/arrow-up.png') no-repeat;
 	}
 	</style>
 </head>
@@ -44,12 +41,10 @@ prefix="jstl" %>
 		</div>	
 	</nav>
 
-		<div class="jumbotron text-center">
-	  		<h1>Cerca la tua prenotazione</h1>
-		</div>
-		
-
-		
+	<div class="jumbotron text-center">
+  		<h1>Cerca la tua prenotazione</h1>
+	</div>
+	
 	<div align="center" class="container">
 	  <div class="row">
 		<h2>Inserisci qui il tuo codice:</h2>
@@ -63,7 +58,6 @@ prefix="jstl" %>
            </div>
 	  </div>
    	</div>
-		
 	
 	<div align="center" id="info" >
 	     <div id="content">	
@@ -99,7 +93,7 @@ prefix="jstl" %>
 	
 <!--  	46429BA1F391 -->
 
-<script>
+	<script>
 	$('#cmd').click(function() {
 		
 		  var options = {
@@ -109,7 +103,7 @@ prefix="jstl" %>
 		  pdf.save('riepilogo.pdf'); 
 		  });
 	});
-</script>
+	</script>
 
 	<script src="js/search.js"></script>
 	<script src="https://momentjs.com/downloads/moment.min.js"></script>

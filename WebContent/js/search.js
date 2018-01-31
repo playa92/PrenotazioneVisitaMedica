@@ -42,7 +42,7 @@ function search() {
 		
 	  $.ajax({
 		  type:"post",
-          url:"ricerca",  
+          url:"ricercaPrenotazione",  
           data:{hexcode : $("#input").val()},
 		  success:function(data) {
 			var a = data.split(";");
