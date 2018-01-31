@@ -17,7 +17,7 @@ $(document).ready(function(){
 		
 	// STAMPA RIEPILOGO
 	$('#cmd').click(function() {
-		alert("S")
+		alert("PRINT");
 		  var options = {
 		  };
 		  var pdf = new jsPDF('l', 'pt', 'a4');		  
@@ -27,4 +27,3 @@ $(document).ready(function(){
 	});
 			
 }); 
-

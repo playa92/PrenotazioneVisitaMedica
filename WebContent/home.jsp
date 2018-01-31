@@ -121,7 +121,9 @@ prefix="jstl" %>
 			        </div>
 				    </form>
 			 	</li>
+
 			</ul> 
+		
 		</div>	
 	</nav>
 		

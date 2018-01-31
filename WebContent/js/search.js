@@ -2,8 +2,8 @@
 $(document).ready(function () {
 	    
 		$("#search").click(function(){
-			
 			if($("#input").val() == ""){
+				 $("#error").show();
 				$("#error").text("Codice non valido");
 			}
 			else {	
@@ -14,12 +14,11 @@ $(document).ready(function () {
 			}
 		})
 		
-// 		$("#input").click(function(){
-// 			if($("#input")is(":empty"))){
-// 				$("#error").hide();
-// 			}
-// 		})
-
+		$("#input").focus(function(){
+		    $("#error").hide();
+		});
+		
+		
 	});
 
 
@@ -42,6 +41,7 @@ function search() {
 					
 			} else {
 				$("#error").text(a[1]);
+				$("#error").show();
 				$("#fountainG").hide();
 //				alert("false")
 			}
@@ -90,7 +90,6 @@ function search() {
 	    return i;
 	}
 	
-	//viene chiamato da search.js
 	function scrollingAndShow(){
 		
 		setTimeout(function(){

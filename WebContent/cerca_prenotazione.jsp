@@ -12,20 +12,25 @@ prefix="jstl" %>
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/loading.css">
 	<script src="js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="js/jquery/jquery.qrcode.js"></script>
+	<script src="js/jquery/jspdf.min.js"></script>
 	<script src="js/effects.js"></script>
 	<script src="js/scroll_up.js"> </script>
+	<script src="js/search.js"></script>
+	<script src="https://momentjs.com/downloads/moment.min.js"></script>
+	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+	
 	<style>
-	.scrollup {
-	    width: 80px;
-	    height: 80px;
-	    position: fixed;
-	    bottom: 50px;
-	    right: 100px;
-	    display: none;
-	    text-indent: -9999px;
-	    background: url('images/arrow-up.png') no-repeat;
-	}
+		.scrollup {
+		    width: 80px;
+		    height: 80px;
+		    position: fixed;
+		    bottom: 50px;
+		    right: 100px;
+		    display: none;
+		    text-indent: -9999px;
+		    background: url('images/arrow-up.png') no-repeat;
+		}
 	</style>
 </head>
 
@@ -45,7 +50,7 @@ prefix="jstl" %>
 	<div class="jumbotron text-center">
   		<h1>Cerca la tua prenotazione</h1>
 	</div>
-	
+		
 	<div align="center" class="container">
 	  <div class="row">
 		<h2>Inserisci qui il tuo codice:</h2>
@@ -61,18 +66,19 @@ prefix="jstl" %>
    	</div>
 	
 	<div align="center" id="info" >
-	     <div id="content">	
+	     <div id="content" style="background-color:lightblue;">	
 			<h1>Riepilogo Prenotazione:</h1><hr>
+			<h3>Codice: </h3>
+			<h4>46429BA1F391</h4><br>
+			<div id="qrcode"></div>
 			<h3>Orario visita:</h3><h4 id="orario"></h4>
+		  </div>
 		    <h3>Tempo rimasto:</h3><h4 id="countdown"></h4>	
 			<input id="text" type="hidden" value="46429BA1F391">
-			<h3>Codice: </h3><h4>46429BA1F391</h4>
-			<h3>Codice QR: </h3>
-			<div id="qrcode"></div>
-	     </div>
 	     <h4 align="center" style="color:#092147; margin-top:60px">stampa promemoria
 			<button id="cmd" type="button" class="btn btn-default btn-sm">
-			<span class="glyphicon glyphicon-print"></span> PDF</button></h4>
+			<span class="glyphicon glyphicon-print"></span> PDF</button>
+		 </h4>
 	</div>
 		
 	<div id="error" align="center" style="color:red; font-size: 20px; padding-top:20px"></div>
@@ -93,24 +99,22 @@ prefix="jstl" %>
 	<a href="#" class="scrollup">Scroll</a>
 	
 	<script>
-	$('#cmd').click(function() {
-		
+	
+	$(document).on('click','#cmd', function() {
+		alert("PRINT")
 		  var options = {
 		  };
 		  var pdf = new jsPDF('l', 'pt', 'a4');		  
 		  pdf.addHTML($("#content"), 15, 15, options, function() {
-		  pdf.save('riepilogo.pdf'); 
+		  pdf.save('promemoria.pdf'); 
 		  });
 	});
+	
+	
 	</script>
-
-	<script src="js/search.js"></script>
-	<script src="https://momentjs.com/downloads/moment.min.js"></script>
-	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
-	<script src="js/jquery/jquery.qrcode.js"></script>
+	
 	<script src="js/qr_code.js"></script>
-	<script src="js/jquery/jspdf.min.js"></script>
-	<script src="js/jquery/html2canvas.js"></script>
-
+	
+	
 </body>
 </html>
