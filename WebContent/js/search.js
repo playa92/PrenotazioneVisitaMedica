@@ -1,4 +1,45 @@
+
+$(document).ready(function () {
+	    
+		$("#search").click(function(){
+			
+			if($("#input").val() == ""){
+				$("#error").text("Codice non valido");
+			}
+			else {	
+				$("#fountainG").show();
+				setTimeout(function(){
+				   search(); 
+				}, 2000);
+			}
+		})
+		
+		 $(window).scroll(function () {
+	        if ($(this).scrollTop() > 200) {
+	            $('.scrollup').fadeIn();
+	        } else {
+	            $('.scrollup').fadeOut();
+	        }
+	    });
+
+	    $('.scrollup').click(function () {
+	        $("html, body").animate({
+	            scrollTop: 0
+	        }, 600);
+	        return false;
+	    });
+		
+// 		$("#input").click(function(){
+// 			if($("#input")is(":empty"))){
+// 				$("#error").hide();
+// 			}
+// 		})
+
+	});
+
+
 function search() {
+		
 	  $.ajax({
 		  type:"post",
           url:"ricerca",  
@@ -8,13 +49,16 @@ function search() {
 			
 			if(a[0] == "true") {
 				$("#orario").text(a[1]);
-//				$("#countdown").text(a[2]);
 				orario_visita = a[1];
 				orario_inizio_countdown = a[2];
 				start();
+				scrollingAndShow();
+//				alert("true")
+					
 			} else {
-				$("#orario").text(a[1]);
-				$("#orario").css({color:"red"});
+				$("#error").text(a[1]);
+				$("#fountainG").hide();
+//				alert("false")
 			}
 		  },
 		  error:function(data){
@@ -33,9 +77,9 @@ function search() {
 		
 		if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
 			countDown();
-			alert("si")
+//			alert("si")
 		}else{
-			alert("no")
+//			alert("no")
 			 document.getElementById('countdown').innerHTML = "non disponibile"
 		     $("#countdown").css({color:"red"});
 			//TODO se timer attivo disattivare
@@ -51,7 +95,7 @@ function search() {
 	    document.getElementById('countdown').innerHTML = s;
 	    t = setTimeout(function () {
 	        countDown()
-	    }, 500);
+	    }, 1000);
 	}
 	
 	function checkTime(i) {
@@ -59,4 +103,18 @@ function search() {
 	        i = "0" + i;
 	    }
 	    return i;
+	}
+	
+	//viene chiamato da search.js
+	function scrollingAndShow(){
+		
+		setTimeout(function(){
+		    $("html, body").animate({ scrollTop: 800}, 1200);
+			  $("#fountainG").remove();		
+			  
+			  setTimeout(function(){  
+				  $("#info").show();
+			  }, 400);
+			 
+			}, 2000);
 	}

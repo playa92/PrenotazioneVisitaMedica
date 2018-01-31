@@ -21,10 +21,12 @@ public class RicercaPrenotazione extends HttpServlet {
 		CodiceQR codice = codiceQRDao.findByPrimaryKey(hexcode);
 		
 		if(codice != null) {	
-			response.getWriter().write("true;" + codice.getScadenza());
+//			response.getWriter().write("true;" + codice.getScadenza());
+			response.getWriter().write("true;" + "12:00:00;07:20:00");
+
 			
 		} else {
-			response.getWriter().write("false;Codice non valido o non trovato");
+			response.getWriter().write("false;Codice non trovato");
 		}
 	}
 

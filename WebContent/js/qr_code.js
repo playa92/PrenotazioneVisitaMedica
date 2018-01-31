@@ -1,3 +1,5 @@
+
+
 var qrcode = new QRCode("qrcode");
 
 function makeCode() {      

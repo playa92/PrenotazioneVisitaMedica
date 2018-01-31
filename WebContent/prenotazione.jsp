@@ -11,15 +11,22 @@
 </head>
 
 <body>
+
+	<!-- Navbar -->
+	<nav role="navigation" role="navigation" class="navbar">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li class="dropdown nav-item">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+			     </li>
+	   		</ul>
+		</div>	
+	</nav>
+	
 <div class="jumbotron text-center">
 	<h2>Compila il seguente form per prenotare una visita medica</h2>
 </div>
 
-	<div style="position:relative;float:left;">
-		<button type='button'class='btn btn-default btn-md' onclick="window.location='home.jsp'">
-		<span class='glyphicon glyphicon-home'> Home</span>
-		</button>
-	</div><br>
 
 	<div id="formDiv">
 		<form id="form" method="post" action="formPrenotazione">

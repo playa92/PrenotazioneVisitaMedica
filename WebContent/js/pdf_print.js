@@ -1,12 +1,10 @@
 
 // PDF-PRINT
 $(document).ready(function(){
-
 	// STAMPA QR CODE (automatico)
 	 html2canvas($("#print"),{
 	 onrendered:function(canvas){
 		 
-	
 		 var img=canvas.toDataURL("image/png");
 		 var doc = new jsPDF('p', 'pt', 'a4');
 		 //TODO
@@ -19,7 +17,7 @@ $(document).ready(function(){
 		
 	// STAMPA RIEPILOGO
 	$('#cmd').click(function() {
-		
+		alert("S")
 		  var options = {
 		  };
 		  var pdf = new jsPDF('l', 'pt', 'a4');		  
