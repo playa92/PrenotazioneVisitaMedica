@@ -1,8 +1,6 @@
 package controller;
 
-//import java.io.BufferedReader;
 import java.io.IOException;
-//import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -13,17 +11,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.CodiceQR;
 import model.Paziente;
+import model.Prenotazione;
 import persistence.DatabaseManager;
 import persistence.dao.CodiceQRDao;
 import persistence.dao.PazienteDao;
 import persistence.dao.UniversitaDao;
-import persistence.dao.VisitaMedicaDao;
+import persistence.dao.PrenotazioneDao;
 
 @SuppressWarnings("serial")
 public class FormPrenotazione extends HttpServlet {
 	
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 15;
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.doPost(request, response);
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException ,IOException {
@@ -39,26 +43,17 @@ public class FormPrenotazione extends HttpServlet {
 			matricola = "N/A";
 		}
 		
-//		StringBuffer jsonReceived = new StringBuffer();
-//		BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));		
-//		String line = reader.readLine();
-//		while (line != null){
-//			jsonReceived.append(line);
-//			line = reader.readLine();
-//		}
-//		System.out.println(jsonReceived.toString());
-		
 		PrintWriter out = response.getWriter();
 		UniversitaDao universitaDao = DatabaseManager.getInstance().
 				getDaoFactory().getUniversitaDao();
-		VisitaMedicaDao visitaMedicaDao = DatabaseManager.getInstance().
-				getDaoFactory().getVisitaMedicaDao();
+		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
+				getDaoFactory().getPrenotazioneDao();
 		PazienteDao pazienteDao = DatabaseManager.getInstance().
 				getDaoFactory().getPazienteDao();
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().
 				getDaoFactory().getCodiceQRDao();
 		
-		int t = visitaMedicaDao.getTotalVisits();
+		int t = prenotazioneDao.getTotalVisits();
 
 		//DATA SCADENZA = TEMPO CORRENTE + (totale visite * 15 (tempo per ogni visita)) 
 		Date date = new Date(Calendar.getInstance().getTimeInMillis() + (t * TEMPO_VISITA * 60000));
@@ -67,43 +62,48 @@ public class FormPrenotazione extends HttpServlet {
 		String visita = date.toString().substring(indexOf, indexOf + 8); //considero il tempo nel formato hh:mm:ss
 		String convalida = date2.toString().substring(indexOf, indexOf + 8);
 		
-		CodiceQR c = new CodiceQR();
-		c.setCodice(hexcode);
+		CodiceQR codiceQR = new CodiceQR();
+		codiceQR.setCodice(hexcode);
 //		c.setScadenza(date);
-		c.setScadenza(visita + ";" + convalida); //TEMPORANEO
-		c.setValido(true);
+		codiceQR.setScadenza(convalida); //TEMPORANEO
+		codiceQR.setValido(true);
 		
-		Paziente p = new Paziente();
-		p.setCodiceFiscale(codiceFiscale);
-		p.setNome(nome);
-		p.setCognome(cognome);
+		Paziente paziente = new Paziente();
+		paziente.setCodiceFiscale(codiceFiscale);
+		paziente.setNome(nome);
+		paziente.setCognome(cognome);
 		if(!matricola.equals("N/A"))
-			p.setMatricola(Long.parseLong(matricola));
+			paziente.setMatricola(Long.parseLong(matricola));
 		else 
-			p.setMatricola(null);
-		p.setInvalidita(invalidita);
-		p.setCodiceQR(c);
+			paziente.setMatricola(null);
+		paziente.setInvalidita(invalidita);
+		paziente.setCodiceQR(codiceQR);
+		
+		Double imp = new Double(0);
 		
 		if(!matricola.equals("N/A")) { 
 			if(universitaDao.findByPrimaryKey(Long.parseLong(matricola)) != null
 					|| !invalidita.equals("Nessuna"))
-				p.setImporto(new Double(0));
-			else
-				p.setImporto(new Double(25));
+				imp = new Double(25);
 		} else {
 			if(!invalidita.equals("Nessuna"))
-				p.setImporto(new Double(0));
-			else
-				p.setImporto(new Double(25));
+				imp = new Double(25);
 		}
+		
+		Prenotazione prenotazione = new Prenotazione();
+		prenotazione.setCodiceVisita(codiceQR.getCodice());
+		prenotazione.setNomePaziente(paziente.getNome());
+		prenotazione.setCognomePaziente(paziente.getCognome());
+		prenotazione.setOrarioVisita(visita);
+		prenotazione.setImporto(imp);
 		
 		//formattazione dell'importo
         DecimalFormat format = new DecimalFormat("0.00");
-        String formattedImp = format.format(p.getImporto());
+        String formattedImp = format.format(prenotazione.getImporto());
 		 
-		codiceQRDao.save(c);
-		pazienteDao.save(p);
-		visitaMedicaDao.save(p);  
+		codiceQRDao.save(codiceQR);
+		pazienteDao.save(paziente);
+		prenotazioneDao.save(prenotazione);  
 	
 		out.println("<html>");
 		out.println("<head><title>Riepilogo Dati</title>");

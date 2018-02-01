@@ -1,3 +1,5 @@
+alert("CAZZO");
+
 function CFRegex() {
 	
 //		var regex = new RegExp("^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}" +
@@ -72,4 +74,61 @@ $(document).on("click", "#conferma", function() {
 		localStorage.setItem("count", count);
 	}
 });
+
+function sendForm(paziente) {
+	
+	alert("send form")
+	
+	var p = {
+		
+		codiceFiscale = paziente.codiceFiscale,
+		nome = paziente.nome,
+		cognome = paziente.cognome,
+		matricola = paziente.matricola,
+		invalidita = paziente.invalidita,
+		esadecimale = paziente.esadecimale
+	};
+	
+	$ajax({
+		type:'post',
+		url:'formPrenotazione',
+		datatype:"json",
+		data: JSON.stringify(p),
+		success: function(data, status) {
+			alert(data + "\n" + status);
+		}
+	});
+}
+
+var codes = localStorage.getItem("array");
+
+function generate() {
+	
+	alert("generate");
+	var rand = randHex(12);
+	
+	if(codes == null) {
+		codes = new Array();
+	}
+	
+	while(codes.indexOf(rand) != -1) {
+		rand = randHex(12);
+	}
+	document.getElementById("hex").value = rand;
+	codes.push(rand);
+	localStorage.setItem("array", codes);
+}
+
+function randHex(len) {
+	
+  var maxlen = 8,
+      min = Math.pow(16,Math.min(len,maxlen)-1) 
+      max = Math.pow(16,Math.min(len,maxlen)) - 1,
+      n   = Math.floor( Math.random() * (max-min+1) ) + min,
+      r   = n.toString(16);
+  while(r.length < len) {  
+	  r = r + randHex( len - maxlen );
+  }
+  return r.toUpperCase();
+}
 

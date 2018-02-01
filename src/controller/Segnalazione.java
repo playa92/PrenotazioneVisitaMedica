@@ -10,12 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 public class Segnalazione extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("get");
-		System.out.println("---> " + req.getParameter("messaggio"));
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("sei nel get");
+		String message = request.getParameter("messaggio");
+		System.out.println("----> " + message);
+		response.getWriter().write(message);
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.doGet(request, response);
+	}
 
 }

@@ -4,26 +4,26 @@ package model;
 
 public class CodiceQR {
 
-	private String codice;//esadecimale
+	private String esadecimale;
 	private Boolean valido;
 //	private Date scadenza;
 	private String scadenza;
 
 	public CodiceQR() {}
 	
-	public CodiceQR(String codice, String scadenza, Boolean valido) {
+	public CodiceQR(String esadecimale, String scadenza, Boolean valido) {
 		
-		this.codice = codice;
+		this.esadecimale = esadecimale;
 		this.valido = valido;
 		this.scadenza = scadenza;
 	}
 
 	public String getCodice() {
-		return codice;
+		return esadecimale;
 	}
 
-	public void setCodice(String codice) {
-		this.codice = codice;
+	public void setCodice(String esadecimale) {
+		this.esadecimale = esadecimale;
 	}
 
 	public Boolean getValido() {

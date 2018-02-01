@@ -18,6 +18,7 @@ public class Home extends HttpServlet {
 		String username = (String) session.getAttribute("username");
 		
 		if(username == null) {
+			request.setAttribute("popUp", false);
 			request.setAttribute("loggato", false);
 		} else {
 			request.setAttribute("loggato", true);			
@@ -26,5 +27,10 @@ public class Home extends HttpServlet {
 		
 		RequestDispatcher dispacher = request.getRequestDispatcher("home.jsp");
 		dispacher.forward(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.doGet(request, response);
 	}
 }

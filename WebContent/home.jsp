@@ -194,9 +194,9 @@ prefix="jstl" %>
 		 </div>
 	   </div>
 	   
-	   <jstl:if test="${popUp}">
-	   		<script> $("#notice").modal('show'); </script>  
-	   </jstl:if>
+<%-- 	   <jstl:if test="${popUp}"> --%>
+<!-- 	   		<script> $("#notice").modal('show'); </script>   -->
+<%-- 	   </jstl:if> --%>
 					
 </body>
 </html>

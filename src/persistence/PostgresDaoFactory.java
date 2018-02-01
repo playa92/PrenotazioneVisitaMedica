@@ -4,7 +4,7 @@ import persistence.dao.AmministratoreDao;
 import persistence.dao.CodiceQRDao;
 import persistence.dao.PazienteDao;
 import persistence.dao.UniversitaDao;
-import persistence.dao.VisitaMedicaDao;
+import persistence.dao.PrenotazioneDao;
 
 public class PostgresDaoFactory extends DaoFactory {
 
@@ -41,8 +41,8 @@ public class PostgresDaoFactory extends DaoFactory {
 	}
 
 	@Override
-	public VisitaMedicaDao getVisitaMedicaDao() {
-		return new VisitaMedicaDaoJDBC(dataSource);
+	public PrenotazioneDao getPrenotazioneDao() {
+		return new PrenotazioneDaoJDBC(dataSource);
 	}
 	
 	@Override

@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-//import java.util.Enumeration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,48 +21,44 @@ public class Login extends HttpServlet {
 		//disconnessione
 		if((request.getParameter("logout") != null) && (request.getParameter("logout").equals("true"))) {
 			session.setAttribute("username", null);
-			request.setAttribute("loggato", false);		
+			request.setAttribute("loggato", false);	
 			RequestDispatcher dispacher = request.getRequestDispatcher("home.jsp");
 			dispacher.forward(request, response);
 		}
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
-		HttpSession session = req.getSession();
+		HttpSession session = request.getSession();
 		session.setAttribute("username", null);
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		AmministratoreDao dao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();
 		Amministratore amministratore = dao.findByPrimaryKey(username);
-		 
+		
 		if(amministratore == null) {
 
-			req.setAttribute("popUp", true);
-			req.setAttribute("popUpMessage", "Nessun utente registrato come "+ username);			
-			RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
-			dispacher.forward(req, resp);
-					 
+			session.setAttribute("popUp", true);
+			request.setAttribute("popUpMessage", "Nessun utente registrato come " + username);	
+//			response.sendRedirect("home");
 		} else { 
 
 			//connessione
 			if(password.equals(amministratore.getPassword())) {
 				
 				session.setAttribute("username", username);				
-				req.setAttribute("loggato", true);
-				req.setAttribute("username", username);//JSTL
-				RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
-				dispacher.forward(req, resp);
+				request.setAttribute("loggato", true);
+				request.setAttribute("username", username);//JSTL
 								
 			} else {
-				
-				req.setAttribute("popUp", true);
-				req.setAttribute("popUpMessage", "Spiacente, password non corrispondente per "+username);			
-				RequestDispatcher dispacher = req.getRequestDispatcher("home.jsp");
-				dispacher.forward(req, resp);
-				
+				session.setAttribute("popUp", true);
+				request.setAttribute("popUpMessage", "Spiacente, password non corrispondente per " + username);		
+//				response.sendRedirect("home");
 			}				
 		}
+		
+		RequestDispatcher dispacher = request.getRequestDispatcher("home.jsp");
+		dispacher.forward(request, response);
 	}
 }

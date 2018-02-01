@@ -6,28 +6,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-import model.Paziente;
-import persistence.dao.VisitaMedicaDao;
+import model.Prenotazione;
+import persistence.dao.PrenotazioneDao;
 
-public class VisitaMedicaDaoJDBC implements VisitaMedicaDao {
+public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
 	private DataSource dataSource;
 	
-	public VisitaMedicaDaoJDBC(DataSource dataSource) {
+	public PrenotazioneDaoJDBC(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 	
 	@Override
-	public void save(Paziente paziente) {
+	public void save(Prenotazione visitaMedica) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String query = "insert INTO visitaMedica(id_visita, nome_paziente, cognome_paziente, importo) values (?,?,?,?)";
+			String query = "insert INTO prenotazione(id_visita, nome_paziente, cognome_paziente, orario_visita, importo) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(query);
-			statement.setString(1, paziente.getCodiceQR().getCodice());
-			statement.setString(2, paziente.getNome());
-			statement.setString(3, paziente.getCognome());
-			statement.setDouble(4, paziente.getImporto());
+			statement.setString(1, visitaMedica.getCodiceVisita());
+			statement.setString(2, visitaMedica.getNomePaziente());
+			statement.setString(3, visitaMedica.getCognomePaziente());
+			statement.setString(4, visitaMedica.getOrarioVisita());
+			statement.setDouble(5, visitaMedica.getImporto());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -43,25 +44,25 @@ public class VisitaMedicaDaoJDBC implements VisitaMedicaDao {
 	}
 
 	@Override
-	public Paziente findByPrimaryKey(String codiceQr) {
+	public Prenotazione findByPrimaryKey(String codice) {
+		
 		Connection connection = this.dataSource.getConnection();
-		Paziente paziente = null;
+		Prenotazione visitaMedica = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM visitaMedica WHERE id_Visita = ?";
+			String query = "select * FROM prenotazione WHERE id_Visita = ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, codiceQr);
+			statement.setString(1, codice);
 			ResultSet result = statement.executeQuery();
 			
 			if(result.next()) {
 				
-				paziente = new Paziente();
-				paziente.setCodiceFiscale(result.getString("codice_fiscale"));
-				paziente.setNome(result.getString("nome"));				
-				paziente.setCognome(result.getString("cognome"));
-				paziente.setMatricola(result.getLong("matricola"));
-				paziente.setInvalidita(result.getString("invalidità"));
-//				paziente.setCodice((CodiceQR) result.getObject("id_codice"));
+				visitaMedica = new Prenotazione();
+				visitaMedica.setCodiceVisita(result.getString(1));
+				visitaMedica.setNomePaziente(result.getString(2));
+				visitaMedica.setCognomePaziente(result.getString(3));
+				visitaMedica.setOrarioVisita(result.getString(4));
+				visitaMedica.setImporto(result.getDouble(5));
 			}
 			
 		} catch(SQLException e) {
@@ -74,32 +75,30 @@ public class VisitaMedicaDaoJDBC implements VisitaMedicaDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}	
-		return paziente;
+		return visitaMedica;
 	}
 
 	@Override
-	public List<Paziente> findAll() {
+	public List<Prenotazione> findAll() {
 		
 		Connection connection = this.dataSource.getConnection();
-		List<Paziente> pazienti = new LinkedList<>();
-		Paziente paziente = null;
+		List<Prenotazione> visite = new LinkedList<>();
+		Prenotazione visitaMedica = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM visitaMedica";
+			String query = "select * FROM prenotazione";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
 				
-				paziente = new Paziente();
-				paziente.setCodiceFiscale(result.getString("id_visita"));
-				paziente.setNome(result.getString("nome"));				
-				paziente.setCognome(result.getString("cognome"));
-//				paziente.setMatricola(result.getLong("matricola"));
-				paziente.setImporto(result.getDouble("importo"));
-//				paziente.setInvalidita(result.getString("invalidità"));
-//				paziente.setCodice((CodiceQR) result.getObject("id_codice"));
-				pazienti.add(paziente);
+				visitaMedica = new Prenotazione();
+				visitaMedica.setCodiceVisita(result.getString(1));
+				visitaMedica.setNomePaziente(result.getString(2));
+				visitaMedica.setCognomePaziente(result.getString(3));
+				visitaMedica.setOrarioVisita(result.getString(4));
+				visitaMedica.setImporto(result.getDouble(5));
+				visite.add(visitaMedica);
 			}
 		} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -111,20 +110,21 @@ public class VisitaMedicaDaoJDBC implements VisitaMedicaDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
-		return pazienti;
+		return visite;
 	}
 
 	@Override
-	public void update(Paziente paziente) {
+	public void update(Prenotazione visitaMedica) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update visitaMedica SET id_visita = ?, nome_paziente = ?, cognome_paziente = ?, importo = ?, WHERE id_visita = ?";
+			String update = "update prenotazione SET id_visita = ?, nome_paziente = ?, cognome_paziente = ?, orario_visita = ?, importo = ?, WHERE id_visita = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, paziente.getCodiceQR().getCodice());
-			statement.setString(2, paziente.getNome());
-			statement.setString(3, paziente.getCognome());
-			statement.setDouble(4, paziente.getImporto());
+			statement.setString(1, visitaMedica.getCodiceVisita());
+			statement.setString(2,visitaMedica.getNomePaziente());
+			statement.setString(3, visitaMedica.getCognomePaziente());
+			statement.setString(4, visitaMedica.getOrarioVisita());
+			statement.setDouble(5, visitaMedica.getImporto());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -140,13 +140,13 @@ public class VisitaMedicaDaoJDBC implements VisitaMedicaDao {
 	}
 
 	@Override
-	public void delete(Paziente paziente) {
+	public void delete(Prenotazione visitaMedica) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM visitaMedica WHERE id_visita = ? ";
+			String delete = "delete FROM prenotazione WHERE id_visita = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setString(1, paziente.getCodiceQR().getCodice());
+			statement.setString(1, visitaMedica.getCodiceVisita());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -168,7 +168,7 @@ public class VisitaMedicaDaoJDBC implements VisitaMedicaDao {
 		int total = 0;
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String query = "select COUNT(*) AS total FROM visitaMedica";
+			String query = "select COUNT(*) AS total FROM prenotazione";
 			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			

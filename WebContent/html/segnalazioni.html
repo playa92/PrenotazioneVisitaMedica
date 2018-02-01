@@ -4,21 +4,22 @@
 <meta charset="ISO-8859-1">
 <title>Area Segnalazioni</title>
 	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/common.css">
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script src="../js/effects.js"></script>
-	<script src="../js/scroll_up.js"> </script>
-	
+	<script src="../js/report.js"></script>
+	<style type="text/css">
+		.jumbotron {
+			background-color: #bcc4f2;
+			color: #092147;
+		}
+	</style>
 </head>
 <body>
-
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 	   		</ul>
 		</div>	
@@ -28,8 +29,10 @@
 	  <h1>Area Segnalazioni</h1>
 	</div>
 	
+	<button id="#btn" type="button" onclick="clicked();">Clicca qui!</button>
+	
 	<div>
-		<p id="segnalazione"></p>
+		<p id="mex"></p>
 	</div>
 	
 </body>

@@ -4,7 +4,7 @@ import persistence.dao.AmministratoreDao;
 import persistence.dao.CodiceQRDao;
 import persistence.dao.UniversitaDao;
 import persistence.dao.PazienteDao;
-import persistence.dao.VisitaMedicaDao;
+import persistence.dao.PrenotazioneDao;
 
 public abstract class DaoFactory {
 
@@ -31,7 +31,7 @@ public abstract class DaoFactory {
 	
 	public abstract CodiceQRDao getCodiceQRDao();
 	
-	public abstract VisitaMedicaDao getVisitaMedicaDao();
+	public abstract PrenotazioneDao getPrenotazioneDao();
 	
 	public abstract ImpiegatoDaoJDBC getImpiegatoDao();
 	
