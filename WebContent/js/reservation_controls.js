@@ -1,5 +1,3 @@
-alert("CAZZO");
-
 function CFRegex() {
 	
 //		var regex = new RegExp("^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}" +
@@ -44,79 +42,88 @@ var MAX_VALUE = 50;
 var count = localStorage.getItem("count");
 var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
 
-$(document).on("click", "#conferma", function() {
-	
-	if(count == null) {
-		count = 0;
-	}
-	
-	if(count == MAX_VALUE) {
-		
-		alert("Attenzione: Limite Prenotazione Raggiunto");
-		$("#form").attr("action","home.jsp");
-		return;
-	}
-	
-	var d = new Date();
-	d.setMinutes(d.getMinutes() + 15 * count);
+//$(document).on("click", "#conferma", function() {
+//	
+//	if(count == null) {
+//		count = 0;
+//	}
+//	
+//	if(count == MAX_VALUE) {
+//		
+//		alert("Attenzione: Limite Prenotazione Raggiunto");
+//		$("#form").attr("action","home.jsp");
+//		return;
+//	}
+//	
+//	var d = new Date();
+//	d.setMinutes(d.getMinutes() + 15 * count);
+//
+//	var toString = months[d.getMonth()] + " " + d.getDate() 
+//		+ " " + d.getHours() + ':' + d.getMinutes();
+//	
+//	var result = confirm("Prenotazione: " + (++ count) + "/" + MAX_VALUE
+//			+ "\nOrario visita: " + toString
+//			+ "\nVuoi continuare?");
+//	
+//	if(!result) {
+//		$("#form").attr("action","home.jsp");
+//		localStorage.removeItem("count");
+//	} else {
+//		localStorage.setItem("count", count);
+//	}
+//});
 
-	var toString = months[d.getMonth()] + " " + d.getDate() 
-		+ " " + d.getHours() + ':' + d.getMinutes();
-	
-	var result = confirm("Prenotazione: " + (++ count) + "/" + MAX_VALUE
-			+ "\nOrario visita: " + toString
-			+ "\nVuoi continuare?");
-	
-	if(!result) {
-		$("#form").attr("action","home.jsp");
-		localStorage.removeItem("count");
-	} else {
-		localStorage.setItem("count", count);
-	}
-});
+function Paziente(codice_fiscale, nome, cognome, matricola, invalidita, hexcode) {
 
-function sendForm(paziente) {
+	this.codice_fiscale = codice_fiscale;
+	this.nome = nome;
+	this.cognome = cognome;
+	this.matricola = matricola;
+	this.invalidita = invalidita;
+	this.hexcode = hexcode;
+}
+
+function sendForm() {
 	
-	alert("send form")
+	var hexcode = generate();
 	
-	var p = {
-		
-		codiceFiscale = paziente.codiceFiscale,
-		nome = paziente.nome,
-		cognome = paziente.cognome,
-		matricola = paziente.matricola,
-		invalidita = paziente.invalidita,
-		esadecimale = paziente.esadecimale
-	};
+	var paziente = new Paziente(
+			$("input[name=codiceFiscale]").prop("value"),
+			$("input[name=nome]").prop("value"),
+			$("input[name=cognome]").prop("value"),
+			$("input[name=matricola]").prop("value"),
+			$("#select").val(),
+			hexcode);
 	
 	$ajax({
 		type:'post',
 		url:'formPrenotazione',
 		datatype:"json",
-		data: JSON.stringify(p),
+		data: JSON.stringify(paziente),
 		success: function(data, status) {
 			alert(data + "\n" + status);
 		}
 	});
 }
 
-var codes = localStorage.getItem("array");
+//var codes = localStorage.getItem("array");
 
 function generate() {
 	
 	alert("generate");
 	var rand = randHex(12);
 	
-	if(codes == null) {
-		codes = new Array();
-	}
+//	if(codes == null) {
+//		codes = new Array();
+//	}
 	
-	while(codes.indexOf(rand) != -1) {
-		rand = randHex(12);
-	}
-	document.getElementById("hex").value = rand;
-	codes.push(rand);
-	localStorage.setItem("array", codes);
+//	while(codes.indexOf(rand) != -1) {
+//		rand = randHex(12);
+//	}
+//	document.getElementById("hex").value = rand;
+//	codes.push(rand);
+//	localStorage.setItem("array", codes);
+	return rand;
 }
 
 function randHex(len) {

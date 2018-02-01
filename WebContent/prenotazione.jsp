@@ -1,7 +1,9 @@
-<%-- <%@page contentType="text/html" pageEncoding="UTF-8"%> --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" 
+prefix="jstl" %>
 
-<jsp:useBean id="patient" class="model.Paziente" scope="session"/>
-<jsp:setProperty name="patient" property="codiceFiscale" value="fin."/>
+<jsp:useBean id="paziente" class="model.Paziente" scope="session"/>
+<jsp:setProperty name="paziente" property="codiceFiscale" />
 
 <html>
 <head>
@@ -39,7 +41,7 @@
 				<div class="form-group"><label for="cognome">Cognome *</label><input id="s2" onblur="correct(id);" name="cognome" type="text" class="form-control"  placeholder="Enter Surname" required/></div>  
 				<div class="form-group"><label for="matricola">Matricola **</label><input id="n" onblur="correct(id);" name="matricola" type="text" class="form-control"  placeholder="Enter Id"></div>  
 				<div class="form-group"><label for="invalidita">Invalidità</label>
-					<select name="invalidita" class="form-control">	 
+					<select id="select" name="invalidita" class="form-control">	 
 						<option selected="selected">Nessuna</option>
 						<option>Malformazione</option>
 						<option>Lesione Muscolare</option>
@@ -47,7 +49,7 @@
 					</select>
 				</div>		
 				<div class="form-group"><input id="hex" name="hexCode" type="hidden" class="form-control"></div>	
-				<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick="generate();"/>
+				<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick='sendForm();'/>
 				<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
 <!-- 		</form> -->
 	</div>

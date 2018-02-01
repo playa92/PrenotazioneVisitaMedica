@@ -48,7 +48,7 @@ prefix="jstl" %>
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
 				     	<li><a id="list-element" href="cerca_prenotazione.jsp">Cerca prenotazione</a></li>
-				       	<li><a id="list-element" href="html/visualizza_prenotazioni.html">Visualizza statistiche prenotazioni</a></li>
+				       	<li><a id="list-element" href="html/visualizza_prenotazioni.jsp">Visualizza statistiche prenotazioni</a></li>
 			        </ul>
 			     </li>
 			     <jstl:if test="${loggato}">
