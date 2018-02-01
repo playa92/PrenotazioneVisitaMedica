@@ -100,7 +100,9 @@ function sendForm() {
 		url:'../formPrenotazione',
 		datatype:"json",
 		data: JSON.stringify(paziente),
-		success: function(data, status) {
+		success:function(data, status) {
+			$("#notice").modal("show");
+			$("#message").text(data);
 			
 		}
 	});

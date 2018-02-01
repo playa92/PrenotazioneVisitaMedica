@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.LinkedList;
 import java.util.List;
-
-import model.CodiceQR;
 import model.Paziente;
 import persistence.dao.PazienteDao;
 
@@ -35,7 +33,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 			else
 				statement.setNull(4, Types.BIGINT);
 			statement.setString(5, paziente.getInvalidita());
-			statement.setString(6, paziente.getCodiceQR().getCodice());
+			statement.setString(6, paziente.getCodiceQR());
 			statement.executeUpdate();
 		
 		} catch(SQLException e) {
@@ -70,7 +68,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 				paziente.setCognome(result.getString("cognome"));
 				paziente.setMatricola(result.getLong("matricola"));
 				paziente.setInvalidita(result.getString("invalidità"));
-				paziente.setCodiceQR((CodiceQR) result.getObject("id_codice"));
+				paziente.setCodiceQR(result.getString("id_codice"));
 			}
 			
 		} catch(SQLException e) {
@@ -106,7 +104,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 				paziente.setCognome(result.getString("cognome"));
 				paziente.setMatricola(result.getLong("matricola"));
 				paziente.setInvalidita(result.getString("invalidità"));
-//				paziente.setCodice((CodiceQR) result.getObject("id_codice"));
+				paziente.setCodiceQR(result.getString("id_codice"));
 				pazienti.add(paziente);
 			}
 		} catch(SQLException e) {
@@ -134,7 +132,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 			statement.setString(3, paziente.getCognome());
 			statement.setLong(4, paziente.getMatricola());
 			statement.setString(5, paziente.getInvalidita());
-			statement.setString(6, paziente.getCodiceQR().getCodice());
+			statement.setString(6, paziente.getCodiceQR());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -169,5 +167,37 @@ public class PazienteDaoJDBC implements PazienteDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
+	}
+	
+	@Override
+	public boolean exists(Long matricola) {
+		
+		if(matricola == null)
+			return false;
+		
+		Connection connection = this.dataSource.getConnection();
+		try {
+			PreparedStatement statement;
+			String query = "select * FROM paziente WHERE matricola = ?";
+			statement = connection.prepareStatement(query);
+			statement.setLong(1, matricola);
+			ResultSet result = statement.executeQuery();
+			
+			if(result.next()) {
+				return true;
+			}
+		
+		} catch(SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			
+			try {
+				connection.close();
+	
+			} catch(SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return false;
 	}
 }

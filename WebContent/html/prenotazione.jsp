@@ -53,5 +53,19 @@
 	</footer>	
 	</div>
 	
+	<div id="dialog">
+      	<div class="modal fade" id="notice" role="dialog">
+		 	<div class="modal-dialog modal-md">
+		    	<div class="modal-content">
+		        	<div class="modal-header" style="text-align:center; background-color: #bcc4f2">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        			<h3 id="message" class="modal-title" style="text-align:center"></h3>
+	         		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+	
+	
 </body>
 </html>

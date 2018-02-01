@@ -11,4 +11,5 @@ public interface PazienteDao {
 	public List<Paziente> findAll();
 	public void update(Paziente paziente);
 	public void delete(Paziente paziente);
+	public boolean exists(Long matricola);
 }

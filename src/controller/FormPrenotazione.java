@@ -46,7 +46,6 @@ public class FormPrenotazione extends HttpServlet {
 //		System.out.println(jsonReceived.toString());//lo studente ricevuto tramite chiamata AJAX
 		try {
 			
-			JSONObject json = new JSONObject(jsonReceived.toString());
 			UniversitaDao universitaDao = DatabaseManager.getInstance().
 					getDaoFactory().getUniversitaDao();
 			PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
@@ -56,26 +55,32 @@ public class FormPrenotazione extends HttpServlet {
 			CodiceQRDao codiceQRDao = DatabaseManager.getInstance().
 					getDaoFactory().getCodiceQRDao();
 			
+			PrintWriter out = response.getWriter();
+			JSONObject json = new JSONObject(jsonReceived.toString());
+			
+			Long matricola = null;
+			
+			if(!json.getString("matricola").equals("")) {
+				matricola = (Long.parseLong(json.getString("matricola")));
+			}
+			
+			if(pazienteDao.findByPrimaryKey(json.getString("codiceFiscale")) != null) {
+				out.println("Paziente con codice fiscale: '" + json.getString("codiceFiscale") + "' gia' presente");
+				return;
+				
+			} else {
+				if(pazienteDao.exists(matricola)) {
+					out.println("La Matricola: '" + json.getString("matricola") + "' e' stata associata ad un altro Paziente");
+					return;
+				}
+			}
+			
 			Paziente paziente = new Paziente();
 			paziente.setCodiceFiscale(json.getString("codiceFiscale"));
 			paziente.setNome(json.getString("nome"));
 			paziente.setCognome(json.getString("cognome"));
-			
-			if(!json.getString("matricola").equals("")) {
-				paziente.setMatricola(Long.parseLong(json.getString("matricola")));
-			} else {
-				paziente.setMatricola(null);
-			}	
+			paziente.setMatricola(matricola);
 			paziente.setInvalidita(json.getString("invalidita"));
-		
-			int t = prenotazioneDao.getTotalVisits();
-			
-			Date date1 = new Date(Calendar.getInstance().getTimeInMillis() + (t * TEMPO_VISITA * 60000));
-			Date date2 = new Date(Calendar.getInstance().getTimeInMillis() + (t * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
-			
-			int indexOf = date1.toString().indexOf(":") - 2;
-			String visita = date1.toString().substring(indexOf, indexOf + 8);
-			String scadenza = date2.toString().substring(indexOf, indexOf + 8);
 			
 			Double imp = new Double(0);
 			
@@ -86,11 +91,20 @@ public class FormPrenotazione extends HttpServlet {
 				}	
 			}
 			
+			int total = prenotazioneDao.getTotalVisits();
+			
+			Date date1 = new Date(Calendar.getInstance().getTimeInMillis() + (total * TEMPO_VISITA * 60000));
+			Date date2 = new Date(Calendar.getInstance().getTimeInMillis() + (total * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
+			
+			int indexOf = date1.toString().indexOf(":") - 2;
+			String visita = date1.toString().substring(indexOf, indexOf + 8);
+			String scadenza = date2.toString().substring(indexOf, indexOf + 8);
+			
 			CodiceQR codiceQR = new CodiceQR();
 			codiceQR.setCodice(json.getString("hexcode"));
 			codiceQR.setScadenza(scadenza);
 			codiceQR.setValido(true);
-			paziente.setCodiceQR(codiceQR);
+			paziente.setCodiceQR(codiceQR.getCodice());
 			
 			Prenotazione prenotazione = new Prenotazione();
 			prenotazione.setCodiceVisita(codiceQR.getCodice());
@@ -104,43 +118,42 @@ public class FormPrenotazione extends HttpServlet {
 			prenotazioneDao.save(prenotazione); 
 				
 			//TODO VISUALIZZARE LA PAGINA IN UN DIALOG
-			PrintWriter out = response.getWriter(); 
-			
-			out.println("<html>");
-			out.println("<head><title>Riepilogo Dati</title>");
-			out.println("<link rel='stylesheet' href='bootstrap-3.3.7-dist/css/bootstrap.min.css'>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<div style='position:relative;float:right;'>");
-			out.println("<button type='button'class='btn btn-default btn-md' onclick=\"window.location='home.jsp'\">");
-			out.println("<span class='glyphicon glyphicon-home'> Home</span>");
-			out.println("</button>");
-			out.println("</div>");
-			out.println("<div id='content style='background-color:white;'>");
-			out.println("<h1>Abbiamo registrato la tua prenotazione:</h1>");
-			out.println("<h3>Codice Fiscale: " + paziente.getCodiceFiscale() + "</h3>");
-			out.println("<h3>Nome: " + paziente.getNome() + "</h3>");
-			out.println("<h3>Cognome: " + paziente.getCognome() + "</h3>");
-			out.println("<h3>Matricola: " + String.valueOf(paziente.getMatricola()) + "</h3>");
-			out.println("<h3>Invalidità: " + paziente.getInvalidita() + "</h3>");
-			out.println("<h3>Importo: " + String.valueOf(prenotazione.getImporto()) + ".00 &euro;</h3>");
-			out.println("<input id='text' type='hidden' value=" + codiceQR.getCodice() + "/>");
-			out.println("<div id='print'>");
-			out.println("<div id='qrcode'></div>");
-			out.println("<h3>Codice: " + codiceQR.getCodice() + "</h3>");
-			out.println("</div>");
-			out.println("</div>"); 
-			out.println("<h3 style='color:red'>stampa promemoria "
-					+ "<button id='cmd' type='button' class='btn btn-default btn-sm'>"
-					+ "<span class='glyphicon glyphicon-print'></span> PDF</button></h3>");
-			out.println("<script src='js/jquery/jquery-3.2.1.min.js'></script>");
-			out.println("<script src='js/jquery/jquery.qrcode.js'></script>");
-			out.println("<script src='js/jquery/html2canvas.js'></script>");
-			out.println("<script src='js/jquery/jspdf.min.js'></script>");
-			out.println("<script src='js/qr_code.js'></script>");
-			out.println("<script src='js/pdf_print.js'></script>");
-			out.println("</body>");
-			out.println("</html>");
+			out.println("Prenotazione avvenuta con successo");
+//			out.println("<html>");
+//			out.println("<head><title>Riepilogo Dati</title>");
+//			out.println("<link rel='stylesheet' href='bootstrap-3.3.7-dist/css/bootstrap.min.css'>");
+//			out.println("</head>");
+//			out.println("<body>");
+//			out.println("<div style='position:relative;float:right;'>");
+//			out.println("<button type='button'class='btn btn-default btn-md' onclick=\"window.location='home.jsp'\">");
+//			out.println("<span class='glyphicon glyphicon-home'> Home</span>");
+//			out.println("</button>");
+//			out.println("</div>");
+//			out.println("<div id='content style='background-color:white;'>");
+//			out.println("<h1>Abbiamo registrato la tua prenotazione:</h1>");
+//			out.println("<h3>Codice Fiscale: " + paziente.getCodiceFiscale() + "</h3>");
+//			out.println("<h3>Nome: " + paziente.getNome() + "</h3>");
+//			out.println("<h3>Cognome: " + paziente.getCognome() + "</h3>");
+//			out.println("<h3>Matricola: " + String.valueOf(paziente.getMatricola()) + "</h3>");
+//			out.println("<h3>Invalidità: " + paziente.getInvalidita() + "</h3>");
+//			out.println("<h3>Importo: " + String.valueOf(prenotazione.getImporto()) + ".00 &euro;</h3>");
+//			out.println("<input id='text' type='hidden' value=" + codiceQR.getCodice() + "/>");
+//			out.println("<div id='print'>");
+//			out.println("<div id='qrcode'></div>");
+//			out.println("<h3>Codice: " + codiceQR.getCodice() + "</h3>");
+//			out.println("</div>");
+//			out.println("</div>"); 
+//			out.println("<h3 style='color:red'>stampa promemoria "
+//					+ "<button id='cmd' type='button' class='btn btn-default btn-sm'>"
+//					+ "<span class='glyphicon glyphicon-print'></span> PDF</button></h3>");
+//			out.println("<script src='js/jquery/jquery-3.2.1.min.js'></script>");
+//			out.println("<script src='js/jquery/jquery.qrcode.js'></script>");
+//			out.println("<script src='js/jquery/html2canvas.js'></script>");
+//			out.println("<script src='js/jquery/jspdf.min.js'></script>");
+//			out.println("<script src='js/qr_code.js'></script>");
+//			out.println("<script src='js/pdf_print.js'></script>");
+//			out.println("</body>");
+//			out.println("</html>");
 			
 		} catch(JSONException e) {
 			e.printStackTrace();
