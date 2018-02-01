@@ -6,10 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.CodiceQR;
-import model.Prenotazione;
 import persistence.DatabaseManager;
 import persistence.dao.CodiceQRDao;
-import persistence.dao.PrenotazioneDao;
+//import persistence.dao.PrenotazioneDao;
 
 @SuppressWarnings("serial")
 public class RicercaPrenotazione extends HttpServlet {
@@ -25,8 +24,8 @@ public class RicercaPrenotazione extends HttpServlet {
 		String hexcode = request.getParameter("hexcode");
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().
 				getDaoFactory().getCodiceQRDao();
-		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
-				getDaoFactory().getPrenotazioneDao();
+//		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
+//				getDaoFactory().getPrenotazioneDao();
 		CodiceQR codice = codiceQRDao.findByPrimaryKey(hexcode);
 		
 		if(codice != null) {	

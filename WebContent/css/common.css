@@ -246,7 +246,7 @@ textarea:required:focus {
 #fountainG, #info{
 	display:none;
 }
-#info{
+#info {
 	width: 500px;
 	height: 550px; 
 /* 	border: 1px solid blue;   */
@@ -264,7 +264,7 @@ textarea:required:focus {
 /* //////////////// Prenotazione ///////////////////// */
 /* /////////////////////////////////////////////////// */
 
-#form{
+#form {
 	width: 600px;
 	height: 450px;
 /* 	border: 1px solid blue;   */

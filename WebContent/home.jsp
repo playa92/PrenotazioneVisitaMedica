@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" 
-prefix="jstl" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 
 <html>
 
@@ -15,7 +14,6 @@ prefix="jstl" %>
  	<script src="js/jquery/jquery.cookie.js"></script>
  	<script src="js/effects.js"></script>
  	<script src="js/login.js"></script>	
-    <script src="js/qrcode.js"></script>	
 </head>
 
 <body>
@@ -39,7 +37,7 @@ prefix="jstl" %>
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 			    <li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="prenotazione.jsp">Prenotazione</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/prenotazione.jsp">Prenotazione</a>
 			     </li>
 			     <li class="dropdown nav-item ">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/assistenza.html">Assistenza</a>
@@ -47,7 +45,7 @@ prefix="jstl" %>
 			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				     	<li><a id="list-element" href="cerca_prenotazione.jsp">Cerca prenotazione</a></li>
+				     	<li><a id="list-element" href="html/cerca_prenotazione.jsp">Cerca prenotazione</a></li>
 				       	<li><a id="list-element" href="html/visualizza_prenotazioni.jsp">Visualizza statistiche prenotazioni</a></li>
 			        </ul>
 			     </li>
@@ -91,8 +89,7 @@ prefix="jstl" %>
 					<!-- logout -->
 					<li id="dialog" class="dropdown nav-item">
 			       			<a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Disconnetti<b class="caret"></b></a>       		 
-				       		<div style="color:yellow; margin:-34px -300px; position:absolute">Benvenuto <jstl:out value="${username}"/>!</div>
-				       		
+				       		<div style="color:yellow; margin:-34px -300px; position:absolute">Benvenuto <jstl:out value="${username}"/>!</div>		
 				       		  <div class="modal fade" id="myModal" role="dialog">
 							    <div class="modal-dialog modal-md">
 							      <div class="modal-content">
@@ -147,21 +144,21 @@ prefix="jstl" %>
 	      <div class="item active">
 	        <img src="images/studio_medico.jpg" alt="studio medico">
 	        <div class="carousel-content">
-		        <a href="prenotazione.jsp" >Prenota subito la tua visita</a>
+		        <a href="html/prenotazione.jsp" >Prenota subito la tua visita</a>
 		    </div>
 	      </div>	
 	      
 	      <div class="item">
 	        <img src="images/cerca_pren.jpg" alt="Ricerca">
 	        <div class="carousel-content" style="margin:50px 0 0 100px">
-		        <a href="cerca_prenotazione.jsp">Cerca prenotazione!</a>
+		        <a href="html/cerca_prenotazione.jsp">Cerca prenotazione!</a>
 		    </div>
 	      </div>
 	      
 	      <div class="item">
 	        <img src="images/statistiche.jpg" alt="Statistiche">
 	        <div class="carousel-content">
-		        <a href="html/visualizza_prenotazioni.html">Visualizza stato prenotazioni</a>
+		        <a href="<%=request.getContextPath()%>/restituisciPrenotazioni">Visualizza stato prenotazioni</a>
 		    </div>
 	      </div>
 	    </div>

@@ -73,9 +73,9 @@ var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov"
 //	}
 //});
 
-function Paziente(codice_fiscale, nome, cognome, matricola, invalidita, hexcode) {
+function Paziente(codiceFiscale, nome, cognome, matricola, invalidita, hexcode) {
 
-	this.codice_fiscale = codice_fiscale;
+	this.codiceFiscale = codiceFiscale;
 	this.nome = nome;
 	this.cognome = cognome;
 	this.matricola = matricola;
@@ -94,36 +94,21 @@ function sendForm() {
 			$("input[name=matricola]").prop("value"),
 			$("#select").val(),
 			hexcode);
-	
-	$ajax({
+
+	$.ajax({
 		type:'post',
-		url:'formPrenotazione',
+		url:'../formPrenotazione',
 		datatype:"json",
 		data: JSON.stringify(paziente),
 		success: function(data, status) {
-			alert(data + "\n" + status);
+			
 		}
 	});
 }
 
-//var codes = localStorage.getItem("array");
-
+//HEXCODE
 function generate() {
-	
-	alert("generate");
-	var rand = randHex(12);
-	
-//	if(codes == null) {
-//		codes = new Array();
-//	}
-	
-//	while(codes.indexOf(rand) != -1) {
-//		rand = randHex(12);
-//	}
-//	document.getElementById("hex").value = rand;
-//	codes.push(rand);
-//	localStorage.setItem("array", codes);
-	return rand;
+	return randHex(12);
 }
 
 function randHex(len) {

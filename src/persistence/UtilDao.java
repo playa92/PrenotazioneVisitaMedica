@@ -17,11 +17,11 @@ public class UtilDao {
 		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "drop SEQUENCE if EXISTS id;"
-					+ "drop table if EXISTS paziente;"
+					+ "drop table if EXISTS paziente CASCADE;"
 					+ "drop table if EXISTS università;"
 					+ "drop table if EXISTS amministratore;"
 					+ "drop table if EXISTS impiegato;"
-					+ "drop table if EXISTS prenotazione;"
+					+ "drop table if EXISTS prenotazione CASCADE;"
 					+ "drop table if EXISTS codiceQr;";
 				
 			PreparedStatement statement = connection.prepareStatement(delete);

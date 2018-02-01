@@ -1,8 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 
-<jsp:useBean id="prenotato" class="model.Prenotazione" scope="session" />
-	<jsp:setProperty name="prenotato" property="id_visita" value="fin."/>
+<jsp:useBean id="prenotato" class="model.Prenotazione" scope="session"/>
+<jsp:setProperty name="prenotato" property="codiceVisita" value="fin."/>
 
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,7 @@
 	</nav>
 	
 	<div class="jumbotron text-center">
-		<jsp:getProperty name="prenotato" property="id_visita"/>
+		<jsp:getProperty name="prenotato" property="codiceVisita"/>
 		<h1>Elenco Prenotati</h1>
 	</div>
 	
@@ -108,20 +108,19 @@
   	</thead>
   	<tbody id="elencoPrenotati">
    
-	  	<c:forEach var="prenotato" items="${prenotazioni}">
-			<tr class="prenotati">
-				<td>${prenotato.nome}</td>
-				<td>${prenotato.cognome}</td>
-				<td>${prenotato.orarioVisita }</td>
+	  	<jstl:forEach var="p" items="${prenotazioni}">
+			<tr>
+				<td>${p.nome}</td>
+				<td>${p.cognome}</td>
+				<td>${p.orarioVisita }</td>
 			</tr>			
-		</c:forEach>
+		</jstl:forEach>
    
   </tbody>
 </table>
 
-
-
 	<script>
+	
 	$(document).ready(function(){
 		var $rows = $('#table tr');
 		$('#search').keyup(debounce(function() {

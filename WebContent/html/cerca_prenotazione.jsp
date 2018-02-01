@@ -1,6 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" 
-prefix="jstl" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 
 <!DOCTYPE html>
 
@@ -8,15 +7,15 @@ prefix="jstl" %>
 <head>
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ricerca Prenotazione</title>
-	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/common.css">
-	<link rel="stylesheet" href="css/loading.css">
-	<script src="js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="js/jquery/jquery.qrcode.js"></script>
-	<script src="js/jquery/jspdf.min.js"></script>
-	<script src="js/effects.js"></script>
-	<script src="js/scroll_up.js"> </script>
-	<script src="js/search.js"></script>
+	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/loading.css">
+	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../js/jquery/jquery.qrcode.js"></script>
+	<script src="../js/jquery/jspdf.min.js"></script>
+	<script src="../js/effects.js"></script>
+	<script src="../js/scroll_up.js"> </script>
+	<script src="../js/search.js"></script>
 	<script src="https://momentjs.com/downloads/moment.min.js"></script>
 	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 	
@@ -99,9 +98,7 @@ prefix="jstl" %>
 	<a href="#" class="scrollup">Scroll</a>
 	
 	<script>
-	
 	$(document).on('click','#cmd', function() {
-		alert("PRINT")
 		  var options = {
 		  };
 		  var pdf = new jsPDF('l', 'pt', 'a4');		  
@@ -109,12 +106,7 @@ prefix="jstl" %>
 		  pdf.save('promemoria.pdf'); 
 		  });
 	});
-	
-	
 	</script>
-	
 	<script src="js/qr_code.js"></script>
-	
-	
 </body>
 </html>

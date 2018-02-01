@@ -12,9 +12,8 @@ public class Segnalazione extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("sei nel get");
+		//TODO
 		String message = request.getParameter("messaggio");
-		System.out.println("----> " + message);
 		response.getWriter().write(message);
 	}
 	

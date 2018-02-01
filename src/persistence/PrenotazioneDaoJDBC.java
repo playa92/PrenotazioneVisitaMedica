@@ -50,7 +50,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		Prenotazione visitaMedica = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM prenotazione WHERE id_Visita = ?";
+			String query = "select * FROM prenotazione WHERE id_visita = ?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, codice);
 			ResultSet result = statement.executeQuery();
