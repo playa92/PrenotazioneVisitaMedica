@@ -46,7 +46,7 @@
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
 				     	<li><a id="list-element" href="html/cerca_prenotazione.jsp">Cerca prenotazione</a></li>
-				       	<li><a id="list-element" href="html/visualizza_prenotazioni.jsp">Visualizza statistiche prenotazioni</a></li>
+				       	<li><a id="list-element" href="restituisciPrenotazioni">Prenotazioni correnti</a></li>
 			        </ul>
 			     </li>
 			     <jstl:if test="${loggato}">
@@ -158,7 +158,7 @@
 	      <div class="item">
 	        <img src="images/statistiche.jpg" alt="Statistiche">
 	        <div class="carousel-content">
-		        <a href="<%=request.getContextPath()%>/restituisciPrenotazioni">Visualizza stato prenotazioni</a>
+		        <a href="restituisciPrenotazioni">Visualizza stato prenotazioni</a>
 		    </div>
 	      </div>
 	    </div>
