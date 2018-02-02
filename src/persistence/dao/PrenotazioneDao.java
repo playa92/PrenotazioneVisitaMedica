@@ -5,10 +5,10 @@ import model.Prenotazione;
 
 public interface PrenotazioneDao {
 
-	public void save(Prenotazione visitaMedica);
+	public void save(Prenotazione prenotazione);
 	public Prenotazione findByPrimaryKey(String codice);
 	public List<Prenotazione> findAll();
-	public void update(Prenotazione visitaMedica);
-	public void delete(Prenotazione visitaMedica);
+	public void update(Prenotazione prenotazione);
+	public void delete(Prenotazione prenotazione);
 	public int getTotalVisits();
 }

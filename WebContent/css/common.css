@@ -343,14 +343,14 @@ box-shadow: 0 0 1px 1px #0b102d;
 /* //////////////// Prenotazione ///////////////////// */
 /* /////////////////////////////////////////////////// */
 
-#form {
-	width: 600px;
-	height: 450px;
-/* 	border: 1px solid blue;   */
-	padding: 25px 25px; 
-	background-color: #bcc4f2; 
-	margin: 25px auto 75px auto;
-}
+/* #form { */
+/* 	width: 600px; */
+/* 	height: 450px; */
+/* /* 	border: 1px solid blue;   */ */
+/* 	padding: 25px 25px;  */
+/* 	background-color: #bcc4f2;  */
+/* 	margin: 25px auto 75px auto; */
+/* } */
 
 footer {
    position: fixed;

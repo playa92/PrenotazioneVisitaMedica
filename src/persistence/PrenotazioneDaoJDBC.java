@@ -18,17 +18,17 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	}
 	
 	@Override
-	public void save(Prenotazione visitaMedica) {
+	public void save(Prenotazione prenotazione) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
 			String query = "insert INTO prenotazione(id_visita, nome_paziente, cognome_paziente, orario_visita, importo) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(query);
-			statement.setString(1, visitaMedica.getCodiceVisita());
-			statement.setString(2, visitaMedica.getNomePaziente());
-			statement.setString(3, visitaMedica.getCognomePaziente());
-			statement.setString(4, visitaMedica.getOrarioVisita());
-			statement.setDouble(5, visitaMedica.getImporto());
+			statement.setString(1, prenotazione.getCodiceVisita());
+			statement.setString(2, prenotazione.getNomePaziente());
+			statement.setString(3, prenotazione.getCognomePaziente());
+			statement.setString(4, prenotazione.getOrarioVisita());
+			statement.setDouble(5, prenotazione.getImporto());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -47,7 +47,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	public Prenotazione findByPrimaryKey(String codice) {
 		
 		Connection connection = this.dataSource.getConnection();
-		Prenotazione visitaMedica = null;
+		Prenotazione prenotazione = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * FROM prenotazione WHERE id_visita = ?";
@@ -57,12 +57,12 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			
 			if(result.next()) {
 				
-				visitaMedica = new Prenotazione();
-				visitaMedica.setCodiceVisita(result.getString(1));
-				visitaMedica.setNomePaziente(result.getString(2));
-				visitaMedica.setCognomePaziente(result.getString(3));
-				visitaMedica.setOrarioVisita(result.getString(4));
-				visitaMedica.setImporto(result.getDouble(5));
+				prenotazione = new Prenotazione();
+				prenotazione.setCodiceVisita(result.getString(1));
+				prenotazione.setNomePaziente(result.getString(2));
+				prenotazione.setCognomePaziente(result.getString(3));
+				prenotazione.setOrarioVisita(result.getString(4));
+				prenotazione.setImporto(result.getDouble(5));
 			}
 			
 		} catch(SQLException e) {
@@ -75,7 +75,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}	
-		return visitaMedica;
+		return prenotazione;
 	}
 
 	@Override
@@ -83,7 +83,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		List<Prenotazione> visite = new LinkedList<>();
-		Prenotazione visitaMedica = null;
+		Prenotazione prenotazione = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * FROM prenotazione";
@@ -92,13 +92,13 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			
 			while(result.next()) {
 				
-				visitaMedica = new Prenotazione();
-				visitaMedica.setCodiceVisita(result.getString(1));
-				visitaMedica.setNomePaziente(result.getString(2));
-				visitaMedica.setCognomePaziente(result.getString(3));
-				visitaMedica.setOrarioVisita(result.getString(4));
-				visitaMedica.setImporto(result.getDouble(5));
-				visite.add(visitaMedica);
+				prenotazione = new Prenotazione();
+				prenotazione.setCodiceVisita(result.getString(1));
+				prenotazione.setNomePaziente(result.getString(2));
+				prenotazione.setCognomePaziente(result.getString(3));
+				prenotazione.setOrarioVisita(result.getString(4));
+				prenotazione.setImporto(result.getDouble(5));
+				visite.add(prenotazione);
 			}
 		} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -114,17 +114,17 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	}
 
 	@Override
-	public void update(Prenotazione visitaMedica) {
+	public void update(Prenotazione prenotazione) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
 			String update = "update prenotazione SET id_visita = ?, nome_paziente = ?, cognome_paziente = ?, orario_visita = ?, importo = ?, WHERE id_visita = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, visitaMedica.getCodiceVisita());
-			statement.setString(2,visitaMedica.getNomePaziente());
-			statement.setString(3, visitaMedica.getCognomePaziente());
-			statement.setString(4, visitaMedica.getOrarioVisita());
-			statement.setDouble(5, visitaMedica.getImporto());
+			statement.setString(1, prenotazione.getCodiceVisita());
+			statement.setString(2,prenotazione.getNomePaziente());
+			statement.setString(3, prenotazione.getCognomePaziente());
+			statement.setString(4, prenotazione.getOrarioVisita());
+			statement.setDouble(5, prenotazione.getImporto());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -140,14 +140,25 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	}
 
 	@Override
-	public void delete(Prenotazione visitaMedica) {
+	public void delete(Prenotazione prenotazione) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM prenotazione WHERE id_visita = ? ";
+			String delete = "delete FROM prenotazione WHERE id_visita = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setString(1, visitaMedica.getCodiceVisita());
+			statement.setString(1, prenotazione.getCodiceVisita());
 			statement.executeUpdate();
+			
+			delete = "delete FROM paziente WHERE id_codice = ?";
+			statement = connection.prepareStatement(delete);
+			statement.setString(1, prenotazione.getCodiceVisita());
+			statement.executeUpdate();
+			
+			delete = "delete FROM codice_qr WHERE id = ?";
+			statement = connection.prepareStatement(delete);
+			statement.setString(1, prenotazione.getCodiceVisita());
+			statement.executeUpdate();		
+			
 			
 		} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -158,8 +169,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			} catch(SQLException e) {
 				throw new PersistenceException(e.getMessage());
 			}
-		}
-		
+		}	
 	}
 	
 	@Override
@@ -188,5 +198,4 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 		}
 		return total;
 	}
-
 }

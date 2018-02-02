@@ -23,7 +23,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert INTO codiceQr(id, orario_scadenza, valido) values (?,?,?)";
+			String insert = "insert INTO codice_qr(id, orario_scadenza, valido) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, codice.getCodice());
 //			long seconds = codice.getScadenza().getTime();
@@ -50,7 +50,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		CodiceQR codiceQr = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM codiceQr WHERE id = ?";
+			String query = "select * FROM codice_qr WHERE id = ?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, codice);
 			ResultSet result = statement.executeQuery();
@@ -84,7 +84,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		CodiceQR c = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM codiceQr WHERE id = ?";
+			String query = "select * FROM codice_qr WHERE id = ?";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
@@ -115,7 +115,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update codiceQr SET id = ?, orario_scadenza = ?, valido = ? WHERE id = ?";
+			String update = "update codice_qr SET id = ?, orario_scadenza = ?, valido = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, codice.getCodice());
 //			long seconds = codice.getScadenza().getTime();
@@ -141,7 +141,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM codiceQr WHERE id = ? ";
+			String delete = "delete FROM codice_qr WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setString(1, codice.getCodice());
 			statement.executeUpdate();

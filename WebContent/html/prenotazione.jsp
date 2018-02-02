@@ -10,6 +10,16 @@
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../js/reservation_controls.js"></script>
+	<style>
+	#form {
+		width: 600px;
+		height: 450px;
+	/* 	border: 1px solid blue;   */
+		padding: 25px 25px; 
+		background-color: #bcc4f2; 
+		margin: 25px auto 75px auto;
+	}
+	</style>
 </head>
 
 <body>
@@ -41,9 +51,11 @@
 				<option>Lesione Muscolare</option>
 				<option>Malattia Generica</option>
 			</select>
-		</div>			
-		<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick='sendForm();'/>
-		<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
+		</div>
+		<div class="form-group">			
+			<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick='sendForm();'/>
+			<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
+		</div>
 	</div>
 	
 	<div>
@@ -65,7 +77,6 @@
 		 	</div>
 		</div>
 	</div>
-	
 	
 </body>
 </html>

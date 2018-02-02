@@ -21,11 +21,6 @@ public class RestituisciPrenotazioni extends HttpServlet{
 				getDaoFactory().getPrenotazioneDao();
 		List<Prenotazione> prenotazioni = dao.findAll();
 		request.setAttribute("prenotazioni", prenotazioni);
-			
-		System.out.println("-------->");
-		for(Prenotazione p: prenotazioni) {
-			System.out.println(p.toString());
-		}
 		
 		RequestDispatcher dispacher = request.getRequestDispatcher("html/visualizza_prenotazioni.jsp");
 		dispacher.forward(request, response);
