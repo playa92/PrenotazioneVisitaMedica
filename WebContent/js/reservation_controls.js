@@ -34,7 +34,10 @@ function correct(message) {
 }
 
 function avviso() {
-	alert("Attenzione! I dati inseriti verrano puliti");
+	
+	$("#notice").modal("show");
+	$("#message").text("Attenzione i dati inseriti verranno resettati");
+	
 }
 
 //CONFIRM DIALOG
@@ -68,36 +71,38 @@ function sendForm() {
 		type:'post',
 		url:'../formPrenotazione',
 		datatype:"json",
-		data: JSON.stringify(paziente),
+		data:JSON.stringify(paziente),
 		success:function(data) {
 			
 			var values = data.split(";");
-			$("#notice").modal("show");
 			
-			if(values[0] == "false") {
+			if(values[0] == "redirect") {
+				
+				$("#notice").modal("show");
+				$("#message").text(values[1]);
+				setTimeout(function() {
+					window.location.href = "../home";
+				}, 2000);
+				
+			} else 
+				if(values[0] == "false") {
+				$("#notice").modal("show");	
 				$("#message").text(values[1]);
 			} else {
-				$("#message").text("Prenotazione: " + values[1] +", vuole continuare?");
+				$("#notice2").modal("show");
+				$("#message2").text("Prenotazione: " + values[1] +
+						" Orario visita: " + values[2] + " vuole continuare?");
 			}
 			
 		}
 	});
 }
 
-//--------------------NON CANCELLARE--------------------
-//if(count == MAX_VALUE) {
-//	
-//	alert("Attenzione: Limite Prenotazione Raggiunto");
-//	$("#form").attr("action","home.jsp");
-//	return;
-//}
-//
-//var d = new Date();
-//d.setMinutes(d.getMinutes() + 15 * count);
-//
-//var toString = months[d.getMonth()] + " " + d.getDate() 
-//	+ " " + d.getHours() + ':' + d.getMinutes();
----------------------------------------------------------
+function success() {
+	
+	$("#notice").modal("show");	
+	$("#message").text("Prenotazione avvenuta con successo");
+}
 
 //HEXCODE
 function generate() {

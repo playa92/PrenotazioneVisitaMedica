@@ -4,12 +4,13 @@
 <meta charset="ISO-8859-1">
 <title>Area Segnalazioni</title>
 	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../js/report.js"></script>
-	<style type="text/css">
-		.jumbotron {
-			background-color: #bcc4f2;
-			color: #092147;
+	<style>
+		table, th, td {
+    		border: 1px solid black;
+    		text-align:center;
 		}
 	</style>
 </head>
@@ -19,20 +20,43 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 	   		</ul>
 		</div>	
 	</nav>
 	
-	<div class="jumbotron text-center">
+	<div class="jumbotron text-center" style="background-color: #ffa500;color:#ffffff">
 	  <h1>Area Segnalazioni</h1>
 	</div>
 	
-	<button id="#btn" type="button" onclick="clicked();">Clicca qui!</button>
-	
 	<div>
-		<p id="mex"></p>
+		<table style="width:100%;">
+			<tr>
+				<th>Codice</th>
+				<th>Nome</th>
+				<th>Cognome</th>
+				<th>Segnalazione</th>
+			</tr>
+			<tr>
+				<td>001</td>
+				<td>Giovanni</td>
+				<td>Cosentino</td>
+				<td>Assenza Connessione</td>
+			</tr>
+			<tr>
+				<td>002</td>
+				<td>Davide</td>
+				<td>Aloia</td>
+				<td>Errore Registrazione</td>
+			</tr>
+			<tr>
+				<td>003</td>
+				<td>Michele</td>
+				<td>Cangeri</td>
+				<td>Codice non trovato</td>
+			</tr>
+		</table>
 	</div>
 	
 </body>

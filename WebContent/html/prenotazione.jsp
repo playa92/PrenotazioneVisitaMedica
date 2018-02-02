@@ -47,7 +47,6 @@
 	
 			<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick='sendForm();'/>
 			<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
-<%-- 			<jstl:set var="prenotazioni" value="${prenotazioni}"></jstl:set> --%>
 	</div>
 
 	<div class="footer-prenotazione">
@@ -61,7 +60,7 @@
       	<div class="modal fade" id="notice" role="dialog">
 		 	<div class="modal-dialog modal-md">
 		    	<div class="modal-content">
-	        	<div class="modal-header" style="text-align:center; background-color: #bcc4f2">
+	        	<div class="modal-header" style="text-align:center; background-color:#bcc4f2">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
         			<h3 id="message" class="modal-title" style="text-align:center"></h3>
          		</div>
@@ -70,5 +69,22 @@
 		</div>
 	</div>
 	
+	<div id="dialog">
+      	<div class="modal fade" id="notice2" role="dialog">
+		 	<div class="modal-dialog modal-md">
+		    	<div class="modal-content">
+	        	<div class="modal-header" style="text-align:center; background-color:#bcc4f2">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+        			<h3 id="message2" class="modal-title" style="text-align:center"></h3>
+        			<div class="modal-body" style="text-align:center; background-color:#bcc4f2">
+        				<button type="button" class="btn btn-default" data-dismiss="modal" onclick="success();" style="background-color:#092147; color:#ffffff">Si</button>
+        				<button type="button" class="btn btn-default" onclick="window.location.href='../home'" data-dismiss="modal" style="background-color:#092147; color:#ffffff">No</button>
+        			</div>
+         		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+
 </body>
 </html>

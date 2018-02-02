@@ -100,7 +100,7 @@
 							            <h3 class="modal-title" style="text-align:center">Sei sicuro di voler effettuare la disconnessione</h3>
 							          </div>
 							   		  <div class="modal-body" style="text-align:center; background-color:#bcc4f2">
-							   		 		<button type="button" style="background-color: #092147; color:white" class="btn btn-default" data-dismiss="modal" onclick="window.location='login?logout=true'">Yes</button>
+							   		 		<button type="button" style="background-color: #092147; color:white" class="btn btn-default" data-dismiss="modal" onclick="window.location='login?logout=true'">Si</button>
 								    		<button type="button" style="background-color: #092147; color:white" class="btn btn-defualt" data-dismiss="modal" onclick="window.location='#'">No</button>
 								      </div>
 							     </div>
@@ -243,7 +243,7 @@
 <!-- 	            <a href="#" class="google"><i class="fa fa-google-plus"></i></a> -->
 <!-- 	        </div> -->
 	        <div class="footer-copyright">
-	            <p>© 2018 Copyright Text </p>
+	            <p>© 2018 Copyright Text</p>
 	        </div>
 	    </footer>
 	    

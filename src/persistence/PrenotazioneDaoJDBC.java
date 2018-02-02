@@ -121,7 +121,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			String update = "update prenotazione SET id_visita = ?, nome_paziente = ?, cognome_paziente = ?, orario_visita = ?, importo = ?, WHERE id_visita = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, prenotazione.getCodiceVisita());
-			statement.setString(2,prenotazione.getNomePaziente());
+			statement.setString(2, prenotazione.getNomePaziente());
 			statement.setString(3, prenotazione.getCognomePaziente());
 			statement.setString(4, prenotazione.getOrarioVisita());
 			statement.setDouble(5, prenotazione.getImporto());

@@ -24,6 +24,7 @@ import persistence.dao.PrenotazioneDao;
 @SuppressWarnings("serial")
 public class FormPrenotazione extends HttpServlet {
 	
+	private final int MAX = 50;
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 15;
 	
@@ -46,16 +47,24 @@ public class FormPrenotazione extends HttpServlet {
 //		System.out.println(jsonReceived.toString());//lo studente ricevuto tramite chiamata AJAX
 		try {
 			
-			UniversitaDao universitaDao = DatabaseManager.getInstance().
-					getDaoFactory().getUniversitaDao();
-			PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
-					getDaoFactory().getPrenotazioneDao();
 			PazienteDao pazienteDao = DatabaseManager.getInstance().
 					getDaoFactory().getPazienteDao();
+			PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
+					getDaoFactory().getPrenotazioneDao();
 			CodiceQRDao codiceQRDao = DatabaseManager.getInstance().
 					getDaoFactory().getCodiceQRDao();
+			UniversitaDao universitaDao = DatabaseManager.getInstance().
+					getDaoFactory().getUniversitaDao();
 			
 			PrintWriter out = response.getWriter();
+			int visiteTotali = prenotazioneDao.getTotalVisits();
+			
+			if(visiteTotali >= MAX) {
+				out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
+				return;
+			}
+			
+			
 			JSONObject json = new JSONObject(jsonReceived.toString());
 			
 			Long matricola = null;
@@ -91,10 +100,8 @@ public class FormPrenotazione extends HttpServlet {
 				}	
 			}
 			
-			int total = prenotazioneDao.getTotalVisits();
-			
-			Date date1 = new Date(Calendar.getInstance().getTimeInMillis() + (total * TEMPO_VISITA * 60000));
-			Date date2 = new Date(Calendar.getInstance().getTimeInMillis() + (total * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
+			Date date1 = new Date(Calendar.getInstance().getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
+			Date date2 = new Date(Calendar.getInstance().getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
 			
 			int indexOf = date1.toString().indexOf(":") - 2;
 			String visita = date1.toString().substring(indexOf, indexOf + 8);
@@ -118,7 +125,7 @@ public class FormPrenotazione extends HttpServlet {
 			prenotazioneDao.save(prenotazione); 
 				
 			//TODO VISUALIZZARE LA PAGINA IN UN DIALOG
-			out.println("true;" + (++ total) + ";Prenotazione avvenuta con successo");
+			out.println("true;" + (++ visiteTotali) + ";" + visita);
 //			out.println("<html>");
 //			out.println("<head><title>Riepilogo Dati</title>");
 //			out.println("<link rel='stylesheet' href='bootstrap-3.3.7-dist/css/bootstrap.min.css'>");
