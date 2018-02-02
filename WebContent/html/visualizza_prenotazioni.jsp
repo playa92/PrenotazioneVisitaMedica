@@ -16,7 +16,7 @@
 	<script src="<%=request.getContextPath()%>/js/scroll_up.js"> </script>
 </head>
 
-<body id="show_res" style="height:1160px">
+<body id="show_res">
 	
 	<jstl:if test="${not vuoto}">
 		
