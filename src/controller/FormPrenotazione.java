@@ -65,12 +65,12 @@ public class FormPrenotazione extends HttpServlet {
 			}
 			
 			if(pazienteDao.findByPrimaryKey(json.getString("codiceFiscale")) != null) {
-				out.println("Paziente con codice fiscale: '" + json.getString("codiceFiscale") + "' gia' presente");
+				out.println("false;Paziente con codice fiscale: '" + json.getString("codiceFiscale") + "' gia' presente");
 				return;
 				
 			} else {
 				if(pazienteDao.exists(matricola)) {
-					out.println("La Matricola: '" + json.getString("matricola") + "' e' stata associata ad un altro Paziente");
+					out.println("false;La Matricola: '" + json.getString("matricola") + "' e' stata associata ad un altro Paziente");
 					return;
 				}
 			}
@@ -118,7 +118,7 @@ public class FormPrenotazione extends HttpServlet {
 			prenotazioneDao.save(prenotazione); 
 				
 			//TODO VISUALIZZARE LA PAGINA IN UN DIALOG
-			out.println("Prenotazione avvenuta con successo");
+			out.println("true;" + (++ total) + ";Prenotazione avvenuta con successo");
 //			out.println("<html>");
 //			out.println("<head><title>Riepilogo Dati</title>");
 //			out.println("<link rel='stylesheet' href='bootstrap-3.3.7-dist/css/bootstrap.min.css'>");

@@ -175,15 +175,14 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public int getTotalVisits() {
 		
-		int total = 0;
 		Connection connection = this.dataSource.getConnection();
 		try {
 			String query = "select COUNT(*) AS total FROM prenotazione";
 			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
-			if(result.next()) {
-				total = result.getInt(1);
+			while(result.next()) {
+				return result.getInt(1);
 			}
 			
 		} catch (SQLException e) {
@@ -196,6 +195,6 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
-		return total;
+		return 0;
 	}
 }

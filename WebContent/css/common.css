@@ -288,7 +288,7 @@ textarea:required:focus {
     color: #092147; 
     background: #bcc4f2; 
     font-size: 18px; 
-    width: 60%; 
+    width: 40%; 
     border: 1px solid white; 
 } 
 .form-prenotazione input[type="reset"] { 
@@ -296,7 +296,7 @@ textarea:required:focus {
     color: #092147; 
     background: red; 
     font-size: 18px; 
-    width: 20%; 
+    width: 40%; 
     border: 1px solid white; 
 } 
 

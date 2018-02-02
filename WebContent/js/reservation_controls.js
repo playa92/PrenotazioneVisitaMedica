@@ -42,37 +42,6 @@ var MAX_VALUE = 50;
 var count = localStorage.getItem("count");
 var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
 
-//$(document).on("click", "#conferma", function() {
-//	
-//	if(count == null) {
-//		count = 0;
-//	}
-//	
-//	if(count == MAX_VALUE) {
-//		
-//		alert("Attenzione: Limite Prenotazione Raggiunto");
-//		$("#form").attr("action","home.jsp");
-//		return;
-//	}
-//	
-//	var d = new Date();
-//	d.setMinutes(d.getMinutes() + 15 * count);
-//
-//	var toString = months[d.getMonth()] + " " + d.getDate() 
-//		+ " " + d.getHours() + ':' + d.getMinutes();
-//	
-//	var result = confirm("Prenotazione: " + (++ count) + "/" + MAX_VALUE
-//			+ "\nOrario visita: " + toString
-//			+ "\nVuoi continuare?");
-//	
-//	if(!result) {
-//		$("#form").attr("action","home.jsp");
-//		localStorage.removeItem("count");
-//	} else {
-//		localStorage.setItem("count", count);
-//	}
-//});
-
 function Paziente(codiceFiscale, nome, cognome, matricola, invalidita, hexcode) {
 
 	this.codiceFiscale = codiceFiscale;
@@ -100,13 +69,35 @@ function sendForm() {
 		url:'../formPrenotazione',
 		datatype:"json",
 		data: JSON.stringify(paziente),
-		success:function(data, status) {
+		success:function(data) {
+			
+			var values = data.split(";");
 			$("#notice").modal("show");
-			$("#message").text(data);
+			
+			if(values[0] == "false") {
+				$("#message").text(values[1]);
+			} else {
+				$("#message").text("Prenotazione: " + values[1] +", vuole continuare?");
+			}
 			
 		}
 	});
 }
+
+//--------------------NON CANCELLARE--------------------
+//if(count == MAX_VALUE) {
+//	
+//	alert("Attenzione: Limite Prenotazione Raggiunto");
+//	$("#form").attr("action","home.jsp");
+//	return;
+//}
+//
+//var d = new Date();
+//d.setMinutes(d.getMinutes() + 15 * count);
+//
+//var toString = months[d.getMonth()] + " " + d.getDate() 
+//	+ " " + d.getHours() + ':' + d.getMinutes();
+---------------------------------------------------------
 
 //HEXCODE
 function generate() {

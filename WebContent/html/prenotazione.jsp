@@ -32,12 +32,12 @@
 	</div>
 
 	<div class="form-prenotazione">
-		<label for="codiceFiscale">Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codiceFiscale" type="text" placeholder="Enter SSN" required/>
-		<label for="nome">Nome *</label><input id="s1" onblur="correct(id);" name="nome" type="text"  placeholder="Enter Name" required/>
-		<label for="cognome">Cognome *</label><input id="s2" onblur="correct(id);" name="cognome" type="text" placeholder="Enter Surname" required/>
-		<label for="matricola">Matricola **</label><input id="n" onblur="correct(id);" name="matricola" type="text" placeholder="Enter Id">
+		<label for="codiceFiscale">Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codiceFiscale" type="text" placeholder="codice fiscale" required/>
+		<label for="nome">Nome *</label><input id="s1" onblur="correct(id);" name="nome" type="text"  placeholder="nome" required/>
+		<label for="cognome">Cognome *</label><input id="s2" onblur="correct(id);" name="cognome" type="text" placeholder="cognome" required/>
+		<label for="matricola">Matricola **</label><input id="n" onblur="correct(id);" name="matricola" type="text" placeholder="matricola">
 		
-		<label for="invalidita">Invalidit&aacute</label>
+		<label for="invalidita">Invalidit&aacute;</label>
 			<select id="select" name="invalidita" class="form-control">	 
 				<option selected="selected">Nessuna</option>
 				<option>Malformazione</option>
@@ -47,6 +47,7 @@
 	
 			<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick='sendForm();'/>
 			<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
+<%-- 			<jstl:set var="prenotazioni" value="${prenotazioni}"></jstl:set> --%>
 	</div>
 
 	<div class="footer-prenotazione">
