@@ -33,7 +33,7 @@
 	</style>
 </head>
 
-<body style="height:1150px">
+<body>
 		
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
@@ -46,7 +46,7 @@
 		</div>	
 	</nav>
 
-	<div class="jumbotron text-center">
+	<div class="jumbotron text-center" style="background:#048706;color:white">
   		<h1>Cerca la tua prenotazione</h1>
 	</div>
 		
@@ -56,7 +56,7 @@
            <div class="input-group col-md-4">
               <input id="input" type="text" class="search-query form-control" placeholder="Search"/>
               <span class="input-group-btn">
-                  <button id="search" class="btn btn-info" type="button">
+                  <button id="search" class="btn" type="button" style="background:#048706;color:white">
                       <span class=" glyphicon glyphicon-search"></span>
                   </button>
               </span>

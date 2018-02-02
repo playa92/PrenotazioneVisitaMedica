@@ -1,10 +1,10 @@
-//PRELOADER
-$(window).on("load", function() {
-	// executes when complete page is fully loaded, including all frames, objects and images
-	$("#preloader").fadeOut("slow",function() {
-		$(this).remove();
-	});
-});
+////PRELOADER
+//$(window).on("load", function() {
+//	// executes when complete page is fully loaded, including all frames, objects and images
+//	$("#preloader").fadeOut("slow",function() {
+//		$(this).remove();
+//	});
+//});
 
 //INPUT LOGIN COLOR
 $(function() {

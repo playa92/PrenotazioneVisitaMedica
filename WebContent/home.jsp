@@ -9,25 +9,27 @@
 	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/loader.css">
  	<link rel="stylesheet" href="css/common.css"> 
+ 	<link rel="stylesheet" href="css/footer-with-map.css">
  	<script src="js/jquery/jquery-3.2.1.min.js"></script>
  	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
  	<script src="js/jquery/jquery.cookie.js"></script>
  	<script src="js/effects.js"></script>
  	<script src="js/login.js"></script>	
+ 	<script src="js/scroll_up.js"></script>	
 </head>
 
 <body>
 
-	<!-- Loader -->
-	<div id="preloader" class="container">
-		<div class="row">
-			<div class="load-overlay">
-				<div class="loader">
-				  <i></i><i></i><i></i><i></i><i></i>
-				</div>
-			</div>
-		</div>
-	</div>
+		<!-- Loader -->
+<!-- 	<div id="preloader" class="container"> -->
+<!-- 		<div class="row"> -->
+<!-- 			<div class="load-overlay"> -->
+<!-- 				<div class="loader"> -->
+<!-- 				  <i></i><i></i><i></i><i></i><i></i> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 			
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
@@ -124,10 +126,10 @@
 		</div>	
 	</nav>
 		
-	<div class="title" align="center">
-	  <p id="primary">Benvenuto nel Sito di Prenotazione</p>
-	  <p id="secondary">(Scriviamo qualcos'altro)</p>
+	<div class="jumbotron text-center">
+  		<h1>Benvenuto nel Sito di Prenotazione</h1>
 	</div>
+	
 	
 	<!-- BOOTSTRAP CAROUSEL -->
 	<div class="container">
@@ -194,6 +196,59 @@
 <%-- 	   <jstl:if test="${popUp}"> --%>
 <!-- 	   		<script> $("#notice").modal('show'); </script>   -->
 <%-- 	   </jstl:if> --%>
+	
+	<!-- FOOTER -->
+	<div class="content"></div>
+	    <footer id="myFooter">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-3">
+	                    <h5>Get started</h5>
+	                    <ul>
+	                        <li><a href="#">Home</a></li>
+	                        <li><a href="#">Sign up</a></li>
+	                        <li><a href="#">Downloads</a></li>
+	                    </ul>
+	                </div>
+	                <div class="col-sm-3">
+	                    <h5>About us</h5>
+	                    <ul>
+	                        <li><a href="#">Company Information</a></li>
+	                        <li><a href="#">Contact us</a></li>
+	                        <li><a href="#">Reviews</a></li>
+	                    </ul>
+	                </div>
+	                <div class="col-sm-3">
+	                    <h5>Support</h5>
+	                    <ul>
+	                        <li><a href="#">FAQ</a></li>
+	                        <li><a href="#">Help desk</a></li>
+	                        <li><a href="#">Forums</a></li>
+	                    </ul>
+	                </div>
+	                <div class="col-sm-3">
+	                    <h5>Legal</h5>
+	                    <ul>
+	                        <li><a href="#">Terms of Service</a></li>
+	                        <li><a href="#">Terms of Use</a></li>
+	                        <li><a href="#">Privacy Policy</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <iframe id="map-container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49396.325667490106!2d16.217289196661675!3d39.30479485437768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133f974acd5e5e29%3A0x5619c8633cc426fa!2s87100+Cosenza+CS!5e0!3m2!1sit!2sit!4v1516273585413"></iframe>
+	        </div>
+<!-- 	        <div class="social-networks"> -->
+<!-- 	            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> -->
+<!-- 	            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a> -->
+<!-- 	            <a href="#" class="google"><i class="fa fa-google-plus"></i></a> -->
+<!-- 	        </div> -->
+	        <div class="footer-copyright">
+	            <p>© 2018 Copyright Text </p>
+	        </div>
+	    </footer>
+	    
+	    <!-- SCROLLING -->
+		<a href="#" class="scrollup">Scroll</a>
 					
 </body>
 </html>

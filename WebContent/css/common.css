@@ -5,26 +5,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Sans-serif;    
+  font-family: Sans-serif;  
+  height:1150px;  
 }
 
 .jumbotron {
 	background-color: #bcc4f2;
 	color: #092147;
-}
-
-.title{
-	background-color: #bcc4f2;
-	color: #092147;
-	height:150px;
-}
-
-#primary{
-	font-size:70px;
-}
-
-#secondary{
-	font-size:20px;
 }
 
 .scrollup {
@@ -36,33 +23,6 @@ body {
     display: none;
     text-indent: -9999px;
     background: url('../images/arrow-up.png') no-repeat;
-}
-
-/* /////////////////////////////////////////////////// */
-/* /////////////////////// HOME ////////////////////// */
-/* /////////////////////////////////////////////////// */
-
-/* CAROUSEL */
-#myCarousel{
-	width:70%; 
-	margin: 25px auto 0 auto;
-}
-.carousel-content {
-  position: absolute;
-  top: 20%;
-  font-size:50px;
-  left: 10%;
-  z-index: 20;
-  text-shadow: 0 1px 2px rgba(0,0,0,.6);
-}
-
-.carousel-content a{
-	text-decoration: none;
-	color:white;
-}
-.carousel-content a:hover{
-	text-decoration: none;
-	color: #092147;
 }
 
 /* Navabr */
@@ -93,6 +53,33 @@ body {
 #list-element:hover {
     color: white;
     background: #092147;
+}
+
+/* /////////////////////////////////////////////////// */
+/* /////////////////////// HOME ////////////////////// */
+/* /////////////////////////////////////////////////// */
+
+/* CAROUSEL */
+#myCarousel{
+	width:70%; 
+	margin: 25px auto 0 auto;
+}
+.carousel-content {
+  position: absolute;
+  top: 20%;
+  font-size:50px;
+  left: 10%;
+  z-index: 20;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+.carousel-content a{
+	text-decoration: none;
+	color:white;
+}
+.carousel-content a:hover{
+	text-decoration: none;
+	color: #092147;
 }
 
 /* SEARCH */  
@@ -240,6 +227,92 @@ textarea:required:focus {
 }
 
 /* /////////////////////////////////////////////////// */
+/* //////////////// Prenotazione ///////////////////// */
+/* /////////////////////////////////////////////////// */
+
+.form-prenotazione {
+	width: 600px;
+	height: 550px;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 12px;
+	background-color: #092147;
+	margin: 10px auto 10px auto;
+	box-shadow: 0 0 2px 2px #0b102d;
+}
+
+.form-prenotazione label {  
+	display: block;  
+    margin-bottom: 8px;
+    color: white;
+} 
+
+.form-prenotazione input[type="text"], 
+.form-prenotazione input[type="date"], 
+.form-prenotazione input[type="datetime"], 
+.form-prenotazione input[type="email"], 
+.form-prenotazione input[type="number"], 
+.form-prenotazione input[type="search"], 
+.form-prenotazione input[type="time"], 
+.form-prenotazione input[type="url"], 
+.form-prenotazione textarea, 
+.form-prenotazione select {  
+   border-radius: 4px; 
+   border: 1px solid #808080; 
+   font-size: 16px; 
+   margin: 0; 
+   outline: 0; 
+   padding: 4px;
+   width: 100%; 
+   box-sizing: border-box; 
+   -webkit-box-sizing: border-box; 
+   -moz-box-sizing: border-box; 
+    background-color: #ffffff;  
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; 
+    margin-bottom: 30px;    
+}
+
+.form-prenotazione input[type="text"]:focus, 
+.form-prenotazione textarea:focus,
+.form-prenotazione select:focus{ 
+    background: #ffffff;
+} 
+
+.form-prenotazione select { 
+    -webkit-appearance: menulist-button; 
+    height:35px; 
+} 
+.form-prenotazione input[type="submit"] { 
+    padding: 10px 39px 10px 39px;
+    color: #092147; 
+    background: #bcc4f2; 
+    font-size: 18px; 
+    width: 60%; 
+    border: 1px solid white; 
+} 
+.form-prenotazione input[type="reset"] { 
+    padding: 10px 39px 10px 39px;
+    color: #092147; 
+    background: red; 
+    font-size: 18px; 
+    width: 20%; 
+    border: 1px solid white; 
+} 
+
+.form-prenotazione input[type="submit"]:hover{
+    box-shadow: 0 0 2px 2px #662907;	
+}
+
+
+.footer-prenotazione {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   text-align: left;
+}
+
+/* /////////////////////////////////////////////////// */
 /* ///////////////// Statistiche ///////////////////// */
 /* /////////////////////////////////////////////////// */
 
@@ -337,64 +410,36 @@ box-shadow: 0 0 1px 1px #0b102d;
     box-shadow: 0 0 2px 2px #092147;
 }
 
-}
-
-/* /////////////////////////////////////////////////// */
-/* //////////////// Prenotazione ///////////////////// */
-/* /////////////////////////////////////////////////// */
-
-/* #form { */
-/* 	width: 600px; */
-/* 	height: 450px; */
-/* /* 	border: 1px solid blue;   */ */
-/* 	padding: 25px 25px;  */
-/* 	background-color: #bcc4f2;  */
-/* 	margin: 25px auto 75px auto; */
-/* } */
-
-footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   text-align: left;
-}
-
-#form input[type=text], #form select {
-	border: 1px solid #808080;
-}
-
 /* /////////////////////////////////////////////////// */
 /* ///////////////// Assistenza ////////////////////// */
 /* /////////////////////////////////////////////////// */
 
-.form2 {
+.form-assistenza {
 	width: 400px;
 	height: 450px;
-/* 		padding: 25px 25px; */
 	padding-left: 25px;
 	padding-right: 25px;
 	padding-top: 12px;
-	background-color: #bcc4f2;
+	background-color: #f29d6d;
 	margin: 10px auto 10px auto;
-/* 		margin-right:auto; */
 }
 
-.form2 label {  
+.form-assistenza label {  
 	display: block;  
     margin-bottom: 8px;
     color: #092147;
 } 
 
-.form2 input[type="text"], 
-.form2 input[type="date"], 
-.form2 input[type="datetime"], 
-.form2 input[type="email"], 
-.form2 input[type="number"], 
-.form2 input[type="search"], 
-.form2 input[type="time"], 
-.form2 input[type="url"], 
-.form2 textarea, 
-.form2 select {  
+.form-assistenza input[type="text"], 
+.form-assistenza input[type="date"], 
+.form-assistenza input[type="datetime"], 
+.form-assistenza input[type="email"], 
+.form-assistenza input[type="number"], 
+.form-assistenza input[type="search"], 
+.form-assistenza input[type="time"], 
+.form-assistenza input[type="url"], 
+.form-assistenza textarea, 
+.form-assistenza select {  
    border-radius: 4px; 
    border: 1px solid #808080; 
    font-size: 16px; 
@@ -403,46 +448,33 @@ footer {
    padding: 4px;
    width: 100%; 
    box-sizing: border-box; 
-/*  -webkit-box-sizing: border-box;  */
-/*  -moz-box-sizing: border-box;  */
+   -webkit-box-sizing: border-box; 
+   -moz-box-sizing: border-box; 
     background-color: #ffffff;  
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; 
     margin-bottom: 30px;    
 }
 
-.form2 input[type="text"]:focus, 
-.form2 textarea:focus,
-.form2 select:focus{ 
+.form-assistenza input[type="text"]:focus, 
+.form-assistenza textarea:focus,
+.form-assistenza select:focus{ 
     background: #ffffff;
 } 
 
-.form2 select { 
+.form-assistenza select { 
     -webkit-appearance: menulist-button; 
     height:35px; 
 } 
-
-.form2 input[type="submit"] { 
-    position: relative; 
-    display: block;
+.form-assistenza input[type="submit"] { 
     padding: 10px 39px 10px 39px;
     color: #ffffff; 
-    margin: 0 auto; 
-    background: #1abc9c; 
+    background: #a30b08; 
     font-size: 18px; 
-    text-align: center; 
-    font-style: normal; 
     width: 100%; 
-    border: 1px solid #16a085; 
+    border: 1px solid white; 
 } 
 
-.form2 input[type="submit"]:hover, 
-.form2 input[type="button"]:hover { 
-    background: #092147; 
-} 
-
-.form2 input[type="submit"] {
-	background-color: #092147;
-	border: 1px solid #092147; 
-} 
-
+.form-assistenza input[type="submit"]:hover{
+    box-shadow: 0 0 2px 2px #662907;	
+}

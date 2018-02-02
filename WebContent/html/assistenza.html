@@ -24,12 +24,11 @@
 		</div>	
 	</nav>
 	
-	<div class="jumbotron text-center">
-		<h1>Benvenuto all'Assistenza</h1><br>
-		<h4>(Qualche frase strategica =) )</h4><br>
+	<div class="jumbotron text-center" style="background:#a30b08;color:white">
+		<h1>Assistenza</h1><br>
 	</div>
 	
-	<a class="btn btn-info" data-toggle="modal" data-target="#contattaci" href="#">Contattaci</a>       		 
+	<a class="btn" data-toggle="modal" data-target="#contattaci" style="background:#a30b08;color:white"href="#">Contattaci</a>       		 
 				       		
      <div class="modal fade" id="contattaci" role="dialog">
 	    <div class="modal-dialog modal-md">
@@ -38,9 +37,9 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	            <h3 class="modal-title" style="text-align:center">Contattaci</h3>
 	          </div>
-	   		  <div class="modal-body" style="text-align:center; background-color:#bcc4f2">
+	   		  <div class="modal-body" style="text-align:center; background-color:#f29d6d">
 	   		 		
-				 <div class="form2">
+				 <div class="form-assistenza">
 					<form>
 						<input id="input" type="text" name="name" placeholder="Name" required/>
 						<input type="text" name="surname" placeholder="Surname" required/>
@@ -52,21 +51,17 @@
 					  		<option>Errore prenotazione</option>
 					  		<option>Prenotazione non trovata</option>
 					  		<option>Altro</option>
-						</select>
-			      		<input type="submit" value="Invia" onclick="send();"/>
-								
+						</select>	
+ 					<input type="submit" class="btn btn-large" value="Invia" onclick="send();"/>
 					</form>
 				 </div>
-				 
 		      </div>
 		       <div class="modal-footer">
-		       		<input type="submit" value="Invia" onclick="send();"/>
-		    		<button type="button" style="background-color: #092147; color:white" class="btn btn-defualt" data-dismiss="modal" onclick="window.location='#'">No</button>
-	    	  </div>
+		    		 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location='#'">Annulla</button>
+			  </div>
 	     </div>
 	   </div>
 	</div>
-
 
 </body>
 </html>
