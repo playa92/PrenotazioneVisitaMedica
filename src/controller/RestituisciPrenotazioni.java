@@ -16,11 +16,15 @@ public class RestituisciPrenotazioni extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-		
+
 		PrenotazioneDao dao =DatabaseManager.getInstance().
 				getDaoFactory().getPrenotazioneDao();
-		List<Prenotazione> prenotazioni = dao.findAll();
-		request.setAttribute("prenotazioni", prenotazioni);
+		List<Prenotazione> prenotazioni = dao.findAll();		
+		
+		if(prenotazioni.size() > 0)
+			request.setAttribute("prenotazioni", prenotazioni);
+		else
+			request.setAttribute("vuoto", true);
 		
 		RequestDispatcher dispacher = request.getRequestDispatcher("html/visualizza_prenotazioni.jsp");
 		dispacher.forward(request, response);
