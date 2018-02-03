@@ -25,8 +25,8 @@ public class Home extends HttpServlet {
 			request.setAttribute("username", username);//JSTL
 		}
 		
-		RequestDispatcher dispacher = request.getRequestDispatcher("home.jsp");
-		dispacher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+		dispatcher.forward(request, response);
 	}
 	
 	@Override

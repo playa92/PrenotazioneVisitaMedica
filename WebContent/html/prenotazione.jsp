@@ -61,7 +61,7 @@
 		 	<div class="modal-dialog modal-md">
 		    	<div class="modal-content">
 	        	<div class="modal-header" style="text-align:center; background-color:#bcc4f2">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<button type="button" class="close" data-dismiss="modal" onclick="window.location.href='../home'">&times;</button>
         			<h3 id="message" class="modal-title" style="text-align:center"></h3>
          		</div>
 		    	</div>

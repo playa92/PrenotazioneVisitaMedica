@@ -37,13 +37,8 @@ function avviso() {
 	
 	$("#notice").modal("show");
 	$("#message").text("Attenzione i dati inseriti verranno resettati");
-	
 }
 
-//CONFIRM DIALOG
-var MAX_VALUE = 50;
-var count = localStorage.getItem("count");
-var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
 
 function Paziente(codiceFiscale, nome, cognome, matricola, invalidita, hexcode) {
 
@@ -90,8 +85,9 @@ function sendForm() {
 				$("#message").text(values[1]);
 			} else {
 				$("#notice2").modal("show");
-				$("#message2").text("Prenotazione: n\u00b0" + values[1] +
-						" Orario visita: " + values[2] + " vuole continuare?");
+				$("#message2").html("Prenotazione: n\u00b0" + values[1] +" <br> " 
+                        +" Orario visita: " + values[2] + "<br>" 
+                        + "vuole continuare?");
 			}
 			
 		}

@@ -42,11 +42,11 @@
     <url-pattern>/ricercaPrenotazione</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>Segnalazione</servlet-name>
-    <servlet-class>controller.Segnalazione</servlet-class>
+    <servlet-name>RegistraSegnalazione</servlet-name>
+    <servlet-class>controller.RegistraSegnalazione</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Segnalazione</servlet-name>
+    <servlet-name>RegistraSegnalazione</servlet-name>
     <url-pattern>/segnalazione</url-pattern>
   </servlet-mapping>
   <servlet>

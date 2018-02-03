@@ -8,7 +8,14 @@
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../js/report.js"></script> 	
-
+	<script>
+// 		function reset() {
+			
+// 			setTimeout(function() {
+// 				$("form").reset();
+// 			}, 2000);
+// 		}
+	</script>
 </head>
 
 <body>
@@ -28,36 +35,38 @@
 		<h1>Assistenza</h1><br>
 	</div>
 	
-	<a class="btn" data-toggle="modal" data-target="#contattaci" style="background:#a30b08;color:white"href="#">Contattaci</a>       		 
-				       		
+	<div style="text-align:center">
+		<a class="btn" data-toggle="modal" data-target="#contattaci" style="background:#a30b08;color:white;" href="#">Contattaci</a>       		 
+	</div>
+			       		
      <div class="modal fade" id="contattaci" role="dialog">
 	    <div class="modal-dialog modal-md">
 	      <div class="modal-content">
 	          <div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-	            <h3 class="modal-title" style="text-align:center">Contattaci</h3>
+	            <h3 class="modal-title" style="color:#092147;text-align:center">Contattaci</h3>
 	          </div>
 	   		  <div class="modal-body" style="text-align:center; background-color:#f29d6d">
 	   		 		
 				 <div class="form-assistenza">
-					<form>
-						<input id="input" type="text" name="name" placeholder="Name" required/>
-						<input type="text" name="surname" placeholder="Surname" required/>
-						<input type="text" name="email" placeholder="Email" >
-						<textarea id="textarea" name="motivation"></textarea>
+					<form method="get" action="../segnalazione">
+						<input id="input" type="text" name="nome" placeholder="nome" required/>
+						<input type="text" name="cognome" placeholder="cognome" required/>
+						<input type="text" name="email" placeholder="e-mail" >
+						<textarea id="textarea" name="commento"></textarea>
 						<label>Motivazione: </label>
-						<select id="select">
+						<select id="select" name="motivazione">
 					  		<option>Assenza Connessione</option>
 					  		<option>Errore prenotazione</option>
 					  		<option>Prenotazione non trovata</option>
-					  		<option>Altro</option>
+					  		<option>Connessione scaduta</option>
 						</select>	
- 					<input type="submit" class="btn btn-large" value="Invia" onclick="send();"/>
+ 					<input type="submit" class="btn btn-large" value="Invia"/>
 					</form>
 				 </div>
 		      </div>
-		       <div class="modal-footer">
-		    		 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location='#'">Annulla</button>
+		      <div class="modal-footer">
+		    		 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
 			  </div>
 	     </div>
 	   </div>

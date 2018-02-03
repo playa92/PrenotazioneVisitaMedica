@@ -26,8 +26,8 @@ public class RestituisciPrenotazioni extends HttpServlet{
 		else
 			request.setAttribute("vuoto", true);
 		
-		RequestDispatcher dispacher = request.getRequestDispatcher("html/visualizza_prenotazioni.jsp");
-		dispacher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("html/visualizza_prenotazioni.jsp");
+		dispatcher.forward(request, response);
 	}
 	
 	@Override

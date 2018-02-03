@@ -35,5 +35,7 @@ public abstract class DaoFactory {
 	
 	public abstract ImpiegatoDaoJDBC getImpiegatoDao();
 	
+	public abstract SegnalazioneDaoJDBC getSegnalazioneDao();
+	
 	public abstract UtilDao getUtilDao();
 }

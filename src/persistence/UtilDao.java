@@ -22,7 +22,8 @@ public class UtilDao {
 					+ "drop table if EXISTS amministratore;"
 					+ "drop table if EXISTS impiegato;"
 					+ "drop table if EXISTS codice_qr CASCADE;"
-					+ "drop table if EXISTS prenotazione;";
+					+ "drop table if EXISTS prenotazione;"
+					+ "drop table if EXISTS segnalazione;";
 				
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();
@@ -54,7 +55,8 @@ public class UtilDao {
 					+ "create table amministratore(username VARCHAR(255) primary key, password VARCHAR(255));"
 					+ "create table prenotazione(id_visita VARCHAR(255) primary key REFERENCES codice_qr(\"id\"),"
 					+ "nome_paziente VARCHAR(255), cognome_paziente VARCHAR(255), orario_visita VARCHAR(255), importo BIGINT);"
-					+ "create table impiegato(id BIGINT primary key, username VARCHAR(255), password VARCHAR(255), ruolo VARCHAR(255));";
+					+ "create table impiegato(id BIGINT primary key, username VARCHAR(255), password VARCHAR(255), ruolo VARCHAR(255));"
+					+ "create table segnalazione(codice BIGINT, nome_utente VARCHAR(255), cognome_utente VARCHAR(255), motivazione VARCHAR(255));";
 			
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();		
@@ -99,6 +101,10 @@ public class UtilDao {
 				statement.executeUpdate();
 				
 				delete = "delete FROM impiegato";
+				statement = connection.prepareStatement(delete);
+				statement.executeUpdate();
+				
+				delete = "delete FROM segnalazione";
 				statement = connection.prepareStatement(delete);
 				statement.executeUpdate();
 				

@@ -53,7 +53,7 @@
 			     </li>
 			     <jstl:if test="${loggato}">
 			     	<li class="dropdown nav-item">
-						<a id="navbar-text" class="nav-link dropdown-toggle" href="html/segnalazioni.html">Segnalazioni 
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="html/segnalazioni.jsp">Segnalazioni 
 							<span class="badge badge-notify" style="background:orange">1</span>
 						</a>
 			     	</li>

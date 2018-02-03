@@ -8,7 +8,7 @@ import persistence.dao.PrenotazioneDao;
 
 public class PostgresDaoFactory extends DaoFactory {
 
-	private static  DataSource dataSource = null;
+	private static DataSource dataSource = null;
 	
 	static {
 		try {
@@ -48,6 +48,11 @@ public class PostgresDaoFactory extends DaoFactory {
 	@Override
 	public ImpiegatoDaoJDBC getImpiegatoDao() {
 		return new ImpiegatoDaoJDBC(dataSource);
+	}
+	
+	@Override
+	public SegnalazioneDaoJDBC getSegnalazioneDao() {
+		return new SegnalazioneDaoJDBC(dataSource);
 	}
 	
 	@Override

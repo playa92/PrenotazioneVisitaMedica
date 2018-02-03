@@ -22,8 +22,8 @@ public class Login extends HttpServlet {
 		if((request.getParameter("logout") != null) && (request.getParameter("logout").equals("true"))) {
 			session.setAttribute("username", null);
 			request.setAttribute("loggato", false);	
-			RequestDispatcher dispacher = request.getRequestDispatcher("home.jsp");
-			dispacher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class Login extends HttpServlet {
 			}				
 		}
 		
-		RequestDispatcher dispacher = request.getRequestDispatcher("home.jsp");
-		dispacher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+		dispatcher.forward(request, response);
 	}
 }
