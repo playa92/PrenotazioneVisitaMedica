@@ -90,7 +90,7 @@ function sendForm() {
 				$("#message").text(values[1]);
 			} else {
 				$("#notice2").modal("show");
-				$("#message2").text("Prenotazione: " + values[1] +
+				$("#message2").text("Prenotazione: n\u00b0" + values[1] +
 						" Orario visita: " + values[2] + " vuole continuare?");
 			}
 			

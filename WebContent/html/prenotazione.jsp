@@ -10,10 +10,10 @@
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../js/reservation_controls.js"></script>
-	
+	<script src="../js/scroll_up.js"> </script>		
 </head>
 
-<body style="height:800px">
+<body style="height:950px">
 
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
@@ -52,7 +52,7 @@
 	<div class="footer-prenotazione">
 		<footer>
 	  		<h5><strong>* Campi Obbligatori</strong></h5>
-			<h5><strong>** Il seguente campo deve essere completato solo se si possiede realmente una matricola</strong></h5>
+			<h5><strong>** Se sei universitario e vuoi usufruire della promozione specifica una matricola valida</strong></h5>
 		</footer>	
 	</div>
 	
@@ -85,6 +85,10 @@
 		 	</div>
 		</div>
 	</div>
+	
+	<!-- SCROLLING -->
+	<a href="#" class="scrollup">Scroll</a>
+	
 
 </body>
 </html>
