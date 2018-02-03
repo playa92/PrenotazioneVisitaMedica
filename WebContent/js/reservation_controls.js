@@ -50,6 +50,7 @@ function Paziente(codiceFiscale, nome, cognome, matricola, invalidita, hexcode) 
 	this.hexcode = hexcode;
 }
 
+var htmlContent = null;
 function sendForm() {
 	
 	var hexcode = generate();
@@ -69,7 +70,7 @@ function sendForm() {
 		data:JSON.stringify(paziente),
 		success:function(data) {
 			
-			var values = data.split(";");
+			var values = data.split("<split>");
 			
 			if(values[0] == "redirect") {
 				
@@ -88,6 +89,9 @@ function sendForm() {
 				$("#message2").html("Prenotazione: n\u00b0" + values[1] +" <br> " 
                         +" Orario visita: " + values[2] + "<br>" 
                         + "vuole continuare?");
+				
+				//mi salvo solo l'html
+				htmlContent = values[3]; 
 			}
 			
 		}
@@ -98,6 +102,9 @@ function success() {
 	
 	$("#notice").modal("show");	
 	$("#message").text("Prenotazione avvenuta con successo");
+	setTimeout(function() {
+		$("#message").html(htmlContent)	
+	}, 2000);
 }
 
 //HEXCODE

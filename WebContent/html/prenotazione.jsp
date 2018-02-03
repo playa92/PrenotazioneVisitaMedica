@@ -11,6 +11,14 @@
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../js/reservation_controls.js"></script>
 	<script src="../js/scroll_up.js"> </script>		
+	
+<!-- 	TMP -->
+	<script src="../js/jquery/jquery.qrcode.js">
+	<script src="../js/jquery/html2canvas.js"></script>
+	<script src="../js/jquery/jspdf.min.js"></script>
+	<script src="../js/qr_code.js"></script>
+	<script src="../js/pdf_print.js"></script>
+	
 </head>
 
 <body style="height:950px">
@@ -31,11 +39,11 @@
 		<h4>Compila il seguente form per assicurarti una visita medica</h4>
 	</div>
 
-	<div class="form-prenotazione">
-		<label for="codiceFiscale">Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codiceFiscale" type="text" placeholder="codice fiscale" required/>
-		<label for="nome">Nome *</label><input id="s1" onblur="correct(id);" name="nome" type="text"  placeholder="nome" required/>
-		<label for="cognome">Cognome *</label><input id="s2" onblur="correct(id);" name="cognome" type="text" placeholder="cognome" required/>
-		<label for="matricola">Matricola **</label><input id="n" onblur="correct(id);" name="matricola" type="text" placeholder="matricola">
+	<div class="form-prenotazione"><br>
+		<label for="codiceFiscale">Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codiceFiscale" type="text" placeholder="es. RSSMRA89S07Z112K" required/>
+		<label for="nome">Nome *</label><input id="s1" onblur="correct(id);" name="nome" type="text"  placeholder="es. Mario" required/>
+		<label for="cognome">Cognome *</label><input id="s2" onblur="correct(id);" name="cognome" type="text" placeholder="es. Rossi" required/>
+		<label for="matricola">Matricola **</label><input id="n" onblur="correct(id);" name="matricola" type="text" placeholder="es. 165589">
 		
 		<label for="invalidita">Invalidit&aacute;</label>
 			<select id="select" name="invalidita" class="form-control">	 
@@ -61,7 +69,7 @@
 		 	<div class="modal-dialog modal-md">
 		    	<div class="modal-content">
 	        	<div class="modal-header" style="text-align:center; background-color:#bcc4f2">
-					<button type="button" class="close" data-dismiss="modal" onclick="window.location.href='../home'">&times;</button>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
         			<h3 id="message" class="modal-title" style="text-align:center"></h3>
          		</div>
 		    	</div>
