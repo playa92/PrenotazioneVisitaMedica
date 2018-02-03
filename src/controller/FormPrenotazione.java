@@ -132,6 +132,12 @@ public class FormPrenotazione extends HttpServlet {
 			out.println("<html>");
 			out.println("<head><title>Riepilogo Dati</title>");
 //			out.println("<link rel='stylesheet' href='bootstrap-3.3.7-dist/css/bootstrap.min.css'>");
+//			out.println("<script src='..js/jquery/jquery-3.2.1.min.js'></script>");
+//			out.println("<script src='..js/jquery/jquery.qrcode.js'></script>");
+//			out.println("<script src='..js/jquery/html2canvas.js'></script>");
+//			out.println("<script src='..js/jquery/jspdf.min.js'></script>");
+//			out.println("<script src='..js/qr_code.js'></script>");
+//			out.println("<script src='..js/pdf_print.js'></script>");
 			out.println("</head>");
 			out.println("<body>");
 			out.println("<div id='content style='background-color:white;'>");
@@ -151,12 +157,6 @@ public class FormPrenotazione extends HttpServlet {
 			out.println("<h3 style='color:red'>stampa promemoria "
 					+ "<button id='cmd' type='button' class='btn btn-default btn-sm'>"
 					+ "<span class='glyphicon glyphicon-print'></span> PDF</button></h3>");
-//			out.println("<script src='..js/jquery/jquery-3.2.1.min.js'></script>");
-//			out.println("<script src='..js/jquery/jquery.qrcode.js'></script>");
-//			out.println("<script src='..js/jquery/html2canvas.js'></script>");
-//			out.println("<script src='..js/jquery/jspdf.min.js'></script>");
-//			out.println("<script src='..js/qr_code.js'></script>");
-//			out.println("<script src='..js/pdf_print.js'></script>");
 			out.println("</body>");
 			out.println("</html>");
 			

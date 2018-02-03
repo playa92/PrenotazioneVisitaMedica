@@ -9,16 +9,10 @@
 	<link rel="stylesheet" href="../css/common.css">
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="../js/jquery/jquery.qrcode.js">
+	<script src="../js/jquery/jspdf.min.js"></script>
 	<script src="../js/reservation_controls.js"></script>
 	<script src="../js/scroll_up.js"> </script>		
-	
-<!-- 	TMP -->
-	<script src="../js/jquery/jquery.qrcode.js">
-	<script src="../js/jquery/html2canvas.js"></script>
-	<script src="../js/jquery/jspdf.min.js"></script>
-	<script src="../js/qr_code.js"></script>
-	<script src="../js/pdf_print.js"></script>
-	
 </head>
 
 <body style="height:950px">
@@ -52,9 +46,10 @@
 				<option>Lesione Muscolare</option>
 				<option>Malattia Generica</option>
 			</select>
-	
+			<div align="center">
 			<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick='sendForm();'/>
 			<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
+			</div>
 	</div>
 
 	<div class="footer-prenotazione">
@@ -97,6 +92,18 @@
 	<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
 	
+	<script src="../js/qr_code.js"></script>
+	
+	<script>
+		$('#cmd').click(function() {
+			  var options = {
+			  };
+			  var pdf = new jsPDF('l', 'pt', 'a4');		  
+			  pdf.addHTML($("#content"), 15, 15, options, function() {
+			  pdf.save('riepilogo.pdf'); 
+			  });
+		});
+	</script>
 
 </body>
 </html>

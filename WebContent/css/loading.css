@@ -9,7 +9,7 @@
 /* 	display:none; */
 	position:absolute;
 	top:0;
-	background-color:lightblue;
+/* 	background-color:lightgreen; */
 	width:28px;
 	height:28px;
 	animation-name:bounce_fountainG;
@@ -121,7 +121,7 @@
 @keyframes bounce_fountainG{
 	0%{
 	transform:scale(1);
-		background-color:#092147;
+		background-color:#048706;
 	}
 
 	100%{

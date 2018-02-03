@@ -2,12 +2,14 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Contattaci</title>
+	<title>Assistenza</title>
 	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/common.css">
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../js/report.js"></script> 	
+	<script src="../js/scroll_up.js"> </script>
+	
 	<script>
 // 		function reset() {
 			
@@ -16,9 +18,10 @@
 // 			}, 2000);
 // 		}
 	</script>
+
 </head>
 
-<body>
+<body id="Assistenza">
 	
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
@@ -31,22 +34,22 @@
 		</div>	
 	</nav>
 	
-	<div class="jumbotron text-center" style="background:#a30b08;color:white">
+	<div class="jumbotron text-center" style="background:#720802;color:white">
 		<h1>Assistenza</h1><br>
 	</div>
 	
 	<div style="text-align:center">
-		<a class="btn" data-toggle="modal" data-target="#contattaci" style="background:#a30b08;color:white;" href="#">Contattaci</a>       		 
+		<a id="contact" class="btn" data-toggle="modal" data-target="#contattaci" href="#">Contattaci</a>       		 
 	</div>
 			       		
      <div class="modal fade" id="contattaci" role="dialog">
 	    <div class="modal-dialog modal-md">
-	      <div class="modal-content">
-	          <div class="modal-header">
+	      <div class="modal-content" style="box-shadow: 0 0 2px 2px white;background: #720802;text-align:center;">
+	          <div class="modal-header" style="color:white">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-	            <h3 class="modal-title" style="color:#092147;text-align:center">Contattaci</h3>
+	            <h3 class="modal-title">Contattaci</h3>
 	          </div>
-	   		  <div class="modal-body" style="text-align:center; background-color:#f29d6d">
+	   		  <div class="modal-body">
 	   		 		
 				 <div class="form-assistenza">
 					<form method="get" action="../segnalazione">
@@ -61,16 +64,47 @@
 					  		<option>Prenotazione non trovata</option>
 					  		<option>Connessione scaduta</option>
 						</select>	
- 					<input type="submit" class="btn btn-large" value="Invia"/>
 					</form>
 				 </div>
 		      </div>
-		      <div class="modal-footer">
-		    		 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
+		      <div class="modal-footer" style="text-align:center;">
+	      		 <input type="submit" class="btn btn-md" value="Invia"/>
+	    		 <button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
 			  </div>
 	     </div>
 	   </div>
 	</div>
-
+	
+	
+	<h1 style="padding: 0 0 0 1em;">Domande frequenti (FAQ) </h1><br><br>
+	<div class="wrapper">  
+	  <div class="half">
+	    <div class="tab">
+	      <input id="tab-one" type="checkbox" name="tabs">
+	      <label for="tab-one">Domanda 1</label>
+	      <div class="tab-content">
+	        <p>Risposta 1.</p>
+	      </div>
+	    </div>
+	    <div class="tab">
+	      <input id="tab-two" type="checkbox" name="tabs">
+	      <label for="tab-two">Domanda 2</label>
+	      <div class="tab-content">
+	        <p>Risposta 2.</p>
+	      </div>
+	    </div>
+	    <div class="tab">
+	      <input id="tab-three" type="checkbox" name="tabs">
+	      <label for="tab-three">Doamnda 3</label>
+	      <div class="tab-content">
+	        <p>Risposta 3.</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- SCROLLING -->
+	<a href="#" class="scrollup">Scroll</a>
+	
 </body>
 </html>
