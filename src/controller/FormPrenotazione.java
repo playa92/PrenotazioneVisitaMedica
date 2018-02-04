@@ -70,7 +70,7 @@ public class FormPrenotazione extends HttpServlet {
 			int visiteTotali = prenotazioneDao.getTotalVisits();
 			
 			if(visiteTotali >= MAX) {
-				out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
+				out.println("redirect<split>Attenzione: Limite Prenotazioni raggiunto");
 				return;
 			}
 			
