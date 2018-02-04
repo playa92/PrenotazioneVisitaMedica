@@ -1,4 +1,14 @@
 function CFRegex() {
+
+	var newCF = $("#cf").val();
+	
+	for(var i = 0; i < newCF.length; i ++) {
+		if(newCF.charAt(i) >= 'a' && newCF.charAt(i) <= 'z') {
+			newCF = setCharAt(newCF, i, newCF.charAt(i).toUpperCase());
+		}
+	}
+	
+	$("#cf").val(newCF);
 	
 //		var regex = new RegExp("^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}" +
 //				"[0-7LMNPQRSTUV]{1}[0-9LMNPQRSTUV]{1}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$");
@@ -8,6 +18,14 @@ function CFRegex() {
 //			alert("Attenzione: CF non valido");
 //			$("#cf").val("");
 //		}
+}
+
+function setCharAt(str,index,chr) {
+    
+	if(index > str.length - 1) 
+		return str;
+    
+	return str.substr(0,index) + chr + str.substr(index+1);
 }
 
 function correct(message) {
@@ -85,8 +103,8 @@ function sendForm() {
 				$("#notice").modal("show");	
 				$("#message").text(values[1]);
 			} else {
-				$("#notice2").modal("show");
-				$("#message2").html("Prenotazione: n\u00b0" + values[1] +" <br> " 
+				$("#confirm").modal("show");
+				$("#confirmMessage").html("Prenotazione: n\u00b0" + values[1] +" <br> " 
                         +" Orario visita: " + values[2] + "<br>" 
                         + "vuole continuare?");
 				

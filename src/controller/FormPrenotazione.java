@@ -27,6 +27,8 @@ public class FormPrenotazione extends HttpServlet {
 	private final int MAX = 50;
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 15;
+	private final String ORARIO_INIZIO = "14:00"; 
+	private final String ORARIO_FINE = "19:00";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,6 +37,14 @@ public class FormPrenotazione extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException ,IOException {
+		
+		Calendar now = Calendar.getInstance();
+		String current = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE);
+		
+		if(current.compareTo(ORARIO_INIZIO) < 0 || current.compareTo(ORARIO_FINE) > 0) {
+			response.getWriter().write("false<split>!!!Orario non valido!!!");
+			return;
+		}
 		
 		StringBuffer jsonReceived = new StringBuffer();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));		
@@ -64,7 +74,6 @@ public class FormPrenotazione extends HttpServlet {
 				return;
 			}
 			
-			
 			JSONObject json = new JSONObject(jsonReceived.toString());
 			
 			Long matricola = null;
@@ -74,12 +83,12 @@ public class FormPrenotazione extends HttpServlet {
 			}
 			
 			if(pazienteDao.findByPrimaryKey(json.getString("codiceFiscale")) != null) {
-				out.println("false;Paziente con codice fiscale: '" + json.getString("codiceFiscale") + "' gia' presente");
+				out.println("false<split>Paziente con codice fiscale: '" + json.getString("codiceFiscale") + "' gia' presente");
 				return;
 				
 			} else {
 				if(pazienteDao.exists(matricola)) {
-					out.println("false;La Matricola: '" + json.getString("matricola") + "' e' stata associata ad un altro Paziente");
+					out.println("false<split>La Matricola: '" + json.getString("matricola") + "' e' stata associata ad un altro Paziente");
 					return;
 				}
 			}
@@ -91,21 +100,26 @@ public class FormPrenotazione extends HttpServlet {
 			paziente.setMatricola(matricola);
 			paziente.setInvalidita(json.getString("invalidita"));
 			
-			Double imp = new Double(0);
+			Double imp = new Double(25);
 			
-			if(paziente.getMatricola() != null ) {
+			if(paziente.getMatricola() != null) {
 				if(universitaDao.findByPrimaryKey(paziente.getMatricola()) == null) { 
-					if(paziente.getInvalidita().equals("nessuna"))
-						imp = new Double(25);
-				}	
+					if(!paziente.getInvalidita().equals("Nessuna"))
+						imp = new Double(0);
+				} else {
+					imp = new Double(0);
+				}
+			} else {
+				if(!paziente.getInvalidita().equals("Nessuna"))
+					imp = new Double(0);
 			}
 			
 			Date date1 = new Date(Calendar.getInstance().getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 			Date date2 = new Date(Calendar.getInstance().getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
 			
 			int indexOf = date1.toString().indexOf(":") - 2;
-			String visita = date1.toString().substring(indexOf, indexOf + 8);
-			String scadenza = date2.toString().substring(indexOf, indexOf + 8);
+			String visita = date1.toString().substring(indexOf, indexOf + 5);
+			String scadenza = date2.toString().substring(indexOf, indexOf + 5);
 			
 			CodiceQR codiceQR = new CodiceQR();
 			codiceQR.setCodice(json.getString("hexcode"));
@@ -147,7 +161,7 @@ public class FormPrenotazione extends HttpServlet {
 			out.println("<h3>Cognome: " + paziente.getCognome() + "</h3>");
 			out.println("<h3>Matricola: " + String.valueOf(paziente.getMatricola()) + "</h3>");
 			out.println("<h3>Invalidit&agrave: " + paziente.getInvalidita() + "</h3>");
-			out.println("<h3>Importo: " + String.valueOf(prenotazione.getImporto()) + ".00 &euro;</h3>");
+			out.println("<h3>Importo: " + String.valueOf(prenotazione.getImporto()) + "0 &euro;</h3>");
 			out.println("<input id='text' type='hidden' value=" + codiceQR.getCodice() + "/>");
 			out.println("<div id='print'>");
 			out.println("<div id='qrcode'></div>");
