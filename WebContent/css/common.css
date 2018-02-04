@@ -29,7 +29,9 @@ body {
 
 .navbar {
 	background-color: #092147;
-	box-shadow: 0 0 2px 2px #0b102d
+	box-shadow: 0 0 2px 2px #0b102d;
+/* 	position: fixed; */
+/* 	width:100%; */
 }
 
 .nav-item #navbar-text, #buttonForgot {
@@ -234,30 +236,21 @@ textarea:required:focus {
 
 .form-prenotazione {
 	width: 600px;
-	height: 550px;
+	height: 630px;
 	padding-left: 25px;
 	padding-right: 25px;
 	padding-top: 12px;
 	background-color: #092147;
-	margin: 10px auto 10px auto;
+	margin: auto;
 	box-shadow: 0 0 2px 2px #0b102d;
 }
 
 .form-prenotazione label {  
-	display: block;  
-    margin-bottom: 8px;
     color: white;
+    margin-left:50px;
 } 
 
-.form-prenotazione input[type="text"], 
-.form-prenotazione input[type="date"], 
-.form-prenotazione input[type="datetime"], 
-.form-prenotazione input[type="email"], 
-.form-prenotazione input[type="number"], 
-.form-prenotazione input[type="search"], 
-.form-prenotazione input[type="time"], 
-.form-prenotazione input[type="url"], 
-.form-prenotazione textarea, 
+.form-prenotazione input[type="text"],  
 .form-prenotazione select {  
    border-radius: 4px; 
    border: 1px solid #808080; 
@@ -265,14 +258,15 @@ textarea:required:focus {
    margin: 0; 
    outline: 0; 
    padding: 4px;
-   width: 100%; 
+   width: 80%; 
    box-sizing: border-box; 
    -webkit-box-sizing: border-box; 
    -moz-box-sizing: border-box; 
     background-color: #ffffff;  
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; 
-    margin-bottom: 30px;    
+    margin-bottom: 30px;   
+    margin-left:50px;
 }
 
 .form-prenotazione input[type="text"]:focus, 
@@ -324,15 +318,15 @@ textarea:required:focus {
 }
 
 #info {
-width: 500px;
-height: 570px; 
-padding: 25px 25px; 
-background-color: lightgreen; 
-margin: 100px auto 75px auto;">
-border: 2px solid darkgreen; 
-border-radius: 5px;
-box-shadow: 0 0 1px 1px #0b102d;
-color:white;
+	width: 500px;
+	height: 570px; 
+	padding: 25px 25px; 
+	background-color: lightgreen; 
+	margin: 100px auto 75px auto;">
+	border: 2px solid darkgreen; 
+	border-radius: 5px;
+	box-shadow: 0 0 1px 1px #0b102d;
+	color:white;
 }
 
 /* VISUALIZZA PRENOTAZIONI */
@@ -433,7 +427,7 @@ color:white;
 
 .form-assistenza {
 	width: 400px;
-	height: 400px;
+	height: 450px;
 	padding-left: 25px;
 	padding-right: 25px;
 	padding-top: 12px;

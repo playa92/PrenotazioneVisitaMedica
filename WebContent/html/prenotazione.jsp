@@ -1,5 +1,5 @@
-<%-- <%@page contentType="text/html" pageEncoding="UTF-8"%> --%>
-<%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%> --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 
 <html>
 <head>
@@ -15,7 +15,7 @@
 	<script src="../js/scroll_up.js"> </script>		
 </head>
 
-<body style="height:950px">
+<body style="height:990px">
 
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
@@ -33,8 +33,9 @@
 		<h4>Compila il seguente form per assicurarti una visita medica</h4>
 	</div>
 
-	<div class="form-prenotazione"><br>
-		<label for="codiceFiscale">Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codiceFiscale" type="text" placeholder="es. RSSMRA89S07Z112K" required/>
+	<div class="form-prenotazione">
+		<h2 style="color:white">Registrati</h2><hr>
+		<label for="codiceFiscale">Codice Fiscale *</label><input id="cf" onblur="CFRegex();" name="codiceFiscale" type="text" style="text-transform:uppercase"placeholder="es. RSSMRA89S07Z112K" required/>
 		<label for="nome">Nome *</label><input id="s1" onblur="correct(id);" name="nome" type="text"  placeholder="es. Mario" required/>
 		<label for="cognome">Cognome *</label><input id="s2" onblur="correct(id);" name="cognome" type="text" placeholder="es. Rossi" required/>
 		<label for="matricola">Matricola **</label><input id="n" onblur="correct(id);" name="matricola" type="text" placeholder="es. 165589">
@@ -45,7 +46,7 @@
 				<option>Malformazione</option>
 				<option>Lesione Muscolare</option>
 				<option>Malattia Generica</option>
-			</select>
+			</select><hr>
 			<div align="center">
 				<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick='sendForm();'/>
 				<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>

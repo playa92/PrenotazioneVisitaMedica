@@ -42,7 +42,7 @@
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/prenotazione.jsp">Prenotazione</a>
 			     </li>
 			     <li class="dropdown nav-item ">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/assistenza.html">Assistenza</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/assistenza.jsp">Assistenza</a>
 			     </li>
 			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
@@ -110,16 +110,16 @@
 					</jstl:if>
 				</li> 
 			   	<!-- Ricerca -->
-			  	<li id="navbar-text" >
-		        	<form id="searchForm" class="navbar-form" role="search" action="javascript:search();">
-				    <div class="input-group">
-			            <input id="searchItem" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-			            <div class="input-group-btn">
-			                <button class="btn btn-default" type="submit" onclick="document.getElementById('searchForm').submit(); return false;"><i class="glyphicon glyphicon-search"></i></button>
-			            </div>
-			        </div>
-				    </form>
-			 	</li>
+<!-- 			  	<li id="navbar-text" > -->
+<!-- 		        	<form id="searchForm" class="navbar-form" role="search" action="javascript:search();"> -->
+<!-- 				    <div class="input-group"> -->
+<!-- 			            <input id="searchItem" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"> -->
+<!-- 			            <div class="input-group-btn"> -->
+<!-- 			                <button class="btn btn-default" type="submit" onclick="document.getElementById('searchForm').submit(); return false;"><i class="glyphicon glyphicon-search"></i></button> -->
+<!-- 			            </div> -->
+<!-- 			        </div> -->
+<!-- 				    </form> -->
+<!-- 			 	</li> -->
 
 			</ul> 
 		
@@ -205,9 +205,9 @@
 	                <div class="col-sm-3">
 	                    <h5>Get started</h5>
 	                    <ul>
-	                        <li><a href="#">Home</a></li>
-	                        <li><a href="#">Sign up</a></li>
-	                        <li><a href="#">Downloads</a></li>
+	                        <li><a href="home">Home</a></li>
+<!-- 	                        <li><a href="#">Sign up</a></li> -->
+<!-- 	                        <li><a href="#">Downloads</a></li> -->
 	                    </ul>
 	                </div>
 	                <div class="col-sm-3">
@@ -221,9 +221,9 @@
 	                <div class="col-sm-3">
 	                    <h5>Support</h5>
 	                    <ul>
-	                        <li><a href="#">FAQ</a></li>
-	                        <li><a href="#">Help desk</a></li>
-	                        <li><a href="#">Forums</a></li>
+	                        <li><a href="html/assistenza.jsp">FAQ</a></li>
+<!-- 	                        <li><a href="#">Help desk</a></li> -->
+<!-- 	                        <li><a href="#">Forums</a></li> -->
 	                    </ul>
 	                </div>
 	                <div class="col-sm-3">

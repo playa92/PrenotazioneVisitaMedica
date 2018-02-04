@@ -1,3 +1,10 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
+
+<%-- <jsp:useBean id="prenotato" class="model.Prenotazione" scope="request"/> --%>
+<%-- <jsp:setProperty name="prenotato" property="codiceVisita" value=""/> --%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +50,7 @@
 	</nav>
 	
 	<div class="jumbotron text-center" style="background:#720802;color:white">
+<%-- 		<jsp:getProperty name="prenotato" property="codiceVisita"/>	 --%>
 		<h1>Assistenza</h1><br>
 	</div>
 	
@@ -57,13 +65,12 @@
 				<button type="button" class="close" data-dismiss="modal" onclick="reset();">&times;</button>
 	            <h3 class="modal-title">Contattaci</h3>
 	          </div>
-	   		  <div class="modal-body">
-	   		 		
+	   		  <div class="modal-body"> 		
 				 <div class="form-assistenza">
 					<form method="get" action="../segnalazione">
-						<input type="text" name="nome" placeholder="nome" required/>
-						<input type="text" name="cognome" placeholder="cognome" required/>
-						<input type="text" name="email" placeholder="e-mail">
+						<input type="text" name="nome" placeholder="Nome" required/>
+						<input type="text" name="cognome" placeholder="Cognome" required/>
+						<input type="text" name="email" placeholder="E-mail">
 						<textarea id="textarea" name="commento"></textarea>
 						<label>Motivazione: </label>
 						<select id="select" name="motivazione">
@@ -72,19 +79,16 @@
 					  		<option>Prenotazione non trovata</option>
 					  		<option>Connessione scaduta</option>
 						</select>
-					<div class="modal-footer" style="text-align:center;">
-	      		 		<input type="submit" class="btn btn-md" value="Invia"/>
-	    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
-			  		</div>
+						<div class="modal-footer" style="text-align:center;">
+		      		 		<input type="submit" class="btn btn-md" value="Invia"/>
+		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
+				  		</div>
 			  		</form>	
 				 </div>
 		      </div>
-		      
-		    
 	     </div>
 	   </div>
 	</div>
-	
 	
 	<h1 style="padding: 0 0 0 1em;">Domande frequenti (FAQ) </h1><br><br>
 	<div class="wrapper">  
@@ -110,6 +114,28 @@
 	        <p>Risposta 3.</p>
 	      </div>
 	    </div>
+<%-- 	   		<jstl:set var="count" value="0" scope="page" /> --%>
+	    
+<%-- 	    	<jstl:forEach var="p" items="${prenotazioni}"> --%>
+<%-- 	    			<jstl:set var="count" value="${count + 1}" scope="page"/> --%>
+	    	
+<!-- 				<tr> -->
+<%-- 					<td>${p.nomePaziente}</td> --%>
+<%-- 					<td>${p.cognomePaziente}</td> --%>
+<%-- 					<td>${p.orarioVisita}</td> --%>
+<!-- 				</tr>			 -->
+				
+<!-- 				 <div class="tab"> -->
+<%-- 			        <input id="tab-<jstl:out value="${count}"/>" type="checkbox" name="tabs"> --%>
+			       
+<!-- 			        <label for="tab-three">Doamnda 3</label> -->
+<!-- 			        <div class="tab-content"><p>Risposta 3.</p></div> -->
+			    
+<!-- 			    </div> -->
+			    
+<%-- 			</jstl:forEach> --%>
+	    
+	    
 	  </div>
 	</div>
 	
