@@ -235,7 +235,7 @@
 	                    </ul>
 	                </div>
 	            </div>
-	            <iframe id="map-container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49396.325667490106!2d16.217289196661675!3d39.30479485437768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133f974acd5e5e29%3A0x5619c8633cc426fa!2s87100+Cosenza+CS!5e0!3m2!1sit!2sit!4v1516273585413"></iframe>
+	            <iframe id="map-container" <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12340.397684446334!2d16.2251544!3d39.3539851!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf6b18e10a7cdcd49!2sCUS+-+Unical!5e0!3m2!1sit!2sit!4v1517741768804"></iframe>></iframe>
 	        </div>
 <!-- 	        <div class="social-networks"> -->
 <!-- 	            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> -->
