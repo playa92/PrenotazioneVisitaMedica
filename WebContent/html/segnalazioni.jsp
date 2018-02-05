@@ -51,11 +51,19 @@
 					<td>${i.nomeUtente}</td>
 					<td>${i.cognomeUtente}</td>
 					<td>${i.motivazione}</td>
+					<td>	<button onclick="risolvi()">Risolvi</button>   <td>
+					
 				</tr>			
 			</jstl:forEach>
 		</tbody>
 		</table>
 	</div>
+	
+	<script>
+		function risolvi(){
+			alert("ti piacissa!")
+		}
+	</script>
 	
 </body>
 </html>

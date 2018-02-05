@@ -41,9 +41,11 @@
 			    <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/prenotazione.jsp">Prenotazione</a>
 			     </li>
+			     <jstl:if test="${not loggato}">
 			     <li class="dropdown nav-item ">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/assistenza.jsp">Assistenza</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni">Assistenza</a>
 			     </li>
+			     </jstl:if>
 			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
@@ -53,8 +55,11 @@
 			     </li>
 			     <jstl:if test="${loggato}">
 			     	<li class="dropdown nav-item">
-						<a id="navbar-text" class="nav-link dropdown-toggle" href="html/segnalazioni.jsp">Segnalazioni 
-							<span class="badge badge-notify" style="background:orange">1</span>
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="gestisciSegnalazioni">Segnalazioni 
+						
+						 <jstl:if test="${numSegnalazioni > 0}">
+							<span class="badge badge-notify" style="background:orange"> <jstl:out value="${numSegnalazioni}"/> </span>
+						</jstl:if>
 						</a>
 			     	</li>
 			     </jstl:if>   
@@ -193,9 +198,9 @@
 		 </div>
 	   </div>
 	   
-<%-- 	   <jstl:if test="${popUp}"> --%>
-<!-- 	   		<script> $("#notice").modal('show'); </script>   -->
-<%-- 	   </jstl:if> --%>
+	   <jstl:if test="${popUp}">
+	   		<script> $("#notice").modal('show'); </script>  
+	   </jstl:if>
 	
 	<!-- FOOTER -->
 	<div class="content"></div>

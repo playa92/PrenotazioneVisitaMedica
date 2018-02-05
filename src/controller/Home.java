@@ -1,12 +1,18 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import model.Segnalazione;
+import persistence.DatabaseManager;
+import persistence.dao.SegnalazioneDao;
 
 @SuppressWarnings("serial")
 public class Home extends HttpServlet {
@@ -16,6 +22,8 @@ public class Home extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
+		
+		request.setAttribute("numSegnalazioni", contaSegnalazioni());
 		
 		if(username == null) {
 			request.setAttribute("popUp", false);
@@ -32,5 +40,12 @@ public class Home extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doGet(request, response);
+	}
+	
+	int contaSegnalazioni() {
+		SegnalazioneDao dao =DatabaseManager.getInstance().
+				getDaoFactory().getSegnalazioneDao();
+		List<Segnalazione> segnalazioni = dao.findAll();
+		return segnalazioni.size();
 	}
 }

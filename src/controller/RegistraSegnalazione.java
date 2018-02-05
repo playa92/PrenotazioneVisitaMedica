@@ -27,6 +27,7 @@ public class RegistraSegnalazione extends HttpServlet {
 		map.put("Assenza Connessione", 404);
 		map.put("Errore prenotazione", 500);
 		map.put("Connessione scaduta", 504);
+		map.put("Altro", 111);
 		return map;
 	}
 	
@@ -36,7 +37,8 @@ public class RegistraSegnalazione extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String motivazione = request.getParameter("motivazione");
-		
+		String altro = request.getParameter("altro");
+				
 		SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().
 				getDaoFactory().getSegnalazioneDao();
 	
@@ -44,14 +46,17 @@ public class RegistraSegnalazione extends HttpServlet {
 		segnalazione.setCodice(codici.get(motivazione));
 		segnalazione.setNomeUtente(nome);
 		segnalazione.setCognomeUtente(cognome);
-		segnalazione.setMotivazione(motivazione);
+		if(motivazione.equals("Altro"))
+			segnalazione.setMotivazione(altro);
+		else
+			segnalazione.setMotivazione(motivazione);
 		
 		segnalazioneDao.save(segnalazione);
 		
 		List<Segnalazione> segnalazioni = segnalazioneDao.findAll();
 		request.setAttribute("segnalazioni", segnalazioni);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("html/assistenza.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/restituisciSegnalazioni");
 		dispatcher.forward(request, response);
 	}
 	

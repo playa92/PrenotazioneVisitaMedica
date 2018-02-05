@@ -90,6 +90,39 @@
 		</div>
 	</div>
 	
+		<div id="dialog">
+      	<div class="modal fade" id="riepilogo" role="dialog">
+		 	<div class="modal-dialog modal-md">
+		    	<div class="modal-content">
+	        	<div class="modal-header" style="background-color:#bcc4f2">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+						
+						<div id="content" style="background-color:#bcc4f2;">
+						<div align="center">
+						<h1 >Riepilogo:</h1>
+						<h3 id="1">Codice Fiscale: </h3>
+						<h3 id="2">Nome: </h3>
+						<h3 id="3">Cognome: </h3>
+						<h3 id="4">Matricola: </h3>
+						<h3 id="5">Invalidit&agrave: </h3>
+						<h3 id="6">Importo: </h3>
+						<input id='text' type='hidden' value=" + codiceQR.getCodice() + "/>
+						<div id='print'>
+						<div id='qrcode'></div>
+						<h3>Codice: </h3>
+						</div>
+						 
+						<h3 align="center" style="color:red">stampa promemoria
+								<button id='cmd' type="button" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-print"></span> PDF</button></h3>
+						</div>
+
+         		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+	
 	<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
 	

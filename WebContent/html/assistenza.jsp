@@ -1,9 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 
-<%-- <jsp:useBean id="faq" class="model.Segnalazione" scope="request"/> --%>
-<%-- <jsp:setProperty name="faq" property="codice" value=""/> --%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,14 +38,13 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 	   		</ul>
 		</div>	
 	</nav>
 	
 	<div class="jumbotron text-center" style="background:#720802;color:white">
-<%-- 		<jsp:getProperty name="faq" property="codice"/> --%>
 		<h1>Assistenza</h1><br>
 	</div>
 	
@@ -65,18 +61,18 @@
 	          </div>
 	   		  <div class="modal-body"> 		
 				 <div class="form-assistenza">
-					<form method="get" action="../segnalazione">
+					<form method="get" action="<%=request.getContextPath()%>/segnalazione">
 						<input type="text" name="nome" placeholder="Nome" required/>
 						<input type="text" name="cognome" placeholder="Cognome" required/>
 						<input type="email" name="email" placeholder="E-mail">
-						<textarea id="textarea" name="commento"></textarea>
 						<label>Motivazione: </label>
 						<select id="select" name="motivazione">
-					  		<option>Assenza Connessione</option>
-					  		<option>Errore prenotazione</option>
-					  		<option>Prenotazione non trovata</option>
-					  		<option>Connessione scaduta</option>
+					  		<option onclick="hideTextField();">Errore prenotazione</option>
+					  		<option onclick="hideTextField();">Prenotazione non trovata</option>
+					  		<option onclick="hideTextField();">Connessione scaduta</option>
+					  		<option onclick="toggleTextField();">Altro</option>
 						</select>
+						<textarea id="textarea" name="altro" style="display:none;"></textarea>
 						<div class="modal-footer" style="text-align:center;">
 		      		 		<input type="submit" class="btn btn-md" value="Invia"/>
 		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
@@ -95,11 +91,11 @@
 	      </div>
 	      
 			<jstl:set var="count" value="0" scope="page" /> 
-			<jstl:forEach var="i" items="${segnalazioni}">
+			 <jstl:forEach var="i" items="${segnalazioni}">
 				<jstl:set var="count" value="${count + 1}" scope="page"/> 
 				 <div class="tab">
 			        <input id="tab-<jstl:out value="${count}"/>" type="checkbox" name="tabs">    
-			        <label for="tab-<jstl:out value="${count}"/>">${i.domanda}</label>
+			        <label for="tab-<jstl:out value="${count}"/>">${i.motivazione}</label>
 			        <div class="tab-content"><p>${i.risposta}.</p></div>
 			    </div>			
 			</jstl:forEach>
@@ -107,8 +103,30 @@
 	     </div>
 	</div>
 	
+	<jstl:if test="${vuoto}">
+		<br>
+		<div class="jumbotron text-center" style="background:#5d7396; color:white">
+			<h1> Nessuna FAQ disponibile </h1>
+		</div>
+		<div align="center">
+			<button type='button'class='btn btn-default btn-lg' onclick="window.location='<%=request.getContextPath()%>/home'">  
+				Torna alla Home <span class='glyphicon glyphicon-home'></span>
+			</button>
+		</div>
+	</jstl:if>
+	
 	<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
+	
+	<script>
+		function toggleTextField(){
+			$("#textarea").toggle();
+		}
+		
+		function hideTextField(){
+			$("#textarea").hide();
+		}
+	</script>
 	
 </body>
 </html>

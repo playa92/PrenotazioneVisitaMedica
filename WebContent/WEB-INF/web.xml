@@ -8,6 +8,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
   <servlet>
     <servlet-name>FormPrenotazione</servlet-name>
     <servlet-class>controller.FormPrenotazione</servlet-class>
@@ -16,6 +17,7 @@
     <servlet-name>FormPrenotazione</servlet-name>
     <url-pattern>/formPrenotazione</url-pattern>
   </servlet-mapping>
+
   <servlet>
     <servlet-name>Login</servlet-name>
     <servlet-class>controller.Login</servlet-class>
@@ -24,6 +26,7 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+ 
   <servlet>
     <servlet-name>Home</servlet-name>
     <servlet-class>controller.Home</servlet-class>
@@ -33,6 +36,7 @@
     <url-pattern>/home</url-pattern>
     <url-pattern></url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>RicercaPrenotazione</servlet-name>
     <servlet-class>controller.RicercaPrenotazione</servlet-class>
@@ -49,6 +53,7 @@
     <servlet-name>RegistraSegnalazione</servlet-name>
     <url-pattern>/segnalazione</url-pattern>
   </servlet-mapping>
+ 
   <servlet>
     <servlet-name>GetPrenotazioni</servlet-name>
     <servlet-class>controller.RestituisciPrenotazioni</servlet-class>
@@ -57,4 +62,23 @@
     <servlet-name>GetPrenotazioni</servlet-name>
     <url-pattern>/restituisciPrenotazioni</url-pattern>
   </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>GetSegnalazioni</servlet-name>
+    <servlet-class>controller.RestituisciSegnalazioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetSegnalazioni</servlet-name>
+    <url-pattern>/restituisciSegnalazioni</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GestisciSegnalazioni</servlet-name>
+    <servlet-class>controller.GestisciSegnalazioni</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestisciSegnalazioni</servlet-name>
+    <url-pattern>/gestisciSegnalazioni</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

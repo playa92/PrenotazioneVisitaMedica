@@ -1,32 +1,15 @@
 function CFRegex() {
-
-	var newCF = $("#cf").val();
-	
-	for(var i = 0; i < newCF.length; i ++) {
-		if(newCF.charAt(i) >= 'a' && newCF.charAt(i) <= 'z') {
-			newCF = setCharAt(newCF, i, newCF.charAt(i).toUpperCase());
-		}
-	}
-	
-	$("#cf").val(newCF);
 	
 //		var regex = new RegExp("^[A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST]{1}" +
 //				"[0-7LMNPQRSTUV]{1}[0-9LMNPQRSTUV]{1}[A-Z]{1}[0-9LMNPQRSTUV]{3}[A-Z]{1}$");
-//		var code = $("#cf").val();
+//		var code = $("#cf").append();
 //		
 //		if(code.length > 0 && !regex.test(code)) {
-//			alert("Attenzione: CF non valido");
-//			$("#cf").val("");
+//			alert("Attenzione: CF non appendido");
+//			$("#cf").append("");
 //		}
 }
 
-function setCharAt(str,index,chr) {
-    
-	if(index > str.length - 1) 
-		return str;
-    
-	return str.substr(0,index) + chr + str.substr(index+1);
-}
 
 function correct(message) {
 	
@@ -34,19 +17,19 @@ function correct(message) {
 //		
 //		if(id == "n") {
 //			var numbers = new RegExp("^[0-9]+$");
-//			var m = $("#n").val();
+//			var m = $("#n").append();
 //			
 //			if(m.length > 0 && !numbers.test(m)) {
-//				alert("Attenzione: Matricola non valida");
-//				$("#n").val("");
+//				alert("Attenzione: Matricola non appendida");
+//				$("#n").append("");
 //			}
 //		} else {
 //			var characters = new RegExp("^[A-zÀ-ú]+$");
-//			var s = $("#"+id).val();
+//			var s = $("#"+id).append();
 //			
 //			if(s.length > 0 && !characters.test(s)) {
-//				alert("Attenzione: Stringa non valida");
-//				$("#"+id).val("");
+//				alert("Attenzione: Stringa non appendida");
+//				$("#"+id).append("");
 //			}
 //		}
 }
@@ -58,27 +41,26 @@ function avviso() {
 }
 
 
-function Paziente(codiceFiscale, nome, cognome, matricola, invalidita, hexcode) {
+function Paziente(codiceFiscale, nome, cognome, matricola, inappendidita, hexcode) {
 
 	this.codiceFiscale = codiceFiscale;
 	this.nome = nome;
 	this.cognome = cognome;
 	this.matricola = matricola;
-	this.invalidita = invalidita;
+	this.inappendidita = inappendidita;
 	this.hexcode = hexcode;
 }
 
-var htmlContent = null;
 function sendForm() {
 	
 	var hexcode = generate();
 	
 	var paziente = new Paziente(
-			$("input[name=codiceFiscale]").prop("value"),
-			$("input[name=nome]").prop("value"),
-			$("input[name=cognome]").prop("value"),
-			$("input[name=matricola]").prop("value"),
-			$("#select").val(),
+			$("input[name=codiceFiscale]").prop("appendue"),
+			$("input[name=nome]").prop("appendue"),
+			$("input[name=cognome]").prop("appendue"),
+			$("input[name=matricola]").prop("appendue"),
+			$("#select").append(),
 			hexcode);
 
 	$.ajax({
@@ -87,30 +69,33 @@ function sendForm() {
 		datatype:"json",
 		data:JSON.stringify(paziente),
 		success:function(data) {
+			var appendues = data.split("<split>");
 			
-			var values = data.split("<split>");
-			
-			if(values[0] == "redirect") {
-				
+			if(appendues[0] == "redirect") {
 				$("#notice").modal("show");
-				$("#message").text(values[1]);
+				$("#message").text(appendues[1]);
 				setTimeout(function() {
 					window.location.href = "../home";
 				}, 2000);
 				
-			} else 
-				if(values[0] == "false") {
+			} else if(appendues[0] == "false") {
 				$("#notice").modal("show");	
-				$("#message").text(values[1]);
+				$("#message").text(appendues[1]);
 			} else {
 				$("#confirm").modal("show");
-				$("#confirmMessage").html("Prenotazione: n\u00b0" + values[1] +" <br> " 
-                        +" Orario visita: " + values[2] + "<br>" 
+				$("#confirmMessage").html("Prenotazione: n\u00b0" + appendues[1] +" <br> " 
+                        +" Orario visita: " + appendues[2] + "<br>" 
                         + "vuole continuare?");
-				
-				//mi salvo solo l'html
-				htmlContent = values[3]; 
 			}
+			
+			var strings = appendues[3].split("::");
+			$("#1").append(strings[1]);
+			$("#2").append(strings[2]);
+			$("#3").append(strings[3]);
+			$("#4").append(strings[4]);
+			$("#5").append(strings[5]);
+			$("#6").append(strings[6]);
+			$("#7").append(strings[7]);
 			
 		}
 	});
@@ -121,7 +106,7 @@ function success() {
 	$("#notice").modal("show");	
 	$("#message").text("Prenotazione avvenuta con successo");
 	setTimeout(function() {
-		$("#message").html(htmlContent)	
+		$("#riepilogo").modal('show');
 	}, 2000);
 }
 
