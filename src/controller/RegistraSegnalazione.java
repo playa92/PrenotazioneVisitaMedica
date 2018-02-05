@@ -51,7 +51,7 @@ public class RegistraSegnalazione extends HttpServlet {
 		List<Segnalazione> segnalazioni = segnalazioneDao.findAll();
 		request.setAttribute("segnalazioni", segnalazioni);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("html/segnalazioni.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("html/assistenza.jsp");
 		dispatcher.forward(request, response);
 	}
 	

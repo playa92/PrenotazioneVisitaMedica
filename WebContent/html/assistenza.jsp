@@ -1,37 +1,35 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 
-<%-- <jsp:useBean id="prenotato" class="model.Prenotazione" scope="request"/> --%>
-<%-- <jsp:setProperty name="prenotato" property="codiceVisita" value=""/> --%>
-
+<%-- <jsp:useBean id="faq" class="model.Segnalazione" scope="request"/> --%>
+<%-- <jsp:setProperty name="faq" property="codice" value=""/> --%>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Assistenza</title>
-	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/common.css">
-	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script src="../js/report.js"></script> 	
-	<script src="../js/scroll_up.js"> </script>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css">
+	<script src="<%=request.getContextPath()%>/js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath()%>/js/report.js"></script> 	
+	<script src="<%=request.getContextPath()%>/js/scroll_up.js"> </script>
 	
 	<script>
-	$(document).ready(function() {
-		$("input[name=nome]").val('');
-		$("input[name=cognome]").val('');
-		$("input[name=email]").val('');
-		$("#textarea").val('');
-	});
-		
-	function reset() {
-		$("input[name=nome]").val('');
-		$("input[name=cognome]").val('');
-		$("input[name=email]").val('');
-		$("#textarea").val('');
-	}
-	
+		$(document).ready(function() {
+			$("input[name=nome]").val('');
+			$("input[name=cognome]").val('');
+			$("input[name=email]").val('');
+			$("#textarea").val('');
+		});
+			
+		function reset() {
+			$("input[name=nome]").val('');
+			$("input[name=cognome]").val('');
+			$("input[name=email]").val('');
+			$("#textarea").val('');
+		}
 	</script>
 
 </head>
@@ -50,7 +48,7 @@
 	</nav>
 	
 	<div class="jumbotron text-center" style="background:#720802;color:white">
-<%-- 		<jsp:getProperty name="prenotato" property="codiceVisita"/>	 --%>
+<%-- 		<jsp:getProperty name="faq" property="codice"/> --%>
 		<h1>Assistenza</h1><br>
 	</div>
 	
@@ -70,7 +68,7 @@
 					<form method="get" action="../segnalazione">
 						<input type="text" name="nome" placeholder="Nome" required/>
 						<input type="text" name="cognome" placeholder="Cognome" required/>
-						<input type="text" name="email" placeholder="E-mail">
+						<input type="email" name="email" placeholder="E-mail">
 						<textarea id="textarea" name="commento"></textarea>
 						<label>Motivazione: </label>
 						<select id="select" name="motivazione">
@@ -94,49 +92,19 @@
 	<div class="wrapper">  
 	  <div class="half">
 	    <div class="tab">
-	      <input id="tab-one" type="checkbox" name="tabs">
-	      <label for="tab-one">Domanda 1</label>
-	      <div class="tab-content">
-	        <p>Risposta 1.</p>
 	      </div>
-	    </div>
-	    <div class="tab">
-	      <input id="tab-two" type="checkbox" name="tabs">
-	      <label for="tab-two">Domanda 2</label>
-	      <div class="tab-content">
-	        <p>Risposta 2.</p>
-	      </div>
-	    </div>
-	    <div class="tab">
-	      <input id="tab-three" type="checkbox" name="tabs">
-	      <label for="tab-three">Doamnda 3</label>
-	      <div class="tab-content">
-	        <p>Risposta 3.</p>
-	      </div>
-	    </div>
-<%-- 	   		<jstl:set var="count" value="0" scope="page" /> --%>
-	    
-<%-- 	    	<jstl:forEach var="p" items="${prenotazioni}"> --%>
-<%-- 	    			<jstl:set var="count" value="${count + 1}" scope="page"/> --%>
-	    	
-<!-- 				<tr> -->
-<%-- 					<td>${p.nomePaziente}</td> --%>
-<%-- 					<td>${p.cognomePaziente}</td> --%>
-<%-- 					<td>${p.orarioVisita}</td> --%>
-<!-- 				</tr>			 -->
-				
-<!-- 				 <div class="tab"> -->
-<%-- 			        <input id="tab-<jstl:out value="${count}"/>" type="checkbox" name="tabs"> --%>
-			       
-<!-- 			        <label for="tab-three">Doamnda 3</label> -->
-<!-- 			        <div class="tab-content"><p>Risposta 3.</p></div> -->
-			    
-<!-- 			    </div> -->
-			    
-<%-- 			</jstl:forEach> --%>
-	    
-	    
-	  </div>
+	      
+			<jstl:set var="count" value="0" scope="page" /> 
+			<jstl:forEach var="i" items="${segnalazioni}">
+				<jstl:set var="count" value="${count + 1}" scope="page"/> 
+				 <div class="tab">
+			        <input id="tab-<jstl:out value="${count}"/>" type="checkbox" name="tabs">    
+			        <label for="tab-<jstl:out value="${count}"/>">${i.domanda}</label>
+			        <div class="tab-content"><p>${i.risposta}.</p></div>
+			    </div>			
+			</jstl:forEach>
+			
+	     </div>
 	</div>
 	
 	<!-- SCROLLING -->
