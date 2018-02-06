@@ -42,7 +42,7 @@ public class FormPrenotazione extends HttpServlet {
 		String current = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE);
 //		
 //		if(current.compareTo(ORARIO_INIZIO) < 0 || current.compareTo(ORARIO_FINE) > 0) {
-//			response.getWriter().write("false<split>!!!Orario non valido!!!");
+//			response.getWriter().write("false;!!!Orario non valido!!!");
 //			return;
 //		}
 //		
@@ -70,7 +70,7 @@ public class FormPrenotazione extends HttpServlet {
 			int visiteTotali = prenotazioneDao.getTotalVisits();
 			
 			if(visiteTotali >= MAX) {
-				out.println("redirect<split>Attenzione: Limite Prenotazioni raggiunto");
+				out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
 				return;
 			}
 			
@@ -83,12 +83,12 @@ public class FormPrenotazione extends HttpServlet {
 			}
 			
 			if(pazienteDao.findByPrimaryKey(json.getString("codiceFiscale")) != null) {
-				out.println("false<split>Paziente con codice fiscale: '" + json.getString("codiceFiscale") + "' gia' presente");
+				out.println("false;Paziente con codice fiscale: '" + json.getString("codiceFiscale") + "' gia' presente");
 				return;
 				
 			} else {
 				if(pazienteDao.exists(matricola)) {
-					out.println("false<split>La Matricola: '" + json.getString("matricola") + "' e' stata associata ad un altro Paziente");
+					out.println("false;La Matricola: '" + json.getString("matricola") + "' e' stata associata ad un altro Paziente");
 					return;
 				}
 			}
@@ -137,12 +137,12 @@ public class FormPrenotazione extends HttpServlet {
 			codiceQRDao.save(codiceQR);
 			pazienteDao.save(paziente);
 			prenotazioneDao.save(prenotazione); 
-				
-			out.println("true<split>" + (++ visiteTotali) + "<split>" + visita +"<split>");
+							
+			out.println("true;" + (++ visiteTotali) + ";" + visita +";");
 						
-			out.println("::"+paziente.getCodiceFiscale()+"::"+paziente.getNome()+"::"+paziente.getCognome()+"::"+
-					String.valueOf(paziente.getMatricola())+"::"+paziente.getInvalidita()+"::"+
-					String.valueOf(prenotazione.getImporto()) +"::"+codiceQR.getCodice()+"::");
+			out.println("|"+paziente.getCodiceFiscale()+"|"+paziente.getNome()+"|"+paziente.getCognome()+"|"+
+					String.valueOf(paziente.getMatricola())+"|"+paziente.getInvalidita()+"|"+
+					String.valueOf(prenotazione.getImporto()) +"|"+codiceQR.getCodice());
 			
 		} catch(JSONException e) {
 			e.printStackTrace();

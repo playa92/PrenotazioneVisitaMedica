@@ -109,7 +109,7 @@
 						<input id='text' type='hidden' value=" + codiceQR.getCodice() + "/>
 						<div id='print'>
 						<div id='qrcode'></div>
-						<h3>Codice: </h3>
+						<h3 id="7">Codice: </h3>
 						</div>
 						 
 						<h3 align="center" style="color:red">stampa promemoria
