@@ -6,13 +6,13 @@
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Prenotazione Visita Medica</title>
 	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/common.css">	
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script src="../js/jquery/jquery.qrcode.js">
+	<script src="../js/jquery/jquery.qrcode.js"></script>
+	<script src="../js/jquery/html2canvas.js"></script>
 	<script src="../js/jquery/jspdf.min.js"></script>
-	<script src="../js/reservation_controls.js"></script>
-	<script src="../js/scroll_up.js"> </script>		
+	<script src="../js/pdf_print.js"></script>
 </head>
 
 <body style="height:990px">
@@ -111,13 +111,12 @@
 						<div id='qrcode'></div>
 						<h3 id="7">Codice: </h3>
 						</div>
-						 
+						</div>
 						<h3 align="center" style="color:red">stampa promemoria
 								<button id='cmd' type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-print"></span> PDF</button></h3>
 						</div>
 
-         		</div>
 		    	</div>
 		 	</div>
 		</div>
@@ -127,18 +126,9 @@
 	<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
 	
+	<script src="../js/reservation_controls.js"></script>
+	<script src="../js/scroll_up.js"> </script>	
 	<script src="../js/qr_code.js"></script>
 	
-	<script>
-		$('#cmd').click(function() {
-			  var options = {
-			  };
-			  var pdf = new jsPDF('l', 'pt', 'a4');		  
-			  pdf.addHTML($("#content"), 15, 15, options, function() {
-			  pdf.save('riepilogo.pdf'); 
-			  });
-		});
-	</script>
-
 </body>
 </html>

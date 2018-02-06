@@ -10,13 +10,6 @@
 	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/common.css">
 	<link rel="stylesheet" href="../css/loading.css">
-	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="../js/jquery/jspdf.min.js"></script>
-	<script src="../js/jquery/jquery.qrcode.js"></script>
-	<script src="../js/scroll_up.js"> </script>
-	<script src="../js/search.js"></script>
-	<script src="https://momentjs.com/downloads/moment.min.js"></script>
-	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 </head>
 
 <body>
@@ -83,6 +76,13 @@
 	<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
 
+	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../js/jquery/jspdf.min.js"></script>
+	<script src="../js/jquery/jquery.qrcode.js"></script>
+	<script src="../js/scroll_up.js"> </script>
+	<script src="../js/search.js"></script>
+	<script src="https://momentjs.com/downloads/moment.min.js"></script>
+	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 	<script src="../js/qr_code.js"></script>
 	
 	<script>

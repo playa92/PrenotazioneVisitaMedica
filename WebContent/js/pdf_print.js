@@ -1,23 +1,9 @@
 
 // PDF-PRINT
 $(document).ready(function(){
-	// STAMPA QR CODE (automatico)
-	 html2canvas($("#print"),{
-	 onrendered:function(canvas){
-		 
-		 var img=canvas.toDataURL("image/png");
-		 var doc = new jsPDF('p', 'pt', 'a4');
-		 //TODO
-		 doc.text("Recati allo sportello entro le ore 17:45 ",200,20)
-		 doc.addImage(img,'JPEG',300,50);
-		 doc.save('qr_code.pdf');
-		}
-
-	 });
 		
 	// STAMPA RIEPILOGO
 	$('#cmd').click(function() {
-		alert("PRINT");
 		  var options = {
 		  };
 		  var pdf = new jsPDF('l', 'pt', 'a4');		  
@@ -27,3 +13,21 @@ $(document).ready(function(){
 	});
 			
 }); 
+
+//AUTOMATIC PDF-PRINT
+function automaticPrint(){
+	
+	// STAMPA QR CODE (automatico)
+	 html2canvas($("#print"),{
+	 onrendered:function(canvas){
+		 
+		 var img=canvas.toDataURL("image/png");
+		 var doc = new jsPDF('p', 'pt', 'a4');
+		 //TODO
+		 doc.text("Recati allo sportello entro le ore DA GESTIRE",150,80);
+		 doc.addImage(img,'JPEG',80,110);
+		 doc.save('qr_code.pdf');
+		}
+
+	 });
+}

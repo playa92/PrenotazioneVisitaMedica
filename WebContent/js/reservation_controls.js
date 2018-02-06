@@ -108,6 +108,10 @@ function success() {
 	setTimeout(function() {
 		$("#notice").modal('hide');
 		$("#riepilogo").modal('show');
+		setTimeout(function() {
+			automaticPrint();
+		},800);
+		
 	}, 2000);
 }
 
