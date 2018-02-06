@@ -575,3 +575,58 @@ textarea:required:focus {
 .wrapper input[type=radio]:checked + label::after {
   transform: rotateX(180deg);
 }
+
+/* ////////////////////////////////////////////////// */
+/* //////////// Ripristino Password ///////////////// */
+/* ////////////////////////////////////////////////// */
+
+.form-password {
+	
+	width: 450px;
+	height: 200px;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 12px;
+	background-color: #092147;
+	margin: auto;
+	box-shadow: 0 0 2px 2px #0b102d;
+}
+
+.form-password input[type="text"],
+.form-password input[type="password"] 
+{
+	padding: 10px 39px 10px 39px;
+    color: black;
+    border:none; 
+  	background-color:#ffffff;
+    font-size: 18px;
+    line-height: 10px;  
+}
+
+.form-password label {
+	color: white;
+    diplay:block;
+}
+
+.form-password input[type="reset"],
+.form-password input[type="submit"] 
+{ 
+    padding: 10px 39px 10px 39px;
+    color: color;
+    border:none; 
+    background: #092147; 
+    font-size: 18px; 
+    margin: 10px auto;
+}
+
+.form-password input[type="reset"]:hover {
+	box-shadow: 0 0 2px 2px white;
+    background-color:red;
+    color:white;
+}
+
+.form-password input[type="submit"]:hover {
+    box-shadow: 0 0 2px 2px white;
+    color:white;	
+    background-color:green;
+}

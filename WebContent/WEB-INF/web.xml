@@ -81,4 +81,13 @@
     <url-pattern>/gestisciSegnalazioni</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>RipristinoPassword</servlet-name>
+    <servlet-class>controller.RipristinoPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RipristinoPassword</servlet-name>
+    <url-pattern>/ripristinoPassword</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

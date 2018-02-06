@@ -85,7 +85,7 @@
 						             	  <input id="signinPwd" type="password" placeholder="Enter Password" name="password" required>
 						             	  <label id="checkbox"> <input id="rememberChkBox" type="checkbox" checked="checked"> Ricordami </label>
 										  <input id="sign" type="submit" value="Conferma"/>	
-										  <a id="forgotText" href="html/ripristino_password.html"> Password dimenticata?</a>
+										  <a id="forgotText" href="html/ripristino_password.jsp"> Password dimenticata?</a>
 				           			 	</form>
 							        </div>
 							      </div>
