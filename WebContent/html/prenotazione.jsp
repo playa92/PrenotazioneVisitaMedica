@@ -104,7 +104,7 @@
 						<h3 id="2">Nome: </h3>
 						<h3 id="3">Cognome: </h3>
 						<h3 id="4">Matricola: </h3>
-						<h3 id="5">Invalidit&agrave: </h3>
+						<h3 id="5">Invalidit&agrave;: </h3>
 						<h3 id="6">Importo: </h3>
 						<input id='text' type='hidden' value=" + codiceQR.getCodice() + "/>
 						<div id='print'>
@@ -121,6 +121,7 @@
 		    	</div>
 		 	</div>
 		</div>
+	</div>
 	</div>
 	
 	<!-- SCROLLING -->
