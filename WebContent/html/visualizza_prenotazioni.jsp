@@ -1,19 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 
-<jsp:useBean id="prenotato" class="model.Prenotazione" scope="request"/>
-<jsp:setProperty name="prenotato" property="codiceVisita" value=""/>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Visualizza prenotazioni</title>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css">
-	<script src="<%=request.getContextPath()%>/js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script src="<%=request.getContextPath()%>/js/scroll_up.js"> </script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/scroll_up.js"> </script>
 </head>
 
 <body id="show_res">
@@ -25,15 +22,14 @@
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li class="dropdown nav-item">
-						<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			    	 </li>
 	   			</ul> 
 			</div>	
 		</nav>
 	
 		<div class="jumbotron text-center" style="background:#5d7396; color:white">
-			<jsp:getProperty name="prenotato" property="codiceVisita"/>
-			<h1>Prenotazioni correnti</h1>
+			<h1> Prenotazioni correnti</h1> <br>
 		</div>
 		
 		  <!-- SEARCHBAR-->

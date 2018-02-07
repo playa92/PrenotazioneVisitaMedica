@@ -13,13 +13,26 @@ import persistence.dao.SegnalazioneDao;
 
 @SuppressWarnings("serial")
 public class GestisciSegnalazioni extends HttpServlet{
-			
+	
 		@Override
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
+			String risp = request.getParameter("risp");
+			String motivazione = request.getParameter("motivazione");
 			
 			SegnalazioneDao dao =DatabaseManager.getInstance().
 					getDaoFactory().getSegnalazioneDao();
 			List<Segnalazione> segnalazioni = dao.findAll();
+			
+			if(risp != null) {
+				for(Segnalazione s:segnalazioni) {
+					if(s.getMotivazione().equals(motivazione)) {
+						s.setRisposta(risp);
+						dao.update(s);
+						break;
+					}
+				}
+			}
 			
 			request.setAttribute("segnalazioni", segnalazioni);
 
