@@ -77,11 +77,10 @@ public class ImpiegatoDaoJDBC implements ImpiegatoDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "update FROM impiegato password = ? WHERE username = ? ";
+			String delete = "update impiegato SET password = ? WHERE username = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setString(1, impiegato.getPassword());
 			statement.setString(2, impiegato.getUsername());
-			statement.setString(3, impiegato.getRuolo());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
