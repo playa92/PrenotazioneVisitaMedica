@@ -18,7 +18,7 @@ public class ConvalidaPrenotazione extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String hexcode = request.getParameter("hexcode");
+		String hexcode = request.getParameter("hexcode").toUpperCase();
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().
 				getDaoFactory().getCodiceQRDao();
 		

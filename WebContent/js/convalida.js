@@ -1,6 +1,5 @@
 function validate() {
 	
-	alert($("#hexcode").val());
 	$.ajax({
 		type:"get",
 		url:"../convalidaPrenotazione",
@@ -11,6 +10,4 @@ function validate() {
 			$("#message").text(data);	
 		}
 	});
-	
-	alert("dopo");
 }

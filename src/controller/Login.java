@@ -28,7 +28,13 @@ public class Login extends HttpServlet {
 		if((request.getParameter("logout") != null) && (request.getParameter("logout").equals("true"))) {
 			session.setAttribute("popUp", false);
 			session.setAttribute("username", null);
-			request.setAttribute("loggato", false);		
+			request.setAttribute("loggato", false);
+			
+			if(session.getAttribute("loggatoAdim") != null) {
+				session.setAttribute("loggatoAdmin", false);
+			} else {
+				session.setAttribute("loggatoEmployee", false);
+			}	
 			session.invalidate();
 		    response.sendRedirect("home");
 		    return;
@@ -61,7 +67,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("popUp", false);
 				session.setAttribute("username", username);				
 				request.setAttribute("loggato", true);
-				request.setAttribute("loggatoEmployee", true);
+				session.setAttribute("loggatoEmployee", true);
 				request.setAttribute("username", username);//JSTL
 			} else {
 				session.setAttribute("popUp", true);
@@ -78,7 +84,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("popUp", false);
 				session.setAttribute("username", username);
 				request.setAttribute("loggato", true);
-				request.setAttribute("loggatoAdmin", true);
+				session.setAttribute("loggatoAdmin", true);
 				request.setAttribute("username", username);//JSTL
 								
 			}  else {

@@ -49,7 +49,7 @@
 			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Statistiche <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				     	<li><a id="list-element" href="html/cerca_prenotazione.jsp">Cerca prenotazione</a></li>
+				     	<li><a id="list-element" href="html/cerca_prenotazione.html">Cerca prenotazione</a></li>
 				       	<li><a id="list-element" href="restituisciPrenotazioni">Prenotazioni correnti</a></li>
 			        </ul>
 			     </li>
@@ -138,7 +138,8 @@
 	</nav>
 		
 	<div class="jumbotron text-center">
-  		<h1>Benvenuto nel Sito di Prenotazione</h1>
+  		<h1>CUP Centro Unico Prenotazione</h1>
+  		<h2>Benvenuto</h2>
 	</div>
 	
 	

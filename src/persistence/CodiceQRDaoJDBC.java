@@ -115,12 +115,10 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update codice_qr SET id = ?, orario_scadenza = ?, convalida = ? WHERE id = ?";
+			String update = "update codice_qr SET  convalida = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, codice.getCodice());
-//			long seconds = codice.getScadenza().getTime();
-			statement.setString(2, codice.getScadenza());
-			statement.setBoolean(3, codice.isConvalida());
+			statement.setBoolean(1, codice.isConvalida());
+			statement.setString(2, codice.getCodice());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {

@@ -6,13 +6,9 @@ public class Segnalazione {
 	private String nomeUtente;
 	private String cognomeUtente;
 	private String motivazione;
-	private String domanda;
 	private String risposta;
 	
-	public Segnalazione() {		
-		risposta = "nessuna";
-		domanda = "nessuna";
-	}
+	public Segnalazione() {}
 	
 	public Segnalazione(int codice, String nomeUtente, String cognomeUtente, String motivazione) {
 		
@@ -20,7 +16,6 @@ public class Segnalazione {
 		this.nomeUtente = nomeUtente;
 		this.cognomeUtente = cognomeUtente;
 		this.motivazione = motivazione;
-
 	}
 
 	public int getCodice() {
@@ -61,13 +56,5 @@ public class Segnalazione {
 
 	public void setRisposta(String risposta) {
 		this.risposta = risposta;
-	}
-
-	public String getDomanda() {
-		return domanda;
-	}
-
-	public void setDomanda(String domanda) {
-		this.domanda = domanda;
 	}
 }

@@ -33,7 +33,7 @@
 	
 		<div class="jumbotron text-center" style="background:#5d7396; color:white">
 			<jsp:getProperty name="prenotato" property="codiceVisita"/>
-			<h1> Prenotazioni correnti</h1> <br>
+			<h1>Prenotazioni correnti</h1>
 		</div>
 		
 		  <!-- SEARCHBAR-->

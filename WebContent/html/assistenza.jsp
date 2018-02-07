@@ -38,7 +38,7 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 	   		</ul>
 		</div>	
@@ -46,7 +46,8 @@
 	</jstl:if>
 
 	<div class="jumbotron text-center" style="background:#720802;color:white">
-		<h1>Assistenza</h1><br>
+		<h1>Assistenza</h1>
+		<h2>Contatta il nostro centro assistenza per qualsiasi evenienza</h2>
 	</div>
 	
 	<div style="text-align:center">
