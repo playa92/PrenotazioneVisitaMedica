@@ -7,10 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import model.Amministratore;
+import model.Impiegato;
 import persistence.DatabaseManager;
-import persistence.dao.AmministratoreDao;
+import persistence.dao.ImpiegatoDao;
 
 @SuppressWarnings("serial")
 public class RipristinoPassword extends HttpServlet {
@@ -26,19 +25,19 @@ public class RipristinoPassword extends HttpServlet {
 		String username = request.getParameter("username");
 		String newPassword = request.getParameter("newPassword");
 		
-		AmministratoreDao amministratoreDao = DatabaseManager.getInstance().
-				getDaoFactory().getAmministratoreDao();
+		ImpiegatoDao impiegatoDao = DatabaseManager.getInstance().
+				getDaoFactory().getImpiegatoDao();
 		
-		Amministratore amministratore = amministratoreDao.findByPrimaryKey(username);
-		
-		if(amministratore != null) {
+		Impiegato impiegato = impiegatoDao.findByPrimaryKey(username);
 			
-			amministratore.setPassword(newPassword);
-			amministratoreDao.update(amministratore);
-			request.setAttribute("message", username + " ha ripristinato correttamente la sua password");
+		if(impiegato != null) {
+			
+			impiegato.setPassword(newPassword);
+			impiegatoDao.update(impiegato);
+			request.setAttribute("message", "Password ripristinata correttamente");
 			
 		} else {
-			request.setAttribute("message", "amministratore con user: " + username + " non presente");
+			request.setAttribute("message", "impiegato con user '" + username + "' non presente");
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("html/ripristino_password.jsp");

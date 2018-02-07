@@ -36,10 +36,10 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 			    <li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/prenotazione.jsp">Prenotazione</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/prenotazione.html">Prenotazione</a>
 			     </li>
 			     <jstl:if test="${not loggato}">
 			     <li class="dropdown nav-item ">
@@ -53,7 +53,13 @@
 				       	<li><a id="list-element" href="restituisciPrenotazioni">Prenotazioni correnti</a></li>
 			        </ul>
 			     </li>
-			     <jstl:if test="${loggato}">
+			      <jstl:if test="${loggatoEmployee}">
+			     	<li class="dropdown nav-item">
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="html/convalida.html">Convalida
+						</a>
+			     	</li>
+			     </jstl:if> 
+			     <jstl:if test="${loggatoAdmin}">
 			     	<li class="dropdown nav-item">
 						<a id="navbar-text" class="nav-link dropdown-toggle" href="gestisciSegnalazioni">Segnalazioni 
 						

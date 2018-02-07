@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Amministratore;
+import model.Impiegato;
 import model.Segnalazione;
 import persistence.DatabaseManager;
 import persistence.dao.AmministratoreDao;
+import persistence.dao.ImpiegatoDao;
 import persistence.dao.SegnalazioneDao;
 
 @SuppressWarnings("serial")
@@ -40,31 +42,49 @@ public class Login extends HttpServlet {
 		session.setAttribute("username", null);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		AmministratoreDao dao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();
-		Amministratore amministratore = dao.findByPrimaryKey(username);
+		AmministratoreDao amministratoreDao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();
+		Amministratore amministratore = amministratoreDao.findByPrimaryKey(username);
 	
-		
-		request.setAttribute("numSegnalazioni", contaSegnalazioni());
-
 		if(amministratore == null) {
 			
-			request.setAttribute("popUp", true);
-			request.setAttribute("popUpMessage", "Nessun utente registrato come " + username);	
+			ImpiegatoDao impiegatoDao = DatabaseManager.getInstance().getDaoFactory().getImpiegatoDao();
+			Impiegato impiegato = impiegatoDao.findByPrimaryKey(username);
 		
-		} else { 
-
-			//connessione
-			if(password.equals(amministratore.getPassword())) {			
+			if(impiegato == null) {
+			
+				request.setAttribute("popUp", true);
+				request.setAttribute("popUpMessage", "Nessun utente registrato come " + username);	
+			} else { 
+				if(password.equals(impiegato.getPassword())) {
+				
+				request.setAttribute("numSegnalazioni", contaSegnalazioni());
 				session.setAttribute("popUp", false);
 				session.setAttribute("username", username);				
 				request.setAttribute("loggato", true);
+				request.setAttribute("loggatoEmployee", true);
 				request.setAttribute("username", username);//JSTL
-								
 			} else {
 				session.setAttribute("popUp", true);
-				request.setAttribute("popUpMessage", "Spiacente, password non corrispondente per " + username);		
-			}		
+				request.setAttribute("popUpMessage", "Spiacente, password non corrispondente per " + username);
+			}
+		}	
+			
+		} else { 
 
+			//connessione
+			if(password.equals(amministratore.getPassword())) {	
+				
+				request.setAttribute("numSegnalazioni", contaSegnalazioni());
+				session.setAttribute("popUp", false);
+				session.setAttribute("username", username);
+				request.setAttribute("loggato", true);
+				request.setAttribute("loggatoAdmin", true);
+				request.setAttribute("username", username);//JSTL
+								
+			}  else {
+				session.setAttribute("popUp", true);
+				request.setAttribute("popUpMessage", "Spiacente, password non corrispondente per " + username);
+			}
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
@@ -72,7 +92,8 @@ public class Login extends HttpServlet {
 
 	}
 	
-	int contaSegnalazioni() {
+	private int contaSegnalazioni() {
+		
 		SegnalazioneDao dao =DatabaseManager.getInstance().
 				getDaoFactory().getSegnalazioneDao();
 		List<Segnalazione> segnalazioni = dao.findAll();

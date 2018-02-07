@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Convalida Prenotazione</title>
+	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
+ 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> 
+ 	<script src="../js/convalida.js"></script> 
+</head>
+<body>
+
+	<nav role="navigation" role="navigation" class="navbar">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li class="dropdown nav-item">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
+			     </li>
+	   		</ul>
+		</div>	
+	</nav>
+
+	<div class="jumbotron text-center" style="background:#7d1900;color:white">
+  		<h1>Convalida Prenotazione</h1>
+	</div>
+	
+	<div align="center" class="container">
+	  <div class="row">
+		<h2>Inserisci codice:</h2>
+           <div class="input-group col-md-4">
+              <input id="hexcode" type="text" class="search-query form-control" placeholder="Search" required/>
+              <span class="input-group-btn">
+                  <button class="btn" type="submit" onclick="validate();" style="background:#7d1900;color:white">
+                      <span class="glyphicon glyphicon-qrcode"></span>
+                  </button>
+              </span>
+           </div>
+	  </div>
+   	</div>
+   	
+   	<div id="dialog">
+      	<div class="modal fade" id="notice" role="dialog">
+		 	<div class="modal-dialog modal-md">
+		    	<div class="modal-content">
+	        	<div class="modal-header" style="text-align:center; background-color:#bcc4f2">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+        			<h3 id="message" class="modal-title" style="text-align:center"></h3>
+         		</div>
+		    	</div>
+		 	</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -23,12 +23,12 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert INTO codice_qr(id, orario_scadenza, valido) values (?,?,?)";
+			String insert = "insert INTO codice_qr(id, orario_scadenza, convalida) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, codice.getCodice());
 //			long seconds = codice.getScadenza().getTime();
 			statement.setString(2, codice.getScadenza());
-			statement.setBoolean(3, codice.getValido());
+			statement.setBoolean(3, codice.isConvalida());
 			statement.executeUpdate();
 		
 		} catch(SQLException e) {
@@ -60,7 +60,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 				codiceQr = new CodiceQR();
 				codiceQr.setCodice(result.getString("id"));
 				codiceQr.setScadenza(result.getString("orario_Scadenza"));				
-				codiceQr.setValido(result.getBoolean("valido"));
+				codiceQr.setConvalida(result.getBoolean("convalida"));
 			}
 			
 		} catch(SQLException e) {
@@ -93,7 +93,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 				c = new CodiceQR();
 				c.setCodice(result.getString("id"));
 				c.setScadenza(result.getString("orario_Scadenza"));				
-				c.setValido(result.getBoolean("valido"));
+				c.setConvalida(result.getBoolean("convalida"));
 				codici.add(c);
 			}
 			
@@ -115,12 +115,12 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update codice_qr SET id = ?, orario_scadenza = ?, valido = ? WHERE id = ?";
+			String update = "update codice_qr SET id = ?, orario_scadenza = ?, convalida = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, codice.getCodice());
 //			long seconds = codice.getScadenza().getTime();
 			statement.setString(2, codice.getScadenza());
-			statement.setBoolean(3, codice.getValido());
+			statement.setBoolean(3, codice.isConvalida());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {

@@ -42,7 +42,7 @@ public class Home extends HttpServlet {
 		this.doGet(request, response);
 	}
 	
-	int contaSegnalazioni() {
+	private int contaSegnalazioni() {
 		SegnalazioneDao dao =DatabaseManager.getInstance().
 				getDaoFactory().getSegnalazioneDao();
 		List<Segnalazione> segnalazioni = dao.findAll();

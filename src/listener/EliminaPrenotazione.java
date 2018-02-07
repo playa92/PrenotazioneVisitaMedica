@@ -8,6 +8,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import model.Prenotazione;
 import persistence.DatabaseManager;
+import persistence.dao.CodiceQRDao;
 import persistence.dao.PrenotazioneDao;
 
 @WebListener
@@ -27,8 +28,12 @@ public class EliminaPrenotazione implements ServletContextListener {
 			int indexOf = currentTime.toString().indexOf(":") - 2;
 			String scadenza = currentTime.toString().substring(indexOf, indexOf + 8);
 			
+			CodiceQRDao codiceQRDao = DatabaseManager.getInstance()
+					.getDaoFactory().getCodiceQRDao();
+			
 			for(Prenotazione it:prenotazioni) {
-				if(it.getOrarioVisita().compareTo(scadenza) < 0) {
+				if(it.getOrarioVisita().compareTo(scadenza) < 0 && 
+						!codiceQRDao.findByPrimaryKey(it.getCodiceVisita()).isConvalida()) {
 					prenotazioneDao.delete(it);
 				}
 			}

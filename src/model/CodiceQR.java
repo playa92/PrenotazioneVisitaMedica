@@ -5,16 +5,17 @@ package model;
 public class CodiceQR {
 
 	private String esadecimale;
-	private Boolean valido;
-//	private Date scadenza;
 	private String scadenza;
+	private Boolean convalida;
+//	private Date scadenza;
+	
 
 	public CodiceQR() {}
 	
-	public CodiceQR(String esadecimale, String scadenza, Boolean valido) {
+	public CodiceQR(String esadecimale, String scadenza, Boolean convalida) {
 		
 		this.esadecimale = esadecimale;
-		this.valido = valido;
+		this.convalida = convalida;
 		this.scadenza = scadenza;
 	}
 
@@ -26,12 +27,12 @@ public class CodiceQR {
 		this.esadecimale = esadecimale;
 	}
 
-	public Boolean getValido() {
-		return valido;
+	public Boolean isConvalida() {
+		return convalida;
 	}
 
-	public void setValido(Boolean valido) {
-		this.valido = valido;
+	public void setConvalida(Boolean valido) {
+		this.convalida = valido;
 	}
 
 	public String getScadenza() {

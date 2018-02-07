@@ -136,7 +136,7 @@ public class FormPrenotazione extends HttpServlet {
 			CodiceQR codiceQR = new CodiceQR();
 			codiceQR.setCodice(json.getString("hexcode"));
 			codiceQR.setScadenza(scadenza);
-			codiceQR.setValido(true);
+			codiceQR.setConvalida(false);
 			paziente.setCodiceQR(codiceQR.getCodice());
 			
 			Prenotazione prenotazione = new Prenotazione();

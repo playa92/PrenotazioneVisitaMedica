@@ -52,7 +52,6 @@ public class MainJDBC {
 		
 		//CREAZIONE AMMINISTRATORI
 		int count = 0;
-		Long[] id = {new Long(1), new Long(2)}; 
 		String[] r = {"sportello", "sistema"};
 		for(String it : MainJDBC.readCredential()) {
 		
@@ -67,7 +66,6 @@ public class MainJDBC {
 				Impiegato imp = new Impiegato();
 				String[] curr = it.split(":");
 				
-				imp.setId(id[count % 2]);
 				imp.setUsername(curr[0]);
 				imp.setPassword(curr[1]);
 				imp.setRuolo(r[count % 2]);
