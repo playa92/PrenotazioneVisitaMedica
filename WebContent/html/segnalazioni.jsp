@@ -5,9 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Area Segnalazioni</title>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css">
-	<script src="<%=request.getContextPath()%>/js/jquery/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
 	<style>
 		table, th, td {
     		border: 1px solid black;
@@ -24,7 +24,7 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 	   		</ul>
 		</div>	
@@ -51,19 +51,13 @@
 					<td>${i.nomeUtente}</td>
 					<td>${i.cognomeUtente}</td>
 					<td>${i.motivazione}</td>
-					<td>	<button onclick="risolvi()">Risolvi</button>   <td>
+					<td><button onclick="risolvi()">Risolvi</button><td>
 					
 				</tr>			
 			</jstl:forEach>
 		</tbody>
 		</table>
 	</div>
-	
-	<script>
-		function risolvi(){
-			alert("ti piacissa!")
-		}
-	</script>
 	
 </body>
 </html>

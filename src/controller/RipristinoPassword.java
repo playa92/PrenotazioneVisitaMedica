@@ -35,16 +35,14 @@ public class RipristinoPassword extends HttpServlet {
 			
 			amministratore.setPassword(newPassword);
 			amministratoreDao.update(amministratore);
-			request.setAttribute("show", true);
 			request.setAttribute("message", username + " ha ripristinato correttamente la sua password");
 			
 		} else {
-			request.setAttribute("show", true);
 			request.setAttribute("message", "amministratore con user: " + username + " non presente");
 		}
 		
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("html/ripristino_password.jsp");
-//		dispatcher.forward(request, response);
-		response.sendRedirect("html/ripristino_password.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("html/ripristino_password.jsp");
+		dispatcher.forward(request, response);
+//		response.sendRedirect("html/ripristino_password.jsp");
 	}
 }

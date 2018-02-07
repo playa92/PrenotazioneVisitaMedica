@@ -6,12 +6,12 @@
 <head>
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Assistenza</title>
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css">
-	<script src="<%=request.getContextPath()%>/js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script src="<%=request.getContextPath()%>/js/report.js"></script> 	
-	<script src="<%=request.getContextPath()%>/js/scroll_up.js"> </script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/report.js"></script> 	
+	<script src="${pageContext.request.contextPath}/js/scroll_up.js"> </script>
 	
 	<script>
 		$(document).ready(function() {
@@ -32,18 +32,19 @@
 </head>
 
 <body id="Assistenza">
-	
+	<jstl:if test="${not vuoto}">
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 	   		</ul>
 		</div>	
 	</nav>
-	
+	</jstl:if>
+
 	<div class="jumbotron text-center" style="background:#720802;color:white">
 		<h1>Assistenza</h1><br>
 	</div>
@@ -74,7 +75,7 @@
 						</select>
 						<textarea id="textarea" name="altro" style="display:none;"></textarea>
 						<div class="modal-footer" style="text-align:center;">
-		      		 		<input type="submit" class="btn btn-md" value="Invia"/>
+		      		 		<input id="submitSegnalazione" type="submit" class="btn btn-md" value="Invia"/>
 		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
 				  		</div>
 			  		</form>	
@@ -83,8 +84,9 @@
 	     </div>
 	   </div>
 	</div>
-	
+	<jstl:if test="${not vuoto}">
 	<h1 style="padding: 0 0 0 1em;">Domande frequenti (FAQ) </h1><br><br>
+	</jstl:if>
 	<div class="wrapper">  
 	  <div class="half">
 	    <div class="tab">
@@ -104,11 +106,8 @@
 	</div>
 	
 	<jstl:if test="${vuoto}">
-		<br>
-		<div class="jumbotron text-center" style="background:#5d7396; color:white">
 			<h1> Nessuna FAQ disponibile </h1>
-		</div>
-		<div align="center">
+		<div style="margin-left:100px">
 			<button type='button'class='btn btn-default btn-lg' onclick="window.location='<%=request.getContextPath()%>/home'">  
 				Torna alla Home <span class='glyphicon glyphicon-home'></span>
 			</button>
@@ -119,6 +118,7 @@
 	<a href="#" class="scrollup">Scroll</a>
 	
 	<script>
+	
 		function toggleTextField(){
 			$("#textarea").toggle();
 		}

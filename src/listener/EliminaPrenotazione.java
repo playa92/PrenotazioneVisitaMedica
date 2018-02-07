@@ -15,8 +15,6 @@ public class EliminaPrenotazione implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent servlet) {
-	
-//		System.out.println("started");
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance()
 				.getDaoFactory().getPrenotazioneDao();
 		List<Prenotazione> prenotazioni = prenotazioneDao.findAll();
@@ -39,8 +37,6 @@ public class EliminaPrenotazione implements ServletContextListener {
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent servlet) {
-		
-//		System.out.println("destroyed");
 		this.contextInitialized(servlet);
 	}
 }

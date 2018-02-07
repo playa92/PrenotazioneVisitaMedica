@@ -5,11 +5,10 @@
 <head>
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ripristino Credenziali</title>
-	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/common.css">
-	<script src="../js/jquery-3.2.1.min.js"></script>
-	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<%-- 	<script src="<%=request.getContextPath()%>/js/effects.js"></script> --%>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -19,7 +18,7 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 	   		</ul>
 		</div>	
@@ -48,6 +47,7 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 	        			<h3 class="modal-title" style="text-align:center"> 
 	        				<jstl:out value="${message}"/>
+
 	        			</h3>
           			</div>
 	     		</div>
@@ -56,8 +56,7 @@
    </div>
   
   
-  <jstl:if test="${show}">
-  		<script type="text/javascript">alert("ciao")</script>
+  <jstl:if test="${not empty message}">
 	   	<script> $("#notice").modal('show'); </script>  
   </jstl:if>
   

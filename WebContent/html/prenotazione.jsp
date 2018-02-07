@@ -22,7 +22,7 @@
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/home"><span class="glyphicon glyphicon-home"></span> Home</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
 	   		</ul>
 		</div>	
@@ -48,7 +48,7 @@
 				<option>Malattia Generica</option>
 			</select><hr>
 			<div align="center">
-				<input id="conferma" name="conferma" type="submit" value="Conferma"  class="btn-success" onclick='sendForm();'/>
+				<input id="conferma" name="conferma" type="submit" value="Conferma" class="btn-success" onclick="question();"/>
 				<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
 			</div>
 	</div>
@@ -81,7 +81,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
         			<h3 id="confirmMessage" class="modal-title" style="text-align:center"></h3>
         			<div class="modal-body" style="text-align:center; background-color:#bcc4f2">
-        				<button type="button" class="btn btn-default" data-dismiss="modal" onclick="success();" style="background-color:#092147; color:#ffffff">Si</button>
+        				<button type="button" class="btn btn-default" data-dismiss="modal" onclick="sendForm();" style="background-color:#092147; color:#ffffff">Si</button>
         				<button type="button" class="btn btn-default" onclick="window.location.href='../home'" data-dismiss="modal" style="background-color:#092147; color:#ffffff">No</button>
         			</div>
          		</div>
@@ -100,16 +100,16 @@
 						<div id="content" style="background-color:#bcc4f2;">
 						<div align="center">
 						<h1 >Riepilogo:</h1>
-						<h3 id="1">Codice Fiscale: </h3>
-						<h3 id="2">Nome: </h3>
-						<h3 id="3">Cognome: </h3>
-						<h3 id="4">Matricola: </h3>
-						<h3 id="5">Invalidit&agrave;: </h3>
-						<h3 id="6">Importo: </h3>
+						<h3 id="1"></h3>
+						<h3 id="2"></h3>
+						<h3 id="3"></h3>
+						<h3 id="4"></h3>
+						<h3 id="5"></h3>
+						<h3 id="6"></h3>
 						<input id='text' type='hidden' value=" + codiceQR.getCodice() + "/>
 						<div id='print'>
 						<div id='qrcode'></div>
-						<h3 id="7">Codice: </h3>
+						<h3 id="7"></h3>
 						</div>
 						</div>
 						<h3 align="center" style="color:red">stampa promemoria

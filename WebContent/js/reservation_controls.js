@@ -37,7 +37,8 @@ function correct(message) {
 function avviso() {
 	
 	$("#notice").modal("show");
-	$("#message").text("Attenzione i dati inseriti verranno resettati");
+	$("#message").text("Attenzione i dati inseriti sono stati resettati");
+	$("input[type=text]").val("");
 }
 
 
@@ -50,6 +51,41 @@ function Paziente(codiceFiscale, nome, cognome, matricola, invalidita, hexcode) 
 	this.invalidita = invalidita;
 	this.hexcode = hexcode;
 }
+
+function question() {
+	
+	$.ajax({
+		type:'get',
+		url:'../formPrenotazione',
+		data: {value:$("input[name=codiceFiscale]").prop("value")},
+		success:function(data) {
+			
+			var values = data.split(";");
+						
+			if(values[0] == "redirect") {
+				$("#notice").modal("show");
+				$("#message").text(values[1]);
+			
+				setTimeout(function() {
+					window.location.href = "../home";
+				}, 2000);
+				
+			} else if(values[0] == "false") {
+				$("#notice").modal("show");	
+				$("#message").text(values[1]);
+				
+			} else {
+				$("#confirm").modal("show");
+				$("#confirmMessage").html("Prenotazione: n\u00b0" + values[1] +" <br> " 
+                        +" Orario visita: " + values[2] + "<br>" 
+                        + "vuole continuare?");
+			}
+		}
+	});
+}
+
+var array = ["Codice Fiscale: ", "Nome: ", "Cognome: ", 
+	"Matricola: ", "Invalidit\340: ", "Importo: ", "Codice: "];
 
 function sendForm() {
 	
@@ -69,34 +105,25 @@ function sendForm() {
 		datatype:"json",
 		data:JSON.stringify(paziente),
 		success:function(data) {
+			
 			var values = data.split(";");
-						
-			if(values[0] == "redirect") {
-				$("#notice").modal("show");
-				$("#message").text(values[1]);
-				setTimeout(function() {
-					window.location.href = "../home";
-				}, 2000);
+			
+			if(values[0] == "true") {
+				var strings = values[1].split("|");
 				
-			} else if(values[0] == "false") {
+				for(var i = 0; i < strings.length; i++) {
+				
+					if(i == 5) {
+						$("#"+(i + 1)).text(array[i] + strings[i] + "0\u20ac");
+					} else {
+						$("#"+(i + 1)).text(array[i] + strings[i]);
+					}
+				}
+				success();
+			} else {
 				$("#notice").modal("show");	
 				$("#message").text(values[1]);
-			} else {
-				$("#confirm").modal("show");
-				$("#confirmMessage").html("Prenotazione: n\u00b0" + values[1] +" <br> " 
-                        +" Orario visita: " + values[2] + "<br>" 
-                        + "vuole continuare?");
 			}
-			
-			var strings = values[3].split("|");
-			$("#1").append(strings[1]);
-			$("#2").append(strings[2]);
-			$("#3").append(strings[3]);
-			$("#4").append(strings[4]);
-			$("#5").append(strings[5]);
-			$("#6").append(strings[6]+"0 &euro;");
-			$("#7").append(strings[7]);
-			
 		}
 	});
 }

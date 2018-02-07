@@ -32,20 +32,36 @@ public class FormPrenotazione extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.doPost(request, response);
+		
+		Calendar now = Calendar.getInstance();
+		String current = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE);
+				
+//		if(current.compareTo(ORARIO_INIZIO) < 0 || current.compareTo(ORARIO_FINE) > 0) {
+//			response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
+//			return;
+//		}
+		
+		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
+				getDaoFactory().getPrenotazioneDao();
+		
+		PrintWriter out = response.getWriter();
+		int visiteTotali = prenotazioneDao.getTotalVisits();
+		
+		if(visiteTotali >= MAX) {
+			out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
+			return;
+		}
+		
+		Date date = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
+		int indexOf = date.toString().indexOf(":") - 2;
+		String probabileVisita = date.toString().substring(indexOf, indexOf + 5);
+		
+		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita + ";");	
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException ,IOException {
 		
-		Calendar now = Calendar.getInstance();
-		String current = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE);
-//		
-//		if(current.compareTo(ORARIO_INIZIO) < 0 || current.compareTo(ORARIO_FINE) > 0) {
-//			response.getWriter().write("false;!!!Orario non valido!!!");
-//			return;
-//		}
-//		
 		StringBuffer jsonReceived = new StringBuffer();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));		
 		String line = reader.readLine();
@@ -67,13 +83,6 @@ public class FormPrenotazione extends HttpServlet {
 					getDaoFactory().getUniversitaDao();
 			
 			PrintWriter out = response.getWriter();
-			int visiteTotali = prenotazioneDao.getTotalVisits();
-			
-			if(visiteTotali >= MAX) {
-				out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
-				return;
-			}
-			
 			JSONObject json = new JSONObject(jsonReceived.toString());
 			
 			Long matricola = null;
@@ -83,12 +92,12 @@ public class FormPrenotazione extends HttpServlet {
 			}
 			
 			if(pazienteDao.findByPrimaryKey(json.getString("codiceFiscale")) != null) {
-				out.println("false;Paziente con codice fiscale: '" + json.getString("codiceFiscale") + "' gia' presente");
+				out.println("false;Paziente con codice fiscale '" + json.getString("codiceFiscale") + "' gia' presente");
 				return;
 				
 			} else {
 				if(pazienteDao.exists(matricola)) {
-					out.println("false;La Matricola: '" + json.getString("matricola") + "' e' stata associata ad un altro Paziente");
+					out.println("false;La Matricola '" + json.getString("matricola") + "' e' stata associata ad un altro Paziente");
 					return;
 				}
 			}
@@ -114,8 +123,11 @@ public class FormPrenotazione extends HttpServlet {
 					imp = new Double(0);
 			}
 			
-			Date date1 = new Date(Calendar.getInstance().getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
-			Date date2 = new Date(Calendar.getInstance().getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
+			int visiteTotali = prenotazioneDao.getTotalVisits();
+			
+			Calendar now = Calendar.getInstance();
+			Date date1 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
+			Date date2 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
 			
 			int indexOf = date1.toString().indexOf(":") - 2;
 			String visita = date1.toString().substring(indexOf, indexOf + 5);
@@ -138,11 +150,9 @@ public class FormPrenotazione extends HttpServlet {
 			pazienteDao.save(paziente);
 			prenotazioneDao.save(prenotazione); 
 							
-			out.println("true;" + (++ visiteTotali) + ";" + visita +";");
-						
-			out.println("|"+paziente.getCodiceFiscale()+"|"+paziente.getNome()+"|"+paziente.getCognome()+"|"+
-					String.valueOf(paziente.getMatricola())+"|"+paziente.getInvalidita()+"|"+
-					String.valueOf(prenotazione.getImporto()) +"|"+codiceQR.getCodice());
+			out.println("true;" + paziente.getCodiceFiscale() + "|" + paziente.getNome() + "|" + paziente.getCognome() + "|" +
+					String.valueOf(paziente.getMatricola() == null ? "Nessuna" : paziente.getMatricola()) + "|" + 
+					paziente.getInvalidita() + "|" + String.valueOf(prenotazione.getImporto()) + "|" + codiceQR.getCodice());
 			
 		} catch(JSONException e) {
 			e.printStackTrace();
