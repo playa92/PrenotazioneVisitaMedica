@@ -45,6 +45,7 @@
     <servlet-name>RicercaPrenotazione</servlet-name>
     <url-pattern>/ricercaPrenotazione</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>RegistraSegnalazione</servlet-name>
     <servlet-class>controller.RegistraSegnalazione</servlet-class>
