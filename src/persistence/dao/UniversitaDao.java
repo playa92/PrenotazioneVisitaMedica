@@ -8,6 +8,4 @@ public interface UniversitaDao {
 	public void save(Paziente paziente);
 	public Paziente findByPrimaryKey(Long matricola);
 	public List<Paziente> findAll();
-	public void update(Paziente paziente);
-	public void delete(Paziente paziente);
 }

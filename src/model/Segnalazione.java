@@ -10,12 +10,13 @@ public class Segnalazione {
 	
 	public Segnalazione() {}
 	
-	public Segnalazione(Integer codice, String nomeUtente, String cognomeUtente, String motivazione) {
+	public Segnalazione(Integer codice, String nomeUtente, String cognomeUtente, String motivazione, String risposta) {
 		
 		this.codice = codice;
 		this.nomeUtente = nomeUtente;
 		this.cognomeUtente = cognomeUtente;
 		this.motivazione = motivazione;
+		this.risposta = risposta;
 	}
 
 	public Integer getCodice() {

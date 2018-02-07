@@ -8,4 +8,6 @@ public interface SegnalazioneDao {
 
 	public void save(Segnalazione segnalazione);
 	public List<Segnalazione> findAll();
+	public void update(Segnalazione segnalazione);
+	public void delete(Segnalazione segnalazione);
 }

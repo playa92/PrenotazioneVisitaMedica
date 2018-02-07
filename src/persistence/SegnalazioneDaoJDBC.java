@@ -23,12 +23,13 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert INTO segnalazione(codice, nome_utente, cognome_utente, motivazione) values(?,?,?,?);";
+			String insert = "insert INTO segnalazione(codice, nome_utente, cognome_utente, motivazione, risposta) values(?,?,?,?,?);";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, segnalazione.getCodice());
 			statement.setString(2, segnalazione.getNomeUtente());
 			statement.setString(3, segnalazione.getCognomeUtente());
 			statement.setString(4, segnalazione.getMotivazione());
+			statement.setString(5, "");
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -62,8 +63,10 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 				segnalazione.setNomeUtente(result.getString("nome_utente"));
 				segnalazione.setCognomeUtente(result.getString("cognome_utente"));
 				segnalazione.setMotivazione(result.getString("motivazione"));
+				segnalazione.setRisposta(result.getString("risposta"));
 				segnalazioni.add(segnalazione);
 			}
+			
 		} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		} finally {
@@ -76,5 +79,52 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 			}
 		}
 		return segnalazioni;
+	}
+
+	@Override
+	public void update(Segnalazione segnalazione) {
+	
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String update = "update segnalazione SET risposta = ? WHERE motivazione = ?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setString(1, segnalazione.getRisposta());
+			statement.setString(2, segnalazione.getMotivazione());
+			statement.executeUpdate();
+			
+		} catch(SQLException e) {
+			throw new PersistenceException(e.getMessage());
+			
+		} finally {
+			
+			try {
+				connection.close();
+			} catch(SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+	}
+
+	@Override
+	public void delete(Segnalazione segnalazione) {
+		
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String delete = "delete FROM segnalazione WHERE motivazione = ?";
+			PreparedStatement statement = connection.prepareStatement(delete);
+			statement.setString(1, segnalazione.getMotivazione());
+			statement.executeUpdate();
+			
+		} catch(SQLException e) {
+			throw new PersistenceException(e.getMessage());
+			
+		} finally {
+			
+			try {
+				connection.close();
+			} catch(SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
 	}
 }

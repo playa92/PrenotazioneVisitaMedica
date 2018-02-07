@@ -91,9 +91,8 @@ public class PazienteDaoJDBC implements PazienteDao {
 		List<Paziente> pazienti = new LinkedList<>();
 		Paziente paziente = null;
 		try {
-			PreparedStatement statement;
 			String query = "select * FROM paziente";
-			statement = connection.prepareStatement(query);
+			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
@@ -107,6 +106,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 				paziente.setCodiceQR(result.getString("id_codice"));
 				pazienti.add(paziente);
 			}
+			
 		} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());
 		} finally {
@@ -125,14 +125,14 @@ public class PazienteDaoJDBC implements PazienteDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update paziente SET codice_fiscale = ?, nome = ?, cognome = ?, matricola = ?, invalidità = ?, id_codice = ? WHERE codice_fiscale = ?";
+			String update = "update paziente SET  nome = ?, cognome = ?, matricola = ?, invalidità = ?, id_codice = ? WHERE codice_fiscale = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, paziente.getCodiceFiscale());
-			statement.setString(2, paziente.getNome());
-			statement.setString(3, paziente.getCognome());
-			statement.setLong(4, paziente.getMatricola());
-			statement.setString(5, paziente.getInvalidita());
-			statement.setString(6, paziente.getCodiceQR());
+			statement.setString(1, paziente.getNome());
+			statement.setString(2, paziente.getCognome());
+			statement.setLong(3, paziente.getMatricola());
+			statement.setString(4, paziente.getInvalidita());
+			statement.setString(5, paziente.getCodiceQR());
+			statement.setString(6,  paziente.getCodiceFiscale());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {

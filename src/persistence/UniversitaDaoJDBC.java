@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 //import model.CodiceQR;
 import model.Paziente;
@@ -48,7 +49,7 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 		Paziente paziente = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM paziente WHERE matricola = ?";
+			String query = "select * FROM università WHERE matricola = ?";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
@@ -56,12 +57,9 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 			if(result.next()) {
 				
 				paziente = new Paziente();	
-				paziente.setCodiceFiscale(result.getString("codice_fiscale"));
+				paziente.setCodiceFiscale(result.getString("matricola"));
 				paziente.setNome(result.getString("nome"));				
 				paziente.setCognome(result.getString("cognome"));
-				paziente.setMatricola(result.getLong("matricola"));
-				paziente.setInvalidita(result.getString("invalidità"));
-//TODO			paziente.setCodice((CodiceQR) result.getObject("id_codiceQr"));
 			}
 			
 		} catch(SQLException e) {
@@ -79,19 +77,35 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 
 	@Override
 	public List<Paziente> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void update(Paziente paziente) {
-		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public void delete(Paziente paziente) {
-		// TODO Auto-generated method stub
-		
+		Connection connection = this.dataSource.getConnection();
+		List<Paziente> universitari = new LinkedList<>();
+		Paziente paziente = null;
+		try {
+			String query = "select * FROM univeristà";
+			PreparedStatement statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				
+				paziente = new Paziente();
+				paziente.setCodiceFiscale(result.getString("matricola"));
+				paziente.setNome(result.getString("nome"));
+				paziente.setCognome(result.getString("cognome"));
+				universitari.add(paziente);
+			}
+			
+		} catch(SQLException e) {
+			throw new PersistenceException(e.getMessage());
+			
+		} finally {
+			
+			try {
+				connection.close();
+			} catch(SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return universitari;
 	}
 }

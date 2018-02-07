@@ -56,7 +56,7 @@ public class UtilDao {
 					+ "create table prenotazione(id_visita VARCHAR(255) primary key REFERENCES codice_qr(\"id\"),"
 					+ "nome_paziente VARCHAR(255), cognome_paziente VARCHAR(255), orario_visita VARCHAR(255), importo BIGINT);"
 					+ "create table impiegato(username VARCHAR(255) primary key, password VARCHAR(255), ruolo VARCHAR(255));"
-					+ "create table segnalazione(codice BIGINT, nome_utente VARCHAR(255), cognome_utente VARCHAR(255), motivazione VARCHAR(255));";
+					+ "create table segnalazione(codice BIGINT, nome_utente VARCHAR(255), cognome_utente VARCHAR(255), motivazione VARCHAR(255), risposta VARCHAR(255));";
 			
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();		
