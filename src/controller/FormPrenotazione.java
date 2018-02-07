@@ -106,26 +106,33 @@ public class FormPrenotazione extends HttpServlet {
 			paziente.setCodiceFiscale(json.getString("codiceFiscale"));
 			paziente.setNome(json.getString("nome"));
 			paziente.setCognome(json.getString("cognome"));
-			paziente.setMatricola(matricola);
 			paziente.setInvalidita(json.getString("invalidita"));
 			
 			Double imp = new Double(25);
 			
-			if(paziente.getMatricola() != null) {
-				if(universitaDao.findByPrimaryKey(paziente.getMatricola()) == null) { 
-					if(!paziente.getInvalidita().equals("Nessuna"))
+			if(matricola != null) {
+				
+				Paziente p = universitaDao.findByPrimaryKey(matricola);
+				if(p != null) {
+					if(paziente.getNome().equals(p.getNome()) && paziente.getCognome().equals(p.getCognome())) {
 						imp = new Double(0);
+						paziente.setMatricola(matricola);
+					} else {
+						paziente.setMatricola(null);
+					}
+					
 				} else {
-					imp = new Double(0);
+					paziente.setMatricola(null);
 				}
-			} else {
-				if(!paziente.getInvalidita().equals("Nessuna"))
-					imp = new Double(0);
+			}
+				
+			if(!paziente.getInvalidita().equals("Nessuna")) {
+				imp = new Double(0);
 			}
 			
 			int visiteTotali = prenotazioneDao.getTotalVisits();
-			
 			Calendar now = Calendar.getInstance();
+			
 			Date date1 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 			Date date2 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
 			

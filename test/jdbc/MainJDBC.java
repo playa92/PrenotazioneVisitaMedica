@@ -50,9 +50,10 @@ public class MainJDBC {
 		ImpiegatoDao impiegatoDao = factory.getImpiegatoDao();
 		AmministratoreDao amministratoreDao = factory.getAmministratoreDao();
 		
-		//CREAZIONE AMMINISTRATORI
+		//CREAZIONE AMMINISTRATORI E IMPIEGATI
 		int count = 0;
-		String[] r = {"sportello", "sistema"};
+		String[] ruoli = {"sportello", "sistema"};
+		
 		for(String it : MainJDBC.readCredential()) {
 		
 			if(count < 2) {
@@ -68,7 +69,7 @@ public class MainJDBC {
 				
 				imp.setUsername(curr[0]);
 				imp.setPassword(curr[1]);
-				imp.setRuolo(r[count % 2]);
+				imp.setRuolo(ruoli[count % 2]);
 				impiegatoDao.save(imp);
 			}
 			count ++;
@@ -89,5 +90,23 @@ public class MainJDBC {
 		p2.setNome("Davide");
 		p2.setCognome("Aloia");
 		p2.setMatricola(new Long(164889));
+		
+		Paziente p3 = new Paziente();
+		p3.setCodiceFiscale("CNGMHL95H01G317R");
+		p3.setNome("Michele");
+		p3.setCognome("Cangeri");
+		p3.setMatricola(new Long(176543));
+		
+		Paziente p4 = new Paziente();
+		p4.setCodiceFiscale("RSSMRA90A01H501W");
+		p4.setNome("Mario");
+		p4.setCognome("Rossi");
+		p4.setMatricola(new Long(143210));
+		
+		Paziente p5 = new Paziente();
+		p5.setCodiceFiscale("VRDGPP92B01F205A");
+		p5.setNome("Giuseppe");
+		p5.setCognome("Verdi");
+		p5.setMatricola(new Long(154321));
 	}
 }

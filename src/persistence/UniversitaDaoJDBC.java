@@ -58,8 +58,8 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 				
 				paziente = new Paziente();	
 				paziente.setCodiceFiscale(result.getString("matricola"));
-				paziente.setNome(result.getString("nome"));				
-				paziente.setCognome(result.getString("cognome"));
+				paziente.setNome(result.getString("nome_paziente"));				
+				paziente.setCognome(result.getString("cognome_paziente"));
 			}
 			
 		} catch(SQLException e) {
@@ -90,8 +90,8 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 				
 				paziente = new Paziente();
 				paziente.setCodiceFiscale(result.getString("matricola"));
-				paziente.setNome(result.getString("nome"));
-				paziente.setCognome(result.getString("cognome"));
+				paziente.setNome(result.getString("nome_paziente"));
+				paziente.setCognome(result.getString("cognome_paziente"));
 				universitari.add(paziente);
 			}
 			
