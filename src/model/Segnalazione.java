@@ -2,7 +2,7 @@ package model;
 
 public class Segnalazione {
 
-	private int codice;
+	private Integer codice;
 	private String nomeUtente;
 	private String cognomeUtente;
 	private String motivazione;
@@ -10,7 +10,7 @@ public class Segnalazione {
 	
 	public Segnalazione() {}
 	
-	public Segnalazione(int codice, String nomeUtente, String cognomeUtente, String motivazione) {
+	public Segnalazione(Integer codice, String nomeUtente, String cognomeUtente, String motivazione) {
 		
 		this.codice = codice;
 		this.nomeUtente = nomeUtente;
@@ -18,11 +18,11 @@ public class Segnalazione {
 		this.motivazione = motivazione;
 	}
 
-	public int getCodice() {
+	public Integer getCodice() {
 		return codice;
 	}
 
-	public void setCodice(int codice) {
+	public void setCodice(Integer codice) {
 		this.codice = codice;
 	}
 
