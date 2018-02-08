@@ -45,6 +45,7 @@
 				<th>Nome</th>
 				<th>Cognome</th>
 				<th>Segnalazione</th>
+				<th>Stato</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -57,7 +58,13 @@
 					<td>${i.nomeUtente}</td>
 					<td>${i.cognomeUtente}</td>
 					<td id="ris${count}">${i.motivazione}</td>
-					<td><a data-toggle="modal" data-target="#risolvi" href="#" onclick="tmp('ris${count}');">Risolvi</a> <td>
+					<jstl:if test="${not i.risolto}">
+						<td><a id="risolvi${count}" data-toggle="modal" data-target="#risolvi" href="#" 
+						onclick="tmp('ris${count}', 'risolvi${count}');" style="color:red; text-decoration: none;"> Da risolvere</a> <td>
+					</jstl:if>
+					<jstl:if test="${i.risolto}">
+						<td><a style="text-decoration: none; color:green;pointer-events:none">Risolto</a> <td>
+					</jstl:if>
 				</tr>			
 			</jstl:forEach>
 		</tbody>
@@ -70,9 +77,9 @@
 		    <div class="modal-dialog modal-md">
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        	<textarea id="risp" placeholder="Rispondi.." style="width:400px; height:200px"></textarea>
-	      		<button data-dismiss="modal" onclick="risp();">Conferma</button>  	
+				<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
+	        	<textarea id="risp" placeholder="Rispondi.." style="width:400px; height:300px"></textarea><br><br>
+	      		<button data-dismiss="modal" class="btn btn-default" onclick="risp();">Conferma</button>  	
 	          </div>
 		     </div>
 		   </div>

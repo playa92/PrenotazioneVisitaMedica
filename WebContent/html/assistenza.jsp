@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
 	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/report.js"></script> 	
 	<script src="${pageContext.request.contextPath}/js/scroll_up.js"> </script>
 	
 	<script>
@@ -74,7 +73,7 @@
 					  		<option onclick="hideTextField();">Connessione scaduta</option>
 					  		<option onclick="toggleTextField();">Altro</option>
 						</select>
-						<textarea id="textarea" name="altro" style="display:none;"></textarea>
+						<textarea id="textarea" name="commento" required></textarea>
 						<div class="modal-footer" style="text-align:center;">
 		      		 		<input id="submitSegnalazione" type="submit" class="btn btn-md" value="Invia"/>
 		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
@@ -97,8 +96,8 @@
 			 <jstl:forEach var="i" items="${segnalazioni}">
 				<jstl:set var="count" value="${count + 1}" scope="page"/> 
 				 <div class="tab">
-			        <input id="tab-<jstl:out value="${count}"/>" type="checkbox" name="tabs">    
-			        <label for="tab-<jstl:out value="${count}"/>">${i.motivazione}</label>
+			        <input id="tab-${count}" type="checkbox" name="tabs">    
+			        <label for="tab-${count}">${i.commento} ( ${i.motivazione} )</label>
 			        <div class="tab-content"><p>${i.risposta}.</p></div>
 			    </div>			
 			</jstl:forEach>
@@ -109,7 +108,7 @@
 	<jstl:if test="${vuoto}">
 			<h1> Nessuna FAQ disponibile </h1>
 		<div style="margin-left:100px">
-			<button type='button'class='btn btn-default btn-lg' onclick="window.location='<%=request.getContextPath()%>/home'">  
+			<button type='button'class='btn btn-default btn-lg' onclick="window.location='${pageContext.request.contextPath}/home'">  
 				Torna alla Home <span class='glyphicon glyphicon-home'></span>
 			</button>
 		</div>
@@ -117,17 +116,6 @@
 	
 	<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
-	
-	<script>
-	
-		function toggleTextField(){
-			$("#textarea").toggle();
-		}
 		
-		function hideTextField(){
-			$("#textarea").hide();
-		}
-	</script>
-	
 </body>
 </html>

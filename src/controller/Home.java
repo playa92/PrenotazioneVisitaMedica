@@ -46,6 +46,11 @@ public class Home extends HttpServlet {
 		SegnalazioneDao dao =DatabaseManager.getInstance().
 				getDaoFactory().getSegnalazioneDao();
 		List<Segnalazione> segnalazioni = dao.findAll();
-		return segnalazioni.size();
+		
+			int cont=0;
+			for(Segnalazione s:segnalazioni) 
+				if(!s.getRisolto()) 
+					cont++;
+			return cont;
 	}
 }

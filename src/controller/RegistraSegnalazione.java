@@ -37,8 +37,8 @@ public class RegistraSegnalazione extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String motivazione = request.getParameter("motivazione");
-		String altro = request.getParameter("altro");
-				
+		String commento = request.getParameter("commento");
+						
 		SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().
 				getDaoFactory().getSegnalazioneDao();
 	
@@ -46,10 +46,8 @@ public class RegistraSegnalazione extends HttpServlet {
 		segnalazione.setCodice(codici.get(motivazione));
 		segnalazione.setNomeUtente(nome);
 		segnalazione.setCognomeUtente(cognome);
-		if(motivazione.equals("Altro"))
-			segnalazione.setMotivazione(altro);
-		else
-			segnalazione.setMotivazione(motivazione);
+		segnalazione.setMotivazione(motivazione);
+		segnalazione.setCommento(commento);
 		
 		segnalazioneDao.save(segnalazione);
 		

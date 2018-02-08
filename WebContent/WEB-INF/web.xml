@@ -66,7 +66,7 @@
  
   <servlet>
     <servlet-name>GetSegnalazioni</servlet-name>
-    <servlet-class>controller.RestituisciSegnalazioni</servlet-class>
+    <servlet-class>controller.Segnalazioni</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetSegnalazioni</servlet-name>
@@ -75,7 +75,7 @@
   
   <servlet>
     <servlet-name>GestisciSegnalazioni</servlet-name>
-    <servlet-class>controller.GestisciSegnalazioni</servlet-class>
+    <servlet-class>controller.Assistenza</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GestisciSegnalazioni</servlet-name>

@@ -23,13 +23,15 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert INTO segnalazione(codice, nome_utente, cognome_utente, motivazione, risposta) values(?,?,?,?,?);";
+			String insert = "insert INTO segnalazione(codice, nome_utente, cognome_utente, motivazione, commento, risposta, risolto) values(?,?,?,?,?,?,?);";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, segnalazione.getCodice());
 			statement.setString(2, segnalazione.getNomeUtente());
 			statement.setString(3, segnalazione.getCognomeUtente());
 			statement.setString(4, segnalazione.getMotivazione());
-			statement.setString(5, "");
+			statement.setString(5, segnalazione.getCommento());
+			statement.setString(6, "Nessuna");
+			statement.setBoolean(7, false);
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -63,7 +65,9 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 				segnalazione.setNomeUtente(result.getString("nome_utente"));
 				segnalazione.setCognomeUtente(result.getString("cognome_utente"));
 				segnalazione.setMotivazione(result.getString("motivazione"));
+				segnalazione.setCommento(result.getString("commento"));
 				segnalazione.setRisposta(result.getString("risposta"));
+				segnalazione.setRisolto(result.getBoolean("risolto"));
 				segnalazioni.add(segnalazione);
 			}
 			
@@ -86,10 +90,11 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 	
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update segnalazione SET risposta = ? WHERE motivazione = ?";
+			String update = "update segnalazione SET risposta = ?, risolto = ? WHERE motivazione = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, segnalazione.getRisposta());
-			statement.setString(2, segnalazione.getMotivazione());
+			statement.setBoolean(2, segnalazione.getRisolto());
+			statement.setString(3, segnalazione.getMotivazione());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {

@@ -12,13 +12,14 @@ import persistence.DatabaseManager;
 import persistence.dao.SegnalazioneDao;
 
 @SuppressWarnings("serial")
-public class GestisciSegnalazioni extends HttpServlet{
+public class Assistenza extends HttpServlet{
 	
 		@Override
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 			String risp = request.getParameter("risp");
 			String motivazione = request.getParameter("motivazione");
+			String commento = request.getParameter("commento");
 			
 			SegnalazioneDao dao =DatabaseManager.getInstance().
 					getDaoFactory().getSegnalazioneDao();
@@ -26,8 +27,10 @@ public class GestisciSegnalazioni extends HttpServlet{
 			
 			if(risp != null) {
 				for(Segnalazione s:segnalazioni) {
-					if(s.getMotivazione().equals(motivazione)) {
+					if(s.getRisposta().equals("Nessuna") && s.getMotivazione().equals(motivazione)) {
 						s.setRisposta(risp);
+						s.setRisolto(true);
+						s.setCommento(commento);
 						dao.update(s);
 						break;
 					}
@@ -35,7 +38,7 @@ public class GestisciSegnalazioni extends HttpServlet{
 			}
 			
 			request.setAttribute("segnalazioni", segnalazioni);
-
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("html/segnalazioni.jsp");
 			dispatcher.forward(request, response);
 		}

@@ -1,17 +1,13 @@
 	
 	var motiva = "";
+	var currentRisolvi = null;
 
-	function tmp(id){
-		motiva = $("#"+id).text();
+	function tmp(idMotivazione, idRisolvi){
+		motiva = $("#"+idMotivazione).text();
+		currentRisolvi = idRisolvi;
 	}
 	
 	function risp(){
-		
-		
-		//TODO andare a sostituire Risolvi con risolto  a tutti
-		// mettere button pulisci che pulisce tutto
-		// notifica da gestire una volta risolto rimuovere
-		
 		$.ajax({
 			type:'get',
 			url:"gestisciSegnalazioni",
@@ -21,5 +17,11 @@
 			},
 			success:function(data) {
 			}
-		});
+		});		
+			
 	}
+	
+	function dismiss(){
+		$("#risp").val('');
+	}
+	
