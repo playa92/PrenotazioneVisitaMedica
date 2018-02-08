@@ -10,12 +10,12 @@
   </welcome-file-list>
 
   <servlet>
-    <servlet-name>FormPrenotazione</servlet-name>
-    <servlet-class>controller.FormPrenotazione</servlet-class>
+    <servlet-name>RegistraPrenotazione</servlet-name>
+    <servlet-class>controller.RegistraPrenotazione</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>FormPrenotazione</servlet-name>
-    <url-pattern>/formPrenotazione</url-pattern>
+    <servlet-name>RegistraPrenotazione</servlet-name>
+    <url-pattern>/registraPrenotazione</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -56,30 +56,21 @@
   </servlet-mapping>
  
   <servlet>
-    <servlet-name>GetPrenotazioni</servlet-name>
+    <servlet-name>RestituisciPrenotazioni</servlet-name>
     <servlet-class>controller.RestituisciPrenotazioni</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetPrenotazioni</servlet-name>
+    <servlet-name>RestituisciPrenotazioni</servlet-name>
     <url-pattern>/restituisciPrenotazioni</url-pattern>
   </servlet-mapping>
  
   <servlet>
-    <servlet-name>GetSegnalazioni</servlet-name>
+    <servlet-name>RestituisciSegnalazioni</servlet-name>
     <servlet-class>controller.RestituisciSegnalazioni</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetSegnalazioni</servlet-name>
+    <servlet-name>RestituisciSegnalazioni</servlet-name>
     <url-pattern>/restituisciSegnalazioni</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>GestisciSegnalazioni</servlet-name>
-    <servlet-class>controller.GestisciSegnalazioni</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>GestisciSegnalazioni</servlet-name>
-    <url-pattern>/gestisciSegnalazioni</url-pattern>
   </servlet-mapping>
   
   <servlet>

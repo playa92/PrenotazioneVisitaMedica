@@ -1,5 +1,3 @@
-
-
 var qrcode = new QRCode("qrcode");
 
 function makeCode() {      
@@ -13,14 +11,14 @@ function makeCode() {
     qrcode.makeCode(elText.value);
 }
 
-makeCode();
+//makeCode();
 
-$("#text").
-	on("blur", function () {
-		makeCode();
-	}).
-	on("keydown", function (e) {
-    if(e.keyCode == 12) {
-        makeCode();
-    }
-});
+//$("#text").
+//	on("blur", function () {
+//		makeCode();
+//	}).
+//	on("keydown", function (e) {
+//    if(e.keyCode == 12) {
+//        makeCode();
+//    }
+//});

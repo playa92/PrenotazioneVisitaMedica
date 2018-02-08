@@ -1,27 +1,27 @@
-	
-	var motiva = "";
-	var currentRisolvi = null;
+var motiva = "";
+var currentRisolvi = null;
+function tmp(idMotivazione, idRisolvi) {
+	motiva = $("#" + idMotivazione).text();
+	currentRisolvi = idRisolvi;
+}
 
-	function tmp(idMotivazione, idRisolvi){
-		motiva = $("#"+idMotivazione).text();
-		currentRisolvi = idRisolvi;
-	}
+function rispondi() {
 	
-	function risp(){
-		$.ajax({
-			type:'get',
-			url:"gestisciSegnalazioni",
-			data:{
-				motivazione: motiva,
-				risp: $("#risp").val()
-			},
-			success:function(data) {
-			      window.location.reload(); // This is not jQuery but simple plain ol' JS
-			}
-		});			
-	}
-	
-	function dismiss(){
-		$("#risp").val('');
-	}
+	alert($("#risposta").val());
+	$.ajax({
+		type:'get',
+		url:"restituisciSegnalazioni",
+		data:{
+			motivazione: motiva,
+			risposta: $("#risposta").val()
+		},
+		success:function(data) {
+		      window.location.reload(); // This is not jQuery but simple plain ol' JS
+		}
+	});			
+}
+
+function dismiss(){
+	$("#risposta").val('');
+}
 	

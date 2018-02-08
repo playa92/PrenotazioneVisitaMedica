@@ -6,6 +6,7 @@ import model.Segnalazione;
 
 public interface SegnalazioneDao {
 
+	public int assignId();
 	public void save(Segnalazione segnalazione);
 	public List<Segnalazione> findAll();
 	public void update(Segnalazione segnalazione);

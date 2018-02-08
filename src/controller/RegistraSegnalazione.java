@@ -1,9 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,19 +15,6 @@ import persistence.dao.SegnalazioneDao;
 
 @SuppressWarnings("serial")
 public class RegistraSegnalazione extends HttpServlet {
-
-	private static final Map<String, Integer> codici = createMap(); 
-	
-	private static Map<String, Integer> createMap() {
-		
-		Map<String, Integer> map = new HashMap<>();
-		map.put("Prenotazione non trovata", 200);
-		map.put("Assenza Connessione", 404);
-		map.put("Errore prenotazione", 500);
-		map.put("Connessione scaduta", 504);
-		map.put("Altro", 111);
-		return map;
-	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,7 +28,7 @@ public class RegistraSegnalazione extends HttpServlet {
 				getDaoFactory().getSegnalazioneDao();
 	
 		Segnalazione segnalazione = new Segnalazione();
-		segnalazione.setCodice(codici.get(motivazione));
+		segnalazione.setId(segnalazioneDao.assignId() + 1);
 		segnalazione.setNomeUtente(nome);
 		segnalazione.setCognomeUtente(cognome);
 		segnalazione.setMotivazione(motivazione);

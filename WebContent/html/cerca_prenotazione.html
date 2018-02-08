@@ -43,12 +43,12 @@
 	     <div id="content" style="background-color:lightgreen;">	
 			<h1>Riepilogo Prenotazione:</h1><hr>
 			<h3>Codice: </h3>
-			<h4>46429BA1F391</h4>
+			<h4 id="hex"></h4>
 			<div id="qrcode"></div>
 			<h3>Orario visita:</h3><h4 id="orario"></h4>
 		  </div>
-		    <h3>Tempo rimasto:</h3><h4 id="countdown"></h4>
-			<input id="text" type="hidden" value="46429BA1F391">
+		    <h3>Tempo rimasto:</h3><h4 style="color:red" id="countdown"></h4>
+			<input id="text" type="hidden" value="">
 	     <h4 align="center" style="margin-top:40px">stampa promemoria
 			<button id="cmd" type="button" class="btn btn-default btn-sm">
 			<span class="glyphicon glyphicon-print"></span> PDF</button>
@@ -76,21 +76,11 @@
 	<script src="../js/jquery/jspdf.min.js"></script>
 	<script src="../js/jquery/jquery.qrcode.js"></script>
 	<script src="../js/scroll_up.js"> </script>
-	<script src="../js/search.js"></script>
+	<script src="../js/ricerca.js"></script>
 	<script src="https://momentjs.com/downloads/moment.min.js"></script>
 	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 	<script src="../js/qr_code.js"></script>
-	
-	<script>
-		$('#cmd').click(function() {
-		  var options = {
-		  };
-		  var pdf = new jsPDF('l', 'pt', 'a4');		  
-		  pdf.addHTML($("#content"), 15, 15, options, function() {
-		  pdf.save('riepilogo.pdf'); 
-		  });
-		});
-	</script>
+	<script src="../js/pdf_print.js"></script>
 	
 </body>
 </html>

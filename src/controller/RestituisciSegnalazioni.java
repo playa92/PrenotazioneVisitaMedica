@@ -12,15 +12,38 @@ import persistence.DatabaseManager;
 import persistence.dao.SegnalazioneDao;
 
 @SuppressWarnings("serial")
-public class RestituisciSegnalazioni extends HttpServlet{
+public class RestituisciSegnalazioni extends HttpServlet {
 	
-		@Override
-		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-			SegnalazioneDao dao = DatabaseManager.getInstance().
-			        getDaoFactory().getSegnalazioneDao();
-			    List<Segnalazione> segnalazioni = dao.findAll();  
-			  
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+
+		String risposta = request.getParameter("risposta");
+	    String motivazione = request.getParameter("motivazione");
+	      
+	    SegnalazioneDao segnalazioneDao =DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
+	    List<Segnalazione> segnalazioni = segnalazioneDao.findAll();
+	      
+	    if(request.getQueryString() != null) {
+	  
+			  if(risposta != null) { 
+			    for(Segnalazione s:segnalazioni) {
+			      
+			    	if(s.getMotivazione().equals(motivazione)) {
+			   
+			    		s.setRisposta(risposta);
+			            s.setRisolto(true);
+			            segnalazioneDao.update(s);
+			            break;
+			    	}
+			    }
+		  }
+		      
+	      request.setAttribute("segnalazioni", segnalazioni);
+
+	      RequestDispatcher dispatcher = request.getRequestDispatcher("html/segnalazioni.jsp");
+	      dispatcher.forward(request, response);
+	      } else {
+	      			  
 			    if(segnalazioni.size() > 0)
 			      request.setAttribute("segnalazioni", segnalazioni);
 			    else
@@ -28,11 +51,11 @@ public class RestituisciSegnalazioni extends HttpServlet{
 			    
 			    RequestDispatcher dispatcher = request.getRequestDispatcher("html/assistenza.jsp");
 			    dispatcher.forward(request, response);
-		}
-		
-		@Override
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			this.doGet(request, response);
-		}
-
+	      }
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.doGet(request, response);
+	}
 }

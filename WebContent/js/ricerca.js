@@ -1,8 +1,13 @@
 $(document).ready(function() {
 	    
 		$("#search").click(function() {
-			if($("#input").val() == ""){
-				 $("#error").show();
+			
+			if($("#info:visible")) {
+				$("#info").hide();
+			}
+			
+			if($("#input").val() == "") {
+				$("#error").show();
 				$("#error").text("Codice non valido");
 			}
 			else {	
@@ -32,10 +37,15 @@ function search() {
 				$("#orario").text(a[1]);
 				orario_visita = a[1];
 				orario_inizio_countdown = a[2];
+				$("#hex").text(a[3]);
+				$("#text").val(a[3]);
+				makeCode();
+								
 				start();
 				scrollingAndShow();
 					
 			} else {
+				
 				$("#error").text(a[1]);
 				$("#error").show();
 				$("#fountainG").hide();
@@ -87,7 +97,7 @@ function scrollingAndShow() {
 	
 	setTimeout(function() {
 	    $("html, body").animate({ scrollTop: 800}, 1200);
-		  $("#fountainG").remove();		
+		  $("#fountainG").hide();		
 		  
 		  setTimeout(function() {  
 			  $("#info").show();

@@ -2,7 +2,7 @@ package model;
 
 public class Segnalazione {
 
-	private Integer codice;
+	private Integer id;
 	private String nomeUtente;
 	private String cognomeUtente;
 	private String motivazione;
@@ -12,10 +12,10 @@ public class Segnalazione {
 	
 	public Segnalazione() {}
 	
-	public Segnalazione(Integer codice, String nomeUtente, String cognomeUtente, String motivazione, 
+	public Segnalazione(Integer id, String nomeUtente, String cognomeUtente, String motivazione, 
 			String commento, String risposta, Boolean risolto) {
 		
-		this.codice = codice;
+		this.id = id;
 		this.nomeUtente = nomeUtente;
 		this.cognomeUtente = cognomeUtente;
 		this.motivazione = motivazione;
@@ -24,12 +24,12 @@ public class Segnalazione {
 		this.risolto = risolto;
 	}
 
-	public Integer getCodice() {
-		return codice;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setCodice(Integer codice) {
-		this.codice = codice;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNomeUtente() {

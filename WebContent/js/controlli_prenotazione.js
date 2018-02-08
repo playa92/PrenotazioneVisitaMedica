@@ -52,11 +52,13 @@ function Paziente(codiceFiscale, nome, cognome, matricola, invalidita, hexcode) 
 	this.hexcode = hexcode;
 }
 
+var orario = null;
+var hex = null;
 function question() {
 	
 	$.ajax({
 		type:'get',
-		url:'../formPrenotazione',
+		url:'../registraPrenotazione',
 		data: {value:$("input[name=codiceFiscale]").prop("value")},
 		success:function(data) {
 			
@@ -79,6 +81,8 @@ function question() {
 				$("#confirmMessage").html("Prenotazione: n\u00b0" + values[1] +" <br> " 
                         +" Orario visita: " + values[2] + "<br>" 
                         + "vuole continuare?");
+				
+				orario = values[2];
 			}
 		}
 	});
@@ -90,6 +94,7 @@ var array = ["Codice Fiscale: ", "Nome: ", "Cognome: ",
 function sendForm() {
 	
 	var hexcode = generate();
+	hex = hexcode;
 	
 	var paziente = new Paziente(
 			$("input[name=codiceFiscale]").prop("value"),
@@ -101,7 +106,7 @@ function sendForm() {
 
 	$.ajax({
 		type:'post',
-		url:'../formPrenotazione',
+		url:'../registraPrenotazione',
 		datatype:"json",
 		data:JSON.stringify(paziente),
 		success:function(data) {
@@ -114,18 +119,39 @@ function sendForm() {
 				for(var i = 0; i < strings.length; i++) {
 				
 					if(i == 5) {
-						$("#"+(i + 1)).text(array[i] + strings[i] + "0\u20ac");
+						$("#" + (i + 1)).text(array[i] + strings[i] + "0\u20ac");
 					} else {
-						$("#"+(i + 1)).text(array[i] + strings[i]);
+						$("#" + (i + 1)).text(array[i] + strings[i]);
 					}
 				}
+				$("#text").val(strings[6]);
+				makeCode();
 				success();
+				
 			} else {
 				$("#notice").modal("show");	
 				$("#message").text(values[1]);
 			}
 		}
 	});
+}
+
+//AUTOMATIC PDF-PRINT
+function automaticPrint(){
+	
+	 html2canvas($("#print"),{
+	 onrendered:function(canvas){
+		 
+		 var img=canvas.toDataURL("image/png");
+		 var doc = new jsPDF('p', 'pt', 'a4');
+		 //TODO
+		 doc.text("Recati allo sportello entro le ore "+orario,150,70);
+		 doc.addImage(img,'JPEG',80,110);
+		 doc.text(hex,233,245);
+		 doc.save('qr_code.pdf');
+		}
+
+	 });
 }
 
 function success() {

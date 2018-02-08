@@ -19,13 +19,40 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 	}
 	
 	@Override
+	public int assignId() {
+		
+		Connection connection = this.dataSource.getConnection();
+		try {
+			String query = "select COUNT(*) AS count FROM segnalazione";
+			PreparedStatement statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				return result.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			throw new PersistenceException(e.getMessage());
+			
+		} finally {
+			
+			try {
+				connection.close();
+			} catch(SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return 0;
+	}
+	
+	@Override
 	public void save(Segnalazione segnalazione) {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert INTO segnalazione(codice, nome_utente, cognome_utente, motivazione, commento, risposta, risolto) values(?,?,?,?,?,?,?);";
+			String insert = "insert INTO segnalazione(id, nome_utente, cognome_utente, motivazione, commento, risposta, risolto) values(?,?,?,?,?,?,?);";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setInt(1, segnalazione.getCodice());
+			statement.setInt(1, segnalazione.getId());
 			statement.setString(2, segnalazione.getNomeUtente());
 			statement.setString(3, segnalazione.getCognomeUtente());
 			statement.setString(4, segnalazione.getMotivazione());
@@ -61,7 +88,7 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 			while(result.next()) {
 			
 				segnalazione = new Segnalazione();
-				segnalazione.setCodice(result.getInt("codice"));
+				segnalazione.setId(result.getInt("id"));
 				segnalazione.setNomeUtente(result.getString("nome_utente"));
 				segnalazione.setCognomeUtente(result.getString("cognome_utente"));
 				segnalazione.setMotivazione(result.getString("motivazione"));
@@ -90,11 +117,11 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 	
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String update = "update segnalazione SET risposta = ?, risolto = ? WHERE motivazione = ?";
+			String update = "update segnalazione SET risposta = ?, risolto = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, segnalazione.getRisposta());
 			statement.setBoolean(2, segnalazione.getRisolto());
-			statement.setString(3, segnalazione.getMotivazione());
+			statement.setInt(3, segnalazione.getId());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -115,9 +142,9 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String delete = "delete FROM segnalazione WHERE motivazione = ?";
+			String delete = "delete FROM segnalazione WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setString(1, segnalazione.getMotivazione());
+			statement.setInt(1, segnalazione.getId());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {

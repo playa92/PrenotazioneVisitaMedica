@@ -22,7 +22,7 @@ import persistence.dao.UniversitaDao;
 import persistence.dao.PrenotazioneDao;
 
 @SuppressWarnings("serial")
-public class FormPrenotazione extends HttpServlet {
+public class RegistraPrenotazione extends HttpServlet {
 	
 	private final int MAX = 50;
 	private final int CONVALIDA = 20;

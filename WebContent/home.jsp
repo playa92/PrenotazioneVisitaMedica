@@ -61,7 +61,7 @@
 			     </jstl:if> 
 			     <jstl:if test="${loggatoAdmin}">
 			     	<li class="dropdown nav-item">
-						<a id="navbar-text" class="nav-link dropdown-toggle" href="gestisciSegnalazioni">Segnalazioni 
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni?home">Segnalazioni 
 						
 						 <jstl:if test="${numSegnalazioni > 0}">
 							<span class="badge badge-notify" style="background:orange"> <jstl:out value="${numSegnalazioni}"/> </span>
@@ -151,32 +151,38 @@
 	      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 	      <li data-target="#myCarousel" data-slide-to="1"></li>
 	      <li data-target="#myCarousel" data-slide-to="2"></li>
+	      <li data-target="#myCarousel" data-slide-to="3"></li>
 	    </ol>
 	
 	    <!-- Wrapper for slides -->
 	    <div class="carousel-inner">
-	      <div class="item active">
+	    <div class="item active">
 	        <img src="images/studio_medico.jpg" alt="studio medico">
 	        <div class="carousel-content">
 		        <a href="html/prenotazione.jsp" >Prenota subito la tua visita</a>
 		    </div>
-	      </div>	
+	    </div>	
 	      
-	      <div class="item">
-	        <img src="images/cerca_pren.jpg" alt="Ricerca">
+	    <div class="item">
+	        <img src="images/cerca_prenotazione.jpg" alt="Ricerca">
 	        <div class="carousel-content" style="margin:50px 0 0 100px">
-		        <a href="ricercaPrenotazione">Cerca la prenotazione</a>
+		        <a href="ricercaPrenotazione">Cerca la tua prenotazione</a>
 		    </div>
-	      </div>
+	    </div>
 	      
-	      <div class="item">
+	    <div class="item">
 	        <img src="images/statistiche.jpg" alt="Statistiche">
 	        <div class="carousel-content">
-		        <a href="restituisciPrenotazioni">Visualizza prenotazioni correnti</a>
+		        <a href="restituisciPrenotazioni">Visualizza le prenotazioni correnti</a>
 		    </div>
-	      </div>
 	    </div>
-	
+	    
+	    <div class="item">
+	        <img src="images/assistenza.jpg" alt="Assistenza">
+	        <div class="carousel-content">
+		        <a href="restituisciSegnalazioni">Centro assistenza</a>
+		    </div>
+	    </div>
 	    <!-- Left and right controls -->
 	    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
 	      <span class="glyphicon glyphicon-chevron-left"></span>
@@ -186,9 +192,10 @@
 	      <span class="glyphicon glyphicon-chevron-right"></span>
 	      <span class="sr-only">Next</span>
 	    </a>
-	 	</div>
-	</div>
-	
+	    </div>
+		</div>
+		</div>
+	    
 		<!-- Dialog -->
 		<div id="dialog">
       	  <div class="modal fade" id="notice" role="dialog">
@@ -225,9 +232,9 @@
 	                <div class="col-sm-3">
 	                    <h5>About us</h5>
 	                    <ul>
-	                        <li><a href="#">Company Information</a></li>
+<!-- 	                        <li><a href="#">Company Information</a></li> -->
 	                        <li><a href="#">Contact us</a></li>
-	                        <li><a href="#">Reviews</a></li>
+<!-- 	                        <li><a href="#">Reviews</a></li> -->
 	                    </ul>
 	                </div>
 	                <div class="col-sm-3">
@@ -242,8 +249,8 @@
 	                    <h5>Legal</h5>
 	                    <ul>
 	                        <li><a href="#">Terms of Service</a></li>
-	                        <li><a href="#">Terms of Use</a></li>
-	                        <li><a href="#">Privacy Policy</a></li>
+<!-- 	                        <li><a href="#">Terms of Use</a></li> -->
+<!-- 	                        <li><a href="#">Privacy Policy</a></li> -->
 	                    </ul>
 	                </div>
 	            </div>

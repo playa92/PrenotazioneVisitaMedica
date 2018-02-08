@@ -49,11 +49,12 @@
 			</tr>
 		</thead>
 		<tbody>
-				<jstl:set var="count" value="0" scope="page" />
+			<jstl:set var="count" value="0" scope="page" />
+			
 			<jstl:forEach var="i" items="${segnalazioni}">
 				<jstl:set var="count" value="${count + 1}" scope="page"/>
 				<tr>
-					<td>${i.codice}</td>
+					<td>${i.id}</td>
 					<td>${i.nomeUtente}</td>
 					<td>${i.cognomeUtente}</td>
 					<td id="ris${count}">${i.motivazione}</td>
@@ -66,6 +67,7 @@
 					</jstl:if>
 				</tr>			
 			</jstl:forEach>
+			
 		</tbody>
 		</table>
 	</div>
@@ -77,8 +79,8 @@
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
 				<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
-	        	<textarea id="risp" placeholder="Rispondi.." style="width:400px; height:300px"></textarea><br><br>
-	      		<button data-dismiss="modal" class="btn btn-default" onclick="risp();">Conferma</button>  	
+	        	<textarea id="risposta" placeholder="Rispondi.." style="width:400px; height:300px"></textarea><br><br>
+	      		<button data-dismiss="modal" class="btn btn-default" onclick="rispondi();">Conferma</button>  	
 	          </div>
 		     </div>
 		   </div>

@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Calendar;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,10 +31,17 @@ public class RicercaPrenotazione extends HttpServlet {
 		CodiceQR codice = codiceQRDao.findByPrimaryKey(hexcode);
 		
 		if(codice != null) {	
+		
+			String current = Calendar.getInstance().get(Calendar.HOUR_OF_DAY) + ":" + Calendar.getInstance().get(Calendar.MINUTE);
 			
+			if(codice.getScadenza().compareTo(current) < 0) {
+				response.getWriter().write("false;Prenotazione scaduta");
+			} else {
 //			Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(codice.getCodice());
-//			response.getWriter().write("true;" + codice.getScadenza() + ";" + prenotazione.getOrarioVisita());
-			response.getWriter().write("true;" + "12:00:00;07:20:00");
+//			response.getWriter().write("true;" + codice.getScadenza() + ";" + prenotazione.getOrarioVisita() + ";" + hexcode);
+				response.getWriter().write("true;12:00:00;07:20:00;" + hexcode);
+			}
+			
 		} else {
 			response.getWriter().write("false;Codice non trovato");
 		}
