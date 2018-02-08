@@ -7,7 +7,6 @@ function tmp(idMotivazione, idRisolvi) {
 
 function rispondi() {
 	
-	alert($("#risposta").val());
 	$.ajax({
 		type:'get',
 		url:"restituisciSegnalazioni",
@@ -16,7 +15,7 @@ function rispondi() {
 			risposta: $("#risposta").val()
 		},
 		success:function(data) {
-		      window.location.reload(); // This is not jQuery but simple plain ol' JS
+		      window.location.reload();
 		}
 	});			
 }

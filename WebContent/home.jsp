@@ -43,7 +43,7 @@
 			     </li>
 			     <jstl:if test="${not loggato}">
 			     <li class="dropdown nav-item ">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni">Assistenza</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni?assistenza">Assistenza</a>
 			     </li>
 			     </jstl:if>
 			     <li class="dropdown nav-item">
@@ -61,7 +61,7 @@
 			     </jstl:if> 
 			     <jstl:if test="${loggatoAdmin}">
 			     	<li class="dropdown nav-item">
-						<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni?home">Segnalazioni 
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni">Segnalazioni 
 						
 						 <jstl:if test="${numSegnalazioni > 0}">
 							<span class="badge badge-notify" style="background:orange"> <jstl:out value="${numSegnalazioni}"/> </span>
@@ -165,7 +165,7 @@
 	      
 	    <div class="item">
 	        <img src="images/cerca_prenotazione.jpg" alt="Ricerca">
-	        <div class="carousel-content" style="margin:50px 0 0 100px">
+	        <div class="carousel-content" style="margin:55px 0 0 100px; font-size:45px">
 		        <a href="ricercaPrenotazione">Cerca la tua prenotazione</a>
 		    </div>
 	    </div>
@@ -179,7 +179,7 @@
 	    
 	    <div class="item">
 	        <img src="images/assistenza.jpg" alt="Assistenza">
-	        <div class="carousel-content">
+	        <div class="carousel-content" style="margin:30px 0 0 110px">
 		        <a href="restituisciSegnalazioni">Centro assistenza</a>
 		    </div>
 	    </div>
@@ -233,7 +233,7 @@
 	                    <h5>About us</h5>
 	                    <ul>
 <!-- 	                        <li><a href="#">Company Information</a></li> -->
-	                        <li><a href="#">Contact us</a></li>
+	                        <li><a href="restituisciSegnalazioni?assistenza">Contact us</a></li>
 <!-- 	                        <li><a href="#">Reviews</a></li> -->
 	                    </ul>
 	                </div>

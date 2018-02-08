@@ -49,21 +49,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<jstl:set var="count" value="0" scope="page" />
 			
 			<jstl:forEach var="i" items="${segnalazioni}">
-				<jstl:set var="count" value="${count + 1}" scope="page"/>
 				<tr>
 					<td>${i.id}</td>
 					<td>${i.nomeUtente}</td>
 					<td>${i.cognomeUtente}</td>
-					<td id="ris${count}">${i.motivazione}</td>
+					<td id="ris${i.id}">${i.motivazione}</td>
 					<jstl:if test="${i.risolto}">
 						<td><a data-toggle="modal" href="#" style="color:green; pointer-events:none; text-decoration: none;"> Risolto</a> <td>
 					</jstl:if>
 					<jstl:if test="${not i.risolto}">
-						<td><a id="risolvi${count}" data-toggle="modal" data-target="#risolvi" href="#" 
-						onclick="tmp('ris${count}', 'risolvi${count}');" style="color:red; text-decoration: none;"> Da risolvere</a> <td>
+						<td><a id="risolvi${i.id}" data-toggle="modal" data-target="#risolvi" href="#" 
+						onclick="tmp('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> <td>
 					</jstl:if>
 				</tr>			
 			</jstl:forEach>
@@ -79,7 +77,7 @@
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
 				<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
-	        	<textarea id="risposta" placeholder="Rispondi.." style="width:400px; height:300px"></textarea><br><br>
+	        	<textarea id="risposta" placeholder="Rispondi.." style="width:400px; height:200px"></textarea><br><br>
 	      		<button data-dismiss="modal" class="btn btn-default" onclick="rispondi();">Conferma</button>  	
 	          </div>
 		     </div>
