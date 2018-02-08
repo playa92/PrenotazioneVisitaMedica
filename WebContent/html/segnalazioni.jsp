@@ -52,18 +52,17 @@
 				<jstl:set var="count" value="0" scope="page" />
 			<jstl:forEach var="i" items="${segnalazioni}">
 				<jstl:set var="count" value="${count + 1}" scope="page"/>
-			
 				<tr>
 					<td>${i.codice}</td>
 					<td>${i.nomeUtente}</td>
 					<td>${i.cognomeUtente}</td>
 					<td id="ris${count}">${i.motivazione}</td>
+					<jstl:if test="${i.risolto}">
+						<td><a data-toggle="modal" href="#" style="color:green; pointer-events:none; text-decoration: none;"> Risolto</a> <td>
+					</jstl:if>
 					<jstl:if test="${not i.risolto}">
 						<td><a id="risolvi${count}" data-toggle="modal" data-target="#risolvi" href="#" 
 						onclick="tmp('ris${count}', 'risolvi${count}');" style="color:red; text-decoration: none;"> Da risolvere</a> <td>
-					</jstl:if>
-					<jstl:if test="${i.risolto}">
-						<td><a style="text-decoration: none; color:green;pointer-events:none">Risolto</a> <td>
 					</jstl:if>
 				</tr>			
 			</jstl:forEach>

@@ -66,7 +66,7 @@
  
   <servlet>
     <servlet-name>GetSegnalazioni</servlet-name>
-    <servlet-class>controller.Segnalazioni</servlet-class>
+    <servlet-class>controller.RestituisciSegnalazioni</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetSegnalazioni</servlet-name>
@@ -75,7 +75,7 @@
   
   <servlet>
     <servlet-name>GestisciSegnalazioni</servlet-name>
-    <servlet-class>controller.Assistenza</servlet-class>
+    <servlet-class>controller.GestisciSegnalazioni</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GestisciSegnalazioni</servlet-name>
@@ -99,4 +99,5 @@
     <servlet-name>ConvalidaPrenotazione</servlet-name>
     <url-pattern>/convalidaPrenotazione</url-pattern>
   </servlet-mapping>
+    
 </web-app>
