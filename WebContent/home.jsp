@@ -106,7 +106,7 @@
 				       		  <div class="modal fade" id="myModal" role="dialog">
 							    <div class="modal-dialog modal-md">
 							      <div class="modal-content">
-							          <div class="modal-header">
+							          <div class="modal-header" style="background-color:white">
 										<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
 							            <h3 class="modal-title" style="text-align:center">Sei sicuro di voler effettuare la disconnessione</h3>
 							          </div>
