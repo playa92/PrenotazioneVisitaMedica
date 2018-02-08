@@ -172,7 +172,7 @@
 	      
 	    <div class="item">
 	        <img src="images/statistiche.jpg" alt="Statistiche">
-	        <div class="carousel-content">
+	        <div class="carousel-content" style="text-align:center">
 		        <a href="restituisciPrenotazioni">Visualizza le prenotazioni correnti</a>
 		    </div>
 	    </div>
