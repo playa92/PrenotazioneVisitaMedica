@@ -12,12 +12,13 @@ function validate() {
 				$("#notice").modal("show");
 				$("#message").text(values[1]);
 					setTimeout(function() {
-						
+						$("#notice").modal("hide");
+						$("#receipt").modal("show");
 						var today = new Date();
 						
-						$("#message").html("Importo: "+ values[2]+"0\u20ac"+"<br>" +
-										   "Data: " +today.toISOString().substring(0, 10)+"<br>" +
-										   "Orario: "+ today.getHours()+":"+today.getMinutes());
+						$("#messageReceipt").html("Data: " +today.toISOString().substring(0, 10)+"<br>" +
+										   "Orario: "+ today.getHours()+":"+today.getMinutes() +"<br>"+
+										   "Importo: "+ values[2]+"0\u20ac")
 					
 					}, 2000);
 	

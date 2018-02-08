@@ -22,7 +22,7 @@
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li class="dropdown nav-item">
-						<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			    	 </li>
 	   			</ul> 
 			</div>	

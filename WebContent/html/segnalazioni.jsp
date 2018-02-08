@@ -77,7 +77,7 @@
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
 				<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
-	        	<textarea id="risposta" placeholder="Rispondi.." style="width:400px; height:200px"></textarea><br><br>
+	        	<textarea id="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
 	      		<button data-dismiss="modal" class="btn btn-default" onclick="rispondi();">Conferma</button>  	
 	          </div>
 		     </div>
