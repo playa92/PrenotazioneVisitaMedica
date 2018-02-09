@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -50,13 +51,17 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert INTO segnalazione(id, nome_utente, cognome_utente, motivazione, commento, risposta, risolto) values(?,?,?,?,?,?,?);";
+			String insert = "insert INTO segnalazione(id, email, nome_utente, motivazione, domanda, risposta, risolto) values(?,?,?,?,?,?,?);";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, segnalazione.getId());
-			statement.setString(2, segnalazione.getNomeUtente());
-			statement.setString(3, segnalazione.getCognomeUtente());
+			if(segnalazione.getDomanda() != null) { 
+				statement.setString(2, segnalazione.getEmail());
+			} else {
+				statement.setNull(2, Types.NULL);
+			}
+			statement.setString(3, segnalazione.getNomeUtente());
 			statement.setString(4, segnalazione.getMotivazione());
-			statement.setString(5, segnalazione.getCommento());
+			statement.setString(5, segnalazione.getDomanda());
 			statement.setString(6, "Nessuna");
 			statement.setBoolean(7, false);
 			statement.executeUpdate();
@@ -89,10 +94,10 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 			
 				segnalazione = new Segnalazione();
 				segnalazione.setId(result.getInt("id"));
+				segnalazione.setEmail(result.getString("email"));
 				segnalazione.setNomeUtente(result.getString("nome_utente"));
-				segnalazione.setCognomeUtente(result.getString("cognome_utente"));
 				segnalazione.setMotivazione(result.getString("motivazione"));
-				segnalazione.setCommento(result.getString("commento"));
+				segnalazione.setDomanda(result.getString("domanda"));
 				segnalazione.setRisposta(result.getString("risposta"));
 				segnalazione.setRisolto(result.getBoolean("risolto"));
 				segnalazioni.add(segnalazione);

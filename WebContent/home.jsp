@@ -15,8 +15,8 @@
  	<script src="js/jquery/jquery.cookie.js"></script>
  	<script src="js/effects.js"></script>
  	<script src="js/login.js"></script>	
- 	<script src="js/scroll_up.js"></script>	
-</head>
+ 	<script src="js/scroll_up.js"></script>
+ </head>
 
 <body>
 
@@ -58,11 +58,17 @@
 						<a id="navbar-text" class="nav-link dropdown-toggle" href="html/convalida.html">Convalida
 						</a>
 			     	</li>
+			     	<li class="dropdown nav-item">
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni">Segnalazioni 
+						 <jstl:if test="${numSegnalazioni > 0}">
+							<span class="badge badge-notify" style="background:orange"> <jstl:out value="${numSegnalazioni}"/> </span>
+						</jstl:if>
+						</a>
+			     	</li>
 			     </jstl:if> 
 			     <jstl:if test="${loggatoAdmin}">
 			     	<li class="dropdown nav-item">
 						<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni">Segnalazioni 
-						
 						 <jstl:if test="${numSegnalazioni > 0}">
 							<span class="badge badge-notify" style="background:orange"> <jstl:out value="${numSegnalazioni}"/> </span>
 						</jstl:if>
@@ -106,7 +112,7 @@
 				       		  <div class="modal fade" id="myModal" role="dialog">
 							    <div class="modal-dialog modal-md">
 							      <div class="modal-content">
-							          <div class="modal-header" style="background-color:white">
+							          <div class="modal-header">
 										<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
 							            <h3 class="modal-title" style="text-align:center">Sei sicuro di voler effettuare la disconnessione</h3>
 							          </div>
@@ -158,28 +164,28 @@
 	    <div class="carousel-inner">
 	    <div class="item active">
 	        <img src="images/studio_medico.jpg" alt="studio medico">
-	        <div class="carousel-content">
-		        <a href="html/prenotazione.jsp" >Prenota subito la tua visita</a>
+	        <div class="carousel-content" style="margin:55px 0 0 55px;">
+		        <a href="html/prenotazione.jsp">Prenota subito la tua visita</a>
 		    </div>
 	    </div>	
 	      
 	    <div class="item">
 	        <img src="images/cerca_prenotazione.jpg" alt="Ricerca">
-	        <div class="carousel-content" style="margin:55px 0 0 100px; font-size:45px">
+	        <div class="carousel-content" style="margin:55px 0 0 55px;">
 		        <a href="ricercaPrenotazione">Cerca la tua prenotazione</a>
 		    </div>
 	    </div>
 	      
 	    <div class="item">
 	        <img src="images/statistiche.jpg" alt="Statistiche">
-	        <div class="carousel-content" style="text-align:center">
+	        <div class="carousel-content" style="text-align:center;">
 		        <a href="restituisciPrenotazioni">Visualizza le prenotazioni correnti</a>
 		    </div>
 	    </div>
 	    
 	    <div class="item">
 	        <img src="images/assistenza.jpg" alt="Assistenza">
-	        <div class="carousel-content" style="margin:30px 0 0 110px">
+	        <div class="carousel-content" style="margin:50px 0 0 130px;">
 		        <a href="restituisciSegnalazioni">Centro assistenza</a>
 		    </div>
 	    </div>
@@ -215,6 +221,7 @@
 	   <jstl:if test="${popUp}">
 	   		<script> $("#notice").modal('show'); </script>  
 	   </jstl:if>
+	
 	
 	<!-- FOOTER -->
 	<div class="content"></div>
@@ -268,6 +275,7 @@
 	    
 	    <!-- SCROLLING -->
 		<a href="#" class="scrollup">Scroll</a>
-					
+		
+		
 </body>
 </html>

@@ -19,21 +19,21 @@ public class RegistraSegnalazione extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String email = request.getParameter("email");
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String motivazione = request.getParameter("motivazione");
-		String commento = request.getParameter("commento");
-						
+		String domanda = request.getParameter("domanda");
+		
 		SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().
 				getDaoFactory().getSegnalazioneDao();
 	
 		Segnalazione segnalazione = new Segnalazione();
 		segnalazione.setId(segnalazioneDao.assignId() + 1);
-		segnalazione.setNomeUtente(nome);
-		segnalazione.setCognomeUtente(cognome);
+		segnalazione.setEmail(email);
+		segnalazione.setNomeUtente(nome + " " + cognome);
 		segnalazione.setMotivazione(motivazione);
-		segnalazione.setCommento(commento);
-		
+		segnalazione.setDomanda(domanda);
 		segnalazioneDao.save(segnalazione);
 		
 		List<Segnalazione> segnalazioni = segnalazioneDao.findAll();

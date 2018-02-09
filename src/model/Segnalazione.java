@@ -3,24 +3,24 @@ package model;
 public class Segnalazione {
 
 	private Integer id;
+	private String email;
 	private String nomeUtente;
-	private String cognomeUtente;
 	private String motivazione;
-	private String commento;
+	private String domanda;
 	private String risposta;
 	private Boolean risolto;
 	
 	public Segnalazione() {}
 	
-	public Segnalazione(Integer id, String nomeUtente, String cognomeUtente, String motivazione, 
-			String commento, String risposta, Boolean risolto) {
+	public Segnalazione(Integer id, String email, String nomeUtente, String motivazione, 
+			String domanda, String risposta, Boolean risolto) {
 		
 		this.id = id;
+		this.email = email;
 		this.nomeUtente = nomeUtente;
-		this.cognomeUtente = cognomeUtente;
 		this.motivazione = motivazione;
 		this.risposta = risposta;
-		this.commento = commento;
+		this.domanda = domanda;
 		this.risolto = risolto;
 	}
 
@@ -31,6 +31,14 @@ public class Segnalazione {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getNomeUtente() {
 		return nomeUtente;
@@ -38,14 +46,6 @@ public class Segnalazione {
 
 	public void setNomeUtente(String nomeUtente) {
 		this.nomeUtente = nomeUtente;
-	}
-
-	public String getCognomeUtente() {
-		return cognomeUtente;
-	}
-
-	public void setCognomeUtente(String cognomeUtente) {
-		this.cognomeUtente = cognomeUtente;
 	}
 
 	public String getMotivazione() {
@@ -64,12 +64,12 @@ public class Segnalazione {
 		this.risposta = risposta;
 	}
 
-	public String getCommento() {
-		return commento;
+	public String getDomanda() {
+		return domanda;
 	}
 
-	public void setCommento(String commento) {
-		this.commento = commento;
+	public void setDomanda(String domanda) {
+		this.domanda = domanda;
 	}
 
 	public Boolean getRisolto() {

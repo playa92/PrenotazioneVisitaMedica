@@ -20,26 +20,24 @@ public class RestituisciSegnalazioni extends HttpServlet {
 		String risposta = request.getParameter("risposta");
 	    String motivazione = request.getParameter("motivazione");
 	      
-	    SegnalazioneDao segnalazioneDao =DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
+	    SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
 	    List<Segnalazione> segnalazioni = segnalazioneDao.findAll();
 	    
-	    if(request.getQueryString() == null || ( risposta != null && motivazione != null )) {
-	  
-			    for(Segnalazione s:segnalazioni) {
-			      
-			    	if(s.getMotivazione().equals(motivazione)) {
-			   
+	    if(request.getQueryString() == null || (risposta != null && motivazione != null )) {
+	    	
+			    for(Segnalazione s: segnalazioni) {
+			    	
+			    	if(s.getMotivazione().equals(motivazione) && !s.getRisolto()) {
 			    		s.setRisposta(risposta);
 			            s.setRisolto(true);
 			            segnalazioneDao.update(s);
 			            break;
 			    	}
 			    }
-		
-			  request.setAttribute("segnalazioni", segnalazioni);
+			    request.setAttribute("segnalazioni", segnalazioni);
 
-		      RequestDispatcher dispatcher = request.getRequestDispatcher("html/segnalazioni.jsp");
-		      dispatcher.forward(request, response);
+			    RequestDispatcher dispatcher = request.getRequestDispatcher("html/segnalazioni.jsp");
+			    dispatcher.forward(request, response);
 	      } else {
 	      			  
 			    if(segnalazioni.size() > 0)

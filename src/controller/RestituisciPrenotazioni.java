@@ -19,9 +19,9 @@ public class RestituisciPrenotazioni extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
-			PrenotazioneDao dao =DatabaseManager.getInstance().
+			PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
 					getDaoFactory().getPrenotazioneDao();
-			List<Prenotazione> prenotazioni = dao.findAll();		
+			List<Prenotazione> prenotazioni = prenotazioneDao.findAll();		
 			
 			if(prenotazioni.size() > 0)
 				request.setAttribute("prenotazioni", prenotazioni);

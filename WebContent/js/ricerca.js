@@ -65,13 +65,13 @@ function start() {
 	
 	var orario_corrente = moment(moment()).format("HH:mm:ss");
 	
-	if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
+//	if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
 		countDown();
-	} else {
-		 document.getElementById('countdown').innerHTML = "non disponibile"
-	     $("#countdown").css({color:"red"});
+//	} else {
+//		 document.getElementById('countdown').innerHTML = "non disponibile"
+//	     $("#countdown").css({color:"red"});
 		//TODO se timer attivo disattivare
-	}
+//	}
 }
 
 function countDown() {

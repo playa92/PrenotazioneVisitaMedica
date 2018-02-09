@@ -42,8 +42,8 @@
 		<thead>
 			<tr>
 				<th>Codice</th>
+				<th>E-mail</th>
 				<th>Nome</th>
-				<th>Cognome</th>
 				<th>Segnalazione</th>
 				<th>Stato</th>
 			</tr>
@@ -53,15 +53,15 @@
 			<jstl:forEach var="i" items="${segnalazioni}">
 				<tr>
 					<td>${i.id}</td>
+					<td><a data-toggle="modal" data-target="#send" href="#" onclick="getMail(text);">${i.email}</a></td>
 					<td>${i.nomeUtente}</td>
-					<td>${i.cognomeUtente}</td>
 					<td id="ris${i.id}">${i.motivazione}</td>
 					<jstl:if test="${i.risolto}">
-						<td><a data-toggle="modal" href="#" style="color:green; pointer-events:none; text-decoration: none;"> Risolto</a> <td>
+						<td><a data-toggle="modal" href="#" style="color:green; pointer-events:none; text-decoration: none;"> Risolto</a> </td>
 					</jstl:if>
 					<jstl:if test="${not i.risolto}">
 						<td><a id="risolvi${i.id}" data-toggle="modal" data-target="#risolvi" href="#" 
-						onclick="tmp('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> <td>
+						onclick="tmp('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> </td>
 					</jstl:if>
 				</tr>			
 			</jstl:forEach>
@@ -70,16 +70,38 @@
 		</table>
 	</div>
 	
+	<div id="dialog">
+      	  <div class="modal fade" id="send" role="dialog">
+		    <div class="modal-dialog modal-md">
+		      <div class="modal-content">
+		         <div class="modal-header" style="text-align:center; background-color: #bcc4f2">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+		        		<form method="post" action="">
+				    		<input type="hidden" name="status" value="SOLVED"/>
+				    		<textarea placeholder="Scrivi..." rows="10" cols="40" name="message" required="required"></textarea>
+				    		<button type="submit" class="btn-success btn-lg" style="border:none; position:absolute; top:72%; right:10%;">Invia 
+          						<span class="glyphicon glyphicon-envelope"></span> 
+        					</button>
+						</form>
+	          	</div>
+		     </div>
+		   </div>
+		 </div>
+	   </div>
+	
 	<!-- Dialog -->
 		<div id="dialog">
       	  <div class="modal fade" id="risolvi" role="dialog">
 		    <div class="modal-dialog modal-md">
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
-				<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
-	        	<textarea id="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
-	      		<button data-dismiss="modal" class="btn btn-default" onclick="rispondi();">Conferma</button>  	
-	          </div>
+					<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
+	        		<form method="get" action="restituisciSegnalazioni">
+		        		<textarea id="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
+		      			<input id="motivazione" name="motivazione" type="hidden">
+		      			<button class="btn btn-default" type="submit">Conferma</button>  	
+	          		</form>
+	          	</div>
 		     </div>
 		   </div>
 		 </div>
@@ -87,6 +109,13 @@
 	
 		<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
+	
+	<script type="text/javascript">
+		function getMail(mail) {
+			$("form").attr("action","https://formspree.io/" + mail );
+		}
+		
+	</script>
 			
 </body>
 </html>

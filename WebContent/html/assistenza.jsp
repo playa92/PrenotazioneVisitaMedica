@@ -73,7 +73,7 @@
 					  		<option onclick="hideTextField();">Connessione scaduta</option>
 					  		<option onclick="toggleTextField();">Altro</option>
 						</select>
-						<textarea id="textarea" name="commento" required></textarea>
+						<textarea id="textarea" name="domanda" required></textarea>
 						<div class="modal-footer" style="text-align:center;">
 		      		 		<input id="submitSegnalazione" type="submit" class="btn btn-md" value="Invia"/>
 		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
@@ -97,7 +97,7 @@
 				<jstl:set var="count" value="${count + 1}" scope="page"/> 
 				 <div class="tab">
 			        <input id="tab-${count}" type="checkbox" name="tabs">    
-			        <label for="tab-${count}">${i.commento} ( ${i.motivazione} )</label>
+			        <label for="tab-${count}">${i.domanda} ( ${i.motivazione} )</label>
 			        <div class="tab-content"><p>${i.risposta}.</p></div>
 			    </div>			
 			</jstl:forEach>

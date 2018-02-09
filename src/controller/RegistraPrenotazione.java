@@ -27,7 +27,7 @@ public class RegistraPrenotazione extends HttpServlet {
 	private final int MAX = 50;
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 15;
-	private final String ORARIO_INIZIO = "14:00"; 
+	private final String ORARIO_INIZIO = "09:00"; 
 	private final String ORARIO_FINE = "19:00";
 	
 	@Override
@@ -36,10 +36,10 @@ public class RegistraPrenotazione extends HttpServlet {
 		Calendar now = Calendar.getInstance();
 		String current = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE);
 				
-//		if(current.compareTo(ORARIO_INIZIO) < 0 || current.compareTo(ORARIO_FINE) > 0) {
-//			response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
-//			return;
-//		}
+		if(current.compareTo(ORARIO_INIZIO) < 0 || current.compareTo(ORARIO_FINE) > 0) {
+			response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
+			return;
+		}
 		
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
 				getDaoFactory().getPrenotazioneDao();
@@ -51,6 +51,9 @@ public class RegistraPrenotazione extends HttpServlet {
 			out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
 			return;
 		}
+		
+		now.set(Calendar.HOUR, 9);
+		now.set(Calendar.MINUTE, 30);
 		
 		Date date = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 		int indexOf = date.toString().indexOf(":") - 2;
@@ -125,13 +128,15 @@ public class RegistraPrenotazione extends HttpServlet {
 					paziente.setMatricola(null);
 				}
 			}
-				
+			
 			if(!paziente.getInvalidita().equals("Nessuna")) {
 				imp = new Double(0);
 			}
 			
 			int visiteTotali = prenotazioneDao.getTotalVisits();
 			Calendar now = Calendar.getInstance();
+			now.set(Calendar.HOUR_OF_DAY, 9);
+			now.set(Calendar.MINUTE, 30);
 			
 			Date date1 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 			Date date2 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
@@ -139,6 +144,7 @@ public class RegistraPrenotazione extends HttpServlet {
 			int indexOf = date1.toString().indexOf(":") - 2;
 			String visita = date1.toString().substring(indexOf, indexOf + 5);
 			String scadenza = date2.toString().substring(indexOf, indexOf + 5);
+			
 			
 			CodiceQR codiceQR = new CodiceQR();
 			codiceQR.setCodice(json.getString("hexcode"));
@@ -158,8 +164,8 @@ public class RegistraPrenotazione extends HttpServlet {
 			prenotazioneDao.save(prenotazione); 
 							
 			out.println("true;" + paziente.getCodiceFiscale() + "|" + paziente.getNome() + "|" + paziente.getCognome() + "|" +
-					String.valueOf(paziente.getMatricola() == null ? "Nessuna" : paziente.getMatricola()) + "|" + 
-					paziente.getInvalidita() + "|" + String.valueOf(prenotazione.getImporto()) + "|" + codiceQR.getCodice());
+						String.valueOf(paziente.getMatricola() == null ? "Nessuna" : paziente.getMatricola()) + "|" + 
+						paziente.getInvalidita() + "|" + String.valueOf(prenotazione.getImporto()) + "|" + codiceQR.getCodice());
 			
 		} catch(JSONException e) {
 			e.printStackTrace();
