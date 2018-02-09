@@ -34,13 +34,11 @@ public class RicercaPrenotazione extends HttpServlet {
 		if(codice != null) {	
 		
 			String current = Calendar.getInstance().get(Calendar.HOUR_OF_DAY) + ":" + Calendar.getInstance().get(Calendar.MINUTE);
-			System.out.println(codice.getScadenza() + " ! "+current);
 			if(codice.getScadenza().compareTo(current) < 0) {
 				response.getWriter().write("false;Prenotazione scaduta");
 			} else {
 			Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(codice.getCodice());
 			response.getWriter().write("true;" + codice.getScadenza() + ";" + prenotazione.getOrarioVisita() + ";" + hexcode);
-//				response.getWriter().write("true;12:00:00;07:20:00;" + hexcode);
 			}
 			
 		} else {
