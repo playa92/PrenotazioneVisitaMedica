@@ -630,3 +630,17 @@ textarea:required:focus {
     color:white;	
     background-color:green;
 }
+
+/* ////////////////////////////////////////////////// */
+/* ///////////////// Segnalazione /////////////////// */
+/* ////////////////////////////////////////////////// */
+
+.table-segnalazione table, th, td {
+  		border: 1px solid black;
+  		text-align:center;
+}
+.table-segnalazione th, td {
+		color:#92147;
+}
+
+

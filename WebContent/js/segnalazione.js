@@ -1,6 +1,5 @@
 function tmp(idMotivazione, idRisolvi) {
 	$("#motivazione").val($("#" + idMotivazione).text());
-	alert($("#motivazione").val());
 }
 //
 //function rispondi() {	
@@ -21,3 +20,6 @@ function dismiss(){
 	$("#risposta").val('');
 }
 	
+function getMail(mail) {
+		$("form").attr("action","https://formspree.io/" + mail );
+}

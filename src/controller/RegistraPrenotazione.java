@@ -27,7 +27,7 @@ public class RegistraPrenotazione extends HttpServlet {
 	private final int MAX = 50;
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 15;
-	private final String ORARIO_INIZIO = "09:00"; 
+	private final String ORARIO_INIZIO = "13:00"; 
 	private final String ORARIO_FINE = "19:00";
 	
 	@Override
@@ -52,14 +52,14 @@ public class RegistraPrenotazione extends HttpServlet {
 			return;
 		}
 		
-		now.set(Calendar.HOUR, 9);
+		now.set(Calendar.HOUR, Calendar.HOUR + 1);
 		now.set(Calendar.MINUTE, 30);
 		
 		Date date = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 		int indexOf = date.toString().indexOf(":") - 2;
 		String probabileVisita = date.toString().substring(indexOf, indexOf + 5);
+		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
 		
-		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita + ";");	
 	}
 	
 	@Override
@@ -135,8 +135,7 @@ public class RegistraPrenotazione extends HttpServlet {
 			
 			int visiteTotali = prenotazioneDao.getTotalVisits();
 			Calendar now = Calendar.getInstance();
-			now.set(Calendar.HOUR_OF_DAY, 9);
-			now.set(Calendar.MINUTE, 30);
+			now.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 1);
 			
 			Date date1 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 			Date date2 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));

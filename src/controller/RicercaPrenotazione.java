@@ -34,7 +34,7 @@ public class RicercaPrenotazione extends HttpServlet {
 		if(codice != null) {	
 		
 			String current = Calendar.getInstance().get(Calendar.HOUR_OF_DAY) + ":" + Calendar.getInstance().get(Calendar.MINUTE);
-			
+			System.out.println(codice.getScadenza() + " ! "+current);
 			if(codice.getScadenza().compareTo(current) < 0) {
 				response.getWriter().write("false;Prenotazione scaduta");
 			} else {

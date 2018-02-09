@@ -11,15 +11,6 @@
 	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/scroll_up.js"></script>
 	<script src="${pageContext.request.contextPath}/js/segnalazione.js"></script>
-	<style>
-		table, th, td {
-    		border: 1px solid black;
-    		text-align:center;
-		}
-		th, td {
-			color:#92147;
-		}
-	</style>
 </head>
 <body>
 	<!-- Navbar -->
@@ -37,7 +28,7 @@
 	  <h1>Area Segnalazioni</h1>
 	</div>
 	
-	<div>
+	<div class="Form-segnalazione">
 		<table style="color:#092147;width:100%;">
 		<thead>
 			<tr>
@@ -70,26 +61,27 @@
 		</table>
 	</div>
 	
-	<div id="dialog">
+<!-- EMAIL -->
+		<div id="dialog">
       	  <div class="modal fade" id="send" role="dialog">
 		    <div class="modal-dialog modal-md">
 		      <div class="modal-content">
-		         <div class="modal-header" style="text-align:center; background-color: #bcc4f2">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-		        		<form method="post" action="">
-				    		<input type="hidden" name="status" value="SOLVED"/>
-				    		<textarea placeholder="Scrivi..." rows="10" cols="40" name="message" required="required"></textarea>
-				    		<button type="submit" class="btn-success btn-lg" style="border:none; position:absolute; top:72%; right:10%;">Invia 
-          						<span class="glyphicon glyphicon-envelope"></span> 
-        					</button>
-						</form>
+		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
+					<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
+	        		<form method="post" action="">
+			    		<input type="hidden" name="status" value="SOLVED"/>
+			    		<textarea placeholder="Scrivi..." rows="10" cols="40" style="width:400px; height:200px;font-size:25px;" name="message" required="required"></textarea><br><br>
+			    		<button type="submit" class="btn-success btn-lg">Invia 
+         					<span class="glyphicon glyphicon-envelope"></span> 
+       					</button>
+					</form>
 	          	</div>
 		     </div>
 		   </div>
 		 </div>
 	   </div>
-	
-	<!-- Dialog -->
+		
+<!-- RISOLVI -->
 		<div id="dialog">
       	  <div class="modal fade" id="risolvi" role="dialog">
 		    <div class="modal-dialog modal-md">
@@ -99,7 +91,7 @@
 	        		<form method="get" action="restituisciSegnalazioni">
 		        		<textarea id="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
 		      			<input id="motivazione" name="motivazione" type="hidden">
-		      			<button class="btn btn-default" type="submit">Conferma</button>  	
+		      			<button class="btn-success btn-lg" type="submit">Conferma <span class="glyphicons glyphicons-ok"></span> </button>  	
 	          		</form>
 	          	</div>
 		     </div>
@@ -109,13 +101,6 @@
 	
 		<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
-	
-	<script type="text/javascript">
-		function getMail(mail) {
-			$("form").attr("action","https://formspree.io/" + mail );
-		}
-		
-	</script>
 			
 </body>
 </html>
