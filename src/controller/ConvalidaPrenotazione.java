@@ -29,8 +29,10 @@ public class ConvalidaPrenotazione extends HttpServlet {
 		if(codiceQR == null) {
 			response.getWriter().write("Non e' stata trovata alcuna prenotazione con il codice: " + hexcode);
 		} 
-		else if(codiceQR.isConvalida()) {
+		else 
+			if(codiceQR.isConvalida()) {
 			response.getWriter().write("Prenotazione gia' convalidata");
+			
 		} else {
 			String importo = String.valueOf(p.findByPrimaryKey(hexcode).getImporto());
 			codiceQR.setConvalida(true);
