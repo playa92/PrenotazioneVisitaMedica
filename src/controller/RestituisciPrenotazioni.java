@@ -14,20 +14,18 @@ import persistence.dao.PrenotazioneDao;
 @SuppressWarnings("serial")
 public class RestituisciPrenotazioni extends HttpServlet{
 	
-	private String forwardPage;
-	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
-			PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
-					getDaoFactory().getPrenotazioneDao();
-			List<Prenotazione> prenotazioni = prenotazioneDao.findAll();		
-			
-			if(prenotazioni.size() > 0)
-				request.setAttribute("prenotazioni", prenotazioni);
-			else
-				request.setAttribute("vuoto", true);
+		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
+				getDaoFactory().getPrenotazioneDao();
+		List<Prenotazione> prenotazioni = prenotazioneDao.findAll();		
 		
+		if(prenotazioni.size() > 0)
+			request.setAttribute("prenotazioni", prenotazioni);
+		else
+			request.setAttribute("vuoto", true);
+	
 		RequestDispatcher dispatcher = request.getRequestDispatcher("html/visualizza_prenotazioni.jsp");
 		dispatcher.forward(request, response);
 	}

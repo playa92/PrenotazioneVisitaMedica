@@ -1,17 +1,16 @@
 function CFRegex() {
 			
-//		var regex = new RegExp("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$"); 
-//				
-//		var code = $("#cf").val();
-//	
-//		code = code.toUpperCase();
-//		
-//		if(code.length > 0 && !regex.test(code)) {
-//			
-//			$("#notice").modal("show");
-//			$("#message").text("Attenzione: Codice Fiscale non valido");
-//			$("#cf").val("");
-//		}
+		var regex = new RegExp("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$"); 
+				
+		var code = $("#cf").val().toUpperCase();
+	
+		
+		if(code.length > 0 && !regex.test(code)) {
+			
+			$("#notice").modal("show");
+			$("#message").text("Attenzione: Codice Fiscale non valido");
+			$("#cf").val("");
+		}
 }
 
 

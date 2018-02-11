@@ -74,6 +74,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>RisolviSegnalazione</servlet-name>
+    <servlet-class>controller.RisolviSegnalazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RisolviSegnalazione</servlet-name>
+    <url-pattern>/risolviSegnalazione</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>RipristinoPassword</servlet-name>
     <servlet-class>controller.RipristinoPassword</servlet-class>
   </servlet>

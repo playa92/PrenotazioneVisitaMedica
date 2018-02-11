@@ -43,7 +43,7 @@
 			     </li>
 			     <jstl:if test="${not loggato}">
 			     <li class="dropdown nav-item ">
-					<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni?assistenza">Assistenza</a>
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni">Assistenza</a>
 			     </li>
 			     </jstl:if>
 			     <li class="dropdown nav-item">
@@ -59,7 +59,7 @@
 						</a>
 			     	</li>
 			     	<li class="dropdown nav-item">
-						<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni">Segnalazioni 
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="risolviSegnalazione">Segnalazioni 
 						 <jstl:if test="${numSegnalazioni > 0}">
 							<span class="badge badge-notify" style="background:orange"> <jstl:out value="${numSegnalazioni}"/> </span>
 						</jstl:if>
@@ -68,7 +68,7 @@
 			     </jstl:if> 
 			     <jstl:if test="${loggatoAdmin}">
 			     	<li class="dropdown nav-item">
-						<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni">Segnalazioni 
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="risolviSegnalazione">Segnalazioni 
 						 <jstl:if test="${numSegnalazioni > 0}">
 							<span class="badge badge-notify" style="background:orange"> <jstl:out value="${numSegnalazioni}"/> </span>
 						</jstl:if>

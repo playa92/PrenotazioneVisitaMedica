@@ -88,8 +88,8 @@
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
 					<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
-	        		<form method="get" action="restituisciSegnalazioni">
-		        		<textarea id="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
+	        		<form method="get" action="risolviSegnalazione">
+		        		<textarea id="risposta" name="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
 		      			<input id="motivazione" name="motivazione" type="hidden">
 		      			<button class="btn-success btn-lg" type="submit">Conferma <span class="glyphicons glyphicons-ok"></span> </button>  	
 	          		</form>
