@@ -261,7 +261,7 @@
 	                    </ul>
 	                </div>
 	            </div>
-	            <iframe id="map-container" <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12340.397684446334!2d16.2251544!3d39.3539851!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf6b18e10a7cdcd49!2sCUS+-+Unical!5e0!3m2!1sit!2sit!4v1517741768804"></iframe>></iframe>
+	            <iframe id="map-container" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12340.397684446334!2d16.2251544!3d39.3539851!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf6b18e10a7cdcd49!2sCUS+-+Unical!5e0!3m2!1sit!2sit!4v1517741768804"></iframe>
 	        </div>
 <!-- 	        <div class="social-networks"> -->
 <!-- 	            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> -->
