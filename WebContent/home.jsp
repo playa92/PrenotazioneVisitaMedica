@@ -171,14 +171,14 @@
 	      
 	    <div class="item">
 	        <img src="images/cerca_prenotazione.jpg" alt="Ricerca">
-	        <div class="carousel-content" style="margin:55px 0 0 55px;">
+	        <div class="carousel-content" style="margin:59px 0 0 70px;font-size:40px;">
 		        <a href="ricercaPrenotazione">Cerca la tua prenotazione</a>
 		    </div>
 	    </div>
 	      
 	    <div class="item">
 	        <img src="images/statistiche.jpg" alt="Statistiche">
-	        <div class="carousel-content" style="text-align:center;">
+	        <div class="carousel-content" style="">
 		        <a href="restituisciPrenotazioni">Visualizza le prenotazioni correnti</a>
 		    </div>
 	    </div>

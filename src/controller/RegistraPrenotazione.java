@@ -33,33 +33,40 @@ public class RegistraPrenotazione extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Calendar now = Calendar.getInstance();
-		String current = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE);
-				
-		if(current.compareTo(ORARIO_INIZIO) < 0 || current.compareTo(ORARIO_FINE) > 0) {
-			response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
-			return;
-		}
-		
-		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
-				getDaoFactory().getPrenotazioneDao();
-		
-		PrintWriter out = response.getWriter();
-		int visiteTotali = prenotazioneDao.getTotalVisits();
-		
-		if(visiteTotali >= MAX) {
-			out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
-			return;
-		}
-		
-		now.set(Calendar.HOUR, Calendar.HOUR + 1);
-		now.set(Calendar.MINUTE, 30);
-		
-		Date date = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
-		int indexOf = date.toString().indexOf(":") - 2;
-		String probabileVisita = date.toString().substring(indexOf, indexOf + 5);
-		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
-		
+//		Calendar now = Calendar.getInstance();
+//		String current = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE);
+//
+//		
+//	//TODO
+////		DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+////		Date date = new Date();
+////		System.out.println(dateFormat.format(date));
+//		
+//		
+//		if(current.compareTo(ORARIO_INIZIO) < 0 || current.compareTo(ORARIO_FINE) > 0) {
+//			response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
+//			return;
+//		}
+//		
+//		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
+//				getDaoFactory().getPrenotazioneDao();
+//		
+//		PrintWriter out = response.getWriter();
+//		int visiteTotali = prenotazioneDao.getTotalVisits();
+//		
+//		if(visiteTotali >= MAX) {
+//			out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
+//			return;
+//		}
+//		
+//		now.set(Calendar.HOUR, Calendar.HOUR + 1);
+//		now.set(Calendar.MINUTE, 30);
+//		
+//		Date date = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
+//		int indexOf = date.toString().indexOf(":") - 2;
+//		String probabileVisita = date.toString().substring(indexOf, indexOf + 5);
+//		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
+//		
 	}
 	
 	@Override
