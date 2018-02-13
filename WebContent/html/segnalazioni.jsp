@@ -24,7 +24,13 @@
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Update <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
 				     	<li><a id="list-element" href="#">Pulisci Risolti</a></li>
-				       	<li><a id="list-element" href="#">Altro</a></li>
+				       	<li><a id="list-element" href="#">Altro</a>
+				       	
+				       		<form method="get" action="risolviSegnalazione">
+				      			<input id="motivazione" name="motivazione" type="hidden">
+			          		</form>
+				       	
+				       	</li>
 			        </ul>
 			     </li>
 	   		</ul>

@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.ServletException;
@@ -27,19 +30,30 @@ public class RegistraPrenotazione extends HttpServlet {
 	private final int MAX = 50;
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 15;
-	private final Integer ORARIO_INIZIO = new Integer(9); 
-	private final Integer ORARIO_FINE = new Integer(17);
+	private final String ORARIO_INIZIO = "9:00:00"; 
+	private final String ORARIO_FINE = "17:45:00";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Calendar now = Calendar.getInstance();
-				
-		if(ORARIO_INIZIO.compareTo(now.get(Calendar.HOUR)) > 0 || ORARIO_FINE.compareTo(now.get(Calendar.HOUR)) < 0) {
-			response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
-			return;
-		}
+	//NEW
+	//////////////////////////////////////////////////////////////////////
 		
+	String dateFormat = "HH:mm:ss";
+	String currentTime = new SimpleDateFormat(dateFormat).format(new Date());
+	
+	Calendar cStart = setTimeToCalendar(dateFormat, ORARIO_INIZIO, false);
+	Calendar cEnd = setTimeToCalendar(dateFormat, ORARIO_FINE, true);
+	Calendar cNow = setTimeToCalendar(dateFormat, currentTime, true);
+
+	Date curDate = cNow.getTime();
+	if (!(curDate.after(cStart.getTime()) && curDate.before(cEnd.getTime()))) {
+	    response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
+		return;
+	}
+				
+	//////////////////////////////////////////////////////////////////////	
+	
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
 				getDaoFactory().getPrenotazioneDao();
 		
@@ -51,10 +65,10 @@ public class RegistraPrenotazione extends HttpServlet {
 			return;
 		}
 		
-		now.set(Calendar.HOUR, Calendar.HOUR + 1);
-		now.set(Calendar.MINUTE, 30);
+		cNow.set(Calendar.HOUR, Calendar.HOUR + 1);
+		cNow.set(Calendar.MINUTE, 30);
 		
-		Date date = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
+		Date date = new Date(cNow.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 		int indexOf = date.toString().indexOf(":") - 2;
 		String probabileVisita = date.toString().substring(indexOf, indexOf + 5);
 		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
@@ -134,7 +148,7 @@ public class RegistraPrenotazione extends HttpServlet {
 			
 			int visiteTotali = prenotazioneDao.getTotalVisits();
 			Calendar now = Calendar.getInstance();
-			now.set(Calendar.HOUR, Calendar.HOUR + 1);
+			now.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 1);
 			
 			Date date1 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 			Date date2 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
@@ -168,5 +182,21 @@ public class RegistraPrenotazione extends HttpServlet {
 		} catch(JSONException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private Calendar setTimeToCalendar(String dateFormat, String date, boolean addADay){
+	    Date time = null;
+		try {
+			time = new SimpleDateFormat(dateFormat).parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    Calendar cal = Calendar.getInstance();
+	    cal.setTime(time );
+
+	    if(addADay) {
+	        cal.add(Calendar.DATE, 1);
+	    }
+	    return cal;
 	}
 }

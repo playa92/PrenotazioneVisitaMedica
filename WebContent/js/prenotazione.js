@@ -204,3 +204,14 @@ function randHex(len) {
   return r.toUpperCase();
 }
 
+
+$(document).ready(function(){
+//	$(".form-prenotazione").hover(function(){
+//	    $("html, body").animate({ scrollTop: 800}, 1200);
+//	})
+	
+	setTimeout(function(){
+		 $("html, body").animate({ scrollTop: 800}, 1200)
+	},2000);
+})
+
