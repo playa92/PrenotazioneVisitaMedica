@@ -137,7 +137,11 @@
 <!-- 			        </div> -->
 <!-- 				    </form> -->
 <!-- 			 	</li> -->
-
+				    <jstl:if test="${loggatoAdmin}">
+						<li class="dropdown nav-item">
+						  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-wrench"></span> </a>       		 
+						</li>
+					</jstl:if>
 			</ul> 
 		
 		</div>	
@@ -148,7 +152,49 @@
   		<h2>Benvenuto</h2>
 	</div>
 	
-	
+	<!-- Dialog Settings -->
+		<div id="dialog">
+      	  <div class="modal fade" id="settings" role="dialog">
+		    <div class="modal-dialog modal-md">
+		      <div class="modal-content">
+		       <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal">&times;</button>
+		            <h3 class="modal-title">Impostazioni</h3>
+		          </div>
+		          <div class="modal-body">
+         			 <a id="cambiaColore" href="#" style=" text-decoration:none;font-size:15px">Cambia colore della barra</a>
+         			 <div id="pannelloColori" style="display:none;">
+         				 <div onclick="changeColor('yellow')" style="width:20px; height:20px; background:yellow;display: inline-block"></div>
+	           			 <div onclick="changeColor('red')" style="width:20px; height:20px; background:red;display: inline-block"></div>
+	           			 <div onclick="changeColor('green')" style="width:20px; height:20px; background:green; display:inline-block"></div>
+	           			 <div onclick="changeColor('gray')" style="width:20px; height:20px; background:gray; display:inline-block"></div>
+	           			 <div onclick="changeColor('blue')" style="width:20px; height:20px; background:blue; display:inline-block"></div><br>
+	           			 <a style="text-decoration:none;color:black" href="#" onclick="changeColor('#092147')">ripristina default</a><br>
+	           			 <button class="btn btn-success"><span class="glyphicon glyphicon-floppy-saved"></span> salva</button>			
+         			 </div><br>
+         			 <button>ALTRO...</button><br>
+	    			 <button>ALTRO..</button>	
+		        </div>
+		     </div>
+		   </div>
+		 </div>
+	   </div>
+	   
+	   <script type="text/javascript">
+		   
+	   		$(document).ready(function(){
+			    $("#cambiaColore").click(function(){
+			        $("#pannelloColori").toggle();
+			    });
+			});
+		   
+		   function changeColor(c) {	
+				 $(".navbar").css("background-color",c); 
+				 $(".nav-item #navbar-text").css("background-color",c); 
+			}
+		   
+	   </script>
+	   
 	<!-- BOOTSTRAP CAROUSEL -->
 	<div class="container">
 	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -202,7 +248,7 @@
 		</div>
 		</div>
 	    
-		<!-- Dialog -->
+		<!-- Dialog Notice -->
 		<div id="dialog">
       	  <div class="modal fade" id="notice" role="dialog">
 		    <div class="modal-dialog modal-md">
