@@ -27,46 +27,38 @@ public class RegistraPrenotazione extends HttpServlet {
 	private final int MAX = 50;
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 15;
-	private final String ORARIO_INIZIO = "07:00"; 
-	private final String ORARIO_FINE = "05:00";
+	private final Integer ORARIO_INIZIO = new Integer(9); 
+	private final Integer ORARIO_FINE = new Integer(17);
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		Calendar now = Calendar.getInstance();
-//		String current = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE);
-//
-//		
-//	//TODO
-////		DateFormat dateFormat = new SimpleDateFormat("HH:mm");
-////		Date date = new Date();
-////		System.out.println(dateFormat.format(date));
-//		
-//		
-//		if(current.compareTo(ORARIO_INIZIO) < 0 || current.compareTo(ORARIO_FINE) > 0) {
-//			response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
-//			return;
-//		}
-//		
-//		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
-//				getDaoFactory().getPrenotazioneDao();
-//		
-//		PrintWriter out = response.getWriter();
-//		int visiteTotali = prenotazioneDao.getTotalVisits();
-//		
-//		if(visiteTotali >= MAX) {
-//			out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
-//			return;
-//		}
-//		
-//		now.set(Calendar.HOUR, Calendar.HOUR + 1);
-//		now.set(Calendar.MINUTE, 30);
-//		
-//		Date date = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
-//		int indexOf = date.toString().indexOf(":") - 2;
-//		String probabileVisita = date.toString().substring(indexOf, indexOf + 5);
-//		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
-//		
+		Calendar now = Calendar.getInstance();
+				
+		if(ORARIO_INIZIO.compareTo(now.get(Calendar.HOUR)) > 0 || ORARIO_FINE.compareTo(now.get(Calendar.HOUR)) < 0) {
+			response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
+			return;
+		}
+		
+		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
+				getDaoFactory().getPrenotazioneDao();
+		
+		PrintWriter out = response.getWriter();
+		int visiteTotali = prenotazioneDao.getTotalVisits();
+		
+		if(visiteTotali >= MAX) {
+			out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
+			return;
+		}
+		
+		now.set(Calendar.HOUR, Calendar.HOUR + 1);
+		now.set(Calendar.MINUTE, 30);
+		
+		Date date = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
+		int indexOf = date.toString().indexOf(":") - 2;
+		String probabileVisita = date.toString().substring(indexOf, indexOf + 5);
+		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
+		
 	}
 	
 	@Override
@@ -142,7 +134,7 @@ public class RegistraPrenotazione extends HttpServlet {
 			
 			int visiteTotali = prenotazioneDao.getTotalVisits();
 			Calendar now = Calendar.getInstance();
-			now.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 1);
+			now.set(Calendar.HOUR, Calendar.HOUR + 1);
 			
 			Date date1 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 			Date date2 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
