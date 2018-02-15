@@ -149,13 +149,17 @@
         window.onkeypress = resetTimer;
   
         function logout() {
-          	$("#timeout").modal("show");
-        }
+          	$("#timeout").modal({
+                backdrop: 'static',
+                keyboard: true, 
+                show: true
+        	});
+   		 }
         
   
         function resetTimer() {
             clearTimeout(t);
-            t = setTimeout(logout, 1000);  // time is in milliseconds
+            t = setTimeout(logout, 15000);  // time is in milliseconds
         }
     }
     idleLogout();
