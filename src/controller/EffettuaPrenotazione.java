@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,34 +24,29 @@ import persistence.dao.UniversitaDao;
 import persistence.dao.PrenotazioneDao;
 
 @SuppressWarnings("serial")
-public class RegistraPrenotazione extends HttpServlet {
+public class EffettuaPrenotazione extends HttpServlet {
 	
 	private final int MAX = 50;
 	private final int CONVALIDA = 20;
-	private final int TEMPO_VISITA = 15;
+	private final int TEMPO_VISITA = 10;
 	private final String ORARIO_INIZIO = "9:00:00"; 
 	private final String ORARIO_FINE = "17:45:00";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	//NEW
-	//////////////////////////////////////////////////////////////////////
+		String dateFormat = "HH:mm:ss";
+		String currentTime = new SimpleDateFormat(dateFormat).format(new Date());
 		
-	String dateFormat = "HH:mm:ss";
-	String currentTime = new SimpleDateFormat(dateFormat).format(new Date());
-	
-	Calendar cStart = setTimeToCalendar(dateFormat, ORARIO_INIZIO, false);
-	Calendar cEnd = setTimeToCalendar(dateFormat, ORARIO_FINE, true);
-	Calendar cNow = setTimeToCalendar(dateFormat, currentTime, true);
-
-	Date curDate = cNow.getTime();
-	if (!(curDate.after(cStart.getTime()) && curDate.before(cEnd.getTime()))) {
-	    response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
-		return;
-	}
-				
-	//////////////////////////////////////////////////////////////////////	
+		Calendar cStart = setTimeToCalendar(dateFormat, ORARIO_INIZIO, false);
+		Calendar cEnd = setTimeToCalendar(dateFormat, ORARIO_FINE, true);
+		Calendar cNow = setTimeToCalendar(dateFormat, currentTime, true);
+		
+		Date curDate = cNow.getTime();
+		if(!(curDate.after(cStart.getTime()) && curDate.before(cEnd.getTime()))) {
+		    response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
+			return;
+		}
 	
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
 				getDaoFactory().getPrenotazioneDao();
@@ -65,14 +59,11 @@ public class RegistraPrenotazione extends HttpServlet {
 			return;
 		}
 		
-		cNow.set(Calendar.HOUR, Calendar.HOUR + 1);
-		cNow.set(Calendar.MINUTE, 30);
-		
+		cNow.set(Calendar.MINUTE, cNow.get(Calendar.MINUTE) + 30);
 		Date date = new Date(cNow.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
-		int indexOf = date.toString().indexOf(":") - 2;
-		String probabileVisita = date.toString().substring(indexOf, indexOf + 5);
-		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
+		String probabileVisita = new SimpleDateFormat(dateFormat).format(date);
 		
+		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
 	}
 	
 	@Override
@@ -148,15 +139,14 @@ public class RegistraPrenotazione extends HttpServlet {
 			
 			int visiteTotali = prenotazioneDao.getTotalVisits();
 			Calendar now = Calendar.getInstance();
-			now.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 1);
+			now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + 30);
 			
 			Date date1 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 			Date date2 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
 			
-			int indexOf = date1.toString().indexOf(":") - 2;
-			String visita = date1.toString().substring(indexOf, indexOf + 5);
-			String scadenza = date2.toString().substring(indexOf, indexOf + 5);
-			
+			String dateFormat = "HH:mm";
+			String visita = new SimpleDateFormat(dateFormat).format(date1);
+			String scadenza = new SimpleDateFormat(dateFormat).format(date2);
 			
 			CodiceQR codiceQR = new CodiceQR();
 			codiceQR.setCodice(json.getString("hexcode"));
@@ -184,15 +174,16 @@ public class RegistraPrenotazione extends HttpServlet {
 		}
 	}
 	
-	private Calendar setTimeToCalendar(String dateFormat, String date, boolean addADay){
-	    Date time = null;
+	private Calendar setTimeToCalendar(String dateFormat, String date, boolean addADay) {
+	    
+		Date time = null;
 		try {
 			time = new SimpleDateFormat(dateFormat).parse(date);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 	    Calendar cal = Calendar.getInstance();
-	    cal.setTime(time );
+	    cal.setTime(time);
 
 	    if(addADay) {
 	        cal.add(Calendar.DATE, 1);

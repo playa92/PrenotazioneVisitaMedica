@@ -147,18 +147,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 			String delete = "delete FROM prenotazione WHERE id_visita = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setString(1, prenotazione.getCodiceVisita());
-			statement.executeUpdate();
-			
-			delete = "delete FROM paziente WHERE id_codice = ?";
-			statement = connection.prepareStatement(delete);
-			statement.setString(1, prenotazione.getCodiceVisita());
-			statement.executeUpdate();
-			
-			delete = "delete FROM codice_qr WHERE id = ?";
-			statement = connection.prepareStatement(delete);
-			statement.setString(1, prenotazione.getCodiceVisita());
-			statement.executeUpdate();		
-			
+			statement.executeUpdate();	
 			
 		} catch(SQLException e) {
 			throw new PersistenceException(e.getMessage());

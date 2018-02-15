@@ -14,7 +14,7 @@ import persistence.DatabaseManager;
 import persistence.dao.SegnalazioneDao;
 
 @SuppressWarnings("serial")
-public class RegistraSegnalazione extends HttpServlet {
+public class EffettuaSegnalazione extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
