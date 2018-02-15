@@ -215,3 +215,10 @@ $(document).ready(function(){
 	},2000);
 })
 
+// when any modal is closing
+$('.modal').on('hide.bs.modal', function (e) {
+	if(e.target.id == "riepilogo")
+		window.location.href='../home';
+})
+
+

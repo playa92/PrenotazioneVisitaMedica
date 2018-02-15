@@ -121,17 +121,16 @@
 	
 	<div id="dialog">
         <div class="modal fade" id="timeout" role="dialog">
-       <div class="modal-dialog modal-md">
-          <div class="modal-content">
-            <div class="modal-header" style="text-align:center; background-color:#bcc4f2">
-              <label style="font-size:40px; color:red">TIMEOUT</label><br>
-          <button type="button" class="btn" style="background:#092147;color:white"onclick="window.location.href = '../home';">Torna alla home</button>
-          <button type="button" class="btn" style="background:#092147;color:white" onclick="window.location.reload();">Ricarica pagina</button>             
-        </div>
-          </div>
-       </div>
-    </div>
-    
+	       <div class="modal-dialog modal-md">
+	          <div class="modal-content">
+	            <div class="modal-header" style="text-align:center; background-color:#bcc4f2">
+	              <label style="font-size:40px; color:red">TIMEOUT</label><br>
+	          <button type="button" class="btn" style="background:#092147;color:white"onclick="window.location.href = '../home';">Torna alla home</button>
+	          <button type="button" class="btn" style="background:#092147;color:white" onclick="window.location.reload();">Ricarica pagina</button>             
+	        </div>
+	          </div>
+	       </div>
+    	</div>
     </div>
   
 
@@ -150,12 +149,13 @@
         window.onkeypress = resetTimer;
   
         function logout() {
-          $("#timeout").modal("show");
+          	$("#timeout").modal("show");
         }
+        
   
         function resetTimer() {
             clearTimeout(t);
-            t = setTimeout(logout, 15000);  // time is in milliseconds
+            t = setTimeout(logout, 1000);  // time is in milliseconds
         }
     }
     idleLogout();

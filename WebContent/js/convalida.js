@@ -27,3 +27,9 @@ function validate() {
 		}
 	});
 }
+
+//when any modal is closing
+$('.modal').on('hide.bs.modal', function (e) {
+	if(e.target.id == "receipt")
+		window.location.href='../home';
+})
