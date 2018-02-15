@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("username", null);
 			session.setAttribute("loggato", false);
 			
-			if(session.getAttribute("loggatoAdim") != null) {
+			if(session.getAttribute("loggatoAdmin").equals(true)) {
 				session.setAttribute("loggatoAdmin", false);
 			} else {
 				session.setAttribute("loggatoEmployee", false);
