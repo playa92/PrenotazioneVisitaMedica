@@ -16,7 +16,7 @@
 
 <body>
 
-		<!-- Loader -->
+		 <!-- Loader -->
 <!-- 	<div id="preloader" class="container"> -->
 <!-- 		<div class="row"> -->
 <!-- 			<div class="load-overlay"> -->
