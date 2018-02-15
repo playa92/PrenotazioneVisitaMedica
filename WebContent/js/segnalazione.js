@@ -1,7 +1,7 @@
 function tmp(idMotivazione, idRisolvi) {
 	$("#motivazione").val($("#" + idMotivazione).text());
 }
-//
+
 //function rispondi() {	
 //	$.ajax({
 //		type:'get',

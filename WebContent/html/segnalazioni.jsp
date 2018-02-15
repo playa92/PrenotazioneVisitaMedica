@@ -13,22 +13,22 @@
 	<script src="${pageContext.request.contextPath}/js/segnalazione.js"></script>
 </head>
 <body>
-	<!-- Navbar -->
+		<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
-			         <li class="dropdown nav-item">
+			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Update <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
 				     	<li><a id="list-element" href="#">Pulisci Risolti</a></li>
 				       	<li><a id="list-element" href="#">Altro</a>
 				       	
-				       		<form method="get" action="risolviSegnalazione">
-				      			<input id="motivazione" name="motivazione" type="hidden">
-			          		</form>
+<!-- 				       		<form method="get" action="risolviSegnalazione"> -->
+<!-- 				      			<input id="motivazione" name="motivazione" type="hidden"> -->
+<!-- 			          		</form> -->
 				       	
 				       	</li>
 			        </ul>
