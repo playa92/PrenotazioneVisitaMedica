@@ -21,9 +21,7 @@ public class RisolviSegnalazione extends HttpServlet {
 		
 		String risposta = request.getParameter("risposta");
 	    String motivazione = request.getParameter("motivazione");
-	    
-	    System.out.println(risposta + " - " + motivazione);
-	    
+	    	    
 	    SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
 	    List<Segnalazione> segnalazioni = segnalazioneDao.findAll();
 	    
