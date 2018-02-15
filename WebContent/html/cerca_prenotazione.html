@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../css/common.css">
 	<link rel="stylesheet" href="../css/loading.css">
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script src="../js/jquery/jspdf.min.js"></script>
 	<script src="../js/jquery/jquery.qrcode.js"></script>
 	<script src="https://momentjs.com/downloads/moment.min.js"></script>
@@ -44,8 +45,8 @@
 	  </div>
    	</div>
 	
-	<div id="info" align="center" style="background-color:lightgreen; border-width:5px; border-style:double;">	
-			<div id="content">
+	<div id="info" align="center" style="background-color:#3bd330; border-width:5px; border-style:double;">	
+			<div id="content" style="background:#3bd330">
 				<h1>Riepilogo Prenotazione:</h1><hr>
 				<h3>Codice: </h3>
 				<h4 id="hex"></h4>
@@ -55,7 +56,7 @@
 			    <h3>Tempo rimasto:</h3><h4 style="color:red" id="countdown"></h4>
 				<input id="text" type="hidden" value=""><br>
 			
-	   	    <button id='cmd' type="button" class="btn btn-sm" style="font-size:22px;background:#048706;">
+	   	    <button id='cmd' type="button" class="btn btn-sm btn-danger" style="font-size:22px;">
           	stampa promemoria <span class="glyphicon glyphicon-print"></span></button>
 	</div>
 		
@@ -71,6 +72,19 @@
 		<div id="fountainG_6" class="fountainG"></div>
 		<div id="fountainG_7" class="fountainG"></div>
 		<div id="fountainG_8" class="fountainG"></div>
+	</div>
+	
+	<div id="dialog">
+      	<div class="modal fade" id="err" role="dialog">
+		 	<div class="modal-dialog modal-md">
+		    	<div class="modal-content">
+	        	<div class="modal-header" style="text-align:center; background-color:#bcc4f2">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+        			<h3 id="message" class="modal-title" style="text-align:center"></h3>
+         		</div>
+		    	</div>
+		 	</div>
+		</div>
 	</div>
 	
 	<!-- SCROLLING -->

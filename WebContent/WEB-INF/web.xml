@@ -20,12 +20,12 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>RegistraPrenotazione</servlet-name>
-    <servlet-class>controller.RegistraPrenotazione</servlet-class>
+    <servlet-name>EffettuaPrenotazione</servlet-name>
+    <servlet-class>controller.EffettuaPrenotazione</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>RegistraPrenotazione</servlet-name>
-    <url-pattern>/registraPrenotazione</url-pattern>
+    <servlet-name>EffettuaPrenotazione</servlet-name>
+    <url-pattern>/effettuaPrenotazione</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -47,11 +47,11 @@
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>RegistraSegnalazione</servlet-name>
-    <servlet-class>controller.RegistraSegnalazione</servlet-class>
+    <servlet-name>EffettuaSegnalazione</servlet-name>
+    <servlet-class>controller.EffettuaSegnalazione</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>RegistraSegnalazione</servlet-name>
+    <servlet-name>EffettuaSegnalazione</servlet-name>
     <url-pattern>/segnalazione</url-pattern>
   </servlet-mapping>
  

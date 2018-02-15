@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	reset();
 })
-
 // when any modal is closing
 $('.modal').on('hide.bs.modal', function (e) {
 	

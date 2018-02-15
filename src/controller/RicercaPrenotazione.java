@@ -34,7 +34,7 @@ public class RicercaPrenotazione extends HttpServlet {
 			String dateFormat = "HH:mm";
 			String current = new SimpleDateFormat(dateFormat).format(new Date());
 			
-			if(codice.getScadenza().compareTo(current) < 0) {
+			if(codice.getScadenza().compareTo(current) > 0) {
 				response.getWriter().write("false;Prenotazione scaduta");
 			} else {
 				Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(codice.getCodice());

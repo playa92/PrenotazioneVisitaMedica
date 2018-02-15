@@ -78,7 +78,7 @@
 		    <div class="modal-dialog modal-md">
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
-					<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 	        		<form method="post" action="">
 			    		<input type="hidden" name="status" value="SOLVED"/>
 			    		<textarea placeholder="Scrivi..." rows="10" cols="40" style="width:400px; height:200px;font-size:25px;" name="message" required="required"></textarea><br><br>
@@ -98,7 +98,7 @@
 		    <div class="modal-dialog modal-md">
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
-					<button type="button" class="close" data-dismiss="modal" onclick="dismiss();">&times;</button>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 	        		<form method="get" action="risolviSegnalazione">
 		        		<textarea id="risposta" name="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
 		      			<input id="motivazione" name="motivazione" type="hidden">

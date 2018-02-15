@@ -76,7 +76,7 @@ function question() {
 	
 	$.ajax({
 		type:'get',
-		url:'../registraPrenotazione',
+		url:'../effettuaPrenotazione',
 		data: {value:$("input[name=codiceFiscale]").prop("value")},
 		success:function(data) {
 			
@@ -124,7 +124,7 @@ function sendForm() {
 
 	$.ajax({
 		type:'post',
-		url:'../registraPrenotazione',
+		url:'../effettuaPrenotazione',
 		datatype:"json",
 		data:JSON.stringify(paziente),
 		success:function(data) {

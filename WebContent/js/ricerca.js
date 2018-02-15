@@ -8,7 +8,7 @@ $(document).ready(function() {
 			
 			if($("#input").val() == "") {
 				$("#error").show();
-				$("#error").text("Codice non valido");
+				$("#error").text("Campo vuoto");
 			}
 			else {	
 				$("#fountainG").show();
@@ -29,7 +29,7 @@ function search() {
 	  $.ajax({
 		  type:"post",
           url:"../ricercaPrenotazione",  
-          data:{hexcode : $("#input").val()},
+          data:{hexcode : $("#input").val().toUpperCase()},
 		  success:function(data) {
 			var a = data.split(";");
 			
@@ -45,10 +45,11 @@ function search() {
 				scrollingAndShow();
 					
 			} else {
-				
-				$("#error").text(a[1]);
-				$("#error").show();
 				$("#fountainG").hide();
+			
+				$("#err").modal("show");
+				$("#message").text(a[1]);
+	
 			}
 		  }
 	  });
@@ -101,3 +102,9 @@ function scrollingAndShow() {
 		  }, 400);
 	}, 2000);
 }
+
+//when any modal is closing
+$('.modal').on('hide.bs.modal', function (e) {
+	if(e.target.id == "err")
+		$("input[id=input]").val('');
+})

@@ -39,7 +39,7 @@
 	    <div class="modal-dialog modal-md">
 	      <div class="modal-content" style="box-shadow: 0 0 2px 2px white;background: #720802;text-align:center;">
 	          <div class="modal-header" style="color:white">
-				<button type="button" class="close" data-dismiss="modal" onclick="reset();">&times;</button>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	            <h3 class="modal-title">Contattaci</h3>
 	          </div>
 	   		  <div class="modal-body"> 		
@@ -58,7 +58,7 @@
 						<textarea id="textarea" name="domanda" required></textarea>
 						<div class="modal-footer" style="text-align:center;">
 		      		 		<input id="submitSegnalazione" type="submit" class="btn btn-md" value="Invia"/>
-		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#', reset()">Annulla</button>
+		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
 				  		</div>
 			  		</form>	
 				 </div>
