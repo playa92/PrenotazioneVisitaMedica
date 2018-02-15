@@ -2,8 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,16 +26,14 @@ public class Login extends HttpServlet {
 		if((request.getParameter("logout") != null) && (request.getParameter("logout").equals("true"))) {
 			session.setAttribute("popUp", false);
 			session.setAttribute("username", null);
-			request.setAttribute("loggato", false);
+			session.setAttribute("loggato", false);
 			
 			if(session.getAttribute("loggatoAdim") != null) {
 				session.setAttribute("loggatoAdmin", false);
 			} else {
 				session.setAttribute("loggatoEmployee", false);
 			}	
-			session.invalidate();
 		    response.sendRedirect("home");
-		    return;
 		}
 	}
 	
@@ -46,6 +42,7 @@ public class Login extends HttpServlet {
 		 
 		HttpSession session = request.getSession();
 		session.setAttribute("username", null);
+		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		AmministratoreDao amministratoreDao = DatabaseManager.getInstance().getDaoFactory().getAmministratoreDao();
@@ -57,56 +54,56 @@ public class Login extends HttpServlet {
 			Impiegato impiegato = impiegatoDao.findByPrimaryKey(username);
 		
 			if(impiegato == null) {
-			
-				request.setAttribute("popUp", true);
-				request.setAttribute("popUpMessage", "Nessun utente registrato come " + username);	
+				
+				session.setAttribute("popUp", true);
+				session.setAttribute("wrong", true);//attributo che serve solo per non visualizzare il popUp
+				session.setAttribute("popUpMessage", "Nessun utente registrato come " + username);	
 			} else { 
 				if(password.equals(impiegato.getPassword())) {
 				
-				request.setAttribute("numSegnalazioni", contaSegnalazioni());
-				session.setAttribute("popUp", false);
-				session.setAttribute("username", username);				
-				request.setAttribute("loggato", true);
-				session.setAttribute("loggatoEmployee", true);
-				request.setAttribute("username", username);//JSTL
-			} else {
-				session.setAttribute("popUp", true);
-				request.setAttribute("popUpMessage", "Spiacente, password non corrispondente per " + username);
-			}
-		}	
+					session.setAttribute("numSegnalazioni", contaSegnalazioni());
+					session.setAttribute("popUp", false);
+					session.setAttribute("username", username);				
+					session.setAttribute("loggato", true);
+					session.setAttribute("loggatoEmployee", true);
+					session.setAttribute("username", username);//JSTL
+				} else {
+					session.setAttribute("popUp", true);
+					session.setAttribute("wrong", true);
+					session.setAttribute("popUpMessage", "Spiacente, password non corrispondente per " + username);
+				}
+			}	
 			
 		} else { 
-
 			//connessione
 			if(password.equals(amministratore.getPassword())) {	
 				
-				request.setAttribute("numSegnalazioni", contaSegnalazioni());
+				session.setAttribute("numSegnalazioni", contaSegnalazioni());
 				session.setAttribute("popUp", false);
 				session.setAttribute("username", username);
-				request.setAttribute("loggato", true);
+				session.setAttribute("loggato", true);
 				session.setAttribute("loggatoAdmin", true);
-				request.setAttribute("username", username);//JSTL
+				session.setAttribute("username", username);//JSTL
 								
-			}  else {
+			} else {
 				session.setAttribute("popUp", true);
-				request.setAttribute("popUpMessage", "Spiacente, password non corrispondente per " + username);
+				session.setAttribute("wrong", true);
+				session.setAttribute("popUpMessage", "Spiacente, password non corrispondente per " + username);
 			}
 		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
-		dispatcher.forward(request, response);	
-
+		response.sendRedirect("home");
 	}
 	
 	private int contaSegnalazioni() {
-		SegnalazioneDao dao =DatabaseManager.getInstance().
-				getDaoFactory().getSegnalazioneDao();
+		
+		SegnalazioneDao dao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
 		List<Segnalazione> segnalazioni = dao.findAll();
 		
-			int cont=0;
-			for(Segnalazione s:segnalazioni)
-				if(!s.getRisolto())
-					cont++;
-			return cont;
+		int cont = 0;
+		for(Segnalazione s:segnalazioni) {
+			if(!s.getRisolto())
+				cont ++;
+		}
+		return cont;
 	}
 }

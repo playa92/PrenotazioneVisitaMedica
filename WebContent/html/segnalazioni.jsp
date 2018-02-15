@@ -63,7 +63,7 @@
 					</jstl:if>
 					<jstl:if test="${not i.risolto}">
 						<td><a id="risolvi${i.id}" data-toggle="modal" data-target="#risolvi" href="#" 
-						onclick="tmp('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> </td>
+						onclick="setMotivazione('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> </td>
 					</jstl:if>
 				</tr>			
 			</jstl:forEach>

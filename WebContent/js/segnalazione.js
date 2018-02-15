@@ -1,4 +1,4 @@
-function tmp(idMotivazione, idRisolvi) {
+function setMotivazione(idMotivazione, idRisolvi) {
 	$("#motivazione").val($("#" + idMotivazione).text());
 }
 

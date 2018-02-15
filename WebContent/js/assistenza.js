@@ -15,3 +15,7 @@ function reset(){
 	$("input[name=email]").val('');
 	$("#textarea").val('');
 }
+
+if(typeof window.history.pushState == 'function') {
+    window.history.pushState({}, "Hide", "http://localhost:8080/PrenotazioneVisitaMedica/restituisciSegnalazioni");
+}

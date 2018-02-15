@@ -3,7 +3,7 @@ function validate() {
 	$.ajax({
 		type:"get",
 		url:"../convalidaPrenotazione",
-		data:{hexcode:$("#hexcode").val()},
+		data:{hexcode:$("#hexcode").val().toUpperCase()},
 		success: function(data) {
 			var values = data.split(";");
 			
@@ -15,9 +15,9 @@ function validate() {
 						$("#notice").modal("hide");
 						$("#receipt").modal("show");
 						var today = new Date();
-						$("#messageReceipt").html("Data: " +today.toISOString().substring(0, 10)+"<br>" +
-										   "Orario: "+ today.getHours()+":"+today.getMinutes() +"<br>"+
-										   "Importo: "+ values[2]+"0\u20ac")
+						$("#messageReceipt").html("Data: " + today.toISOString().substring(0, 10) + "<br>" +
+										   "Orario: " + today.getHours() + ":" + today.getMinutes() + "<br>"+
+										   "Importo: " + values[2]+"0\u20ac")
 					
 					}, 2000);
 			}else{

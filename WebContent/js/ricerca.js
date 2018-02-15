@@ -46,10 +46,8 @@ function search() {
 					
 			} else {
 				$("#fountainG").hide();
-			
 				$("#err").modal("show");
 				$("#message").text(a[1]);
-	
 			}
 		  }
 	  });
@@ -63,13 +61,13 @@ function start() {
 	
 	var orario_corrente = moment(moment()).format("HH:mm:ss");
 	
-//	if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
+	if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
 		countDown();
-//	} else {
-//		 document.getElementById('countdown').innerHTML = "non disponibile"
-//	     $("#countdown").css({color:"red"});
+	} else {
+		 document.getElementById('countdown').innerHTML = "non disponibile"
+	     $("#countdown").css({color:"red"});
 		//TODO se timer attivo disattivare
-//	}
+	}
 }
 
 function countDown() {
@@ -102,9 +100,3 @@ function scrollingAndShow() {
 		  }, 400);
 	}, 2000);
 }
-
-//when any modal is closing
-$('.modal').on('hide.bs.modal', function (e) {
-	if(e.target.id == "err")
-		$("input[id=input]").val('');
-})

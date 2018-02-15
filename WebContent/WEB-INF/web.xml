@@ -10,16 +10,6 @@
   </welcome-file-list>
 
   <servlet>
-    <servlet-name>Home</servlet-name>
-    <servlet-class>controller.Home</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Home</servlet-name>
-    <url-pattern>/home</url-pattern>
-    <url-pattern></url-pattern>
-  </servlet-mapping>
-
-  <servlet>
     <servlet-name>EffettuaPrenotazione</servlet-name>
     <servlet-class>controller.EffettuaPrenotazione</servlet-class>
   </servlet>
@@ -52,7 +42,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>EffettuaSegnalazione</servlet-name>
-    <url-pattern>/segnalazione</url-pattern>
+    <url-pattern>/effettuaSegnalazione</url-pattern>
   </servlet-mapping>
  
   <servlet>

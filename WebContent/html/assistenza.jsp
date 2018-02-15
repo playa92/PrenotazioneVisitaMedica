@@ -44,7 +44,7 @@
 	          </div>
 	   		  <div class="modal-body"> 		
 				 <div class="form-assistenza">
-					<form method="get" action="${pageContext.request.contextPath}/segnalazione">
+					<form method="get" action="${pageContext.request.contextPath}/effettuaSegnalazione">
 						<input type="text" name="nome" placeholder="Nome" required/>
 						<input type="text" name="cognome" placeholder="Cognome" required/>
 						<input type="email" name="email" placeholder="E-mail">

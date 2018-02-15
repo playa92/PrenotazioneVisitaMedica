@@ -25,8 +25,7 @@ public class EffettuaSegnalazione extends HttpServlet {
 		String motivazione = request.getParameter("motivazione");
 		String domanda = request.getParameter("domanda");
 		
-		SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().
-				getDaoFactory().getSegnalazioneDao();
+		SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
 	
 		Segnalazione segnalazione = new Segnalazione();
 		segnalazione.setId(segnalazioneDao.assignId() + 1);

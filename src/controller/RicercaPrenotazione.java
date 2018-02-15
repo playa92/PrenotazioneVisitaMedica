@@ -24,7 +24,7 @@ public class RicercaPrenotazione extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-		String hexcode = request.getParameter("hexcode").toUpperCase();
+		String hexcode = request.getParameter("hexcode");
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 		CodiceQR codice = codiceQRDao.findByPrimaryKey(hexcode);

@@ -30,12 +30,12 @@ public class EffettuaPrenotazione extends HttpServlet {
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 10;
 	private final String ORARIO_INIZIO = "9:00:00"; 
-	private final String ORARIO_FINE = "23:45:00";
+	private final String ORARIO_FINE = "17:45:00";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String dateFormat = "HH:mm:ss";
+		String dateFormat = "HH:mm";
 		String currentTime = new SimpleDateFormat(dateFormat).format(new Date());
 		
 		Calendar cStart = setTimeToCalendar(dateFormat, ORARIO_INIZIO, false);
