@@ -48,8 +48,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 			return;
 		}
 	
-		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
-				getDaoFactory().getPrenotazioneDao();
+		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 		
 		PrintWriter out = response.getWriter();
 		int visiteTotali = prenotazioneDao.getTotalVisits();
@@ -80,14 +79,10 @@ public class EffettuaPrenotazione extends HttpServlet {
 //		System.out.println(jsonReceived.toString());//lo studente ricevuto tramite chiamata AJAX
 		try {
 			
-			PazienteDao pazienteDao = DatabaseManager.getInstance().
-					getDaoFactory().getPazienteDao();
-			PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
-					getDaoFactory().getPrenotazioneDao();
-			CodiceQRDao codiceQRDao = DatabaseManager.getInstance().
-					getDaoFactory().getCodiceQRDao();
-			UniversitaDao universitaDao = DatabaseManager.getInstance().
-					getDaoFactory().getUniversitaDao();
+			PazienteDao pazienteDao = DatabaseManager.getInstance().getDaoFactory().getPazienteDao();
+			PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
+			CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
+			UniversitaDao universitaDao = DatabaseManager.getInstance().getDaoFactory().getUniversitaDao();
 			
 			PrintWriter out = response.getWriter();
 			JSONObject json = new JSONObject(jsonReceived.toString());
@@ -179,7 +174,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 		Date time = null;
 		try {
 			time = new SimpleDateFormat(dateFormat).parse(date);
-		} catch (ParseException e) {
+		} catch(ParseException e) {
 			e.printStackTrace();
 		}
 	    Calendar cal = Calendar.getInstance();

@@ -50,9 +50,6 @@ function search() {
 				$("#error").show();
 				$("#fountainG").hide();
 			}
-		  },
-		  error:function(data){
-			  alert("Errore");
 		  }
 	  });
 }

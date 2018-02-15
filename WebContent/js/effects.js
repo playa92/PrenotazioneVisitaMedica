@@ -15,7 +15,18 @@ $(function() {
          $(this).removeClass('green-border');
        }
    });
-});	
+});
+
+$(document).ready(function() {
+	$("#cambiaColore").click(function() {
+	    $("#pannelloColori").toggle();
+	});
+});
+
+function changeColor(c) {	
+	 $(".navbar").css("background-color",c); 
+	 $(".nav-item #navbar-text").css("background-color",c); 
+}
 	
 
 

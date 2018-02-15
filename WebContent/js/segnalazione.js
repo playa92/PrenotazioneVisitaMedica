@@ -21,5 +21,5 @@ function dismiss(){
 }
 	
 function getMail(mail) {
-		$("form").attr("action","https://formspree.io/" + mail );
+	$("form").attr("action","https://formspree.io/" + mail );
 }

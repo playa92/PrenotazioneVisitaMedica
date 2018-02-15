@@ -23,14 +23,14 @@ public class Home extends HttpServlet {
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
 		
-		request.setAttribute("numSegnalazioni", contaSegnalazioni());
+		session.setAttribute("numSegnalazioni", contaSegnalazioni());
 		
 		if(username == null) {
 			request.setAttribute("popUp", false);
-			request.setAttribute("loggato", false);
+			session.setAttribute("loggatoAdmin", false);
 		} else {
-			request.setAttribute("loggato", true);			
-			request.setAttribute("username", username);//JSTL
+			session.setAttribute("loggatoAdmin", true);			
+			session.setAttribute("username", username);//JSTL
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
@@ -43,14 +43,15 @@ public class Home extends HttpServlet {
 	}
 	
 	private int contaSegnalazioni() {
-		SegnalazioneDao dao =DatabaseManager.getInstance().
-				getDaoFactory().getSegnalazioneDao();
+		
+		SegnalazioneDao dao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
 		List<Segnalazione> segnalazioni = dao.findAll();
 		
-			int cont=0;
-			for(Segnalazione s:segnalazioni) 
-				if(!s.getRisolto()) 
-					cont++;
-			return cont;
+		int cont = 0;
+		for(Segnalazione s:segnalazioni)  {
+			if(!s.getRisolto()) 
+				cont ++;
+		}
+		return cont;
 	}
 }

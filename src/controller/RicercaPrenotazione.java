@@ -1,8 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Calendar;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,20 +25,20 @@ public class RicercaPrenotazione extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 		String hexcode = request.getParameter("hexcode").toUpperCase();
-		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().
-				getDaoFactory().getCodiceQRDao();
-		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().
-				getDaoFactory().getPrenotazioneDao();
+		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
+		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 		CodiceQR codice = codiceQRDao.findByPrimaryKey(hexcode);
 		
 		if(codice != null) {	
 		
-			String current = Calendar.getInstance().get(Calendar.HOUR_OF_DAY) + ":" + Calendar.getInstance().get(Calendar.MINUTE);
+			String dateFormat = "HH:mm";
+			String current = new SimpleDateFormat(dateFormat).format(new Date());
+			
 			if(codice.getScadenza().compareTo(current) < 0) {
 				response.getWriter().write("false;Prenotazione scaduta");
 			} else {
-			Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(codice.getCodice());
-			response.getWriter().write("true;" + codice.getScadenza() + ";" + prenotazione.getOrarioVisita() + ";" + hexcode);
+				Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(codice.getCodice());
+				response.getWriter().write("true;" + codice.getScadenza() + ";" + prenotazione.getOrarioVisita() + ";" + hexcode);
 			}
 			
 		} else {

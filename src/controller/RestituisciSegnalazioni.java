@@ -15,7 +15,7 @@ import persistence.dao.SegnalazioneDao;
 public class RestituisciSegnalazioni extends HttpServlet {
 	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
 	    List<Segnalazione> segnalazioni = segnalazioneDao.findAll();

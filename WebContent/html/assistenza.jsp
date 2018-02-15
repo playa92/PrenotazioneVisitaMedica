@@ -10,24 +10,6 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
 	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/scroll_up.js"> </script>
-	
-	<script>
-		$(document).ready(function() {
-			$("input[name=nome]").val('');
-			$("input[name=cognome]").val('');
-			$("input[name=email]").val('');
-			$("#textarea").val('');
-		});
-			
-		function reset() {
-			$("input[name=nome]").val('');
-			$("input[name=cognome]").val('');
-			$("input[name=email]").val('');
-			$("#textarea").val('');
-		}
-	</script>
-
 </head>
 
 <body id="Assistenza">
@@ -76,7 +58,7 @@
 						<textarea id="textarea" name="domanda" required></textarea>
 						<div class="modal-footer" style="text-align:center;">
 		      		 		<input id="submitSegnalazione" type="submit" class="btn btn-md" value="Invia"/>
-		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
+		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#', reset()">Annulla</button>
 				  		</div>
 			  		</form>	
 				 </div>
@@ -116,6 +98,9 @@
 	
 	<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
-		
+	
+	<script src="${pageContext.request.contextPath}/js/scroll_up.js"> </script>
+	<script src="${pageContext.request.contextPath}/js/assistenza.js"> </script>
+	
 </body>
 </html>

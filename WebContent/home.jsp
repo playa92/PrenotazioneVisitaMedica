@@ -2,7 +2,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 
 <html>
-
 <head>
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
 	<title>Prenota Visita Medica</title>
@@ -13,9 +12,6 @@
  	<script src="js/jquery/jquery-3.2.1.min.js"></script>
  	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
  	<script src="js/jquery/jquery.cookie.js"></script>
- 	<script src="js/effects.js"></script>
- 	<script src="js/login.js"></script>	
- 	<script src="js/scroll_up.js"></script>
  </head>
 
 <body>
@@ -180,21 +176,6 @@
 		 </div>
 	   </div>
 	   
-	   <script type="text/javascript">
-		   
-	   		$(document).ready(function(){
-			    $("#cambiaColore").click(function(){
-			        $("#pannelloColori").toggle();
-			    });
-			});
-		   
-		   function changeColor(c) {	
-				 $(".navbar").css("background-color",c); 
-				 $(".nav-item #navbar-text").css("background-color",c); 
-			}
-		   
-	   </script>
-	   
 	<!-- BOOTSTRAP CAROUSEL -->
 	<div class="container">
 	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -218,13 +199,13 @@
 	    <div class="item">
 	        <img src="images/cerca_prenotazione.jpg" alt="Ricerca">
 	        <div class="carousel-content" style="margin:59px 0 0 70px;font-size:40px;">
-		        <a href="ricercaPrenotazione">Cerca la tua prenotazione</a>
+		        <a href="html/cerca_prenotazione.html">Cerca la tua prenotazione</a>
 		    </div>
 	    </div>
 	      
 	    <div class="item">
 	        <img src="images/statistiche.jpg" alt="Statistiche">
-	        <div class="carousel-content" style="">
+	        <div class="carousel-content">
 		        <a href="restituisciPrenotazioni">Visualizza le prenotazioni correnti</a>
 		    </div>
 	    </div>
@@ -322,6 +303,9 @@
 	    <!-- SCROLLING -->
 		<a href="#" class="scrollup">Scroll</a>
 		
+		<script src="js/effects.js"></script>
+	 	<script src="js/login.js"></script>	
+	 	<script src="js/scroll_up.js"></script>
 		
 </body>
 </html>

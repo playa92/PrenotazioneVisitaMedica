@@ -25,9 +25,7 @@ public class RipristinoPassword extends HttpServlet {
 		String username = request.getParameter("username");
 		String newPassword = request.getParameter("newPassword");
 		
-		ImpiegatoDao impiegatoDao = DatabaseManager.getInstance().
-				getDaoFactory().getImpiegatoDao();
-		
+		ImpiegatoDao impiegatoDao = DatabaseManager.getInstance().getDaoFactory().getImpiegatoDao();
 		Impiegato impiegato = impiegatoDao.findByPrimaryKey(username);
 			
 		if(impiegato != null) {
@@ -42,6 +40,5 @@ public class RipristinoPassword extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("html/ripristino_password.jsp");
 		dispatcher.forward(request, response);
-//		response.sendRedirect("html/ripristino_password.jsp");
 	}
 }

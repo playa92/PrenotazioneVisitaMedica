@@ -20,8 +20,7 @@ public class EliminaPrenotazione implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent servlet) {
 		
-		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance()
-				.getDaoFactory().getPrenotazioneDao();
+		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 		List<Prenotazione> prenotazioni = prenotazioneDao.findAll();
 		
 		if(!prenotazioni.isEmpty()) {
@@ -29,10 +28,8 @@ public class EliminaPrenotazione implements ServletContextListener {
 			String dateFormat = "HH:mm";
 			String scadenza = new SimpleDateFormat(dateFormat).format(new Date());
 			
-			CodiceQRDao codiceQRDao = DatabaseManager.getInstance()
-					.getDaoFactory().getCodiceQRDao();
-			PazienteDao pazienteDao = DatabaseManager.getInstance()
-					.getDaoFactory().getPazienteDao();
+			CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
+			PazienteDao pazienteDao = DatabaseManager.getInstance().getDaoFactory().getPazienteDao();
 			
 			for(Prenotazione it:prenotazioni) {
 				if(it.getOrarioVisita().compareTo(scadenza) < 0 && 
