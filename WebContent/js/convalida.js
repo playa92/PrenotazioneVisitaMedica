@@ -3,8 +3,8 @@ function validate() {
 	$.ajax({
 		type:"get",
 		url:"../convalidaPrenotazione",
-		data:{hexcode:$("#hexcode").val().toUpperCase()},
-		success:function(data) {
+		data:{hexcode:$("#hexcode").val()},
+		success: function(data) {
 			var values = data.split(";");
 			
 			if(values[0] =="true"){
@@ -15,18 +15,14 @@ function validate() {
 						$("#notice").modal("hide");
 						$("#receipt").modal("show");
 						var today = new Date();
-						$("#messageReceipt").html("Data: " + today.toISOString().substring(0, 10) + "<br>" +
-										   "Orario: " + today.getHours() + ":" + today.getMinutes() + "<br>" +
-										   "Importo: " + values[2]+"0\u20ac")
+						$("#messageReceipt").html("Data: " +today.toISOString().substring(0, 10)+"<br>" +
+										   "Orario: "+ today.getHours()+":"+today.getMinutes() +"<br>"+
+										   "Importo: "+ values[2]+"0\u20ac")
 					
 					}, 2000);
 			}else{
-				
-				var str = data;
-				str.replace("è","\00e8");
-				str.replace("à","\00e0");
 				$("#notice").modal("show");
-				$("#message").text(str);
+				$("#message").text(data);
 			}
 		}
 	});
@@ -37,3 +33,28 @@ $('.modal').on('hide.bs.modal', function (e) {
 	if(e.target.id == "receipt")
 		window.location.href='../home';
 })
+
+
+$("#QR").click(function(){
+	if($("#HEXCODE").is(':visible')){
+		 $("#HEXCODE").hide();
+	}
+	if($("#QRCODE").is(':visible')){
+	
+		 $("#QRCODE").hide();
+		 stop();
+	}else{
+		 $("#QRCODE").show();
+		 start();
+	}
+});
+
+$("#HEX").click(function(){
+	if($("#QRCODE").is(':visible')){
+		 $("#QRCODE").hide();
+		 stop();
+	}
+	 $("#HEXCODE").toggle();
+});
+
+

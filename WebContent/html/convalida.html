@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../css/common.css">
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
  	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> 
+ 	<script src="../js/jquery/instascan.min.js"></script>
 </head>
 <body>
 
@@ -24,7 +25,16 @@
   		<h1>Convalida Prenotazione</h1>
 	</div>
 	
-	<div align="center" class="container">
+	<div align="center">
+	 	<button id="QR" class="btn btn-lg" style="background:#FFA500;color:white">
+         	<span class="glyphicon glyphicon-qrcode"></span> Codice QR
+        </button>
+	 	<button id="HEX" class="btn btn-lg" style="background:#FFA500;color:white">
+	 		 Codice esadecimale 
+        </button>
+	 </div>
+	
+	<div id="HEXCODE" align="center" class="container" style="display:none"><br>
 	  <div class="row">
 		<h2>Inserisci codice:</h2>
            <div class="input-group col-md-4">
@@ -70,10 +80,22 @@
 		 	</div>
 		</div>
 	</div>
-		
-<script src="../js/convalida.js"></script> 
+	
+	<!--  SCROLLING -->
+  	<a href="#" class="scrollup">Scroll</a>
+  
+	<!-- QR-READER -->
+	<div id="QRCODE"  align="center" style="display:none">
+<!-- 	  <button onclick="stop();">Stop Scanning</button> -->
+<!-- 	  <button onclick="start();">Start Scanning</button><br> -->
+	  <video style="width:350px;"id="preview"></video>
+	</div>
+	
+	<script src="../js/convalida.js"></script> 
  	<script src="../js/jquery/jspdf.min.js"></script>
     <script src="../js/pdf_print.js"></script>
+    <script src="../js/scroll_up.js"> </script>   
+    <script src="../js/qr_scanner.js"></script>
 	
 </body>
 </html>
