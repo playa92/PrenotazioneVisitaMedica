@@ -8,6 +8,57 @@
 	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
  	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> 
  	<script src="../js/jquery/instascan.min.js"></script>
+ 	
+ 	
+ <style type="text/css">
+ 
+.myButton {
+	-moz-box-shadow:inset 0px 0px 16px 7px #f9eca0;
+	-webkit-box-shadow:inset 0px 0px 16px 7px #f9eca0;
+	box-shadow:inset 0px 0px 16px 7px #f9eca0;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f0c911), color-stop(1, #f2ab1e));
+	background:-moz-linear-gradient(top, #f0c911 5%, #f2ab1e 100%);
+	background:-webkit-linear-gradient(top, #f0c911 5%, #f2ab1e 100%);
+	background:-o-linear-gradient(top, #f0c911 5%, #f2ab1e 100%);
+	background:-ms-linear-gradient(top, #f0c911 5%, #f2ab1e 100%);
+	background:linear-gradient(to bottom, #f0c911 5%, #f2ab1e 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0c911', endColorstr='#f2ab1e',GradientType=0);
+	background-color:#f0c911;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #e65f44;
+	display:inline-block;
+	cursor:pointer;
+	color:#c92200;
+	font-family:Courier New;
+	font-size:24px;
+	font-weight:bold;
+	padding:29px 43px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ded17c;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f2ab1e), color-stop(1, #f0c911));
+	background:-moz-linear-gradient(top, #f2ab1e 5%, #f0c911 100%);
+	background:-webkit-linear-gradient(top, #f2ab1e 5%, #f0c911 100%);
+	background:-o-linear-gradient(top, #f2ab1e 5%, #f0c911 100%);
+	background:-ms-linear-gradient(top, #f2ab1e 5%, #f0c911 100%);
+	background:linear-gradient(to bottom, #f2ab1e 5%, #f0c911 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2ab1e', endColorstr='#f0c911',GradientType=0);
+	background-color:#f2ab1e;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+        
+
+ 	
+ 	
+ 	
+ 	</style>
 </head>
 <body>
 
@@ -23,14 +74,15 @@
 
 	<div class="jumbotron text-center" style="background:#FFA500;color:white">
   		<h1>Convalida Prenotazione</h1>
+  		<h4>Scegli uno delle due modalità per convalidare una prenotazione</h4>
 	</div>
 	
 	<div align="center">
-	 	<button id="QR" class="btn btn-lg" style="background:#FFA500;color:white">
-         	<span class="glyphicon glyphicon-qrcode"></span> Codice QR
+	 	<button id="QR" class="btn btn-lg myButton" style="background:#FFA500;color:white" title="Scansiona il codice QR">
+         	<span class="glyphicon glyphicon-qrcode"></span>
         </button>
-	 	<button id="HEX" class="btn btn-lg" style="background:#FFA500;color:white">
-	 		 Codice esadecimale 
+	 	<button id="HEX" class="btn btn-lg myButton" style="background:#FFA500;color:white" title="Inserisci il codice esadecimale">
+	 		<span class="glyphicon glyphicon-text-size "></span> 
         </button>
 	 </div><br>
 	
@@ -38,10 +90,10 @@
 	  <div class="row">
 		<h2>Inserisci codice:</h2>
            <div class="input-group col-md-4">
-              <input id="hexcode" type="text" class="search-query form-control" placeholder="Ricerca" style="text-transform:uppercase" required/>
+              <input id="hexcode" type="text" class="search-query form-control" style="text-transform:uppercase" required/>
               <span class="input-group-btn">
                   <button class="btn" type="submit" onclick="validate($('#hexcode').val());" style="background:#FFA500;color:white">
-                      <span class="glyphicon glyphicon-qrcode"></span>
+                      <span class="glyphicon glyphicon-ok"></span>
                   </button>
               </span>
            </div>
@@ -86,6 +138,7 @@
   
 	<!-- QR-READER -->
 	<div id="QRCODE"  align="center" style="display:none">
+	  <h2>Tieni il codice QR ben in vista</h2>
 	  <video style="width:350px;"id="preview"></video>
 	</div>
 	
