@@ -1,9 +1,12 @@
-function validate() {
+function validate(code) {
+	
+	code = code.replace(/\s/g, '');
+	code = code.toUpperCase();
 	
 	$.ajax({
 		type:"get",
 		url:"../convalidaPrenotazione",
-		data:{hexcode:$("#hexcode").val()},
+		data:{hexcode:code},
 		success: function(data) {
 			var values = data.split(";");
 			

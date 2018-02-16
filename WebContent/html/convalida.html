@@ -32,7 +32,7 @@
 	 	<button id="HEX" class="btn btn-lg" style="background:#FFA500;color:white">
 	 		 Codice esadecimale 
         </button>
-	 </div>
+	 </div><br>
 	
 	<div id="HEXCODE" align="center" class="container" style="display:none"><br>
 	  <div class="row">
@@ -40,7 +40,7 @@
            <div class="input-group col-md-4">
               <input id="hexcode" type="text" class="search-query form-control" placeholder="Ricerca" style="text-transform:uppercase" required/>
               <span class="input-group-btn">
-                  <button class="btn" type="submit" onclick="validate();" style="background:#FFA500;color:white">
+                  <button class="btn" type="submit" onclick="validate($('#hexcode').val());" style="background:#FFA500;color:white">
                       <span class="glyphicon glyphicon-qrcode"></span>
                   </button>
               </span>
@@ -68,7 +68,7 @@
 		    	<div class="modal-header">
 				 	<button type="button" class="close" data-dismiss="modal" onclick="window.location.href='../home'">&times;</button>    
 				 </div>
-				 <div class="modal-body" style="text-align:center; background-color:blue">
+				 <div class="modal-body" style="text-align:center;">
 				 
 					 <div id="content" style="background:#FFA500; border-width:5px; border-style:double;">
 	        			<h3 id="messageReceipt" style="text-align:center;font-size:37px"></h3>
@@ -86,8 +86,6 @@
   
 	<!-- QR-READER -->
 	<div id="QRCODE"  align="center" style="display:none">
-<!-- 	  <button onclick="stop();">Stop Scanning</button> -->
-<!-- 	  <button onclick="start();">Start Scanning</button><br> -->
 	  <video style="width:350px;"id="preview"></video>
 	</div>
 	

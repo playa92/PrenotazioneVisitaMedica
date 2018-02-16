@@ -1,7 +1,7 @@
 
 let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 		scanner.addListener('scan', function (content) {
-		alert(content);
+		validate(content);
 });
 		
 function start(){

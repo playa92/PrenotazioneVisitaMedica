@@ -202,21 +202,16 @@ function randHex(len) {
   return r.toUpperCase();
 }
 
-
-$(document).ready(function(){
-//	$(".form-prenotazione").hover(function(){
-//	    $("html, body").animate({ scrollTop: 800}, 1200);
-//	})
-	
-	setTimeout(function(){
-		 $("html, body").animate({ scrollTop: 800}, 1200)
-	},2000);
-})
-
 // when any modal is closing
 $('.modal').on('hide.bs.modal', function (e) {
 	if(e.target.id == "riepilogo")
 		window.location.href='../home';
 })
-
+var flag = false;
+ $(document).mousemove(function(event){
+	 if(!flag){
+		 $("html, body").animate({ scrollTop: 800}, 1200)
+		 flag=true;
+	 }
+})
 

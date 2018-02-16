@@ -2,7 +2,7 @@ var qrcode = new QRCode("qrcode");
 
 function makeCode() {      
     var elText = document.getElementById("text");
-    
+        
     if (!elText.value) {
         alert("Nessun codice hex");
         elText.focus();
