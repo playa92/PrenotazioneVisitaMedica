@@ -21,7 +21,7 @@
 			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Update <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				     	<li><a id="list-element" href="#">Pulisci Risolti</a></li>
+				     	<li><a id="list-element" href="${pageContext.request.contextPath}/risolviSegnalazione">Pulisci Risolti</a></li>
 				       	<li><a id="list-element" href="#">Altro</a>
 				       	
 <!-- 				       		<form method="get" action="risolviSegnalazione"> -->
@@ -46,27 +46,31 @@
 				<th>Codice</th>
 				<th>E-mail</th>
 				<th>Nome</th>
-				<th>Segnalazione</th>
+				<th>Motivazione</th>
 				<th>Stato</th>
 			</tr>
 		</thead>
 		<tbody>
 			
-			<jstl:forEach var="i" items="${segnalazioni}">
-				<tr>
-					<td>${i.id}</td>
-					<td><a data-toggle="modal" data-target="#send" href="#" onclick="getMail(text);">${i.email}</a></td>
-					<td>${i.nomeUtente}</td>
-					<td id="ris${i.id}">${i.motivazione}</td>
-					<jstl:if test="${i.risolto}">
-						<td><a data-toggle="modal" href="#" style="color:green; pointer-events:none; text-decoration: none;"> Risolto</a> </td>
-					</jstl:if>
-					<jstl:if test="${not i.risolto}">
-						<td><a id="risolvi${i.id}" data-toggle="modal" data-target="#risolvi" href="#" 
-						onclick="setMotivazione('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> </td>
-					</jstl:if>
-				</tr>			
-			</jstl:forEach>
+		<jstl:forEach var="i" items="${segnalazioni}">
+			<tr>
+				<td>${i.id}</td>
+				<td><a data-toggle="modal" data-target="#send" href="#" onclick="getMail(text);">${i.email}</a></td>
+				<td>${i.nomeUtente}</td>
+				<td>
+				  <div class="popup" onclick="myFunction('pop-up${i.id}')">${i.motivazione}
+				    <span class="popuptext" id="pop-up${i.id}">${i.domanda}</span>
+				  </div>
+				</td>
+				<jstl:if test="${i.risolto}">
+					<td><a data-toggle="modal" href="#" style="color:green; pointer-events:none; text-decoration: none;"> Risolto</a> </td>
+				</jstl:if>
+				<jstl:if test="${not i.risolto}">
+					<td><a id="risolvi${i.id}" data-toggle="modal" data-target="#risolvi" href="#" 
+					onclick="setMotivazione('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> </td>
+				</jstl:if>
+			</tr>			
+		</jstl:forEach>
 			
 		</tbody>
 		</table>
@@ -86,11 +90,11 @@
          					<span class="glyphicon glyphicon-envelope"></span> 
        					</button>
 					</form>
-	          	</div>
-		     </div>
-		   </div>
-		 </div>
-	   </div>
+	          	  </div>
+		        </div>
+		      </div>
+		    </div>
+	     </div>
 		
 <!-- RISOLVI -->
 		<div id="dialog">
@@ -104,12 +108,12 @@
 		      			<input id="motivazione" name="motivazione" type="hidden">
 		      			<button class="btn-success btn-lg" type="submit">Conferma <span class="glyphicons glyphicons-ok"></span> </button>  	
 	          		</form>
-	          	</div>
-		     </div>
-		   </div>
-		 </div>
-	   </div>
-	
+	          	  </div>
+		        </div>
+		      </div>
+		    </div>
+	     </div>
+		
 		<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
 	

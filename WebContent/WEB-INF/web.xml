@@ -8,7 +8,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-
   <servlet>
     <servlet-name>EffettuaPrenotazione</servlet-name>
     <servlet-class>controller.EffettuaPrenotazione</servlet-class>
@@ -17,7 +16,6 @@
     <servlet-name>EffettuaPrenotazione</servlet-name>
     <url-pattern>/effettuaPrenotazione</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <servlet-name>Login</servlet-name>
     <servlet-class>controller.Login</servlet-class>
@@ -26,7 +24,6 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>RicercaPrenotazione</servlet-name>
     <servlet-class>controller.RicercaPrenotazione</servlet-class>
@@ -35,7 +32,6 @@
     <servlet-name>RicercaPrenotazione</servlet-name>
     <url-pattern>/ricercaPrenotazione</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>EffettuaSegnalazione</servlet-name>
     <servlet-class>controller.EffettuaSegnalazione</servlet-class>
@@ -44,7 +40,6 @@
     <servlet-name>EffettuaSegnalazione</servlet-name>
     <url-pattern>/effettuaSegnalazione</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <servlet-name>RestituisciPrenotazioni</servlet-name>
     <servlet-class>controller.RestituisciPrenotazioni</servlet-class>
@@ -53,7 +48,6 @@
     <servlet-name>RestituisciPrenotazioni</servlet-name>
     <url-pattern>/restituisciPrenotazioni</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <servlet-name>RestituisciSegnalazioni</servlet-name>
     <servlet-class>controller.RestituisciSegnalazioni</servlet-class>
@@ -62,7 +56,6 @@
     <servlet-name>RestituisciSegnalazioni</servlet-name>
     <url-pattern>/restituisciSegnalazioni</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>RisolviSegnalazione</servlet-name>
     <servlet-class>controller.RisolviSegnalazione</servlet-class>
@@ -71,7 +64,6 @@
     <servlet-name>RisolviSegnalazione</servlet-name>
     <url-pattern>/risolviSegnalazione</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>RipristinoPassword</servlet-name>
     <servlet-class>controller.RipristinoPassword</servlet-class>
@@ -80,7 +72,6 @@
     <servlet-name>RipristinoPassword</servlet-name>
     <url-pattern>/ripristinoPassword</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ConvalidaPrenotazione</servlet-name>
     <servlet-class>controller.ConvalidaPrenotazione</servlet-class>
@@ -89,5 +80,4 @@
     <servlet-name>ConvalidaPrenotazione</servlet-name>
     <url-pattern>/convalidaPrenotazione</url-pattern>
   </servlet-mapping>
-    
 </web-app>

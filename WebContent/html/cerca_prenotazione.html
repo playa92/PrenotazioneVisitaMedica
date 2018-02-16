@@ -12,6 +12,11 @@
 	<script src="../js/jquery/jquery.qrcode.js"></script>
 	<script src="https://momentjs.com/downloads/moment.min.js"></script>
 	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+	<style>
+		#search:focus {
+			border: white;
+		}
+	</style>
 </head>
 
 <body>
@@ -35,7 +40,7 @@
 	  <div class="row">
 		<h2>Inserisci qui il tuo codice:</h2>
            <div class="input-group col-md-4">
-              <input id="input" type="text" class="search-query form-control" placeholder="Ricerca" style="text-transform:uppercase"/>
+              <input id="search" type="text" class="search-query form-control" placeholder="Ricerca" style="text-transform:uppercase"/>
               <span class="input-group-btn">
                   <button id="search" class="btn" type="button" style="background:#048706;color:white">
                       <span class=" glyphicon glyphicon-search"></span>

@@ -20,13 +20,19 @@ function getMail(mail) {
 	$("form").attr("action","https://formspree.io/" + mail );
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
 	$("textarea").val('');
 })
 
 // when any modal is closing
-$('.modal').on('hide.bs.modal', function (e) {
-	if(e.target.id == "risolvi" || e.target.id == "send"){
+$('.modal').on('hide.bs.modal', function(e) {
+	if(e.target.id == "risolvi" || e.target.id == "send") {
 		$("textarea").val('');
 	}
 })
+
+//popup
+function myFunction(index) {
+    var popup = document.getElementById(index);
+    popup.classList.toggle("show");
+}

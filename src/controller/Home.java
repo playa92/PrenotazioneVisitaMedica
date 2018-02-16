@@ -21,7 +21,12 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("numSegnalazioni", contaSegnalazioni());
+		
+		if(session.getAttribute("loggato") != null && session.getAttribute("loggato").equals(true)) {
+			session.setAttribute("numSegnalazioni", contaSegnalazioni());
+		} else {
+			session.setAttribute("loggato", false);
+		}
 		
 		if(session.getAttribute("wrong") != null) {
 			

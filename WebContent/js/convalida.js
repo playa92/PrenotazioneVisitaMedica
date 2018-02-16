@@ -4,7 +4,7 @@ function validate() {
 		type:"get",
 		url:"../convalidaPrenotazione",
 		data:{hexcode:$("#hexcode").val().toUpperCase()},
-		success: function(data) {
+		success:function(data) {
 			var values = data.split(";");
 			
 			if(values[0] =="true"){
@@ -16,13 +16,17 @@ function validate() {
 						$("#receipt").modal("show");
 						var today = new Date();
 						$("#messageReceipt").html("Data: " + today.toISOString().substring(0, 10) + "<br>" +
-										   "Orario: " + today.getHours() + ":" + today.getMinutes() + "<br>"+
+										   "Orario: " + today.getHours() + ":" + today.getMinutes() + "<br>" +
 										   "Importo: " + values[2]+"0\u20ac")
 					
 					}, 2000);
 			}else{
+				
+				var str = data;
+				str.replace("è","\00e8");
+				str.replace("à","\00e0");
 				$("#notice").modal("show");
-				$("#message").text(data);
+				$("#message").text(str);
 			}
 		}
 	});
