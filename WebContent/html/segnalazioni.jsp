@@ -52,16 +52,14 @@
 				<td><a data-toggle="modal" data-target="#send" href="#" onclick="getMail(text);">${i.email}</a></td>
 				<td>${i.nomeUtente}</td>
 				<td>
-				  <div class="popup" onclick="myFunction('pop-up${i.id}')">${i.motivazione}
-				    <span class="popuptext" id="pop-up${i.id}">${i.domanda}</span>
-				  </div>
+				  <div id="ris${i.id}" class="popup" onclick="myFunction('pop-up${i.id}')">${i.motivazione}</div>
 				</td>
 				<jstl:if test="${i.risolto}">
 					<td><a data-toggle="modal" href="#" style="color:green; pointer-events:none; text-decoration: none;"> Risolto</a> </td>
 				</jstl:if>
 				<jstl:if test="${not i.risolto}">
 					<td><a id="risolvi${i.id}" data-toggle="modal" data-target="#risolvi" href="#" 
-					onclick="setMotivazione('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> </td>
+					onclick="set('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> </td>
 				</jstl:if>
 			</tr>			
 		</jstl:forEach>
@@ -99,7 +97,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 	        		<form method="get" action="risolviSegnalazione">
 		        		<textarea id="risposta" name="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
-		      			<input id="motivazione" name="motivazione" type="hidden">
+		      			<input id="inpt" name="motivazione" type="hidden">
 		      			<button class="btn-success btn-lg" type="submit">Conferma <span class="glyphicons glyphicons-ok"></span> </button>  	
 	          		</form>
 	          	  </div>
@@ -110,7 +108,6 @@
 		
 		<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>
-	
 	<script src="${pageContext.request.contextPath}/js/scroll_up.js"></script>
 	<script src="${pageContext.request.contextPath}/js/segnalazione.js"></script>
 			

@@ -1,5 +1,5 @@
-function setMotivazione(idMotivazione, idRisolvi) {
-	$("#motivazione").val($("#" + idMotivazione).text());
+function set(idMotivazione, idRisolvi) {
+	$("#inpt").val($("#" + idMotivazione).text());
 }
 
 //function rispondi() {	
@@ -33,6 +33,6 @@ $('.modal').on('hide.bs.modal', function(e) {
 
 //popup
 function myFunction(index) {
-    var popup = document.getElementById(index);
-    popup.classList.toggle("show");
+//    var popup = document.getElementById(index);
+//    popup.classList.toggle("show");
 }

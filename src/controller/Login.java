@@ -1,6 +1,11 @@
 package controller;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +23,8 @@ import persistence.dao.SegnalazioneDao;
 @SuppressWarnings("serial")
 public class Login extends HttpServlet {
 
+	private final int SCADENZA_SESSIONE = 120;
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -67,6 +74,9 @@ public class Login extends HttpServlet {
 					session.setAttribute("loggato", true);
 					session.setAttribute("loggatoEmployee", true);
 					session.setAttribute("username", username);//JSTL
+					session.setMaxInactiveInterval(SCADENZA_SESSIONE);//scadenza in secondi
+					registraAccesso(username);
+					
 				} else {
 					session.setAttribute("popUp", true);
 					session.setAttribute("wrong", true);
@@ -84,6 +94,8 @@ public class Login extends HttpServlet {
 				session.setAttribute("loggato", true);
 				session.setAttribute("loggatoAdmin", true);
 				session.setAttribute("username", username);//JSTL
+				session.setMaxInactiveInterval(SCADENZA_SESSIONE);
+				registraAccesso(username);
 								
 			} else {
 				session.setAttribute("popUp", true);
@@ -92,6 +104,31 @@ public class Login extends HttpServlet {
 			}
 		}
 		response.sendRedirect("home");
+	}
+	
+	private void registraAccesso(String username) {
+		
+		FileWriter fileWriter = null;
+		BufferedWriter bufferedWriter = null;
+		PrintWriter out = null;
+		
+		try {
+			 fileWriter = new FileWriter("./accesso.log", true);
+			 bufferedWriter = new BufferedWriter(fileWriter);
+			 out = new PrintWriter(bufferedWriter);
+			 
+			 String formatDate = "yyyy/MM/dd HH:mm:ss";
+			 String current = new SimpleDateFormat(formatDate).format(new Date());
+			 
+			 out.println(current + " ---> " + username);
+			 
+		} catch(IOException e) {
+			e.printStackTrace();
+			
+		} finally {
+			out.flush();
+			out.close();
+		}
 	}
 	
 	private int contaSegnalazioni() {

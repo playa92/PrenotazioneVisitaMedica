@@ -19,7 +19,7 @@ public class MainJDBC {
 		
 		final String[] credential = new String[4];
 		try {
-			FileReader f = new FileReader("./test/loginCredentials.txt"); 
+			FileReader f = new FileReader("./test/credenziali.txt"); 
 		
 			BufferedReader b = new BufferedReader(f);
 			String line = b.readLine();

@@ -27,6 +27,7 @@ import persistence.dao.PrenotazioneDao;
 public class EffettuaPrenotazione extends HttpServlet {
 	
 	private final int MAX = 50;
+	private final int ELAPSE = 30;//TEMPO EFFETTIVO 
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 10;
 	private final String ORARIO_INIZIO = "9:00:00"; 
@@ -38,29 +39,29 @@ public class EffettuaPrenotazione extends HttpServlet {
 		String dateFormat = "HH:mm";
 		String currentTime = new SimpleDateFormat(dateFormat).format(new Date());
 		
-		Calendar cStart = setTimeToCalendar(dateFormat, ORARIO_INIZIO, false);
-		Calendar cEnd = setTimeToCalendar(dateFormat, ORARIO_FINE, true);
-		Calendar cNow = setTimeToCalendar(dateFormat, currentTime, true);
+		Calendar start = setTimeToCalendar(dateFormat, ORARIO_INIZIO, false);
+		Calendar end = setTimeToCalendar(dateFormat, ORARIO_FINE, true);
+		Calendar now = setTimeToCalendar(dateFormat, currentTime, true);
+		now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + ELAPSE);
 		
-		Date curDate = cNow.getTime();
-		if(!(curDate.after(cStart.getTime()) && curDate.before(cEnd.getTime()))) {
+		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
+		int visiteTotali = prenotazioneDao.getTotalVisits();
+		
+		Date current = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
+		if(!(current.after(start.getTime()) && current.before(end.getTime()))) {
 		    response.getWriter().write("false;Orario non valido per effettuare una prenotazione!");
 			return;
 		}
-	
-		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 		
 		PrintWriter out = response.getWriter();
-		int visiteTotali = prenotazioneDao.getTotalVisits();
-		
 		if(visiteTotali >= MAX) {
 			out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
 			return;
 		}
 		
-		cNow.set(Calendar.MINUTE, cNow.get(Calendar.MINUTE) + 30);
-		Date date = new Date(cNow.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
-		String probabileVisita = new SimpleDateFormat(dateFormat).format(date);
+//		now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + 30);
+//		current = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
+		String probabileVisita = new SimpleDateFormat(dateFormat).format(current);
 		
 		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
 	}
@@ -177,12 +178,12 @@ public class EffettuaPrenotazione extends HttpServlet {
 		} catch(ParseException e) {
 			e.printStackTrace();
 		}
-	    Calendar cal = Calendar.getInstance();
-	    cal.setTime(time);
+	    Calendar calendar = Calendar.getInstance();
+	    calendar.setTime(time);
 
 	    if(addADay) {
-	        cal.add(Calendar.DATE, 1);
+	        calendar.add(Calendar.DATE, 1);
 	    }
-	    return cal;
+	    return calendar;
 	}
 }

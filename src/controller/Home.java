@@ -17,11 +17,13 @@ import persistence.dao.SegnalazioneDao;
 @WebServlet(urlPatterns = {"", "/home"})
 public class Home extends HttpServlet {
 	
+	private HttpSession session;
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		
+		session = request.getSession();
+	
 		if(session.getAttribute("loggato") != null && session.getAttribute("loggato").equals(true)) {
 			session.setAttribute("numSegnalazioni", contaSegnalazioni());
 		} else {
@@ -44,6 +46,15 @@ public class Home extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doGet(request, response);
+	}
+	
+	@Override
+	public void destroy() {
+		
+		if(session != null && session.getAttribute("loggato").equals(true)) {
+//			System.out.println("invalidate");
+			session.invalidate();
+		}
 	}
 	
 	private int contaSegnalazioni() {

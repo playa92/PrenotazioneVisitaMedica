@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,40 +20,32 @@ public class RisolviSegnalazione extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("loggato").equals(true)) {
+		if(session.getAttribute("loggato") != null) { 
+			
+			if(session.getAttribute("loggato").equals(true)) {
 		
-			String risposta = request.getParameter("risposta");
-		    String motivazione = request.getParameter("motivazione");
-		    	    
-		    SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
-		    List<Segnalazione> segnalazioni = segnalazioneDao.findAll();
-
-		    for(Segnalazione s:segnalazioni) {
-		    	
-		    	if(s.getMotivazione().equals(motivazione) && !s.getRisolto()) {
-		    		
-		    		s.setRisposta(risposta);
-		            s.setRisolto(true);
-		            segnalazioneDao.update(s);
-		            break;
-		    	}
-		    }
-		    request.setAttribute("segnalazioni", segnalazioni);
-		   
-//		    List<Segnalazione> nonRisolte = new ArrayList<>();
-//		    nonRisolte.addAll(segnalazioni);
-//		    	
-//		    for(int i = 0; i < nonRisolte.size(); i++) {
-//			    	
-//		    	if(nonRisolte.get(i).getRisolto()) {
-//		    		nonRisolte.remove(i --);
-//			    }
-//		    }
-//		    request.setAttribute("segnalazioni", nonRisolte);
+				String risposta = request.getParameter("risposta");
+			    String motivazione = request.getParameter("motivazione");
+			    	    
+			    SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
+			    List<Segnalazione> segnalazioni = segnalazioneDao.findAll();
+		
+			    for(Segnalazione s:segnalazioni) {
+			    	
+			    	if(s.getMotivazione().equals(motivazione) && !s.getRisolto()) {
+			    		
+			    		s.setRisposta(risposta);
+			            s.setRisolto(true);
+			            segnalazioneDao.update(s);
+			            break;
+			    	}
+			    }
+			    request.setAttribute("segnalazioni", segnalazioni);
 		    
-		    RequestDispatcher dispatcher = request.getRequestDispatcher("html/segnalazioni.jsp");
-		    dispatcher.forward(request, response);
-			return;
+			    RequestDispatcher dispatcher = request.getRequestDispatcher("html/segnalazioni.jsp");
+			    dispatcher.forward(request, response);
+			    return;
+			}
 		}
 		response.sendError(404, "Effettuare l'accesso come admin o come employee per visualizzare quest'area");
 	}

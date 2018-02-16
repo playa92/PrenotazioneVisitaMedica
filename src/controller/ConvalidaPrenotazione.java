@@ -19,28 +19,30 @@ public class ConvalidaPrenotazione extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("loggato").equals(true)) {
+		if(session.getAttribute("loggato") != null) { 
+			
+			if(session.getAttribute("loggato").equals(true)) {
 		
-			String hexcode = request.getParameter("hexcode");
-			CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
-			
-			CodiceQR codiceQR = codiceQRDao.findByPrimaryKey(hexcode);
-			PrenotazioneDao p = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
-			
-			if(codiceQR == null) {
-				response.getWriter().write("Non &egrave; stata trovata alcuna prenotazione con il codice: " + hexcode);
-			} 
-			else 
-				if(codiceQR.isConvalida()) {
-					response.getWriter().write("Prenotazione gi&agrave; convalidata");
-					
-				} else {
-					String importo = String.valueOf(p.findByPrimaryKey(hexcode).getImporto());
-					codiceQR.setConvalida(true);
-					codiceQRDao.update(codiceQR);
-					response.getWriter().write("true;Prenotazione convalidata con successo;" + importo);		
+				String hexcode = request.getParameter("hexcode");
+				CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
+				
+				CodiceQR codiceQR = codiceQRDao.findByPrimaryKey(hexcode);
+				PrenotazioneDao p = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
+				
+				if(codiceQR == null) {
+					response.getWriter().write("Non &egrave; stata trovata alcuna prenotazione con il codice: " + hexcode);
+				} else 
+					if(codiceQR.isConvalida()) {
+						response.getWriter().write("Prenotazione gi&agrave; convalidata");
+						
+					} else {
+						String importo = String.valueOf(p.findByPrimaryKey(hexcode).getImporto());
+						codiceQR.setConvalida(true);
+						codiceQRDao.update(codiceQR);
+						response.getWriter().write("true;Prenotazione convalidata con successo;" + importo);		
+					}
+					return;
 			}
-			return;
 		}
 		response.sendError(404, "Effettuare l'accesso come admin o come employee per visualizzare quest'area");
 	}
