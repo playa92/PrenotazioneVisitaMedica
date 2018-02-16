@@ -20,9 +20,10 @@ function validate() {
 										   "Importo: "+ values[2]+"0\u20ac")
 					
 					}, 2000);
-			}else{
+			
+			} else {
 				$("#notice").modal("show");
-				$("#message").text(data);
+				$("#message").html(data);
 			}
 		}
 	});

@@ -28,11 +28,11 @@ public class ConvalidaPrenotazione extends HttpServlet {
 			PrenotazioneDao p = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 			
 			if(codiceQR == null) {
-				response.getWriter().write("Non è stata trovata alcuna prenotazione con il codice: " + hexcode);
+				response.getWriter().write("Non &egrave; stata trovata alcuna prenotazione con il codice: " + hexcode);
 			} 
 			else 
 				if(codiceQR.isConvalida()) {
-					response.getWriter().write("Prenotazione già convalidata");
+					response.getWriter().write("Prenotazione gi&agrave; convalidata");
 					
 				} else {
 					String importo = String.valueOf(p.findByPrimaryKey(hexcode).getImporto());
