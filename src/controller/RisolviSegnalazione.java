@@ -39,18 +39,18 @@ public class RisolviSegnalazione extends HttpServlet {
 		            break;
 		    	}
 		    }
-//		    request.setAttribute("segnalazioni", segnalazioni);
+		    request.setAttribute("segnalazioni", segnalazioni);
 		   
-		    List<Segnalazione> nonRisolte = new ArrayList<>();
-		    nonRisolte.addAll(segnalazioni);
-		    	
-		    for(int i = 0; i < nonRisolte.size(); i++) {
-			    	
-		    	if(nonRisolte.get(i).getRisolto()) {
-		    		nonRisolte.remove(i --);
-			    }
-		    }
-		    request.setAttribute("segnalazioni", nonRisolte);
+//		    List<Segnalazione> nonRisolte = new ArrayList<>();
+//		    nonRisolte.addAll(segnalazioni);
+//		    	
+//		    for(int i = 0; i < nonRisolte.size(); i++) {
+//			    	
+//		    	if(nonRisolte.get(i).getRisolto()) {
+//		    		nonRisolte.remove(i --);
+//			    }
+//		    }
+//		    request.setAttribute("segnalazioni", nonRisolte);
 		    
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("html/segnalazioni.jsp");
 		    dispatcher.forward(request, response);

@@ -21,14 +21,8 @@
 			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Update <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				     	<li><a id="list-element" href="${pageContext.request.contextPath}/risolviSegnalazione">Pulisci Risolti</a></li>
-				       	<li><a id="list-element" href="#">Altro</a>
-				       	
-<!-- 				       		<form method="get" action="risolviSegnalazione"> -->
-<!-- 				      			<input id="motivazione" name="motivazione" type="hidden"> -->
-<!-- 			          		</form> -->
-				       	
-				       	</li>
+				     	<li><a id="list-element" href="${pageContext.request.contextPath}/risolviSegnalazione">Nascondi/Mostra Risolti</a></li>
+				       	<li><a id="list-element" href="#">Altro</a></li>
 			        </ul>
 			     </li>
 	   		</ul>
