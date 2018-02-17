@@ -47,20 +47,16 @@
 		    	</tr>
 		  	</thead>
 			<tbody id="elencoPrenotati">
-			
-			<jstl:set var="count" value="0" scope="page" />
-		
-			<jstl:forEach var="p" items="${prenotazioni}">
-				<jstl:set var="count" value="${count + 1}" scope="page"/>
-			
-					<tr>
-						<th> <jstl:out value="${count}"/></th>
-						<td>${p.nomePaziente}</td>
-						<td>${p.cognomePaziente}</td>
-						<td>${p.orarioVisita}</td>
-					</tr>			
-			</jstl:forEach>
-			
+				<jstl:set var="count" value="0" scope="page" />
+				<jstl:forEach var="p" items="${prenotazioni}">
+					<jstl:set var="count" value="${count + 1}" scope="page"/>
+						<tr>
+							<th> <jstl:out value="${count}"/></th>
+							<td>${p.nomePaziente}</td>
+							<td>${p.cognomePaziente}</td>
+							<td>${p.orarioVisita}</td>
+						</tr>			
+				</jstl:forEach>	
 		  </tbody>
 		</table><br><br>
 	

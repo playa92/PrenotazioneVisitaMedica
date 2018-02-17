@@ -337,7 +337,7 @@ textarea:required:focus {
   box-sizing: border-box;
   width: 120px;
   height: 42px;
-  cursor: I-beam;
+  cursor: I-beam
   top: 0;
   right: 0;
   bottom: 0;
@@ -634,70 +634,68 @@ textarea:required:focus {
 /* ///////////////// Segnalazione /////////////////// */
 /* ////////////////////////////////////////////////// */
 
-.table-segnalazione table, th, td {
-  		border: 1px solid black;
-  		text-align:center;
+#table-segnalazione .button {
+	
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 120px;
+  height: 42px;
+  cursor: I-beam;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0 20px;
+  overflow: hidden;
+  border: 1px solid white;
+  -webkit-border-radius: 21px;
+  border-radius:10px;
+  font: normal 20px/normal "Antic", Helvetica, sans-serif;
+  color: rgba(140, 140, 140, 1);
+  text-decoration: normal;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  background: white; 
+  -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5) inset;
+  -webkit-transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
+  -moz-transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
+  -o-transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
+  transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
 }
-.table-segnalazione th, td {
-		color:#92147;
-}
-
-/* POPUP */
-
-.popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* The actual popup */
-.popup .popuptext {
-    visibility: hidden;
-    max-width:200px;
-    word-wrap:break-word;
-    width: 250px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
+		
+.form-segnalazione body {
+   background-attachment: fixed;
 }
 
-/* Popup arrow */
-.popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
+.form-segnalazione .table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+	margin: auto; 
 }
 
-/* Toggle this class - hide and show the popup */
-.popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
+.form-segnalazione td, .form-segnalazione th {
+    border: 1px solid #ddd;
+    padding: 8px;	    
+    
 }
 
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
+.form-segnalazione tr:nth-child(even) {
+	background-color: #f2f2f2;
 }
 
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
+.form-segnalazione tr:hover {
+	background-color: #ddd;
+}
+
+.form-segnalazione th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #ffa500;
+    color: white;
+/*     box-shadow: 0 0 2px 2px #77600d; */
 }

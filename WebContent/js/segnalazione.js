@@ -30,9 +30,3 @@ $('.modal').on('hide.bs.modal', function(e) {
 		$("textarea").val('');
 	}
 })
-
-//popup
-function myFunction(index) {
-//    var popup = document.getElementById(index);
-//    popup.classList.toggle("show");
-}

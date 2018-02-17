@@ -31,9 +31,10 @@
 	
 	<div class="jumbotron text-center" style="background-color:#ffa500; color:#ffffff">
 	  <h1>Area Segnalazioni</h1>
+	  <h4>Rimani col puntatore sulla motivazione per visualizzare ulteriori dettagli</h4>
 	</div>
 	
-	<div class="Form-segnalazione">
+	<div class="form-segnalazione">
 		<table style="color:#092147;width:100%;">
 		<thead>
 			<tr>
@@ -52,7 +53,7 @@
 				<td><a data-toggle="modal" data-target="#send" href="#" onclick="getMail(text);">${i.email}</a></td>
 				<td>${i.nomeUtente}</td>
 				<td>
-				  <div id="ris${i.id}" class="popup" onclick="myFunction('pop-up${i.id}')">${i.motivazione}</div>
+				  <div id="ris${i.id}" title="${i.domanda}">${i.motivazione}</div>
 				</td>
 				<jstl:if test="${i.risolto}">
 					<td><a data-toggle="modal" href="#" style="color:green; pointer-events:none; text-decoration: none;"> Risolto</a> </td>
