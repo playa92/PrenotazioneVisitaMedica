@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import model.Prenotazione;
 import persistence.dao.PrenotazioneDao;
@@ -20,9 +20,9 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void save(Prenotazione prenotazione) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
-			String query = "insert INTO prenotazione(id_visita, nome_paziente, cognome_paziente, orario_visita, importo) values (?,?,?,?,?)";
+			String query = "insert INTO prenotazione(id_prenotazione, nome_paziente, cognome_paziente, orario_visita, importo) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, prenotazione.getCodiceVisita());
 			statement.setString(2, prenotazione.getNomePaziente());
@@ -46,11 +46,11 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public Prenotazione findByPrimaryKey(String codice) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		Prenotazione prenotazione = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM prenotazione WHERE id_visita = ?";
+			String query = "select * FROM prenotazione WHERE id_prenotazione = ?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1, codice);
 			ResultSet result = statement.executeQuery();
@@ -81,8 +81,8 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public List<Prenotazione> findAll() {
 		
-		Connection connection = this.dataSource.getConnection();
-		List<Prenotazione> visite = new LinkedList<>();
+		Connection connection = dataSource.getConnection();
+		List<Prenotazione> visite = new ArrayList<>();
 		Prenotazione prenotazione = null;
 		try {
 			PreparedStatement statement;
@@ -116,9 +116,9 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void update(Prenotazione prenotazione) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
-			String update = "update prenotazione SET nome_paziente = ?, cognome_paziente = ?, orario_visita = ?, importo = ? WHERE id_visita = ?";
+			String update = "update prenotazione SET nome_paziente = ?, cognome_paziente = ?, orario_visita = ?, importo = ? WHERE id_prenotazione = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, prenotazione.getNomePaziente());
 			statement.setString(2, prenotazione.getCognomePaziente());
@@ -142,9 +142,9 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public void delete(Prenotazione prenotazione) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
-			String delete = "delete FROM prenotazione WHERE id_visita = ?";
+			String delete = "delete FROM prenotazione WHERE id_prenotazione = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setString(1, prenotazione.getCodiceVisita());
 			statement.executeUpdate();	
@@ -164,7 +164,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 	@Override
 	public int getTotalVisits() {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String query = "select COUNT(*) AS total FROM prenotazione";
 			PreparedStatement statement = connection.prepareStatement(query);

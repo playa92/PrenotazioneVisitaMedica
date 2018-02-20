@@ -15,7 +15,7 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 	@Override
 	public void save(Amministratore amministratore) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String insert = "insert INTO amministratore(username, password) values (?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -39,7 +39,7 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 	@Override
 	public Amministratore findByPrimaryKey(String username) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		Amministratore amministratore = null;
 		try {
 			PreparedStatement statement;
@@ -47,6 +47,7 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 			statement = connection.prepareStatement(query);
 			statement.setString(1, username);
 			ResultSet result = statement.executeQuery();
+			
 			if(result.next()) {
 				
 				amministratore = new Amministratore();
@@ -71,7 +72,7 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 	@Override
 	public void update(Amministratore amministratore) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String update = "update amministratore SET password = ? WHERE username = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
@@ -94,7 +95,7 @@ public class AmministratoreDaoJDBC implements AmministratoreDao {
 	@Override
 	public void delete(Amministratore amministratore) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "delete FROM amministratore WHERE username = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);

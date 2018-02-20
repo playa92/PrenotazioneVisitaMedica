@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Segnalazione;
@@ -22,7 +22,7 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 	@Override
 	public int assignId() {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String query = "select COUNT(*) AS count FROM segnalazione";
 			PreparedStatement statement = connection.prepareStatement(query);
@@ -49,17 +49,17 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 	@Override
 	public void save(Segnalazione segnalazione) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
-			String insert = "insert INTO segnalazione(id, email, nome_utente, motivazione, commento, risposta, risolto, mostra) values(?,?,?,?,?,?,?,?);";
+			String insert = "insert INTO segnalazione(id, nome_utente, email, motivazione, commento, risposta, risolto, mostra) values(?,?,?,?,?,?,?,?);";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, segnalazione.getId());
+			statement.setString(2, segnalazione.getNomeUtente());
 			if(segnalazione.getCommento() != null) { 
-				statement.setString(2, segnalazione.getEmail());
+				statement.setString(3, segnalazione.getEmail());
 			} else {
-				statement.setNull(2, Types.NULL);
+				statement.setNull(3, Types.NULL);
 			}
-			statement.setString(3, segnalazione.getNomeUtente());
 			statement.setString(4, segnalazione.getMotivazione());
 			statement.setString(5, segnalazione.getCommento());
 			statement.setString(6, "Nessuna");
@@ -83,8 +83,8 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 	@Override
 	public List<Segnalazione> findAll() {
 		
-		Connection connection = this.dataSource.getConnection();
-		List<Segnalazione> segnalazioni = new LinkedList<>();
+		Connection connection = dataSource.getConnection();
+		List<Segnalazione> segnalazioni = new ArrayList<>();
 		Segnalazione segnalazione = null;
 		try {
 			String query = "select * FROM segnalazione ORDER BY id ASC";
@@ -95,8 +95,8 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 			
 				segnalazione = new Segnalazione();
 				segnalazione.setId(result.getInt("id"));
-				segnalazione.setEmail(result.getString("email"));
 				segnalazione.setNomeUtente(result.getString("nome_utente"));
+				segnalazione.setEmail(result.getString("email"));
 				segnalazione.setMotivazione(result.getString("motivazione"));
 				segnalazione.setCommento(result.getString("commento"));
 				segnalazione.setRisposta(result.getString("risposta"));
@@ -122,13 +122,14 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 	@Override
 	public void update(Segnalazione segnalazione) {
 	
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
-			String update = "update segnalazione SET risposta = ?, risolto = ? WHERE id = ?";
+			String update = "update segnalazione SET risposta = ?, risolto = ?, mostra = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, segnalazione.getRisposta());
 			statement.setBoolean(2, segnalazione.getRisolto());
-			statement.setInt(3, segnalazione.getId());
+			statement.setBoolean(3, segnalazione.getMostra());
+			statement.setInt(4, segnalazione.getId());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -147,7 +148,7 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 	@Override
 	public void delete(Segnalazione segnalazione) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "delete FROM segnalazione WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);

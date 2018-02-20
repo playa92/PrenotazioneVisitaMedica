@@ -18,7 +18,7 @@ public class ImpiegatoDaoJDBC implements ImpiegatoDao {
 	@Override
 	public void save(Impiegato impiegato) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String insert = "insert INTO impiegato(username, password, ruolo) values(?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -42,7 +42,7 @@ public class ImpiegatoDaoJDBC implements ImpiegatoDao {
 	@Override
 	public Impiegato findByPrimaryKey(String username) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		Impiegato impiegato = null;
 		try {
 			PreparedStatement statement;
@@ -50,6 +50,7 @@ public class ImpiegatoDaoJDBC implements ImpiegatoDao {
 			statement = connection.prepareStatement(query);
 			statement.setString(1, username);
 			ResultSet result = statement.executeQuery();
+			
 			if(result.next()) {
 				
 				impiegato = new Impiegato();
@@ -75,7 +76,7 @@ public class ImpiegatoDaoJDBC implements ImpiegatoDao {
 	@Override
 	public void update(Impiegato impiegato) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "update impiegato SET password = ? WHERE username = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
@@ -98,7 +99,7 @@ public class ImpiegatoDaoJDBC implements ImpiegatoDao {
 	@Override
 	public void delete(Impiegato impiegato) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "delete FROM impiegato WHERE username = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);

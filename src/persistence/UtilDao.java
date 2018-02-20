@@ -17,6 +17,7 @@ public class UtilDao {
 		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "drop SEQUENCE if EXISTS id;"
+					+ "drop table if EXISTS accesso;"
 					+ "drop table if EXISTS paziente CASCADE;"
 					+ "drop table if EXISTS università;"
 					+ "drop table if EXISTS amministratore;"
@@ -53,11 +54,12 @@ public class UtilDao {
 					+ "cognome VARCHAR(255), matricola BIGINT, invalidità VARCHAR(255), "
 					+ "id_codice VARCHAR(255) REFERENCES codice_qr(\"id\"));"
 					+ "create table amministratore(username VARCHAR(255) primary key, password VARCHAR(255));"
-					+ "create table prenotazione(id_visita VARCHAR(255) primary key REFERENCES codice_qr(\"id\"),"
+					+ "create table prenotazione(id_prenotazione VARCHAR(255) primary key REFERENCES codice_qr(\"id\"),"
 					+ "nome_paziente VARCHAR(255), cognome_paziente VARCHAR(255), orario_visita VARCHAR(255), importo BIGINT);"
 					+ "create table impiegato(username VARCHAR(255) primary key, password VARCHAR(255), ruolo VARCHAR(255));"
-					+ "create table segnalazione(id BIGINT primary key, email VARCHAR(255), nome_utente VARCHAR(255), "
-					+ "motivazione VARCHAR(255), commento VARCHAR(255), risposta VARCHAR(255), risolto BOOLEAN, mostra BOOLEAN);";
+					+ "create table segnalazione(id INT primary key, nome_utente VARCHAR(255), email VARCHAR(255),"
+					+ "motivazione VARCHAR(255), commento VARCHAR(255), risposta VARCHAR(255), risolto BOOLEAN, mostra BOOLEAN);"
+					+ "create table accesso(azione VARCHAR(255), data DATE, orario VARCHAR(255), nome_utente VARCHAR(255));";
 			
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();		
@@ -105,6 +107,10 @@ public class UtilDao {
 				statement.executeUpdate();
 				
 				delete = "delete FROM segnalazione";
+				statement = connection.prepareStatement(delete);
+				statement.executeUpdate();
+				
+				delete = "delete FROM accesso";
 				statement = connection.prepareStatement(delete);
 				statement.executeUpdate();
 				

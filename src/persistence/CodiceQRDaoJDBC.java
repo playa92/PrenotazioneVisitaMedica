@@ -1,11 +1,10 @@
 package persistence;
 
 import java.sql.Connection;
-//import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import model.CodiceQR;
 import persistence.dao.CodiceQRDao;
@@ -21,12 +20,11 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 	@Override
 	public void save(CodiceQR codice) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String insert = "insert INTO codice_qr(id, orario_scadenza, convalida) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, codice.getCodice());
-//			long seconds = codice.getScadenza().getTime();
 			statement.setString(2, codice.getScadenza());
 			statement.setBoolean(3, codice.isConvalida());
 			statement.executeUpdate();
@@ -46,7 +44,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 	@Override
 	public CodiceQR findByPrimaryKey(String codice) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		CodiceQR codiceQr = null;
 		try {
 			PreparedStatement statement;
@@ -79,16 +77,16 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 	@Override
 	public List<CodiceQR> findAll() {
 		
-		Connection connection = this.dataSource.getConnection();
-		List<CodiceQR> codici = new LinkedList<>();
+		Connection connection = dataSource.getConnection();
+		List<CodiceQR> codici = new ArrayList<>();
 		CodiceQR c = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM codice_qr WHERE id = ?";
+			String query = "select * FROM codice_qr";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
-			if(result.next()) {
+			while(result.next()) {
 				
 				c = new CodiceQR();
 				c.setCodice(result.getString("id"));
@@ -113,7 +111,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 	@Override
 	public void update(CodiceQR codice) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String update = "update codice_qr SET  convalida = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
@@ -137,7 +135,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 	@Override
 	public void delete(CodiceQR codice) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "delete FROM codice_qr WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);

@@ -20,6 +20,27 @@ public class UpdateAdmin extends HttpServlet {
 		SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
 	    List<Segnalazione> segnalazioni = segnalazioneDao.findAll();
 		  
+	    Boolean tmp = true;
+	    Boolean first = true;
+	    for(Segnalazione s:segnalazioni) {
+	    	if(s.getRisolto()) {
+	    		
+	    		if(first) { 
+	    			tmp = s.getMostra(); 
+	    			first=false;
+	    		}
+	    		
+	    		if(tmp) {
+	    			s.setMostra(false);
+	    			segnalazioneDao.update(s);
+	    		}
+	    		else {
+	    			s.setMostra(true);
+	    			segnalazioneDao.update(s);
+	    		}
+	    	}
+	    }
+    
 	    if(segnalazioni.size() > 0) 
 	      request.setAttribute("segnalazioni", segnalazioni);
 	    else

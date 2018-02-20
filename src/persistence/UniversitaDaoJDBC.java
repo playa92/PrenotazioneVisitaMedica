@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-//import model.CodiceQR;
 import model.Paziente;
 import persistence.dao.UniversitaDao;
 
@@ -21,7 +20,7 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 	@Override
 	public void save(Paziente paziente) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 		String query = "insert INTO università(matricola, nome_paziente, cognome_paziente) values(?,?,?)";
 		PreparedStatement statement = connection.prepareStatement(query);
@@ -45,7 +44,7 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 	@Override
 	public Paziente findByPrimaryKey(Long id) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		Paziente paziente = null;
 		try {
 			PreparedStatement statement;
@@ -78,8 +77,8 @@ public class UniversitaDaoJDBC implements UniversitaDao {
 	@Override
 	public List<Paziente> findAll() {
 		
-		Connection connection = this.dataSource.getConnection();
-		List<Paziente> universitari = new LinkedList<>();
+		Connection connection = dataSource.getConnection();
+		List<Paziente> universitari = new ArrayList<>();
 		Paziente paziente = null;
 		try {
 			String query = "select * FROM univeristà";

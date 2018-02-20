@@ -22,7 +22,7 @@
 			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Update <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				     	<li><a id="list-element" href="${pageContext.request.contextPath}/risolviSegnalazione" onclick="window.location.href='${pageContext.request.contextPath}/update'">Nascondi/Mostra Risolti</a></li>
+				     	<li><a id="list-element" href="${pageContext.request.contextPath}/update">Nascondi/Mostra Risolti</a></li>
 				       	<li><a id="list-element" href="#">Altro</a></li>
 			        </ul>
 			     </li>
@@ -51,7 +51,7 @@
 		<tbody>
 			
 		<jstl:forEach var="i" items="${segnalazioni}">
-			<jstl:if test="${i.mostra || not i.risolto}">
+			<jstl:if test="${(i.mostra && i.risolto) || not i.risolto}">
 			<tr>
 				<td>${i.id}</td>
 				<td><a data-toggle="modal" data-target="#send" href="#" onclick="getMail(text);">${i.email}</a></td>

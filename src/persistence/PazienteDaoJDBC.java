@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import model.Paziente;
 import persistence.dao.PazienteDao;
@@ -21,7 +21,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 	@Override
 	public void save(Paziente paziente) {
 			
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String insert = "insert INTO paziente(codice_fiscale, nome, cognome, matricola, invalidità, id_codice) values (?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
@@ -51,7 +51,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 	@Override
 	public Paziente findByPrimaryKey(String codiceFiscale) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		Paziente paziente = null;
 		try {
 			PreparedStatement statement;
@@ -87,8 +87,8 @@ public class PazienteDaoJDBC implements PazienteDao {
 	@Override
 	public List<Paziente> findAll() {
 		
-		Connection connection = this.dataSource.getConnection();
-		List<Paziente> pazienti = new LinkedList<>();
+		Connection connection = dataSource.getConnection();
+		List<Paziente> pazienti = new ArrayList<>();
 		Paziente paziente = null;
 		try {
 			String query = "select * FROM paziente";
@@ -123,7 +123,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 	@Override
 	public void update(Paziente paziente) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String update = "update paziente SET  nome = ?, cognome = ?, matricola = ?, invalidità = ?, id_codice = ? WHERE codice_fiscale = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
@@ -150,7 +150,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 	@Override
 	public void delete(Paziente paziente) {
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "delete FROM paziente WHERE codice_fiscale = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
@@ -175,7 +175,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 		if(matricola == null)
 			return false;
 		
-		Connection connection = this.dataSource.getConnection();
+		Connection connection = dataSource.getConnection();
 		try {
 			PreparedStatement statement;
 			String query = "select * FROM paziente WHERE matricola = ?";
