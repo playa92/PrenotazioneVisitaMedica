@@ -77,7 +77,7 @@
 				<li class="dropdown nav-item">
 					<jstl:if test="${not loggato}">
 						  <!-- login -->						
-						  <a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Accedi<b class="caret"></b></a>       		 
+						  <a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-user"></span> Accedi<b class="caret"></b></a>       		 
 				       		  <div class="modal fade" id="myModal" role="dialog">
 							    <div class="modal-dialog modal-sm">
 							      <div class="modal-content login-form">
@@ -103,7 +103,7 @@
 					<jstl:if test="${loggato}">
 					<!-- logout -->
 					<li id="dialog" class="dropdown nav-item">
-			       			<a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-log-in"></span> Disconnetti<b class="caret"></b></a>       		 
+			       			<a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-user"></span> Disconnetti<b class="caret"></b></a>       		 
 				       		<div style="color:yellow; margin:-34px -300px; position:absolute">Benvenuto <jstl:out value="${username}"/>!</div>		
 				       		  <div class="modal fade" id="myModal" role="dialog">
 							    <div class="modal-dialog modal-md">
@@ -191,21 +191,21 @@
 	    <div class="carousel-inner">
 	    <div class="item active">
 	        <img src="images/studio_medico.jpg" alt="studio medico">
-	        <div class="carousel-content" style="margin:55px 0 0 55px;">
-		        <a href="html/prenotazione.jsp">Prenota subito la tua visita</a>
+	        <div class="carousel-content" style="margin:55px 0 0 25px;">
+		        <a href="html/prenotazione.html">Prenota subito la tua visita</a>
 		    </div>
 	    </div>	
 	      
 	    <div class="item">
 	        <img src="images/cerca_prenotazione.jpg" alt="Ricerca">
-	        <div class="carousel-content" style="margin:59px 0 0 70px;font-size:40px;">
+	        <div class="carousel-content" style="margin:55px 0 0 90px;font-size:40px;">
 		        <a href="html/cerca_prenotazione.html">Cerca la tua prenotazione</a>
 		    </div>
 	    </div>
 	      
 	    <div class="item">
 	        <img src="images/statistiche.jpg" alt="Statistiche">
-	        <div class="carousel-content">
+	        <div class="carousel-content" style="margin:55px 0 0 25px;">
 		        <a href="restituisciPrenotazioni">Visualizza le prenotazioni correnti</a>
 		    </div>
 	    </div>
@@ -267,7 +267,7 @@
 	                    <h5>About us</h5>
 	                    <ul>
 <!-- 	                        <li><a href="#">Company Information</a></li> -->
-	                        <li><a href="restituisciSegnalazioni?assistenza">Contact us</a></li>
+	                        <li><a href="restituisciSegnalazioni">Contact us</a></li>
 <!-- 	                        <li><a href="#">Reviews</a></li> -->
 	                    </ul>
 	                </div>

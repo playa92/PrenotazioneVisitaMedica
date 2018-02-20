@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.ServletException;
@@ -31,10 +32,16 @@ public class RicercaPrenotazione extends HttpServlet {
 		
 		if(codice != null) {	
 		
-			String dateFormat = "HH:mm";
-			String current = new SimpleDateFormat(dateFormat).format(new Date());
+			Date scadenza = null;
+			try {
+				SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+				scadenza = format.parse(codice.getScadenza());
+				
+			} catch(ParseException e) {
+				e.printStackTrace();
+			}
 			
-			if(codice.getScadenza().compareTo(current) > 0) {
+			if(scadenza.after(new Date())) {
 				response.getWriter().write("false;Prenotazione scaduta");
 			} else {
 				Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(codice.getCodice());

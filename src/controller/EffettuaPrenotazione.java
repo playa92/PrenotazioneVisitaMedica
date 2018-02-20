@@ -26,12 +26,13 @@ import persistence.dao.PrenotazioneDao;
 @SuppressWarnings("serial")
 public class EffettuaPrenotazione extends HttpServlet {
 	
-	private final int MAX = 50;
-	private final int ELAPSE = 30;//TEMPO EFFETTIVO 
+	private final int LIMITE_PRENOTAZIONI = 50;
+	private final int TEMPO_EFFETTIVO = 30;
+	
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 10;
 	private final String ORARIO_INIZIO = "9:00:00"; 
-	private final String ORARIO_FINE = "17:45:00";
+	private final String ORARIO_FINE = "23:45:00";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +43,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 		Calendar start = setTimeToCalendar(dateFormat, ORARIO_INIZIO, false);
 		Calendar end = setTimeToCalendar(dateFormat, ORARIO_FINE, true);
 		Calendar now = setTimeToCalendar(dateFormat, currentTime, true);
-		now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + ELAPSE);
+		now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + TEMPO_EFFETTIVO);
 		
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 		int visiteTotali = prenotazioneDao.getTotalVisits();
@@ -54,7 +55,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 		}
 		
 		PrintWriter out = response.getWriter();
-		if(visiteTotali >= MAX) {
+		if(visiteTotali >= LIMITE_PRENOTAZIONI) {
 			out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
 			return;
 		}

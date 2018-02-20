@@ -58,7 +58,7 @@ body {
 }
 
 /* /////////////////////////////////////////////////// */
-/* /////////////////////// HOME ////////////////////// */
+/* /////////////////////// Home ////////////////////// */
 /* /////////////////////////////////////////////////// */
 
 /* CAROUSEL */
@@ -313,6 +313,10 @@ textarea:required:focus {
 /* /////////////////////////////////////////////////// */
 
 /* CERCA PRENOTAZIONE */
+
+#searchInput:focus {
+	border: white;
+}
 
 #fountainG, #info {
 	display:none;
@@ -594,7 +598,7 @@ textarea:required:focus {
 .form-password input[type="text"],
 .form-password input[type="password"] 
 {
-	padding: 10px 39px 10px 39px;
+/* 	padding: 10px 39px 10px 39px; */
     color: black;
     border:none; 
   	background-color:#ffffff;

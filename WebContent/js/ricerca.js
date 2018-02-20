@@ -13,7 +13,7 @@ $(document).ready(function() {
 			else {	
 				$("#fountainG").show();
 				setTimeout(function() {
-				   search(); 
+				   search();  
 				}, 2000);
 			}
 		})
@@ -25,14 +25,14 @@ $(document).ready(function() {
 
 
 function search() {
-		
+
 	  $.ajax({
 		  type:"post",
           url:"../ricercaPrenotazione",  
-          data:{hexcode : $("#input").val().toUpperCase()},
+          data:{hexcode : $("#searchInput").val().toUpperCase()},
 		  success:function(data) {
 			var a = data.split(";");
-			
+
 			if(a[0] == "true") {
 				$("#orario").text(a[1]);
 				orario_visita = a[1];
@@ -49,7 +49,7 @@ function search() {
 				$("#err").modal("show");
 				$("#message").text(a[1]);
 			}
-		  }
+		  },
 	  });
 }
 
@@ -59,15 +59,15 @@ var orario_inizio_countdown = null;
 
 function start() {		
 	
-	var orario_corrente = moment(moment()).format("HH:mm:ss");
+//	var orario_corrente = moment(moment()).format("HH:mm:ss");
 	
-	if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
+//	if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
 		countDown();
-	} else {
-		 document.getElementById('countdown').innerHTML = "non disponibile"
-	     $("#countdown").css({color:"red"});
-		//TODO se timer attivo disattivare
-	}
+//	} else {
+//		 document.getElementById('countdown').innerHTML = "non disponibile"
+//	     $("#countdown").css({color:"red"});
+//		//TODO se timer attivo disattivare
+//	}
 }
 
 function countDown() {
