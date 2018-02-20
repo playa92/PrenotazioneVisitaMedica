@@ -6,9 +6,11 @@ public class Segnalazione {
 	private String email;
 	private String nomeUtente;
 	private String motivazione;
-	private String domanda;
+	private String commento;
 	private String risposta;
 	private Boolean risolto;
+	///////////////////////
+	private Boolean mostra;
 	
 	public Segnalazione() {}
 	
@@ -20,7 +22,7 @@ public class Segnalazione {
 		this.nomeUtente = nomeUtente;
 		this.motivazione = motivazione;
 		this.risposta = risposta;
-		this.domanda = domanda;
+		this.commento = domanda;
 		this.risolto = risolto;
 	}
 
@@ -55,6 +57,14 @@ public class Segnalazione {
 	public void setMotivazione(String motivazione) {
 		this.motivazione = motivazione;
 	}
+	
+	public String getCommento() {
+		return commento;
+	}
+
+	public void setCommento(String commento) {
+		this.commento = commento;
+	}
 
 	public String getRisposta() {
 		return risposta;
@@ -64,19 +74,19 @@ public class Segnalazione {
 		this.risposta = risposta;
 	}
 
-	public String getDomanda() {
-		return domanda;
-	}
-
-	public void setDomanda(String domanda) {
-		this.domanda = domanda;
-	}
-
 	public Boolean getRisolto() {
 		return risolto;
 	}
 
 	public void setRisolto(Boolean risolto) {
 		this.risolto = risolto;
+	}
+
+	public Boolean getMostra() {
+		return mostra;
+	}
+
+	public void setMostra(Boolean mostra) {
+		this.mostra = mostra;
 	}
 }

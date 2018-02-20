@@ -21,7 +21,7 @@ public class EffettuaSegnalazione extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String motivazione = request.getParameter("motivazione");
-		String domanda = request.getParameter("domanda");
+		String commento = request.getParameter("commento");
 		
 		SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
 	
@@ -30,7 +30,7 @@ public class EffettuaSegnalazione extends HttpServlet {
 		segnalazione.setEmail(email);
 		segnalazione.setNomeUtente(nome + " " + cognome);
 		segnalazione.setMotivazione(motivazione);
-		segnalazione.setDomanda(domanda);
+		segnalazione.setCommento(commento);
 		segnalazioneDao.save(segnalazione);
 		
 		List<Segnalazione> segnalazioni = segnalazioneDao.findAll();

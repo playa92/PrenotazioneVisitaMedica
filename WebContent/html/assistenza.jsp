@@ -13,7 +13,6 @@
 </head>
 
 <body id="Assistenza">
-	<jstl:if test="${not vuoto}">
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
 		<div class="container-fluid">
@@ -24,7 +23,6 @@
 	   		</ul>
 		</div>	
 	</nav>
-	</jstl:if>
 
 	<div class="jumbotron text-center" style="background:#720802;color:white">
 		<h1>Assistenza</h1>
@@ -55,7 +53,7 @@
 					  		<option onclick="hideTextField();">Connessione scaduta</option>
 					  		<option onclick="toggleTextField();">Altro</option>
 						</select>
-						<textarea id="textarea" name="domanda" required></textarea>
+						<textarea id="textarea" name="commento" required></textarea>
 						<div class="modal-footer" style="text-align:center;">
 		      		 		<input id="submitSegnalazione" type="submit" class="btn btn-md" value="Invia"/>
 		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
@@ -67,7 +65,7 @@
 	   </div>
 	</div>
 	<jstl:if test="${not vuoto}">
-	<h1 style="padding: 0 0 0 1em;">Domande frequenti (FAQ) </h1><br><br>
+		<h1 style="padding: 0 0 0 1em;">Domande frequenti (FAQ) </h1><br><br>
 	</jstl:if>
 	<div class="wrapper">  
 	  <div class="half">
@@ -79,7 +77,7 @@
 				<jstl:set var="count" value="${count + 1}" scope="page"/> 
 				 <div class="tab">
 			        <input id="tab-${count}" type="checkbox" name="tabs">    
-			        <label for="tab-${count}">${i.domanda} ( ${i.motivazione} )</label>
+			        <label for="tab-${count}">${i.commento} ( ${i.motivazione} )</label>
 			        <div class="tab-content"><p>${i.risposta}.</p></div>
 			    </div>			
 			</jstl:forEach>
@@ -88,11 +86,8 @@
 	</div>
 	
 	<jstl:if test="${vuoto}">
+		<div style="text-align:center; margin-top:100px;">
 			<h1> Nessuna FAQ disponibile </h1>
-		<div style="margin-left:100px">
-			<button type='button'class='btn btn-default btn-lg' onclick="window.location='${pageContext.request.contextPath}/home'">  
-				Torna alla Home <span class='glyphicon glyphicon-home'></span>
-			</button>
 		</div>
 	</jstl:if>
 	

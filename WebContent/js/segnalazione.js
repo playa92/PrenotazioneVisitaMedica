@@ -17,7 +17,7 @@ function set(idMotivazione, idRisolvi) {
 //}
 	
 function getMail(mail) {
-	$("form").attr("action","https://formspree.io/" + mail );
+	$("form").attr("action","https://formspree.io/" + mail);
 }
 
 $(document).ready(function() {
@@ -29,4 +29,8 @@ $('.modal').on('hide.bs.modal', function(e) {
 	if(e.target.id == "risolvi" || e.target.id == "send") {
 		$("textarea").val('');
 	}
-})
+});
+
+if(typeof window.history.pushState == 'function') {
+    window.history.pushState({}, "Hide", "http://localhost:8080/PrenotazioneVisitaMedica/risolviSegnalazione");
+}

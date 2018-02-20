@@ -38,7 +38,6 @@ public class Home extends HttpServlet {
 				session.setAttribute("wrong", false);
 			}
 		}
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -51,9 +50,11 @@ public class Home extends HttpServlet {
 	@Override
 	public void destroy() {
 		
-		if(session != null && session.getAttribute("loggato").equals(true)) {
-//			System.out.println("invalidate");
-			session.invalidate();
+		if(session.getAttribute("loggato") != null) { 
+				if(session.getAttribute("loggato").equals(true)) {
+//				System.out.println("invalidate");
+				session.invalidate();
+			}
 		}
 	}
 	

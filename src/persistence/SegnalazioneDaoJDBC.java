@@ -51,19 +51,20 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 		
 		Connection connection = this.dataSource.getConnection();
 		try {
-			String insert = "insert INTO segnalazione(id, email, nome_utente, motivazione, domanda, risposta, risolto) values(?,?,?,?,?,?,?);";
+			String insert = "insert INTO segnalazione(id, email, nome_utente, motivazione, commento, risposta, risolto, mostra) values(?,?,?,?,?,?,?,?);";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, segnalazione.getId());
-			if(segnalazione.getDomanda() != null) { 
+			if(segnalazione.getCommento() != null) { 
 				statement.setString(2, segnalazione.getEmail());
 			} else {
 				statement.setNull(2, Types.NULL);
 			}
 			statement.setString(3, segnalazione.getNomeUtente());
 			statement.setString(4, segnalazione.getMotivazione());
-			statement.setString(5, segnalazione.getDomanda());
+			statement.setString(5, segnalazione.getCommento());
 			statement.setString(6, "Nessuna");
 			statement.setBoolean(7, false);
+			statement.setBoolean(8, true);
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
@@ -86,7 +87,7 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 		List<Segnalazione> segnalazioni = new LinkedList<>();
 		Segnalazione segnalazione = null;
 		try {
-			String query = "select * FROM segnalazione";
+			String query = "select * FROM segnalazione ORDER BY id ASC";
 			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
@@ -97,9 +98,10 @@ public class SegnalazioneDaoJDBC implements SegnalazioneDao {
 				segnalazione.setEmail(result.getString("email"));
 				segnalazione.setNomeUtente(result.getString("nome_utente"));
 				segnalazione.setMotivazione(result.getString("motivazione"));
-				segnalazione.setDomanda(result.getString("domanda"));
+				segnalazione.setCommento(result.getString("commento"));
 				segnalazione.setRisposta(result.getString("risposta"));
 				segnalazione.setRisolto(result.getBoolean("risolto"));
+				segnalazione.setMostra(result.getBoolean("mostra"));
 				segnalazioni.add(segnalazione);
 			}
 			

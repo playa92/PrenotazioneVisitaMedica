@@ -25,6 +25,14 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>controller.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>RicercaPrenotazione</servlet-name>
     <servlet-class>controller.RicercaPrenotazione</servlet-class>
   </servlet>
@@ -79,5 +87,13 @@
   <servlet-mapping>
     <servlet-name>ConvalidaPrenotazione</servlet-name>
     <url-pattern>/convalidaPrenotazione</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateAdmin</servlet-name>
+    <servlet-class>controller.UpdateAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateAdmin</servlet-name>
+    <url-pattern>/update</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -57,7 +57,7 @@ public class UtilDao {
 					+ "nome_paziente VARCHAR(255), cognome_paziente VARCHAR(255), orario_visita VARCHAR(255), importo BIGINT);"
 					+ "create table impiegato(username VARCHAR(255) primary key, password VARCHAR(255), ruolo VARCHAR(255));"
 					+ "create table segnalazione(id BIGINT primary key, email VARCHAR(255), nome_utente VARCHAR(255), "
-					+ "motivazione VARCHAR(255), domanda VARCHAR(255), risposta VARCHAR(255), risolto BOOLEAN);";
+					+ "motivazione VARCHAR(255), commento VARCHAR(255), risposta VARCHAR(255), risolto BOOLEAN, mostra BOOLEAN);";
 			
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();		
@@ -75,7 +75,6 @@ public class UtilDao {
 			}
 		}
 	}
-
 
 	public void resetDatabase() throws PersistenceException {
 			

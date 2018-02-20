@@ -18,13 +18,15 @@
 				<li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
+			     <jstl:if test="${loggatoAdmin}">
 			     <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Update <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				     	<li><a id="list-element" href="${pageContext.request.contextPath}/risolviSegnalazione">Nascondi/Mostra Risolti</a></li>
+				     	<li><a id="list-element" href="${pageContext.request.contextPath}/risolviSegnalazione" onclick="window.location.href='${pageContext.request.contextPath}/update'">Nascondi/Mostra Risolti</a></li>
 				       	<li><a id="list-element" href="#">Altro</a></li>
 			        </ul>
 			     </li>
+			     </jstl:if>
 	   		</ul>
 		</div>	
 	</nav>
@@ -34,13 +36,14 @@
 	  <h4>Rimani col puntatore sulla motivazione per visualizzare ulteriori dettagli</h4>
 	</div>
 	
+	<jstl:if test="${not vuoto}">
 	<div class="form-segnalazione">
 		<table style="color:#092147;width:100%;">
 		<thead>
 			<tr>
 				<th>Codice</th>
 				<th>E-mail</th>
-				<th>Nome</th>
+				<th>Utente</th>
 				<th>Motivazione</th>
 				<th>Stato</th>
 			</tr>
@@ -48,12 +51,13 @@
 		<tbody>
 			
 		<jstl:forEach var="i" items="${segnalazioni}">
+			<jstl:if test="${i.mostra || not i.risolto}">
 			<tr>
 				<td>${i.id}</td>
 				<td><a data-toggle="modal" data-target="#send" href="#" onclick="getMail(text);">${i.email}</a></td>
 				<td>${i.nomeUtente}</td>
 				<td>
-				  <div id="ris${i.id}" title="${i.domanda}">${i.motivazione}</div>
+				  <div id="ris${i.id}" title="${i.commento}">${i.motivazione}</div>
 				</td>
 				<jstl:if test="${i.risolto}">
 					<td><a data-toggle="modal" href="#" style="color:green; pointer-events:none; text-decoration: none;"> Risolto</a> </td>
@@ -62,12 +66,20 @@
 					<td><a id="risolvi${i.id}" data-toggle="modal" data-target="#risolvi" href="#" 
 					onclick="set('ris${i.id}', 'risolvi${i.id}');" style="color:red; text-decoration: none;"> Da risolvere</a> </td>
 				</jstl:if>
-			</tr>			
+			</tr>
+			</jstl:if>			
 		</jstl:forEach>
 			
 		</tbody>
 		</table>
 	</div>
+	</jstl:if>
+	
+	<jstl:if test="${vuoto}">
+		<div style="text-align:center; margin-top:100px;">
+			<h1> Nessuna segnalazione disponibile </h1>
+		</div>
+	</jstl:if>
 	
 <!-- EMAIL -->
 		<div id="dialog">

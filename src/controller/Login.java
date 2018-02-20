@@ -27,21 +27,7 @@ public class Login extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		//disconnessione
-		if((request.getParameter("logout") != null) && (request.getParameter("logout").equals("true"))) {
-			session.setAttribute("popUp", false);
-			session.setAttribute("username", null);
-			session.setAttribute("loggato", false);
-			
-			if(session.getAttribute("loggatoAdmin") != null && session.getAttribute("loggatoAdmin").equals(true)) {
-				session.setAttribute("loggatoAdmin", false);
-			} else {
-				session.setAttribute("loggatoEmployee", false);
-			}	
-		    response.sendRedirect("home");
-		}
+		this.doPost(request, response);
 	}
 	
 	@Override
@@ -64,7 +50,8 @@ public class Login extends HttpServlet {
 				
 				session.setAttribute("popUp", true);
 				session.setAttribute("wrong", true);//attributo che serve solo per non visualizzare il popUp
-				session.setAttribute("popUpMessage", "Nessun utente registrato come " + username);	
+				session.setAttribute("popUpMessage", "Nessun utente registrato come " + username);
+				
 			} else { 
 				if(password.equals(impiegato.getPassword())) {
 				
@@ -85,7 +72,6 @@ public class Login extends HttpServlet {
 			}	
 			
 		} else { 
-			//connessione
 			if(password.equals(amministratore.getPassword())) {	
 				
 				session.setAttribute("numSegnalazioni", contaSegnalazioni());
@@ -111,24 +97,21 @@ public class Login extends HttpServlet {
 		FileWriter fileWriter = null;
 		BufferedWriter bufferedWriter = null;
 		PrintWriter out = null;
-		
 		try {
-			 fileWriter = new FileWriter("./accesso.log", true);
+			 fileWriter = new FileWriter("accesso.log", true);
 			 bufferedWriter = new BufferedWriter(fileWriter);
 			 out = new PrintWriter(bufferedWriter);
 			 
 			 String formatDate = "yyyy/MM/dd HH:mm:ss";
 			 String current = new SimpleDateFormat(formatDate).format(new Date());
 			 
-			 out.println(current + " ---> " + username);
+			 out.println(current + " Sign-in by " + username);
+			 out.flush();
+			 out.close();
 			 
 		} catch(IOException e) {
 			e.printStackTrace();
-			
-		} finally {
-			out.flush();
-			out.close();
-		}
+		} 
 	}
 	
 	private int contaSegnalazioni() {
