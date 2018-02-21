@@ -2,9 +2,11 @@ package persistence;
 
 import persistence.dao.AmministratoreDao;
 import persistence.dao.CodiceQRDao;
+import persistence.dao.ImpiegatoDao;
 import persistence.dao.UniversitaDao;
 import persistence.dao.PazienteDao;
 import persistence.dao.PrenotazioneDao;
+import persistence.dao.SegnalazioneDao;
 
 public abstract class DaoFactory {
 
@@ -33,9 +35,9 @@ public abstract class DaoFactory {
 	
 	public abstract PrenotazioneDao getPrenotazioneDao();
 	
-	public abstract ImpiegatoDaoJDBC getImpiegatoDao();
+	public abstract ImpiegatoDao getImpiegatoDao();
 	
-	public abstract SegnalazioneDaoJDBC getSegnalazioneDao();
+	public abstract SegnalazioneDao getSegnalazioneDao();
 	
 	public abstract UtilDao getUtilDao();
 }

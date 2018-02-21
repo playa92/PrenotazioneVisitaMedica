@@ -2,9 +2,11 @@ package persistence;
 
 import persistence.dao.AmministratoreDao;
 import persistence.dao.CodiceQRDao;
+import persistence.dao.ImpiegatoDao;
 import persistence.dao.PazienteDao;
 import persistence.dao.UniversitaDao;
 import persistence.dao.PrenotazioneDao;
+import persistence.dao.SegnalazioneDao;
 
 public class PostgresDaoFactory extends DaoFactory {
 
@@ -13,8 +15,9 @@ public class PostgresDaoFactory extends DaoFactory {
 	static {
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();
-			dataSource = new DataSource("jdbc:postgresql://localhost:5432/Prenotazione","postgres","postgres");
-		
+			dataSource = new DataSource("jdbc:postgresql://prenotazione-18.c5jx7llgmi4h.us-east-2.rds.amazonaws.com:5432/Prenotazione","postgres","postgres");
+//			dataSource = new DataSource("jdbc:postgresql://localhost:5432/Prenotazione","postgres","postgres");
+			
 		} catch(Exception e) {
 			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n" + e);
 		}
@@ -46,12 +49,12 @@ public class PostgresDaoFactory extends DaoFactory {
 	}
 	
 	@Override
-	public ImpiegatoDaoJDBC getImpiegatoDao() {
+	public ImpiegatoDao getImpiegatoDao() {
 		return new ImpiegatoDaoJDBC(dataSource);
 	}
 	
 	@Override
-	public SegnalazioneDaoJDBC getSegnalazioneDao() {
+	public SegnalazioneDao getSegnalazioneDao() {
 		return new SegnalazioneDaoJDBC(dataSource);
 	}
 	

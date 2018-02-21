@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,6 @@ import persistence.DatabaseManager;
 import persistence.dao.SegnalazioneDao;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = {"", "/home"})
 public class Home extends HttpServlet {
 	
 	private HttpSession session;
@@ -50,10 +48,12 @@ public class Home extends HttpServlet {
 	@Override
 	public void destroy() {
 		
+		System.out.println("DESTROYED");
+		
 		if(session.getAttribute("loggato") != null) { 
 				if(session.getAttribute("loggato").equals(true)) {
-//				System.out.println("invalidate");
-				session.invalidate();
+					System.out.println("INVALIDATE");
+					session.invalidate();
 			}
 		}
 	}
