@@ -44,11 +44,7 @@ nav.navbar-default{
 
 #navbar-text:hover, #navbar-text:focus, #buttonForgot:hover {
    color: white;
-}
-     
-#right-fields {
-	margin-right: 10px;
-}
+} 
 
 #list-element:link, #list-element:visited {
     color:  #092147;
@@ -239,14 +235,16 @@ textarea:required:focus {
 /* /////////////////////////////////////////////////// */
 
 .form-prenotazione {
-	width: 600px;
-	height: 630px;
-	padding-left: 25px;
-	padding-right: 25px;
-	padding-top: 12px;
-	background-color: #092147;
-	margin: auto;
-	box-shadow: 0 0 2px 2px #0b102d;
+  max-width: 600px;
+  max-height: 630px;
+  min-width:200px;
+  min-height:230px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 12px;
+  background-color: #092147;
+  margin: auto;
+  box-shadow: 0 0 2px 2px #0b102d;
 }
 
 .form-prenotazione label {  
@@ -432,12 +430,12 @@ textarea:required:focus {
 }
 
 .form-assistenza {
-	width: 400px;
-	height: 450px;
-	padding-left: 25px;
-	padding-right: 25px;
-	padding-top: 12px;
-	margin: 10px auto 10px auto;
+  width: 100%;
+  height: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 12px;
+  margin: 10px auto 10px auto;
 }
 
 .form-assistenza label {  
@@ -686,8 +684,8 @@ textarea:required:focus {
 
 .form-segnalazione td, .form-segnalazione th {
     border: 1px solid #ddd;
-    padding: 8px;	    
-    
+    padding: 8px;
+    text-align: center;	    
 }
 
 .form-segnalazione tr:nth-child(even) {
@@ -701,8 +699,55 @@ textarea:required:focus {
 .form-segnalazione th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #ffa500;
     color: white;
 /*     box-shadow: 0 0 2px 2px #77600d; */
+}
+
+/* ////////////////////////////////////////////////// */
+/* ////////////////// Log Accessi /////////////////// */
+/* ////////////////////////////////////////////////// */
+
+.table-accessi body {
+   background-attachment: fixed;
+}
+
+.table-accessi .table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+	margin: auto; 
+}
+
+.table-accessi th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #1db5d3;
+    color: white;
+/*     box-shadow: 0 0 2px 2px #77600d; */
+}
+
+.table-accessi td, .table-accessi th {
+    border: 1px solid white;
+    padding: 8px;
+    text-align: center;
+    color:#092147;	    
+}
+
+.table-accessi tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.table-accessi tr:hover {
+	background-color: #ddd;
+}
+
+#azione {
+/* 	padding:0em 0.2em 0em 0.2em; */
+/* 	display:block; */
+/* 	color:#ffffff; */
+/* 	border-radius: 25px; */
+/* 	margin: auto; */
 }

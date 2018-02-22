@@ -1,16 +1,21 @@
 package controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import model.Accesso;
 import model.Amministratore;
 import model.Impiegato;
 import model.Segnalazione;
 import persistence.DatabaseManager;
+import persistence.dao.AccessoDao;
 import persistence.dao.AmministratoreDao;
 import persistence.dao.ImpiegatoDao;
 import persistence.dao.SegnalazioneDao;
@@ -57,7 +62,7 @@ public class Login extends HttpServlet {
 					session.setAttribute("loggatoEmployee", true);
 					session.setAttribute("username", username);//JSTL
 					session.setMaxInactiveInterval(SCADENZA_SESSIONE);//scadenza in secondi
-					registraAccesso(username);
+					registraAccesso(username, "login");
 					
 				} else {
 					session.setAttribute("popUp", true);
@@ -76,7 +81,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("loggatoAdmin", true);
 				session.setAttribute("username", username);//JSTL
 				session.setMaxInactiveInterval(SCADENZA_SESSIONE);
-				registraAccesso(username);
+				registraAccesso(username, "login");
 								
 			} else {
 				session.setAttribute("popUp", true);
@@ -87,9 +92,16 @@ public class Login extends HttpServlet {
 		response.sendRedirect("home");
 	}
 	
-	private void registraAccesso(String username) {
+	private void registraAccesso(String username, String azione) {
 		
-		//TODO
+		AccessoDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getAccessoDao();
+		Accesso accesso = new Accesso();
+		accesso.setAzione(azione);
+		Date date = new Date();
+		accesso.setData(date);
+		accesso.setOrario(new SimpleDateFormat("hh:MM:ss").format(date));
+		accesso.setNomeUtente(username);
+		accessoDao.save(accesso);
 	}
 	
 	private int contaSegnalazioni() {

@@ -14,8 +14,6 @@
 
 <body id="show_res">
 	
-	<jstl:if test="${not vuoto}">
-		
 		<!-- Navbar -->
 		<nav role="navigation" role="navigation" class="navbar">
 			<div class="container-fluid">
@@ -31,6 +29,7 @@
 			<h1> Prenotazioni correnti</h1> <br>
 		</div>
 		
+	<jstl:if test="${not vuoto}">
 		  <!-- SEARCHBAR-->
 		  <div align="center"><br>
 		  	<input id="search" class="button" placeholder="Cerca..." />
@@ -94,15 +93,9 @@
 		
 	</jstl:if>
 	
-	<jstl:if test="${vuoto}">
-		<br>
-		<div class="jumbotron text-center" style="background:#5d7396; color:white">
+		<jstl:if test="${vuoto}">
+		<div style="text-align:center; margin-top:100px;">
 			<h1> Nessuna Prenotazione disponibile </h1>
-		</div>
-		<div align="center">
-			<button type='button'class='btn btn-default btn-lg' onclick="window.location='<%=request.getContextPath()%>/home'">  
-				Torna alla Home <span class='glyphicon glyphicon-home'></span>
-			</button>
 		</div>
 	</jstl:if>
 	

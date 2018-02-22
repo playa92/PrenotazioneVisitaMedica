@@ -105,4 +105,12 @@
     <servlet-name>UpdateAdmin</servlet-name>
     <url-pattern>/update</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ControlloAccessi</servlet-name>
+    <servlet-class>controller.ControlloAccessi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControlloAccessi</servlet-name>
+    <url-pattern>/controlloAccessi</url-pattern>
+  </servlet-mapping>
 </web-app>

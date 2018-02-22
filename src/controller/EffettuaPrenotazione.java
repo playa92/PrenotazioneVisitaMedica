@@ -31,8 +31,8 @@ public class EffettuaPrenotazione extends HttpServlet {
 	
 	private final int CONVALIDA = 20;
 	private final int TEMPO_VISITA = 10;
-	private final String ORARIO_INIZIO = "9:00:00"; 
-	private final String ORARIO_FINE = "23:45:00";
+	private final String ORARIO_INIZIO = "00:00:00"; 
+	private final String ORARIO_FINE = "23:59:00";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -110,7 +110,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 			paziente.setCodiceFiscale(json.getString("codiceFiscale"));
 			paziente.setNome(json.getString("nome"));
 			paziente.setCognome(json.getString("cognome"));
-			paziente.setInvalidita(json.getString("invalidita'"));
+			paziente.setInvalidita(json.getString("invalidita"));
 			
 			Double imp = new Double(25);
 			

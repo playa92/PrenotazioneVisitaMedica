@@ -1,3 +1,3 @@
 # PrenotazioneVisitaMedica
 
-Il progetto Ã¨ stato testato con Mozilla Firefox
+Il progetto è stato testato con Google Chrome

@@ -1,5 +1,6 @@
 package persistence;
 
+import persistence.dao.AccessoDao;
 import persistence.dao.AmministratoreDao;
 import persistence.dao.CodiceQRDao;
 import persistence.dao.ImpiegatoDao;
@@ -38,6 +39,8 @@ public abstract class DaoFactory {
 	public abstract ImpiegatoDao getImpiegatoDao();
 	
 	public abstract SegnalazioneDao getSegnalazioneDao();
+	
+	public abstract AccessoDao getAccessoDao();
 	
 	public abstract UtilDao getUtilDao();
 }

@@ -40,7 +40,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand" style="color:yellow">Brand</a>
+            <a href="#" class="navbar-brand" style="color:yellow">CUP</a>
         </div>
 
         <!-- Collection of nav links and other content for toggling -->
@@ -87,9 +87,12 @@
 						</jstl:if>
 						</a>
 			     	</li>
+			     	<li class="dropdown nav-item">
+			     		<a id="navbar-text" class="nav-link dropdown-toggle" href="controlloAccessi">Logging</a>
+			     	</li>
 			     </jstl:if>   
 	   		</ul>
-		    <ul id="right-fields" class="nav navbar-nav navbar-right">
+		    <ul class="nav navbar-nav navbar-right">
 				<!--  Login -->	
 				<li class="dropdown nav-item">
 					<jstl:if test="${not loggato}">
@@ -130,7 +133,7 @@
 							            <h3 class="modal-title" style="text-align:center">Sei sicuro di voler effettuare la disconnessione</h3>
 							          </div>
 							   		  <div class="modal-body" style="text-align:center; background-color:#bcc4f2">
-							   		 		<button type="button" style="background-color: #092147; color:white" class="btn btn-default" data-dismiss="modal" onclick="window.location='logout'">Si</button>
+							   		 		<button type="button" style="background-color: #092147; color:white" class="btn btn-default" data-dismiss="modal" onclick="window.location='logout?${username}'">Si</button>
 								    		<button type="button" style="background-color: #092147; color:white" class="btn btn-defualt" data-dismiss="modal" onclick="window.location='#'">No</button>
 								      </div>
 							     </div>
@@ -139,17 +142,7 @@
 					</li>
 					</jstl:if>
 				</li> 
-			   	<!-- Ricerca -->
-<!-- 			  	<li id="navbar-text" > -->
-<!-- 		        	<form id="searchForm" class="navbar-form" role="search" action="javascript:search();"> -->
-<!-- 				    <div class="input-group"> -->
-<!-- 			            <input id="searchItem" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"> -->
-<!-- 			            <div class="input-group-btn"> -->
-<!-- 			                <button class="btn btn-default" type="submit" onclick="document.getElementById('searchForm').submit(); return false;"><i class="glyphicon glyphicon-search"></i></button> -->
-<!-- 			            </div> -->
-<!-- 			        </div> -->
-<!-- 				    </form> -->
-<!-- 			 	</li> -->
+			   
 <%-- 				    <jstl:if test="${loggatoAdmin}"> --%>
 <!-- 						<li class="dropdown nav-item"> -->
 <!-- 						  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-wrench"></span> </a>       		  -->

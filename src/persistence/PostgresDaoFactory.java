@@ -1,5 +1,6 @@
 package persistence;
 
+import persistence.dao.AccessoDao;
 import persistence.dao.AmministratoreDao;
 import persistence.dao.CodiceQRDao;
 import persistence.dao.ImpiegatoDao;
@@ -56,6 +57,11 @@ public class PostgresDaoFactory extends DaoFactory {
 	@Override
 	public SegnalazioneDao getSegnalazioneDao() {
 		return new SegnalazioneDaoJDBC(dataSource);
+	}
+	
+	@Override
+	public AccessoDao getAccessoDao() {
+		return new AccessoDaoJDBC(dataSource);
 	}
 	
 	@Override

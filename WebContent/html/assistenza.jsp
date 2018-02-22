@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
 	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
 </head>
 
 <body id="Assistenza">
@@ -35,7 +36,7 @@
 			       		
      <div class="modal fade" id="contattaci" role="dialog">
 	    <div class="modal-dialog modal-md">
-	      <div class="modal-content" style="box-shadow: 0 0 2px 2px white;background: #720802;text-align:center;">
+	      <div class="modal-content" style="box-shadow: 0 0 2px 2px white; background:#720802; text-align:center;">
 	          <div class="modal-header" style="color:white">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 	            <h3 class="modal-title">Contattaci</h3>
@@ -96,6 +97,6 @@
 	
 	<script src="${pageContext.request.contextPath}/js/scroll_up.js"> </script>
 	<script src="${pageContext.request.contextPath}/js/assistenza.js"> </script>
-	
+
 </body>
 </html>

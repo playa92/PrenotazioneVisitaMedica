@@ -30,7 +30,7 @@ public class AccessoDaoJDBC implements AccessoDao {
 			statement.setDate(2, new Date(millis));
 			statement.setString(3, accesso.getOrario());
 			statement.setString(4, accesso.getNomeUtente());
-			statement.executeQuery();
+			statement.executeUpdate();
 			
 		} catch (SQLException e) {
 			throw new PersistenceException(e.getMessage());
@@ -84,7 +84,7 @@ public class AccessoDaoJDBC implements AccessoDao {
 		
 		Connection connection = dataSource.getConnection();
 		try {
-			String delete = "delete FROM amministratore WHERE azione = ? ";
+			String delete = "delete FROM amministratore WHERE azione = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setString(1, accesso.getAzione());
 			statement.executeUpdate();
