@@ -16,7 +16,7 @@
 
 <body>
 
-		 <!-- Loader -->
+<!-- Loader -->
 <!-- 	<div id="preloader" class="container"> -->
 <!-- 		<div class="row"> -->
 <!-- 			<div class="load-overlay"> -->
@@ -26,11 +26,28 @@
 <!-- 			</div> -->
 <!-- 		</div> -->
 <!-- 	</div> -->
-			
-	<!-- Navbar -->
-	<nav role="navigation" role="navigation" class="navbar">
-		<div class="container-fluid">
-			<ul class="nav navbar-nav">
+
+
+
+    <nav class="navbar navbar-default">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand" style="color:yellow">Brand</a>
+        </div>
+
+        <!-- Collection of nav links and other content for toggling -->
+
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+
+          	<ul class="nav navbar-nav">
 				<li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
@@ -133,15 +150,18 @@
 <!-- 			        </div> -->
 <!-- 				    </form> -->
 <!-- 			 	</li> -->
-				    <jstl:if test="${loggatoAdmin}">
-						<li class="dropdown nav-item">
-						  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-wrench"></span> </a>       		 
-						</li>
-					</jstl:if>
+<%-- 				    <jstl:if test="${loggatoAdmin}"> --%>
+<!-- 						<li class="dropdown nav-item"> -->
+<!-- 						  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-wrench"></span> </a>       		  -->
+<!-- 						</li> -->
+<%-- 					</jstl:if> --%>
 			</ul> 
-		
-		</div>	
-	</nav>
+
+        </div>
+
+    </nav>
+
+
 		
 	<div class="jumbotron text-center">
   		<h1>CUP Centro Unico Prenotazione</h1>
@@ -198,7 +218,7 @@
 	      
 	    <div class="item">
 	        <img src="images/cerca_prenotazione.jpg" alt="Ricerca">
-	        <div class="carousel-content" style="margin:55px 0 0 90px;font-size:40px;">
+	        <div class="carousel-content" style="margin:55px 0 0 90px;">
 		        <a href="html/cerca_prenotazione.html">Cerca la tua prenotazione</a>
 		    </div>
 	    </div>

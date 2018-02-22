@@ -110,7 +110,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 			paziente.setCodiceFiscale(json.getString("codiceFiscale"));
 			paziente.setNome(json.getString("nome"));
 			paziente.setCognome(json.getString("cognome"));
-			paziente.setInvalidita(json.getString("invalidita"));
+			paziente.setInvalidita(json.getString("invalidita'"));
 			
 			Double imp = new Double(25);
 			
