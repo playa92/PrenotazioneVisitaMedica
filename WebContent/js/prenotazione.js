@@ -104,8 +104,7 @@ function question() {
 	});
 }
 
-var array = ["Codice Fiscale: ", "Nome: ", "Cognome: ", 
-	"Matricola: ", "Invalidit\340: ", "Importo: ", "Codice: "];
+var array = ["Codice Fiscale: ", "Nome: ", "Cognome: ", "Matricola: ", "Invalidita': ", "Importo: ", "Codice: "];
 
 function sendForm() {
 	
