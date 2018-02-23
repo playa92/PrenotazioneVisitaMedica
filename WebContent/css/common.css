@@ -242,6 +242,7 @@ textarea:required:focus {
   padding-left: 25px;
   padding-right: 25px;
   padding-top: 12px;
+  padding-bottom: 12px;
   background-color: #092147;
   margin: auto;
   box-shadow: 0 0 2px 2px #0b102d;

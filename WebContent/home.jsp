@@ -38,7 +38,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </button>
             <a href="#" class="navbar-brand" style="color:yellow">CUP</a>
         </div>
