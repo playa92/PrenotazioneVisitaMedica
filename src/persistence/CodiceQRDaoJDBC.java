@@ -79,20 +79,19 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = dataSource.getConnection();
 		List<CodiceQR> codici = new ArrayList<>();
-		CodiceQR c = null;
+		CodiceQR codiceQR = null;
 		try {
-			PreparedStatement statement;
 			String query = "select * FROM codice_qr";
-			statement = connection.prepareStatement(query);
+			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
 				
-				c = new CodiceQR();
-				c.setCodice(result.getString("id"));
-				c.setScadenza(result.getString("orario_Scadenza"));				
-				c.setConvalida(result.getBoolean("convalida"));
-				codici.add(c);
+				codiceQR = new CodiceQR();
+				codiceQR.setCodice(result.getString("id"));
+				codiceQR.setScadenza(result.getString("orario_Scadenza"));				
+				codiceQR.setConvalida(result.getBoolean("convalida"));
+				codici.add(codiceQR);
 			}
 			
 		} catch(SQLException e) {
@@ -113,7 +112,7 @@ public class CodiceQRDaoJDBC implements CodiceQRDao {
 		
 		Connection connection = dataSource.getConnection();
 		try {
-			String update = "update codice_qr SET  convalida = ? WHERE id = ?";
+			String update = "update codice_qr SET convalida = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setBoolean(1, codice.isConvalida());
 			statement.setString(2, codice.getCodice());

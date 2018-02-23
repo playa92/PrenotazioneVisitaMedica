@@ -48,12 +48,10 @@ public class Home extends HttpServlet {
 	@Override
 	public void destroy() {
 		
-		System.out.println("DESTROYED");
-		
-		if(session.getAttribute("loggato") != null) { 
-				if(session.getAttribute("loggato").equals(true)) {
-					System.out.println("INVALIDATE");
-					session.invalidate();
+		if(session != null) { 
+			if(session.getAttribute("loggato").equals(true)) {
+//				System.out.println("INVALIDATE");
+				session.invalidate();
 			}
 		}
 	}

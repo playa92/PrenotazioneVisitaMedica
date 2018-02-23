@@ -83,6 +83,42 @@ public class PazienteDaoJDBC implements PazienteDao {
 		}	
 		return paziente;
 	}
+	
+	@Override
+	public Paziente findByForeignKey(String codiceQR) {
+		
+		Connection connection = dataSource.getConnection();
+		Paziente paziente = null;
+		try {
+			PreparedStatement statement;
+			String query = "select * FROM paziente WHERE id_codice = ?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, codiceQR);
+			ResultSet result = statement.executeQuery();
+			
+			if(result.next()) {
+				
+				paziente = new Paziente();
+				paziente.setCodiceFiscale(result.getString("codice_fiscale"));
+				paziente.setNome(result.getString("nome"));				
+				paziente.setCognome(result.getString("cognome"));
+				paziente.setMatricola(result.getLong("matricola"));
+				paziente.setInvalidita(result.getString("invalidità"));
+				paziente.setCodiceQR(result.getString("id_codice"));
+			}
+			
+		} catch(SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			
+			try {
+				connection.close();
+			} catch(SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}	
+		return paziente;
+	}
 
 	@Override
 	public List<Paziente> findAll() {

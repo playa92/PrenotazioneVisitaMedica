@@ -27,11 +27,11 @@ import persistence.dao.PrenotazioneDao;
 public class EffettuaPrenotazione extends HttpServlet {
 	
 	private final int LIMITE_PRENOTAZIONI = 50;
-	private final int TEMPO_EFFETTIVO = 30;
+	private final int TEMPO_EFFETTIVO = 10;
 	
-	private final int CONVALIDA = 20;
+	private final int CONVALIDA = 10;
 	private final int TEMPO_VISITA = 10;
-	private final String ORARIO_INIZIO = "00:00:00"; 
+	private final String ORARIO_INIZIO = "9:00:00"; 
 	private final String ORARIO_FINE = "23:59:00";
 	
 	@Override
@@ -60,8 +60,6 @@ public class EffettuaPrenotazione extends HttpServlet {
 			return;
 		}
 		
-//		now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + 30);
-//		current = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 		String probabileVisita = new SimpleDateFormat(dateFormat).format(current);
 		
 		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
@@ -78,7 +76,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 			jsonReceived.append(line);
 			line = reader.readLine();
 		}		
-//		System.out.println(jsonReceived.toString());//lo studente ricevuto tramite chiamata AJAX
+		
 		try {
 			
 			PazienteDao pazienteDao = DatabaseManager.getInstance().getDaoFactory().getPazienteDao();
@@ -136,7 +134,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 			
 			int visiteTotali = prenotazioneDao.getTotalVisits();
 			Calendar now = Calendar.getInstance();
-			now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + 30);
+			now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + TEMPO_EFFETTIVO);
 			
 			Date date1 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 			Date date2 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));

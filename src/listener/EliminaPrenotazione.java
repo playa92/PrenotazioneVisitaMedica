@@ -1,11 +1,8 @@
 package listener;
 
-import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
 import model.CodiceQR;
 import model.Paziente;
 import model.Prenotazione;
@@ -14,51 +11,44 @@ import persistence.dao.CodiceQRDao;
 import persistence.dao.PazienteDao;
 import persistence.dao.PrenotazioneDao;
 
-@WebListener
-public class EliminaPrenotazione implements ServletContextListener {
-
+public class EliminaPrenotazione implements Runnable {
+	
 	@Override
-	public void contextInitialized(ServletContextEvent servlet) {
+	public void run() {
 		
-		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
-		List<Prenotazione> prenotazioni = prenotazioneDao.findAll();
+		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
+		List<CodiceQR> codici = codiceQRDao.findAll();
 		
-		if(!prenotazioni.isEmpty()) {
-		
-			String dateFormat = "HH:mm";
-			String scadenza = new SimpleDateFormat(dateFormat).format(new Date());
-			
-			CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
+		if(!codici.isEmpty()) {
+
 			PazienteDao pazienteDao = DatabaseManager.getInstance().getDaoFactory().getPazienteDao();
+			PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 			
-			for(Prenotazione it:prenotazioni) {
-				if(it.getOrarioVisita().compareTo(scadenza) < 0 && 
-						!codiceQRDao.findByPrimaryKey(it.getCodiceVisita()).isConvalida()) {
-					prenotazioneDao.delete(it);
+			for(CodiceQR it:codici) {
+				
+				if(expired(it.getScadenza()) && !it.isConvalida()) {
 					
-					List<Paziente> pazienti = pazienteDao.findAll();
-					Paziente paziente = findByIdVisit(pazienti, it.getCodiceVisita());
+					Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(it.getCodice());
+					prenotazioneDao.delete(prenotazione);
+					
+					Paziente paziente = pazienteDao.findByForeignKey(it.getCodice());
 					pazienteDao.delete(paziente);
 					
-					CodiceQR codiceQR = codiceQRDao.findByPrimaryKey(it.getCodiceVisita());
-					codiceQRDao.delete(codiceQR);
+					codiceQRDao.delete(it);
+//					System.out.println("deleted");
 				}
 			}
 		}
 	}
 	
-	@Override
-	public void contextDestroyed(ServletContextEvent servlet) {
-		this.contextInitialized(servlet);
-	}
-	
-	private Paziente findByIdVisit(List<Paziente> pazienti, String codice) {
+	private boolean expired(String orarioVisita) {
 		
-		for(Paziente p:pazienti) {
-			if(p.getCodiceQR().equals(codice)) {
-				return p;
-			}
-		}
-		return null;
+		Calendar scadenza = Calendar.getInstance();
+		String[] orario = orarioVisita.split(":");
+		
+		scadenza.set(Calendar.HOUR_OF_DAY, Integer.parseInt(orario[0]));
+		scadenza.set(Calendar.MINUTE, Integer.parseInt(orario[1]));
+		
+		return new Date().after(scadenza.getTime());
 	}
 }

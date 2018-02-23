@@ -1,14 +1,14 @@
 function CFRegex() {
 			
-//		var regex = new RegExp("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$"); 	
-//		var code = $("#cf").val().toUpperCase();
-//		
-//		if(code.length > 0 && !regex.test(code)) {
-//			
-//			$("#notice").modal("show");
-//			$("#message").text("Attenzione: Codice Fiscale non valido");
-//			$("#cf").val("");
-//		}
+//		var regex = new RegExp("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$");
+		var code = $("#cf").val().toUpperCase();
+		
+		if(code.length > 0 && !regex.test(code)) {
+			
+			$("#notice").modal("show");
+			$("#message").text("Attenzione: Codice Fiscale non valido");
+			$("#cf").val("");
+		}
 }
 
 
@@ -109,10 +109,9 @@ var array = ["Codice Fiscale: ", "Nome: ", "Cognome: ", "Matricola: ", "Invalidi
 function sendForm() {
 	
 	var hexcode = generate();
-	hex = hexcode;
 	
 	var paziente = new Paziente(
-			$("input[name=codiceFiscale]").prop("value"),
+			$("input[name=codiceFiscale]").prop("value").toUpperCase(),
 			$("input[name=nome]").prop("value"),
 			$("input[name=cognome]").prop("value"),
 			$("input[name=matricola]").prop("value"),
@@ -155,17 +154,16 @@ function sendForm() {
 function automaticPrint(){
 	
 	 html2canvas($("#print"),{
-	 onrendered:function(canvas){
+	 onrendered:function(canvas) {
 		 
 		 var img=canvas.toDataURL("image/png");
 		 var doc = new jsPDF('p', 'pt', 'a4');
 		 //TODO
-		 doc.text("Recati allo sportello entro le ore "+orario,150,70);
+		 doc.text("Recati allo sportello entro le ore " + orario,150,70);
 		 doc.addImage(img,'JPEG',80,110);
 		 doc.text(hex,233,245);
 		 doc.save('qr_code.pdf');
 		}
-
 	 });
 }
 

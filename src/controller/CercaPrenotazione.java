@@ -1,8 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +14,7 @@ import persistence.dao.CodiceQRDao;
 import persistence.dao.PrenotazioneDao;
 
 @SuppressWarnings("serial")
-public class RicercaPrenotazione extends HttpServlet {
+public class CercaPrenotazione extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,24 +27,22 @@ public class RicercaPrenotazione extends HttpServlet {
 		String hexcode = request.getParameter("hexcode");
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
-		CodiceQR codice = codiceQRDao.findByPrimaryKey(hexcode);
+		CodiceQR codiceQR = codiceQRDao.findByPrimaryKey(hexcode);
 		
-		if(codice != null) {	
+		if(codiceQR != null) {	
 		
-			Date scadenza = null;
-			try {
-				SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-				scadenza = format.parse(codice.getScadenza());
-				
-			} catch(ParseException e) {
-				e.printStackTrace();
-			}
+			Calendar scadenza = Calendar.getInstance();
+			String[] orario = codiceQR.getScadenza().split(":");
 			
-			if(scadenza.after(new Date())) {
+			scadenza.set(Calendar.HOUR_OF_DAY, Integer.parseInt(orario[0]));
+			scadenza.set(Calendar.MINUTE, Integer.parseInt(orario[1]));
+			
+			
+			if(new Date().after(scadenza.getTime())) {
 				response.getWriter().write("false;Prenotazione scaduta");
 			} else {
-				Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(codice.getCodice());
-				response.getWriter().write("true;" + codice.getScadenza() + ";" + prenotazione.getOrarioVisita() + ";" + hexcode);
+				Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(codiceQR.getCodice());
+				response.getWriter().write("true;" + codiceQR.getScadenza() + ";" + prenotazione.getOrarioVisita() + ";" + hexcode);
 			}
 			
 		} else {
