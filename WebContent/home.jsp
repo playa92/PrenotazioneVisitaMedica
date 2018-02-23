@@ -142,11 +142,9 @@
 					</jstl:if>
 				</li> 
 			   
-<%-- 				    <jstl:if test="${loggatoAdmin}"> --%>
-<!-- 						<li class="dropdown nav-item"> -->
-<!-- 						  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-wrench"></span> </a>       		  -->
-<!-- 						</li> -->
-<%-- 					</jstl:if> --%>
+				<li class="dropdown nav-item">
+				  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-wrench"></span> </a>       		 
+				</li>
 			</ul> 
 
         </div>
