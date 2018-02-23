@@ -203,28 +203,28 @@
 	    <div class="carousel-inner">
 	    <div class="item active">
 	        <img src="images/studio_medico.jpg" alt="studio medico">
-	        <div class="carousel-content" style="margin:55px 0 0 25px;">
+	        <div class="carousel-content">
 		        <a href="html/prenotazione.html">Prenota subito la tua visita</a>
 		    </div>
 	    </div>	
 	      
 	    <div class="item">
 	        <img src="images/cerca_prenotazione.jpg" alt="Ricerca">
-	        <div class="carousel-content" style="margin:55px 0 0 90px;">
+	        <div class="carousel-content">
 		        <a href="html/cerca_prenotazione.html">Cerca la tua prenotazione</a>
 		    </div>
 	    </div>
 	      
 	    <div class="item">
 	        <img src="images/statistiche.jpg" alt="Statistiche">
-	        <div class="carousel-content" style="margin:55px 0 0 25px;">
-		        <a href="restituisciPrenotazioni">Visualizza le prenotazioni correnti</a>
+	        <div class="carousel-content">
+		        <a href="restituisciPrenotazioni">Visualizza le prenotazioni<br> correnti</a>
 		    </div>
 	    </div>
 	    
 	    <div class="item">
 	        <img src="images/assistenza.jpg" alt="Assistenza">
-	        <div class="carousel-content" style="margin:50px 0 0 130px;">
+	        <div class="carousel-content">
 		        <a href="restituisciSegnalazioni">Centro assistenza</a>
 		    </div>
 	    </div>
