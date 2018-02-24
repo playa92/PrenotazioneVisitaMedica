@@ -9,12 +9,14 @@
 	<link rel="stylesheet" href="css/loader.css">
  	<link rel="stylesheet" href="css/common.css"> 
  	<link rel="stylesheet" href="css/footer-with-map.css">
+ 	<link rel="stylesheet" href="css/calendario.css">
  	<script src="js/jquery/jquery-3.2.1.min.js"></script>
  	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
  	<script src="js/jquery/jquery.cookie.js"></script>
+ 	<script src="js/jquery/jquery.bubble.text.js"></script>
  </head>
 
-<body>
+<body style="background-image: url('images/studio_medico.jpg')">
 
 <!-- Loader -->
 <!-- 	<div id="preloader" class="container"> -->
@@ -28,7 +30,6 @@
 <!-- 	</div> -->
 
 
-
     <nav class="navbar navbar-default">
 
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,7 +40,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand" style="color:yellow">CUP</a>
         </div>
 
         <!-- Collection of nav links and other content for toggling -->
@@ -50,9 +50,11 @@
 				<li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
+			     
 			    <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="html/prenotazione.html">Prenotazione</a>
 			     </li>
+		
 			     <jstl:if test="${not loggato}">
 			     <li class="dropdown nav-item ">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="restituisciSegnalazioni">Assistenza</a>
@@ -140,25 +142,54 @@
 							</div>
 					</li>
 					</jstl:if>
-				</li> 
-			   
-				<li class="dropdown nav-item">
-				  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-wrench"></span> </a>       		 
-				</li>
+				</li>    
+<!-- 				<li class="dropdown nav-item"> -->
+<!-- 				  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-cog"></span> </a>       		  -->
+<!-- 				</li> -->
 			</ul> 
-
         </div>
-
     </nav>
-
-
 		
-	<div class="jumbotron text-center">
-  		<h1>CUP Centro Unico Prenotazione</h1>
-  		<h2>Benvenuto</h2>
-	</div>
-	
-	<!-- Dialog Settings -->
+		<!-- TITLE -->
+		<div class="jumbotron text-center">
+	  		<h1>CUP Centro Unico Prenotazione</h1>
+	  		<h2>Benvenuto</h2>
+		</div>
+ 
+		<!--  CALENDARIO -->
+		<div class="calendario">
+		    <div id="day"></div>
+		    <div id="date"></div>
+		</div>
+		
+		<!--  BUBBLE -->
+		<div id="bubble"></div>	
+		
+		<!--  PRENOTATI -->
+		<div id="prenotati">
+			<img src="images/prenotati.png" style="width:100%" onclick="window.location='html/prenotazione.html'"/>
+		</div>
+		
+		<!-- 	COLUMNS	 -->
+		<div class="row">
+		  <div class="column col-sm-4">
+		    <img src="images/icona_help.png" class="zoom" onclick="window.location='restituisciSegnalazioni'" style="width:110px" alt="Assistenza" title="Assistenza">
+		    <h3>Centro assistenza</h3>
+		    <p>Hai bisogno di assistenza?<br> Siamo a completa disposizione per aiutarti a risolvere i tuoi problemi sulle prenotazioni</p>
+		  </div>
+		  <div class="column col-sm-4">
+		    <img src="images/icona_statistica.png" class="zoom" onclick="window.location='restituisciPrenotazioni'" style="width:90px" alt="Prenotazioni correnti" title="Prenotazioni">
+		    <h3>Tutte le prenotazioni correnti</h3>
+		    <p>Consulta tutte le prenotazioni correnti...</p>
+		  </div>
+		  <div class="column col-sm-4">
+		     <img src="images/icona_search.png" class="zoom" onclick="window.location='html/cerca_prenotazione.html'" style="width:90px" alt="Search" title="Cerca prenotazione">
+		    <h3>Cerca la tua prenotazione</h3>
+		    <p>Qui potra velocemente cercare...</p>
+		  </div>
+		</div>
+
+	    <!-- DIALOG SETTINGS -->
 		<div id="dialog">
       	  <div class="modal fade" id="settings" role="dialog">
 		    <div class="modal-dialog modal-md">
@@ -185,61 +216,8 @@
 		   </div>
 		 </div>
 	   </div>
-	   
-	<!-- BOOTSTRAP CAROUSEL -->
-	<div class="container">
-	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-	    <!-- Indicators -->
-	    <ol class="carousel-indicators">
-	      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-	      <li data-target="#myCarousel" data-slide-to="1"></li>
-	      <li data-target="#myCarousel" data-slide-to="2"></li>
-	      <li data-target="#myCarousel" data-slide-to="3"></li>
-	    </ol>
-	
-	    <!-- Wrapper for slides -->
-	    <div class="carousel-inner">
-	    <div class="item active">
-	        <img src="images/studio_medico.jpg" alt="studio medico">
-	        <div class="carousel-content">
-		        <a href="html/prenotazione.html">Prenota subito la tua visita</a>
-		    </div>
-	    </div>	
-	      
-	    <div class="item">
-	        <img src="images/cerca_prenotazione.jpg" alt="Ricerca">
-	        <div class="carousel-content">
-		        <a href="html/cerca_prenotazione.html">Cerca la tua prenotazione</a>
-		    </div>
-	    </div>
-	      
-	    <div class="item">
-	        <img src="images/statistiche.jpg" alt="Statistiche">
-	        <div class="carousel-content">
-		        <a href="restituisciPrenotazioni">Visualizza le prenotazioni<br> correnti</a>
-		    </div>
-	    </div>
 	    
-	    <div class="item">
-	        <img src="images/assistenza.jpg" alt="Assistenza">
-	        <div class="carousel-content">
-		        <a href="restituisciSegnalazioni">Centro assistenza</a>
-		    </div>
-	    </div>
-	    <!-- Left and right controls -->
-	    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-	      <span class="glyphicon glyphicon-chevron-left"></span>
-	      <span class="sr-only">Previous</span>
-	    </a>
-	    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-	      <span class="glyphicon glyphicon-chevron-right"></span>
-	      <span class="sr-only">Next</span>
-	    </a>
-	    </div>
-		</div>
-		</div>
-	    
-		<!-- Dialog Notice -->
+		<!-- DIALOG NOTICE -->
 		<div id="dialog">
       	  <div class="modal fade" id="notice" role="dialog">
 		    <div class="modal-dialog modal-md">
@@ -259,52 +237,33 @@
 	   		<script> $("#notice").modal('show'); </script>  
 	   </jstl:if>
 	
-	
+
 	<!-- FOOTER -->
-	<div class="content"></div>
 	    <footer id="myFooter">
 	        <div class="container">
 	            <div class="row">
-	                <div class="col-sm-3">
+	                <div class="col-sm-4">
 	                    <h5>Get started</h5>
 	                    <ul>
 	                        <li><a href="home">Home</a></li>
-<!-- 	                        <li><a href="#">Sign up</a></li> -->
-<!-- 	                        <li><a href="#">Downloads</a></li> -->
 	                    </ul>
 	                </div>
-	                <div class="col-sm-3">
+	                <div class="col-sm-4">
 	                    <h5>About us</h5>
 	                    <ul>
 <!-- 	                        <li><a href="#">Company Information</a></li> -->
 	                        <li><a href="restituisciSegnalazioni">Contact us</a></li>
-<!-- 	                        <li><a href="#">Reviews</a></li> -->
 	                    </ul>
 	                </div>
-	                <div class="col-sm-3">
+	                <div class="col-sm-4">
 	                    <h5>Support</h5>
 	                    <ul>
 	                        <li><a href="html/assistenza.jsp">FAQ</a></li>
-<!-- 	                        <li><a href="#">Help desk</a></li> -->
-<!-- 	                        <li><a href="#">Forums</a></li> -->
-	                    </ul>
-	                </div>
-	                <div class="col-sm-3">
-	                    <h5>Legal</h5>
-	                    <ul>
-	                        <li><a href="#">Terms of Service</a></li>
-<!-- 	                        <li><a href="#">Terms of Use</a></li> -->
-<!-- 	                        <li><a href="#">Privacy Policy</a></li> -->
 	                    </ul>
 	                </div>
 	            </div>
 	            <iframe id="map-container" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12340.397684446334!2d16.2251544!3d39.3539851!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf6b18e10a7cdcd49!2sCUS+-+Unical!5e0!3m2!1sit!2sit!4v1517741768804"></iframe>
 	        </div>
-<!-- 	        <div class="social-networks"> -->
-<!-- 	            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a> -->
-<!-- 	            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a> -->
-<!-- 	            <a href="#" class="google"><i class="fa fa-google-plus"></i></a> -->
-<!-- 	        </div> -->
 	        <div class="footer-copyright">
 	            <p>© 2018 Copyright Text</p>
 	        </div>
@@ -312,10 +271,11 @@
 	       
 	    <!-- SCROLLING -->
 		<a href="#" class="scrollup">Scroll</a>
-		
+			
 		<script src="js/effects.js"></script>
 	 	<script src="js/login.js"></script>	
 	 	<script src="js/scroll_up.js"></script>
-		
+	 	<script src="js/calendar.js"></script>
+	 	
 </body>
 </html>

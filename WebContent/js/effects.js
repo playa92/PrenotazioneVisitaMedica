@@ -21,7 +21,35 @@ $(document).ready(function() {
 	$("#cambiaColore").click(function() {
 	    $("#pannelloColori").toggle();
 	});
+	
+//	BUBBLE
+    var $element = $('#bubble');
+    var phrases = [
+        'Prenotati subito!',
+        'A cosa aspetti?',
+        'Affrettati e assicurati la tua prenotazione in modo semplice e veloce.',
+    ];
+    var index = -1;
+    (function loopAnimation() {
+        index = (index + 1) % phrases.length;
+        bubbleText({
+            element: $element,
+            newText: phrases[index],
+            letterSpeed: 70,
+            callback: function() {
+                setTimeout(loopAnimation, 1200);
+            },
+        });
+    })();
+    
+    //SCREEN WIDTH < THAN   
+    $(window).scroll(function() {
+        if ( $(this).width() < 1024 ) {
+//        	alert("<")
+        }
+    });
 });
+
 
 function changeColor(c) {	
 	 $(".navbar").css("background-color",c); 

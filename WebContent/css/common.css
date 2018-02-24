@@ -12,6 +12,7 @@ body {
 .jumbotron {
 	background-color: #bcc4f2;
 	color: #092147;
+	opacity:0.9;
 }
 
 .scrollup {
@@ -59,17 +60,106 @@ nav.navbar-default{
 /* /////////////////////////////////////////////////// */
 /* /////////////////////// Home ////////////////////// */
 /* /////////////////////////////////////////////////// */
+@media only screen and (max-width: 800px) {
+    .calendario {
+        display: none;
+    }
+}
+
+#bubble {
+  font-size: 34px;
+  font-family: Comic Sans MS, Verdana, monospace;
+  color: #092147;
+  font-weight: bold;
+  margin:auto;
+  position:relative;
+  top:-200px;  
+}
+
+#prenotati{
+	margin:auto;
+	position:relative;
+	margin-top:-250px;
+	width:250px;
+	height:250px;
+	cursor: pointer;
+}
+
+#prenotati:hover{
+  -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+}
+
+/* FOOTER */
+#myFooter{
+	top-margin:10px;
+}
+
+/* COLUMNS */
+	.zoom:hover {
+	    -ms-transform: scale(1.5); /* IE 9 */
+	    -webkit-transform: scale(1.5); /* Safari 3-8 */
+	    transform: scale(1.5); 
+	    cursor: pointer;
+	}
+	
+	.column {
+		background-color:#bcc4f2;
+		 opacity: 0.5;
+		text-align:center;
+	    padding: 10px;
+	    height: 350px; /* Should be removed. Only for demonstration */
+	}
+	.column:hover {
+		 opacity: 1.0;
+	}
+	
+	.row:after {
+	    content: "";
+	    display: table;
+	    clear: both;
+	}
+	
+	@media (max-width: 600px) {
+	    .column {
+	        width: 100%;
+	    }
+	}
+	
+/* CALENDAR */
+ 	@keyframes bounce {
+	0%, 20%, 60%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	40% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+
+	80% {
+		-webkit-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
+}
+
+#day:hover,#date:hover {
+	animation: bounce 1s;
+}
 
 /* CAROUSEL */
 #myCarousel {
-	width:80%; 
-	margin: 10px auto 0 auto;
+	width:40%; 
+	margin: -200px auto 0 auto;
+	position:relative;
 }
 
 .carousel-content {
   position: absolute;
   top: 32%;
-  font-size: 3vw;
+  font-size: 2vw;
   left: 22%;
   z-index: 20;
   text-shadow: 0 1px 2px rgba(0,0,0,.6);

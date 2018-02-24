@@ -1,0 +1,65 @@
+/* #calendario{ */
+/* 	background:yellow; */
+/* } */
+/* #day, #date{ */
+/*   text-align: center;  */
+/*   width: 280px; */
+/*   border-radius: 10%; */
+/* /*   margin-top: 1%;  */ */
+/*   background:#092147; */
+/*   color:white; */
+/* } */
+
+.calendario { 
+  border : 2px solid #000; 
+  overflow:hidden;
+}
+
+.calendario div {
+   min-height: 200px;
+   width: 200px;
+   padding: 10px;
+   display:inline-block;
+   box-shadow: 0 0 2px 2px #0b102d;
+   background:#092147;
+   color:white;
+   border-radius: 10%;
+   text-align:center;
+   float:right;
+}
+#day {
+  padding-top: 25px;
+  font-size: 30px;
+  font-weight: 900; 
+  border:1px solid black; 
+  float:left;
+  box-shadow: 0 0 2px 2px #0b102d;
+  margin-left:10px;
+}
+#date { 
+  padding-top: 25px;
+  font-size: 30px;
+  font-weight: 900; 
+  border:1px solid black;
+  float:right;
+  box-shadow: 0 0 2px 2px #0b102d;
+  margin-right:10px;
+}
+
+#day span{
+  display: block;
+  font-weight: 700;
+  line-height: 45px;
+  padding-bottom: 15px;
+  height:100px;
+}
+
+#date span{  
+  display: block;
+  font-family: 'Raleway';
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 45px;
+  padding-bottom: 18px;
+}
+
