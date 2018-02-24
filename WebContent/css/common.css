@@ -798,7 +798,7 @@ textarea:required:focus {
     .calendario, #bubble {
         display: none;
     }
-    #prenotati{
+    #prenotati, .scrollup{
     	display:none;
     }
     #prenotati2{
