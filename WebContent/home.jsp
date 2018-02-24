@@ -151,7 +151,7 @@
     </nav>
 		
 		<!-- TITLE -->
-		<div class="jumbotron text-center">
+		<div id="jumboHome" class="jumbotron text-center">
 	  		<h1>CUP Centro Unico Prenotazione</h1>
 	  		<h2>Benvenuto</h2>
 		</div>
@@ -169,6 +169,7 @@
 		<div id="prenotati">
 			<img src="images/prenotati.png" style="width:100%" onclick="window.location='html/prenotazione.html'"/>
 		</div>
+		<button id="prenotati2" onclick="window.location='html/prenotazione.html'">Clicca e prenotati subito!</button>
 		
 		<!-- 	COLUMNS	 -->
 		<div class="row">

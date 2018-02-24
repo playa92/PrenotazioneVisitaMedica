@@ -41,13 +41,7 @@ $(document).ready(function() {
             },
         });
     })();
-    
-    //SCREEN WIDTH < THAN   
-    $(window).scroll(function() {
-        if ( $(this).width() < 1024 ) {
-//        	alert("<")
-        }
-    });
+   
 });
 
 
