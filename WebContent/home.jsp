@@ -40,6 +40,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            
+            <!--  WELCOME -->
+            <jstl:if test="${loggato}">
+            <ul class="nav navbar-nav">
+				<li class="dropdown nav-item">
+		     		<a id="navbar-text" class="nav-link dropdown-toggle" style="color:yellow" href="controlloAccessi">Benvenuto <jstl:out value="${username}"></jstl:out></a>
+		     	</li>
+			</ul>
+			</jstl:if>
+            
         </div>
 
         <!-- Collection of nav links and other content for toggling -->
@@ -121,28 +131,15 @@
 							    </div>
 							</div>
 					</jstl:if>
-					<jstl:if test="${loggato}">
-					<!-- logout -->
-					<li id="dialog" class="dropdown nav-item">
-			       			<a id="navbar-text" data-toggle="modal" data-target="#myModal" href="#"><span class="glyphicon glyphicon-user"></span> Disconnetti<b class="caret"></b></a>       		 
-				       		<div style="color:yellow; margin:-34px -300px; position:absolute">Benvenuto <jstl:out value="${username}"/>!</div>		
-				       		  <div class="modal fade" id="myModal" role="dialog">
-							    <div class="modal-dialog modal-md">
-							      <div class="modal-content">
-							          <div class="modal-header">
-										<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-							            <h3 class="modal-title" style="text-align:center">Sei sicuro di voler effettuare la disconnessione</h3>
-							          </div>
-							   		  <div class="modal-body" style="text-align:center; background-color:#bcc4f2">
-							   		 		<button type="button" style="background-color: #092147; color:white" class="btn btn-default" data-dismiss="modal" onclick="window.location='logout?${username}'">Si</button>
-								    		<button type="button" style="background-color: #092147; color:white" class="btn btn-defualt" data-dismiss="modal" onclick="window.location='#'">No</button>
-								      </div>
-							     </div>
-							   </div>
-							</div>
-					</li>
+					<!--  WELCOME -->
+            		<jstl:if test="${loggato}">
+<!-- 						<li class="dropdown nav-item"> -->
+<%-- 				     		<a id="navbar-text" class="nav-link dropdown-toggle" style="color:yellow" href="controlloAccessi">Benvenuto <jstl:out value="${username}"></jstl:out></a> --%>
+<!-- 				     	</li> -->
+				     	<li class="dropdown nav-item">
+				     	<a id="navbar-text" data-toggle="modal" data-target="#logout" href="#"><span class="glyphicon glyphicon-user"></span> Disconnetti<b class="caret"></b></a>       		 
+				     	</li>
 					</jstl:if>
-				</li>    
 <!-- 				<li class="dropdown nav-item"> -->
 <!-- 				  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-cog"></span> </a>       		  -->
 <!-- 				</li> -->
@@ -217,6 +214,24 @@
 		   </div>
 		 </div>
 	   </div>
+	   
+		<!--  LOGOUT -->
+   		<div id="dialog" >
+       	    <div class="modal fade" id="logout" role="dialog">
+			    <div class="modal-dialog modal-md">
+			      <div class="modal-content">
+			          <div class="modal-header">
+						<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+			            <h3 class="modal-title" style="text-align:center">Sei sicuro di voler effettuare la disconnessione</h3>
+			          </div>
+			   		  <div class="modal-body" style="text-align:center; background-color:#bcc4f2">
+			   		 		<button type="button" style="background-color: #092147; color:white" class="btn btn-default" data-dismiss="modal" onclick="window.location='logout?${username}'">Si</button>
+				    		<button type="button" style="background-color: #092147; color:white" class="btn btn-defualt" data-dismiss="modal" onclick="window.location='#'">No</button>
+				      </div>
+			     </div>
+			   </div>
+			</div>
+		</div>
 	    
 		<!-- DIALOG NOTICE -->
 		<div id="dialog">

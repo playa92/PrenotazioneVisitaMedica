@@ -50,6 +50,7 @@ $("#QR").click(function(){
 	}else{
 		 $("#QRCODE").show();
 		 start();
+		 $("html, body").animate({ scrollTop: 200}, 1200)
 	}
 });
 
@@ -57,8 +58,11 @@ $("#HEX").click(function(){
 	if($("#QRCODE").is(':visible')){
 		 $("#QRCODE").hide();
 		 stop();
+		 $("#HEXCODE").toggle();
+		 return;
 	}
 	 $("#HEXCODE").toggle();
+	 $("html, body").animate({ scrollTop: 200}, 1200)
 });
 
 

@@ -57,6 +57,40 @@ nav.navbar-default{
     background: #092147;
 }
 
+@media screen and (min-width: 1000px) {
+  .navbar-brand {
+    float: left;
+    margin-right: 5px;
+    margin-left: -15px;
+  }
+  .navbar-nav {
+    float: left;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .navbar-nav > li {
+    float: left;
+  }
+  .navbar-nav > li > a {
+    border-radius: 0;
+  }
+  .navbar-nav.pull-right {
+    float: right;
+    width: auto;
+  }
+  .navbar-toggle {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: none;
+  }
+  .nav-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
 /* /////////////////////////////////////////////////// */
 /* /////////////////////// Home ////////////////////// */
 /* /////////////////////////////////////////////////// */
@@ -79,13 +113,17 @@ nav.navbar-default{
 	width:250px;
 	height:250px;
 	cursor: pointer;
+	 animation: bounce 2s infinite;
+ -webkit-animation: bounce 2s infinite;
+ -moz-animation: bounce 2s infinite;
+ -o-animation: bounce 2s infinite;
 }
 
-#prenotati:hover{
-  -ms-transform: scale(1.5); /* IE 9 */
-    -webkit-transform: scale(1.5); /* Safari 3-8 */
-    transform: scale(1.5); 
-}
+/* #prenotati:hover{ */
+/*   -ms-transform: scale(1.5); IE 9 */
+/*     -webkit-transform: scale(1.5); Safari 3-8 */
+/*     transform: scale(1.5);  */
+/* } */
 
 /* FOOTER */
 #myFooter{
@@ -790,6 +828,49 @@ textarea:required:focus {
 }
 
 /* ////////////////////////////////////////////////// */
+/* //////////////////// CONVALIDA /////////////////// */
+/* ////////////////////////////////////////////////// */
+
+.myButton {
+		-moz-box-shadow:inset 0px 0px 16px 7px #f9eca0;
+		-webkit-box-shadow:inset 0px 0px 16px 7px #f9eca0;
+		box-shadow:inset 0px 0px 16px 7px #f9eca0;
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f0c911), color-stop(1, #f2ab1e));
+		background:-moz-linear-gradient(top, #f0c911 5%, #f2ab1e 100%);
+		background:-webkit-linear-gradient(top, #f0c911 5%, #f2ab1e 100%);
+		background:-o-linear-gradient(top, #f0c911 5%, #f2ab1e 100%);
+		background:-ms-linear-gradient(top, #f0c911 5%, #f2ab1e 100%);
+		background:linear-gradient(to bottom, #f0c911 5%, #f2ab1e 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0c911', endColorstr='#f2ab1e',GradientType=0);
+		background-color:#f0c911;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+/* 		border:1px solid #e65f44; */
+		display:inline-block;
+		cursor:pointer;
+		color:#c92200;
+		font-family:Courier New;
+		font-size:24px;
+		font-weight:bold;
+		padding:29px 43px;
+		text-decoration:none;
+		text-shadow:0px 0px 0px #ded17c;
+	}
+	
+	.myButton:hover {
+
+		background-color:#f2ab1e;
+		box-shadow: 0 0 2px 2px #ad8906;		
+	}
+	
+	.myButton:active {
+		position:relative;
+		top:1px;
+	}
+
+
+/* ////////////////////////////////////////////////// */
 /* ///////////////////// @MEDIA ///////////////////// */
 /* ////////////////////////////////////////////////// */
 
@@ -807,6 +888,7 @@ textarea:required:focus {
   		background-color: #092147;
   		min-height:100px;
     	text-align:center;
+    	border-radius:8%;
     }
      #prenotati2:hover{
 	    font-size:20px;
@@ -823,6 +905,6 @@ textarea:required:focus {
 /* QUANDO SCREEN GRANDE */
 @media only screen and (min-width: 701px) {
 	   #prenotati2{
-	    display:none;
+	    	display:none;
 	    }
 }

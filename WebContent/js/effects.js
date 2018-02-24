@@ -27,7 +27,8 @@ $(document).ready(function() {
     var phrases = [
         'Prenotati subito!',
         'A cosa aspetti?',
-        'Affrettati e assicurati la tua prenotazione in modo semplice e veloce.',
+        'Affrettati e assicurati la tua prenotazione...',
+        '...in modo semplice e veloce.'
     ];
     var index = -1;
     (function loopAnimation() {

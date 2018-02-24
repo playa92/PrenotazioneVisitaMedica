@@ -11,7 +11,6 @@ function CFRegex() {
 		}
 }
 
-
 function correct(message) {
 	
 		var id = String (message);
