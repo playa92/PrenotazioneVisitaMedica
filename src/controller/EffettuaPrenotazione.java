@@ -55,13 +55,13 @@ public class EffettuaPrenotazione extends HttpServlet {
 		}
 		
 		PrintWriter out = response.getWriter();
+		
 		if(visiteTotali >= LIMITE_PRENOTAZIONI) {
 			out.println("redirect;Attenzione: Limite Prenotazioni raggiunto");
 			return;
 		}
 		
 		String probabileVisita = new SimpleDateFormat(dateFormat).format(current);
-		
 		out.println("true;" + (visiteTotali + 1) + ";" + probabileVisita);
 	}
 	
@@ -78,14 +78,13 @@ public class EffettuaPrenotazione extends HttpServlet {
 		}		
 		
 		try {
+			PrintWriter out = response.getWriter();
+			JSONObject json = new JSONObject(jsonReceived.toString());
 			
 			PazienteDao pazienteDao = DatabaseManager.getInstance().getDaoFactory().getPazienteDao();
 			PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 			CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
 			UniversitaDao universitaDao = DatabaseManager.getInstance().getDaoFactory().getUniversitaDao();
-			
-			PrintWriter out = response.getWriter();
-			JSONObject json = new JSONObject(jsonReceived.toString());
 			
 			Long matricola = null;
 			

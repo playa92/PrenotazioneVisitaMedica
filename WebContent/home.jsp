@@ -32,7 +32,6 @@
 
     <nav class="navbar navbar-default">
 
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
                 <span class="sr-only">Toggle navigation</span>
@@ -40,19 +39,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            
-            <!--  WELCOME -->
-            <jstl:if test="${loggato}">
-            <ul class="nav navbar-nav">
-				<li class="dropdown nav-item">
-		     		<a id="navbar-text" class="nav-link dropdown-toggle" style="color:yellow" href="controlloAccessi">Benvenuto <jstl:out value="${username}"></jstl:out></a>
-		     	</li>
-			</ul>
-			</jstl:if>
-            
         </div>
-
-        <!-- Collection of nav links and other content for toggling -->
 
         <div id="navbarCollapse" class="collapse navbar-collapse">
 
@@ -133,9 +120,9 @@
 					</jstl:if>
 					<!--  WELCOME -->
             		<jstl:if test="${loggato}">
-<!-- 						<li class="dropdown nav-item"> -->
-<%-- 				     		<a id="navbar-text" class="nav-link dropdown-toggle" style="color:yellow" href="controlloAccessi">Benvenuto <jstl:out value="${username}"></jstl:out></a> --%>
-<!-- 				     	</li> -->
+						<li class="dropdown nav-item">
+				     		<a id="navbar-text" class="nav-link dropdown-toggle" style="color:yellow" href="controlloAccessi">Benvenuto <jstl:out value="${username}"></jstl:out></a>
+				     	</li>
 				     	<li class="dropdown nav-item">
 				     	<a id="navbar-text" data-toggle="modal" data-target="#logout" href="#"><span class="glyphicon glyphicon-user"></span> Disconnetti<b class="caret"></b></a>       		 
 				     	</li>
@@ -149,7 +136,7 @@
 		
 		<!-- TITLE -->
 		<div id="jumboHome" class="jumbotron text-center">
-	  		<h1>Centro Unico Prenotazione</h1>
+	  		<h1>CUP Centro Unico Prenotazione</h1>
 	  		<h2>Benvenuto</h2>
 		</div>
  
@@ -208,7 +195,7 @@
 	           			 <button class="btn btn-success"><span class="glyphicon glyphicon-floppy-saved"></span> salva</button>			
          			 </div><br>
          			 <button>ALTRO...</button><br>
-	    			 <button>ALTRO...</button>	
+	    			 <button>ALTRO..</button>	
 		        </div>
 		     </div>
 		   </div>

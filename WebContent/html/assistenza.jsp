@@ -43,7 +43,6 @@
 	          </div>
 	   		  <div class="modal-body"> 		
 				 <div class="form-assistenza">
-					<form method="get" action="${pageContext.request.contextPath}/effettuaSegnalazione">
 						<input type="text" name="nome" placeholder="Nome" required/>
 						<input type="text" name="cognome" placeholder="Cognome" required/>
 						<input type="email" name="email" placeholder="E-mail">
@@ -56,17 +55,16 @@
 						</select>
 						<textarea id="textarea" name="commento" required></textarea>
 						<div class="modal-footer" style="text-align:center;">
-		      		 		<input id="submitSegnalazione" type="submit" class="btn btn-md" value="Invia"/>
+		      		 		<input id="submitSegnalazione" type="submit" class="btn btn-md" value="Invia" onclick="send();"/>
 		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
 				  		</div>
-			  		</form>	
 				 </div>
 		      </div>
 	     </div>
 	   </div>
 	</div>
 	<jstl:if test="${not vuoto}">
-		<h1 style="padding: 0 0 0 1em;">Domande frequenti (FAQ) </h1><br><br>
+		<h1 style="padding: 0 0 0 1em;">Domande frequenti (FAQ)</h1><br><br>
 	</jstl:if>
 	<div class="wrapper">  
 	  <div class="half">

@@ -888,7 +888,6 @@ textarea:required:focus {
   		background-color: #092147;
   		min-height:100px;
     	text-align:center;
-    	border-radius:8%;
     }
      #prenotati2:hover{
 	    font-size:20px;
