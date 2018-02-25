@@ -55,7 +55,14 @@
 			<jstl:if test="${(i.mostra && i.risolto) || not i.risolto}">
 			<tr>
 				<td>${i.id}</td>
-				<td><a data-toggle="modal" data-target="#send" href="#" onclick="getMail(text);">${i.email}</a></td>
+				<jstl:choose>
+					<jstl:when test="${i.email != 'Nessuna'}">
+						<td><a data-toggle="modal" data-target="#send" href="#" onclick="setAddress('${i.email}')">${i.email}</a></td>
+					</jstl:when>
+					<jstl:otherwise>
+						<td>${i.email}</td>
+					</jstl:otherwise>
+				</jstl:choose>
 				<td>${i.nomeUtente}</td>
 				<td>
 				  <div id="ris${i.id}" title="${i.commento}">${i.motivazione}</div>
@@ -89,13 +96,10 @@
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<form method="post" action="">
-			    		<input type="hidden" name="status" value="SOLVED"/>
-			    		<textarea placeholder="Scrivi..." rows="10" cols="40" style="width:400px; height:200px;font-size:25px;" name="message" required="required"></textarea><br><br>
-			    		<button type="submit" class="btn-success btn-lg">Invia 
+			    		<textarea id="textarea" placeholder="Scrivi..." rows="10" cols="40" style="width:400px; height:200px;font-size:25px;" name="message" required="required"></textarea><br><br>
+			    		<button type="submit" class="btn-success btn-lg" onclick="sendMail();">Invia 
          					<span class="glyphicon glyphicon-envelope"></span> 
        					</button>
-					</form>
 	          	  </div>
 		        </div>
 		      </div>
@@ -109,16 +113,29 @@
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        		<form method="get" action="risolviSegnalazione">
+<!-- 	        		<form method="get" action="risolviSegnalazione"> -->
 		        		<textarea id="risposta" name="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
 		      			<input id="inpt" name="motivazione" type="hidden">
-		      			<button class="btn-success btn-lg" type="submit">Conferma <span class="glyphicons glyphicons-ok"></span> </button>  	
-	          		</form>
+		      			<button class="btn-success btn-lg" type="submit" onclick="risolvi();">Conferma <span class="glyphicons glyphicons-ok"></span> </button>  	
+<!-- 	          		</form> -->
 	          	  </div>
 		        </div>
 		      </div>
 		    </div>
 	     </div>
+	     
+	<div id="dialog">
+      	<div class="modal fade" id="notice" role="dialog">
+		    <div class="modal-dialog modal-md">
+		      <div class="modal-content">
+		        <div class="modal-header" style="text-align:center; background-color: #bcc4f2">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        			<h3 id="message" class="modal-title" style="text-align:center"> </h3>
+          			</div>
+	     		</div>
+	   		</div>
+	 	</div>
+    </div>
 		
 		<!-- SCROLLING -->
 	<a href="#" class="scrollup">Scroll</a>

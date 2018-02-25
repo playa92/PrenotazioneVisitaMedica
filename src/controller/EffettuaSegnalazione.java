@@ -56,8 +56,6 @@ public class EffettuaSegnalazione extends HttpServlet {
 			segnalazione.setMotivazione(motivazione);
 			segnalazione.setCommento(commento);
 			segnalazioneDao.save(segnalazione);
-			
-			response.getWriter().write("restituisciSegnalazioni");
 		
 		} catch(JSONException e) {
 			e.printStackTrace();

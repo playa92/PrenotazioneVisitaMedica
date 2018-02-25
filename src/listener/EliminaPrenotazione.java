@@ -26,7 +26,7 @@ public class EliminaPrenotazione implements Runnable {
 			
 			for(CodiceQR it:codici) {
 				
-				if(expired(it.getScadenza()) && !it.isConvalida()) {
+				if(scaduta(it.getScadenza()) && !it.isConvalida()) {
 					
 					Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(it.getCodice());
 					prenotazioneDao.delete(prenotazione);
@@ -41,7 +41,7 @@ public class EliminaPrenotazione implements Runnable {
 		}
 	}
 	
-	private boolean expired(String orarioVisita) {
+	private boolean scaduta(String orarioVisita) {
 		
 		Calendar scadenza = Calendar.getInstance();
 		String[] orario = orarioVisita.split(":");

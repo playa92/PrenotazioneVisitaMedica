@@ -34,7 +34,7 @@ function send() {
 		datatype:"json",
 		data:JSON.stringify(segnalazione),
 		success:function(data) {
-			window.location = data;
+			window.location = "restituisciSegnalazioni";
 		}
 	});
 }
