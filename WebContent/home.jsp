@@ -124,7 +124,7 @@
 						             	  <input id="signinPwd" type="password" placeholder="Enter Password" name="password" required>
 						             	  <label id="checkbox"> <input id="rememberChkBox" type="checkbox" checked="checked"> Ricordami </label>
 										  <input id="sign" type="submit" value="Conferma"/>	
-										  <a id="forgotText" href="html/ripristino_password.jsp"> Password dimenticata?</a>
+										  <a id="forgotText" href="html/ripristino_password.html"> Password dimenticata?</a>
 				           			 	</form>
 							        </div>
 							      </div>
@@ -149,7 +149,7 @@
 		
 		<!-- TITLE -->
 		<div id="jumboHome" class="jumbotron text-center">
-	  		<h1>CUP Centro Unico Prenotazione</h1>
+	  		<h1>Centro Unico Prenotazione</h1>
 	  		<h2>Benvenuto</h2>
 		</div>
  
@@ -208,7 +208,7 @@
 	           			 <button class="btn btn-success"><span class="glyphicon glyphicon-floppy-saved"></span> salva</button>			
          			 </div><br>
          			 <button>ALTRO...</button><br>
-	    			 <button>ALTRO..</button>	
+	    			 <button>ALTRO...</button>	
 		        </div>
 		     </div>
 		   </div>
@@ -222,7 +222,7 @@
 			      <div class="modal-content">
 			          <div class="modal-header">
 						<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-			            <h3 class="modal-title" style="text-align:center">Sei sicuro di voler effettuare la disconnessione</h3>
+			            <h3 class="modal-title" style="text-align:center">Sei sicuro di voler effettuare la disconnessione?</h3>
 			          </div>
 			   		  <div class="modal-body" style="text-align:center; background-color:#bcc4f2">
 			   		 		<button type="button" style="background-color: #092147; color:white" class="btn btn-default" data-dismiss="modal" onclick="window.location='logout?${username}'">Si</button>

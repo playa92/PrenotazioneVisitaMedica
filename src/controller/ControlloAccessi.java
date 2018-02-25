@@ -22,9 +22,9 @@ public class ControlloAccessi extends HttpServlet {
 	
 		HttpSession session = request.getSession();
 
-		if(session.getAttribute("loggato") != null) { 
+		if(session.getAttribute("loggatoAdmin") != null) { 
 			
-			if(session.getAttribute("loggato").equals(true)) {
+			if(session.getAttribute("loggatoAdmin").equals(true)) {
 		
 			AccessoDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getAccessoDao();
 			List<Accesso> accessi = accessoDao.findAll();
@@ -36,7 +36,7 @@ public class ControlloAccessi extends HttpServlet {
 			}
 			return;
 		}
-		response.sendError(404, "Effettuare l'accesso come admin o come employee per visualizzare quest'area");
+		response.sendError(404, "Effettuare l'accesso come admin per visualizzare quest'area");
 	}
 	
 	@Override
