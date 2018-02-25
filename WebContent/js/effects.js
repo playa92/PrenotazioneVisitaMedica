@@ -18,9 +18,12 @@ $(function() {
 });
 
 $(document).ready(function() {
-	$("#cambiaColore").click(function() {
-	    $("#pannelloColori").toggle();
-	});
+		
+	$("#tutorialDialog").modal("show");
+		
+//	$("#cambiaColore").click(function() {
+//	    $("#pannelloColori").toggle();
+//	});
 	
 //	BUBBLE
     var $element = $('#bubble');
@@ -44,7 +47,6 @@ $(document).ready(function() {
     })();
    
 });
-
 
 function changeColor(c) {	
 	 $(".navbar").css("background-color",c); 

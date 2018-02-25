@@ -1,6 +1,7 @@
+
 function CFRegex() {
 			
-		var regex = new RegExp("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$");
+//		var regex = new RegExp("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$");
 		var code = $("#cf").val().toUpperCase();
 		
 		if(code.length > 0 && !regex.test(code)) {
@@ -108,6 +109,7 @@ var array = ["Codice Fiscale: ", "Nome: ", "Cognome: ", "Matricola: ", "Invalidi
 function sendForm() {
 	
 	var hexcode = generate();
+	hex = hexcode;
 	
 	var paziente = new Paziente(
 			$("input[name=codiceFiscale]").prop("value").toUpperCase(),
@@ -157,7 +159,6 @@ function automaticPrint(){
 		 
 		 var img=canvas.toDataURL("image/png");
 		 var doc = new jsPDF('p', 'pt', 'a4');
-		 //TODO
 		 doc.text("Recati allo sportello entro le ore " + orario,150,70);
 		 doc.addImage(img,'JPEG',80,110);
 		 doc.text(hex,233,245);

@@ -383,7 +383,20 @@ textarea:required:focus {
    bottom: 0;
    text-align: left;
 }
-
+#tutorial{
+	  display: inline-block;
+}
+#tutorial img{
+	width:100px;
+}
+#tutorial iframe{
+	width:500px; 
+	height:350px;
+}
+#tutorial p{
+	font-size:20px;
+	font-style:oblique;
+}
 /* /////////////////////////////////////////////////// */
 /* ///////////////// Statistiche ///////////////////// */
 /* /////////////////////////////////////////////////// */
@@ -555,6 +568,9 @@ textarea:required:focus {
     -webkit-appearance: menulist-button; 
     height:35px; 
 } 
+#Assistenza{
+	height:600px;
+}
 #Assistenza #annulla,
 #Assistenza input[type="submit"] { 
     padding: 10px 39px 10px 39px;
@@ -899,6 +915,17 @@ textarea:required:focus {
     	opacity:1.0;
     	height:300px;
     }    
+    #tutorial img{
+		width:50px;
+	}
+	#tutorial iframe{
+		width:200px; 
+		height:150px;
+	}
+	#tutorial p{
+		font-size:10px;
+		font-style:oblique;
+	}
 }
 
 /* QUANDO SCREEN GRANDE */

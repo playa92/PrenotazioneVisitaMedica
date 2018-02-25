@@ -12,7 +12,7 @@
 	<script src="../js/jquery/jspdf.min.js"></script>
 </head>
 
-<body style="height:990px">
+<body style="height:990px;">
 
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
@@ -50,22 +50,22 @@
 				<input name="annulla" type="reset" value="Annulla"  class="btn-danger" onclick="avviso();"/>
 			</div>
 	</div>
-
+	    
 	<div class="footer-prenotazione">
 		<footer>
 	  		<h5><strong>* Campi Obbligatori</strong></h5>
 			<h5><strong>** Se sei universitario e vuoi usufruire della promozione specifica una matricola valida</strong></h5>
 		</footer>	
 	</div>
-	
+
 	<div id="dialog">
       	<div class="modal fade" id="notice" role="dialog">
 		 	<div class="modal-dialog modal-md">
 		    	<div class="modal-content">
-	        	<div class="modal-header" style="text-align:center; background-color:#bcc4f2">
+	        	   <div class="modal-header" style="text-align:center; background-color:#bcc4f2">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
         			<h3 id="message" class="modal-title" style="text-align:center"></h3>
-         		</div>
+         		   </div>
 		    	</div>
 		 	</div>
 		</div>
@@ -76,14 +76,13 @@
        <div class="modal-dialog modal-md">
           <div class="modal-content">
               <div class="modal-header" style="text-align:center; background:white">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            	<button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h3 id="confirmMessage" class="modal-title" style="text-align:center"></h3>
-                
-               </div>
+              </div>
               <div class="modal-body" style="text-align:center; background-color:#bcc4f2">
                  <button type="button" class="btn btn-default" data-dismiss="modal" onclick="sendForm();" style="background-color:#092147; color:#ffffff">Si</button>
                  <button type="button" class="btn btn-default" onclick="window.location.href='../home'" data-dismiss="modal" style="background-color:#092147; color:#ffffff">No</button>
-               </div>
+              </div>
           </div>
        </div>
     </div>
@@ -104,13 +103,13 @@
 				            <h3 id="5"></h3>
 				            <h3 id="6"></h3>
 				            <input id='text' type='hidden' value=""/>
-	            		<div id='print'>
-	            			<div align="center" id='qrcode'></div>
-	            		</div>
-	            		<h3 id="7"></h3>
-          				</div><br>
-           				<button id='cmd' type="button" class="btn btn-danger btn-sm" style="font-size:22px;">
-          				stampa promemoria <span class="glyphicon glyphicon-print"></span></button>
+		            		<div id="print">
+		            			<div align="center" id='qrcode'></div>
+		            		</div>
+		            		<h3 id="7"></h3>
+	          				</div><br>
+	           				<button id='cmd' type="button" class="btn btn-danger btn-sm" style="font-size:22px;">
+	          				stampa promemoria <span class="glyphicon glyphicon-print"></span></button>
          		 </div>       
          	</div>
       	 </div>
@@ -124,50 +123,22 @@
 	          <div class="modal-content">
 	            <div class="modal-header" style="text-align:center; background-color:#bcc4f2">
 	              <label style="font-size:40px; color:red">TIMEOUT</label><br>
-	          <button type="button" class="btn" style="background:#092147;color:white"onclick="window.location.href = '../home';">Torna alla home</button>
-	          <button type="button" class="btn" style="background:#092147;color:white" onclick="window.location.reload();">Ricarica pagina</button>             
-	        </div>
+	         	  <button type="button" class="btn" style="background:#092147;color:white"onclick="window.location.href = '../home';">Torna alla home</button>
+	          	  <button type="button" class="btn" style="background:#092147;color:white" onclick="window.location.reload();">Ricarica pagina</button>             
+	         	</div>
 	          </div>
 	       </div>
     	</div>
     </div>
   
-
-<!--  SCROLLING -->
+  <!--  SCROLLING -->
   <a href="#" class="scrollup">Scroll</a>
-  
-  <script>
-//  TIMEOUT
-    function idleLogout() {
-        var t;
-        window.onload = resetTimer;
-        window.onmousemove = resetTimer;
-        window.onmousedown = resetTimer; // catches touchscreen presses
-        window.onclick = resetTimer;     // catches touchpad clicks
-        window.onscroll = resetTimer;    // catches scrolling with arrow keys
-        window.onkeypress = resetTimer;
-  
-        function logout() {
-          	$("#timeout").modal({
-                backdrop: 'static',
-                keyboard: true, 
-                show: true
-        	});
-   		 }
-        
-  
-        function resetTimer() {
-            clearTimeout(t);
-            t = setTimeout(logout, 15000);  // time is in milliseconds
-        }
-    }
-    idleLogout();
-  </script>
-  
+    
   <script src="../js/prenotazione.js"></script>
   <script src="../js/scroll_up.js"> </script>  
   <script src="../js/qr_code.js"></script>
-  <script src="../js/pdf_print.js"></script> 
+  <script src="../js/pdf_print.js"></script>
+  <script src="../js/timeout.js"></script> 
   
 </body>
 </html>

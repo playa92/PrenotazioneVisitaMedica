@@ -150,7 +150,7 @@
 		<div id="bubble"></div>	
 		
 		<!--  PRENOTATI -->
-		<div id="prenotati">
+		<div id="prenotati" title="Clicca qui per prenotarti">
 			<img src="images/prenotati.png" style="width:100%" onclick="window.location='html/prenotazione.html'"/>
 		</div>
 		<button id="prenotati2" onclick="window.location='html/prenotazione.html'">Clicca e prenotati subito!</button>
@@ -217,6 +217,24 @@
 				      </div>
 			     </div>
 			   </div>
+			</div>
+		</div>
+	    
+		<!-- TUTORIAL -->
+		<div id="dialog">
+	      	<div class="modal fade" id="tutorialDialog" role="dialog">
+			 	<div class="modal-dialog modal-md">
+			    	<div class="modal-content">
+		        	   <div class="modal-header" style="text-align:center; background-color:#bcc4f2">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+	        			<div id="tutorial">
+							<p>Guarda ora il tutorial, su come prenotarsi!</p>
+							<img src="images/youtube.png"><br>
+							<iframe src="https://www.youtube.com/embed/9V808r_EXGQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>	
+					    </div>
+	         		   </div>
+			    	</div>
+			 	</div>
 			</div>
 		</div>
 	    
