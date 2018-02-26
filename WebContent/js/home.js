@@ -63,12 +63,21 @@ $(document).ready(function() {
    
 });
 
-function changeColor(c) {	
+var color_navbar;
+function changeColor(c) {
+		navbar = c;
 	 $(".navbar").css("background-color",c); 
 	 $(".nav-item #navbar-text").css("background-color",c); 
 }
 
+function saveChanges(){
+	// write on .txt
+	 $("#pannelloColori").hide();
+}
+
+// RESET COOKIES
 function resetCookies(){
 	 $('#rememberTutorial').attr('tutorial', 'checked');
+	 localStorage.chkbox = $('#rememberTutorial').val('checked');
 }
 

@@ -125,6 +125,8 @@ nav.navbar-default{
 /*     transform: scale(1.5);  */
 /* } */
 
+
+
 /* FOOTER */
 #myFooter{
 	top-margin:10px;
@@ -302,6 +304,13 @@ input:required:focus {
 textarea:required:focus {
   border: 1px solid red;
   outline: none;
+}
+
+/* SETTINGS */
+
+#settings a{
+	text-decoration:none;
+	font-size:20px;
 }
 
 /* /////////////////////////////////////////////////// */

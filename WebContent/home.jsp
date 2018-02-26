@@ -184,7 +184,7 @@
 		            <h3 class="modal-title">Impostazioni</h3>
 		          </div>
 		          <div class="modal-body">
-         			 <a id="cambiaColore" href="#" style=" text-decoration:none;font-size:15px">Cambia colore della barra</a>
+         			 <a id="cambiaColore" href="#">Cambia colore della barra</a>
          			 <div id="pannelloColori" style="display:none;">
          				 <div onclick="changeColor('yellow')" style="width:20px; height:20px; background:yellow;display: inline-block"></div>
 	           			 <div onclick="changeColor('red')" style="width:20px; height:20px; background:red;display: inline-block"></div>
@@ -192,9 +192,9 @@
 	           			 <div onclick="changeColor('gray')" style="width:20px; height:20px; background:gray; display:inline-block"></div>
 	           			 <div onclick="changeColor('blue')" style="width:20px; height:20px; background:blue; display:inline-block"></div><br>
 	           			 <a style="text-decoration:none;color:black" href="#" onclick="changeColor('#092147')">ripristina default</a><br>
-	           			 <button class="btn btn-success"><span class="glyphicon glyphicon-floppy-saved"></span> salva</button>			
+	           			 <button class="btn btn-success" onclick="saveChanges();"><span class="glyphicon glyphicon-floppy-saved"></span> salva</button>			
          			 </div><br>
-         			 <button onclick="resetCookies()">ripristina Cookies</button><br>
+         			 <a href="#" onclick="resetCookies()">Ripristina Cookies</a><br>
 	    			 <button>ALTRO..</button>	
 		        </div>
 		     </div>
@@ -239,7 +239,7 @@
 			</div>
 		</div>
 	    
-		<!-- DIALOG NOTICE -->
+		<!-- NOTICE(JSTL) -->
 		<div id="dialog">
       	  <div class="modal fade" id="notice" role="dialog">
 		    <div class="modal-dialog modal-md">
@@ -254,7 +254,7 @@
 		   </div>
 		 </div>
 	   </div>
-	   
+	   	   
 	   <jstl:if test="${popUp}">
 	   		<script> $("#notice").modal('show'); </script>  
 	   </jstl:if>
