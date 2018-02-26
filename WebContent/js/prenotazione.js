@@ -7,7 +7,7 @@ function CFRegex() {
 		if(code.length > 0 && !regex.test(code)) {
 			
 			$("#notice").modal("show");
-			$("#message").text("Attenzione: Codice Fiscale non valido");
+			$("#message").text("Attenzione: codice fiscale non valido");
 			$("#cf").val("");
 		}
 }
@@ -23,7 +23,7 @@ function correct(message) {
 			if(m.length > 0 && !numbers.test(m)) {
 				
 				$("#notice").modal("show");
-				$("#message").text("Attenzione: Matricola non valida");
+				$("#message").text("Attenzione: matricola non valida");
 				$("#n").val("");
 			}
 		} else {
@@ -33,7 +33,7 @@ function correct(message) {
 			if(s.length > 0 && !characters.test(s)) {
 				
 				$("#notice").modal("show");
-				$("#message").text("Attenzione: Stringa non valida");
+				$("#message").text("Attenzione: " + $("#"+id).prop("name") + " non valido");
 				$("#"+id).val("");
 			}
 		}
