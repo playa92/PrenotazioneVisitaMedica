@@ -45,6 +45,8 @@ public class Logout extends HttpServlet {
 		Accesso accesso = new Accesso();
 		accesso.setAzione(azione);
 		Date date = new Date();
+		int id = accessoDao.assignId() + 1;
+		accesso.setId(id);
 		accesso.setData(date);
 		accesso.setOrario(new SimpleDateFormat("hh:MM:ss").format(date));
 		accesso.setNomeUtente(username);
