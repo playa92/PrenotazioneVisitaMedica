@@ -14,6 +14,7 @@ import javax.mail.internet.*;
 public class InviaEmail extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private final String PASSWORD = "prenotazione18";
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	   this.doPost(request, response);   
@@ -54,7 +55,7 @@ public class InviaEmail extends HttpServlet {
 		    	
 			    	@Override
 			    	protected PasswordAuthentication getPasswordAuthentication() {  
-			    	       return new PasswordAuthentication(from,"Sagittario27");  
+			    	       return new PasswordAuthentication(from, PASSWORD);  
 			    	}  
 		    });  
 

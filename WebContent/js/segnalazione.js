@@ -42,7 +42,7 @@ function sendMail() {
 	
 	var email = new Email(
 		address,
-		"giovannicosentino1994@gmail.com",//TODO funziona solo con la mia mail
+		"assistenza.cup18@gmail.com",
 		$("#textarea").val()	
 	);
 	
