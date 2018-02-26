@@ -26,13 +26,13 @@ public class ControlloAccessi extends HttpServlet {
 			
 			if(session.getAttribute("loggatoAdmin").equals(true)) {
 		
-			AccessoDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getAccessoDao();
-			List<Accesso> accessi = accessoDao.findAll();
+				AccessoDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getAccessoDao();
+				List<Accesso> accessi = accessoDao.findAll();
+				
+				request.setAttribute("accessi", accessi);
 			
-			request.setAttribute("accessi", accessi);
-		
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("html/visualizza_accessi.jsp");
-	    	dispatcher.forward(request, response);
+		    	RequestDispatcher dispatcher = request.getRequestDispatcher("html/visualizza_accessi.jsp");
+		    	dispatcher.forward(request, response);
 			}
 			return;
 		}

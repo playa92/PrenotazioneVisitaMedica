@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Accesso {
 
+	private Integer id;
 	private String azione;
 	private Date data;
 	private String orario;
@@ -11,12 +12,21 @@ public class Accesso {
 	
 	public Accesso() {}
 	
-	public Accesso(String azione, Date data, String orario, String nomeUtente) {
+	public Accesso(Integer id, String azione, Date data, String orario, String nomeUtente) {
 		
+		this.id = id;
 		this.azione = azione;
 		this.data = data;
 		this.orario = orario;
 		this.nomeUtente = nomeUtente;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getAzione() {

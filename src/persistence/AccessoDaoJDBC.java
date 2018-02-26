@@ -19,17 +19,45 @@ public class AccessoDaoJDBC implements AccessoDao {
 	}
 	
 	@Override
+	public int assignId() {
+		
+		Connection connection = dataSource.getConnection();
+		try {
+			String query = "select COUNT(*) AS count FROM accesso";
+			PreparedStatement statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				return result.getInt(1);
+			}
+			
+		} catch(SQLException e) {
+			throw new PersistenceException(e.getMessage());
+			
+		} finally {
+			
+			try {
+				connection.close();
+			} catch(SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		return 0;
+	}
+	
+	@Override
 	public void save(Accesso accesso) {
 		
 		Connection connection = dataSource.getConnection();
 		try {
-			String insert = "insert INTO accesso(azione, data, orario, nome_utente) values(?,?,?,?)";
+			String insert = "insert INTO accesso(id, azione, data, orario, nome_utente) values(?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setString(1, accesso.getAzione());
+			statement.setInt(1, accesso.getId());
+			statement.setString(2, accesso.getAzione());
 			long millis = accesso.getData().getTime();
-			statement.setDate(2, new Date(millis));
-			statement.setString(3, accesso.getOrario());
-			statement.setString(4, accesso.getNomeUtente());
+			statement.setDate(3, new Date(millis));
+			statement.setString(4, accesso.getOrario());
+			statement.setString(5, accesso.getNomeUtente());
 			statement.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -49,7 +77,7 @@ public class AccessoDaoJDBC implements AccessoDao {
 		
 		Connection connection = dataSource.getConnection();
 		List<Accesso> accessi = new ArrayList<>();
-		Accesso a = null;
+		Accesso accesso = null;
 		try {
 			PreparedStatement statement;
 			String query = "select * FROM accesso";
@@ -58,12 +86,13 @@ public class AccessoDaoJDBC implements AccessoDao {
 			
 			while(result.next()) {
 				
-				a = new Accesso();
-				a.setAzione(result.getString("azione"));
-				a.setData(result.getDate("data"));				
-				a.setOrario(result.getString("orario"));
-				a.setNomeUtente(result.getString("nome_utente"));
-				accessi.add(a);
+				accesso = new Accesso();
+				accesso.setId(result.getInt("id"));
+				accesso.setAzione(result.getString("azione"));
+				accesso.setData(result.getDate("data"));				
+				accesso.setOrario(result.getString("orario"));
+				accesso.setNomeUtente(result.getString("nome_utente"));
+				accessi.add(accesso);
 			}
 			
 		} catch(SQLException e) {
@@ -84,9 +113,9 @@ public class AccessoDaoJDBC implements AccessoDao {
 		
 		Connection connection = dataSource.getConnection();
 		try {
-			String delete = "delete FROM amministratore WHERE azione = ?";
+			String delete = "delete FROM amministratore WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setString(1, accesso.getAzione());
+			statement.setInt(1, accesso.getId());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {

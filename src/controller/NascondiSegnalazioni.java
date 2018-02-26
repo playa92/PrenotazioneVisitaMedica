@@ -23,11 +23,12 @@ public class NascondiSegnalazioni extends HttpServlet {
 	    Boolean tmp = true;
 	    Boolean first = true;
 	    for(Segnalazione s:segnalazioni) {
+	    	
 	    	if(s.getRisolto()) {
 	    		
 	    		if(first) { 
 	    			tmp = s.getMostra(); 
-	    			first=false;
+	    			first = false;
 	    		}
 	    		
 	    		if(tmp) {
@@ -40,7 +41,7 @@ public class NascondiSegnalazioni extends HttpServlet {
 	    		}
 	    	}
 	    }
-    
+  
 	    if(segnalazioni.size() > 0) 
 	      request.setAttribute("segnalazioni", segnalazioni);
 	    else
