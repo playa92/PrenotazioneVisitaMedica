@@ -19,6 +19,13 @@
 				<li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
+			      <li class="dropdown nav-item">
+					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Update <b class="caret"></b></a>
+			        <ul class="dropdown-menu">
+				     	<li><a id="list-element" href="${pageContext.request.contextPath}/eliminaAccesso">pulisci accessi</a></li>
+				       	<li><a id="list-element" href="#">Altro</a></li>
+			        </ul>
+			     </li>
 	   		</ul>
 		</div>	
 	</nav>
@@ -27,7 +34,7 @@
 		<h1>Controllo Accessi</h1>
 	</div>
 	
-	<jstl:if test="${not vuoto}">
+	<jstl:if test="${not nessun_accesso}">
 		<div class="table-accessi">
 			<table style="color:#092147; width:100%;">
 				<thead>
@@ -52,13 +59,18 @@
 							<td>${it.data}</td>
 							<td>${it.orario}</td>
 							<td>${it.nomeUtente}</td>   
-							<td><button type="button" onclick="window.location='${pageContext.request.contextPath}/eliminaAccesso?'" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> Rimuovi</button></td>
 						</tr>
 					</jstl:forEach>
 				</tbody>
 			</table>
 		</div>
 	</jstl:if>
+	<jstl:if test="${nessun_accesso}">
+		<div style="text-align:center; margin-top:100px;">
+			<h1> Nessun accesso disponibile </h1>
+		</div>
+	</jstl:if>
+
 	
 </body>
 </html>

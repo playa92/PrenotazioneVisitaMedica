@@ -13,7 +13,7 @@ $(function() {
         $('#signinPwd').val('');
     }
 
-    $('#rememberChkBox').click(function() {
+    $('#sign').click(function() {
 
         if ($('#rememberChkBox').is(':checked')) {
             // save username and password

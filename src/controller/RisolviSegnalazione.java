@@ -35,7 +35,7 @@ public class RisolviSegnalazione extends HttpServlet {
 			    List<Segnalazione> s = risolviSegnalazione(risposta, motivazione);
 			    
 			    if(s.size() > 0)
-				      request.setAttribute("segnalazioni", s);
+				     request.setAttribute("segnalazioni", s);
 				 else
 					 request.setAttribute("vuoto", true);
 		    	    

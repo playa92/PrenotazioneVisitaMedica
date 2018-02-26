@@ -72,6 +72,7 @@ function changeColor(c) {
 function saveChanges(){
 	// write on .txt
 	 $("#pannelloColori").hide();
+
 }
 
 // RESET COOKIES

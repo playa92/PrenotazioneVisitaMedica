@@ -23,7 +23,7 @@ public class RestituisciSegnalazioni extends HttpServlet {
 	    if(segnalazioni.size() > 0)
 	      request.setAttribute("segnalazioni", segnalazioni);
 	    else
-	      request.setAttribute("vuoto", true);
+	      request.setAttribute("nessun_Accesso", true);
 	    
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("html/assistenza.jsp");
 	    dispatcher.forward(request, response);

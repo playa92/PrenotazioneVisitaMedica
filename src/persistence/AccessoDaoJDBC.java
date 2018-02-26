@@ -109,13 +109,12 @@ public class AccessoDaoJDBC implements AccessoDao {
 	}
 
 	@Override
-	public void delete(Accesso accesso) {
+	public void deleteAll() {
 		
 		Connection connection = dataSource.getConnection();
 		try {
-			String delete = "delete FROM amministratore WHERE id = ?";
+			String delete = "delete FROM accesso";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setInt(1, accesso.getId());
 			statement.executeUpdate();
 			
 		} catch(SQLException e) {
