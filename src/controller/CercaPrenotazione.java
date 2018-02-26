@@ -37,7 +37,6 @@ public class CercaPrenotazione extends HttpServlet {
 			scadenza.set(Calendar.HOUR_OF_DAY, Integer.parseInt(orario[0]));
 			scadenza.set(Calendar.MINUTE, Integer.parseInt(orario[1]));
 			
-			
 			if(new Date().after(scadenza.getTime())) {
 				response.getWriter().write("false;Prenotazione scaduta");
 			} else {
