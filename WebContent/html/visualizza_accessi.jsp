@@ -22,7 +22,7 @@
 			      <li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Update <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
-				     	<li><a id="list-element" href="${pageContext.request.contextPath}/eliminaAccesso">pulisci accessi</a></li>
+				     	<li><a id="list-element" href="${pageContext.request.contextPath}/eliminaAccessi">Pulisci Accessi</a></li>
 				       	<li><a id="list-element" href="#">Altro</a></li>
 			        </ul>
 			     </li>

@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -178,6 +179,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 		}
 	    Calendar calendar = Calendar.getInstance();
 	    calendar.setTime(time);
+	    calendar.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
 
 	    if(addADay) {
 	        calendar.add(Calendar.DATE, 1);

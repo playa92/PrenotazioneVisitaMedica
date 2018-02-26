@@ -14,7 +14,7 @@
  	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
  	<script src="js/jquery/jquery.cookie.js"></script>
  	<script src="js/jquery/jquery.bubble.text.js"></script>
- </head>
+</head>
 
 <body style="background-image: url('images/studio_medico.jpg')">
 

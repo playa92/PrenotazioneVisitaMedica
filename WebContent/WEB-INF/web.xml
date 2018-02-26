@@ -114,11 +114,11 @@
     <url-pattern>/controlloAccessi</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>EliminaAccesso</servlet-name>
-    <servlet-class>controller.EliminaAccesso</servlet-class>
+    <servlet-name>EliminaAccessi</servlet-name>
+    <servlet-class>controller.EliminaAccessi</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>EliminaAccesso</servlet-name>
-    <url-pattern>/eliminaAccesso</url-pattern>
+    <servlet-name>EliminaAccessi</servlet-name>
+    <url-pattern>/eliminaAccessi</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -3,6 +3,8 @@ package listener;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
+
 import model.CodiceQR;
 import model.Paziente;
 import model.Prenotazione;
@@ -44,6 +46,7 @@ public class EliminaPrenotazione implements Runnable {
 	private boolean scaduta(String orarioVisita) {
 		
 		Calendar scadenza = Calendar.getInstance();
+		scadenza.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
 		String[] orario = orarioVisita.split(":");
 		
 		scadenza.set(Calendar.HOUR_OF_DAY, Integer.parseInt(orario[0]));

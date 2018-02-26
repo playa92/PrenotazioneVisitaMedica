@@ -127,7 +127,6 @@ public class AccessoDaoJDBC implements AccessoDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}
-		
 	}
 
 }

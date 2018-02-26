@@ -29,7 +29,7 @@ public class ControlloAccessi extends HttpServlet {
 				AccessoDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getAccessoDao();
 				List<Accesso> accessi = accessoDao.findAll();
 				
-				if(accessi.size()>0)
+				if(accessi.size() > 0)
 					request.setAttribute("accessi", accessi);
 				else
 					request.setAttribute("nessun_accesso", true);
