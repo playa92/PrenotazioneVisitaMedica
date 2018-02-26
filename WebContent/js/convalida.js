@@ -18,9 +18,9 @@ function validate(code) {
 						$("#notice").modal("hide");
 						$("#receipt").modal("show");
 						var today = new Date();
-						$("#messageReceipt").html("Data: " +today.toISOString().substring(0, 10)+"<br>" +
-										   "Orario: "+ today.getHours()+":"+today.getMinutes() +"<br>"+
-										   "Importo: "+ values[2]+"0\u20ac")
+						$("#messageReceipt").html("Data: " + today.toISOString().substring(0, 10) + "<br>" +
+										   "Orario: " + today.getHours()+":"+today.getMinutes() + "<br>" +
+										   "Importo: " + values[2] + "0\u20ac")
 					
 					}, 2000);
 			

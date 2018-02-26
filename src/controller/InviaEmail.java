@@ -60,7 +60,6 @@ public class InviaEmail extends HttpServlet {
 		    });  
 
 		    try {
-		   
 		    	MimeMessage message = new MimeMessage(session);
 			    message.setFrom(new InternetAddress(from));
 			    message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));

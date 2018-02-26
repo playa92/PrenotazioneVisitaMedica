@@ -18,18 +18,16 @@ $(function() {
 });
 
 $(document).ready(function() {
-		
-	$("#tutorialDialog").modal("show");
-		
-//	$("#cambiaColore").click(function() {
-//	    $("#pannelloColori").toggle();
-//	});
+
+		$("#cambiaColore").click(function() {
+	    $("#pannelloColori").toggle();
+	});
 	
 //	BUBBLE
     var $element = $('#bubble');
     var phrases = [
         'Prenotati subito!',
-        'cosa aspetti?',
+        'A cosa aspetti?',
         'Affrettati e assicurati la tua prenotazione...',
         '...in modo semplice e veloce.'
     ];
@@ -45,6 +43,23 @@ $(document).ready(function() {
             },
         });
     })();
+
+    //REMEMBER TUTORIAL
+    if(localStorage.chkbox && localStorage.chkbox != '') {
+        $('#rememberTutorial').attr('tutorial', 'checked');
+    	$("#tutorialDialog").modal("show");
+    } else {
+        $('#rememberTutorial').removeAttr('tutorial');
+    }
+
+    $('#rememberTutorial').click(function() {
+
+        if ($('#rememberTutorial').is(':checked')) {
+            localStorage.chkbox = $('#rememberTutorial').val();
+        } else {
+            localStorage.chkbox = '';
+        }
+    });
    
 });
 
@@ -52,6 +67,8 @@ function changeColor(c) {
 	 $(".navbar").css("background-color",c); 
 	 $(".nav-item #navbar-text").css("background-color",c); 
 }
-	
 
+function resetCookies(){
+	 $('#rememberTutorial').attr('tutorial', 'checked');
+}
 

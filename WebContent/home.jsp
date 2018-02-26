@@ -127,9 +127,9 @@
 				     	<a id="navbar-text" data-toggle="modal" data-target="#logout" href="#"><span class="glyphicon glyphicon-user"></span> Disconnetti<b class="caret"></b></a>       		 
 				     	</li>
 					</jstl:if>
-<!-- 				<li class="dropdown nav-item"> -->
-<!-- 				  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-cog"></span> </a>       		  -->
-<!-- 				</li> -->
+				<li class="dropdown nav-item">
+				  <a id="navbar-text" data-toggle="modal" data-target="#settings" href="#"><span class="glyphicon glyphicon-cog"></span> </a>       		 
+				</li>
 			</ul> 
         </div>
     </nav>
@@ -174,7 +174,7 @@
 		  </div>
 		</div>
 
-	    <!-- DIALOG SETTINGS -->
+	    <!-- SETTINGS -->
 		<div id="dialog">
       	  <div class="modal fade" id="settings" role="dialog">
 		    <div class="modal-dialog modal-md">
@@ -194,7 +194,7 @@
 	           			 <a style="text-decoration:none;color:black" href="#" onclick="changeColor('#092147')">ripristina default</a><br>
 	           			 <button class="btn btn-success"><span class="glyphicon glyphicon-floppy-saved"></span> salva</button>			
          			 </div><br>
-         			 <button>ALTRO...</button><br>
+         			 <button onclick="resetCookies()">ripristina Cookies</button><br>
 	    			 <button>ALTRO..</button>	
 		        </div>
 		     </div>
@@ -231,6 +231,7 @@
 							<p>Guarda ora il tutorial, su come prenotarsi!</p>
 							<img src="images/youtube.png"><br>
 							<iframe src="https://www.youtube.com/embed/9V808r_EXGQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>	
+							<label><input id="rememberTutorial" type="checkbox" checked="checked"> Ricordami </label>
 					    </div>
 	         		   </div>
 			    	</div>
@@ -293,7 +294,7 @@
 	    <!-- SCROLLING -->
 		<a href="#" class="scrollup">Scroll</a>
 			
-		<script src="js/effects.js"></script>
+		<script src="js/home.js"></script>
 	 	<script src="js/login.js"></script>	
 	 	<script src="js/scroll_up.js"></script>
 	 	<script src="js/calendar.js"></script>
