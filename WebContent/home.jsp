@@ -195,7 +195,7 @@
 	           			 <button class="btn btn-success" onclick="saveChanges();"><span class="glyphicon glyphicon-floppy-saved"></span> salva</button>			
          			 </div><br>
          			 <a href="#" onclick="resetCookies()">Ripristina Cookies</a><br>
-	    			 <button>ALTRO..</button>	
+	    			 
 		        </div>
 		     </div>
 		   </div>

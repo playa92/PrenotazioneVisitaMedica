@@ -98,11 +98,11 @@
     <url-pattern>/convalidaPrenotazione</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>UpdateAdmin</servlet-name>
-    <servlet-class>controller.UpdateAdmin</servlet-class>
+    <servlet-name>NascondiSegnalazioni</servlet-name>
+    <servlet-class>controller.NascondiSegnalazioni</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UpdateAdmin</servlet-name>
+    <servlet-name>NascondiSegnalazioni</servlet-name>
     <url-pattern>/update</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -112,5 +112,13 @@
   <servlet-mapping>
     <servlet-name>ControlloAccessi</servlet-name>
     <url-pattern>/controlloAccessi</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EliminaAccesso</servlet-name>
+    <servlet-class>controller.EliminaAccesso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EliminaAccesso</servlet-name>
+    <url-pattern>/eliminaAccesso</url-pattern>
   </servlet-mapping>
 </web-app>

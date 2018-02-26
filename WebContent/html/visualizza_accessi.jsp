@@ -51,8 +51,8 @@
 							</jstl:choose>
 							<td>${it.data}</td>
 							<td>${it.orario}</td>
-							<td>${it.nomeUtente}</td>
-							<td><button type="button" onclick="" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> Rimuovi</button></td>
+							<td>${it.nomeUtente}</td>   
+							<td><button type="button" onclick="window.location='${pageContext.request.contextPath}/eliminaAccesso?'" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span> Rimuovi</button></td>
 						</tr>
 					</jstl:forEach>
 				</tbody>

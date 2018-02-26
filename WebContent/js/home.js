@@ -45,7 +45,7 @@ $(document).ready(function() {
     })();
 
     //REMEMBER TUTORIAL
-    if(localStorage.chkbox && localStorage.chkbox != '') {
+    if(localStorage.chkbox2 && localStorage.chkbox2 != '') {
         $('#rememberTutorial').attr('tutorial', 'checked');
     	$("#tutorialDialog").modal("show");
     } else {
@@ -53,11 +53,10 @@ $(document).ready(function() {
     }
 
     $('#rememberTutorial').click(function() {
-
         if ($('#rememberTutorial').is(':checked')) {
-            localStorage.chkbox = $('#rememberTutorial').val();
+            localStorage.chkbox2 = $('#rememberTutorial').val();
         } else {
-            localStorage.chkbox = '';
+            localStorage.chkbox2 = '';
         }
     });
    
@@ -78,6 +77,6 @@ function saveChanges(){
 // RESET COOKIES
 function resetCookies(){
 	 $('#rememberTutorial').attr('tutorial', 'checked');
-	 localStorage.chkbox = $('#rememberTutorial').val('checked');
+	 localStorage.chkbox2 = $('#rememberTutorial').val('checked');
 }
 
