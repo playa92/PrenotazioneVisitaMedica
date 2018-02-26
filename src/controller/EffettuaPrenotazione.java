@@ -42,9 +42,9 @@ public class EffettuaPrenotazione extends HttpServlet {
 		
 		Calendar start = setTimeToCalendar(dateFormat, ORARIO_INIZIO, false);
 		Calendar end = setTimeToCalendar(dateFormat, ORARIO_FINE, true);
-		Calendar now = setTimeToCalendar(dateFormat, currentTime, true);
+		Calendar now = setTimeToCalendar(dateFormat, currentTime, true);		
 		now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + TEMPO_EFFETTIVO);
-		
+
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 		int visiteTotali = prenotazioneDao.getTotalVisits();
 		

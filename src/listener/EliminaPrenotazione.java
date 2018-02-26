@@ -35,7 +35,7 @@ public class EliminaPrenotazione implements Runnable {
 					pazienteDao.delete(paziente);
 					
 					codiceQRDao.delete(it);
-//					System.out.println("deleted");
+					System.out.println("deleted");
 				}
 			}
 		}

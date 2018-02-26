@@ -28,7 +28,7 @@ function search() {
 
 	  $.ajax({
 		  type:"post",
-          url:"../ricercaPrenotazione",  
+          url:"../cercaPrenotazione",  
           data:{hexcode : $("#searchInput").val().toUpperCase()},
 		  success:function(data) {
 			var a = data.split(";");
