@@ -603,7 +603,7 @@ textarea:required:focus {
 /*  WRAPPER */
 
 .wrapper .half {
-  float: left;
+/*   float: left; */
   width: 50%;
   padding: 0 1em;
 }

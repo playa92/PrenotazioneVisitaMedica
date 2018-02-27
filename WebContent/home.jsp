@@ -39,6 +39,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a href="#" class="navbar-brand" style="color:yellow">CUP Unical</a>
         </div>
 
         <div id="navbarCollapse" class="collapse navbar-collapse">
@@ -136,7 +137,7 @@
 		
 		<!-- TITLE -->
 		<div id="jumboHome" class="jumbotron text-center">
-	  		<h1>CUP Centro Unico Prenotazione</h1>
+	  		<h1>Centro Unico Prenotazione Unical</h1>
 	  		<h2>Benvenuto</h2>
 		</div>
  
@@ -164,13 +165,13 @@
 		  </div>
 		  <div class="column col-sm-4">
 		    <img src="images/icona_statistica.png" class="zoom" onclick="window.location='restituisciPrenotazioni'" style="width:90px" alt="Prenotazioni correnti" title="Prenotazioni">
-		    <h3>Tutte le prenotazioni correnti</h3>
-		    <p>Consulta tutte le prenotazioni correnti...</p>
+		    <h3>Tutte le prenotazioni</h3>
+		    <p>Dai un'occhiata a tutte le prenotazioni correnti. </p>
 		  </div>
 		  <div class="column col-sm-4">
 		     <img src="images/icona_search.png" class="zoom" onclick="window.location='html/cerca_prenotazione.html'" style="width:90px" alt="Search" title="Cerca prenotazione">
 		    <h3>Cerca la tua prenotazione</h3>
-		    <p>Qui potra velocemente cercare...</p>
+		    <p>Qui potrai velocemente cercare la tua prenotazione e stamparti il riepilogo di avvenuta registrazione.</p>
 		  </div>
 		</div>
 
@@ -273,7 +274,6 @@
 	                <div class="col-sm-4">
 	                    <h5>About us</h5>
 	                    <ul>
-<!-- 	                        <li><a href="#">Company Information</a></li> -->
 	                        <li><a href="restituisciSegnalazioni">Contact us</a></li>
 	                    </ul>
 	                </div>
@@ -281,6 +281,7 @@
 	                    <h5>Support</h5>
 	                    <ul>
 	                        <li><a href="html/assistenza.jsp">FAQ</a></li>
+	                        <li><a href="html/info.html">Info</a></li>
 	                    </ul>
 	                </div>
 	            </div>
@@ -298,6 +299,7 @@
 	 	<script src="js/login.js"></script>	
 	 	<script src="js/scroll_up.js"></script>
 	 	<script src="js/calendar.js"></script>
-	 	
+		
+		
 </body>
 </html>

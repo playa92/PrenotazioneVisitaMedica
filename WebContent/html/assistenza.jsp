@@ -65,24 +65,24 @@
 	</div>
 	<jstl:if test="${not vuoto}">
 		<h1 style="padding: 0 0 0 1em;">Domande frequenti (FAQ)</h1><br><br>
+	
+		<div class="wrapper">  
+		  <div class="half">
+		    <div class="tab"></div>
+		      
+				<jstl:set var="count" value="0" scope="page" /> 
+				 <jstl:forEach var="i" items="${segnalazioni}">
+					<jstl:set var="count" value="${count + 1}" scope="page"/> 
+					 <div class="tab">
+				        <input id="tab-${count}" type="checkbox" name="tabs">    
+				        <label for="tab-${count}">${i.commento} ( ${i.motivazione} )</label>
+				        <div class="tab-content"><p>${i.risposta}.</p></div>
+				    </div>			
+				</jstl:forEach>
+				
+		     </div>
+		</div>
 	</jstl:if>
-	<div class="wrapper">  
-	  <div class="half">
-	    <div class="tab">
-	      </div>
-	      
-			<jstl:set var="count" value="0" scope="page" /> 
-			 <jstl:forEach var="i" items="${segnalazioni}">
-				<jstl:set var="count" value="${count + 1}" scope="page"/> 
-				 <div class="tab">
-			        <input id="tab-${count}" type="checkbox" name="tabs">    
-			        <label for="tab-${count}">${i.commento} ( ${i.motivazione} )</label>
-			        <div class="tab-content"><p>${i.risposta}.</p></div>
-			    </div>			
-			</jstl:forEach>
-			
-	     </div>
-	</div>
 	
 	<jstl:if test="${vuoto}">
 		<div style="text-align:center; margin-top:100px;">
