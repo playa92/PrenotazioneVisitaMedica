@@ -12,7 +12,10 @@ Download: https://www.eclipse.org/downloads/
 2.Apache Tomcat V9.0.2
 Download: https://tomcat.apache.org/download-90.cgi
 
-Il progetto è stato testato utilizzando il browser Mozilla Firefox
+Repository GIT:
+https://github.com/playa92/PrenotazioneVisitaMedica
+
+NOTA: Il progetto è stato testato utilizzando il browser Mozilla Firefox.
 
 Autori:
 Giovanni Cosentino - https://github.com/giocos  
