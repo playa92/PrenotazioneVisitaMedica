@@ -32,7 +32,7 @@ function search() {
           data:{hexcode : $("#searchInput").val().toUpperCase()},
 		  success:function(data) {
 			var a = data.split(";");
-
+		
 			if(a[0] == "true") {
 				$("#orario").text(a[1]);
 				orario_visita = a[1];
@@ -40,8 +40,8 @@ function search() {
 				$("#hex").text(a[3]);
 				$("#text").val(a[3]);
 				makeCode();
-								
-				start();
+				
+				a[4] == "false" ? start() : document.getElementById('countdown').innerHTML = 0;
 				scrollingAndShow();
 					
 			} else {
@@ -58,7 +58,6 @@ var orario_visita = null;
 var orario_inizio_countdown = null;
 
 function start() {		
-	
 //	var orario_corrente = moment(moment()).format("HH:mm:ss");
 	
 //	if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 

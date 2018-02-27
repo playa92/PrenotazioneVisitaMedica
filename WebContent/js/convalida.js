@@ -17,11 +17,9 @@ function validate(code) {
 					setTimeout(function() {
 						$("#notice").modal("hide");
 						$("#receipt").modal("show");
-						var today = new Date();
-						$("#messageReceipt").html("Data: " + today.toISOString().substring(0, 10) + "<br>" +
-										   "Orario: " + today.getHours()+":"+today.getMinutes() + "<br>" +
-										   "Importo: " + values[2] + "0\u20ac")
-					
+						$("#messageReceipt").html("Data: " + moment(moment()).format("MMM Do YY") + "<br>" +
+										   "Orario: " + moment(moment()).format("HH:mm") + "<br>" +
+										   "Importo: " + values[2] + "0 &#8364");
 					}, 2000);
 			
 			} else {
