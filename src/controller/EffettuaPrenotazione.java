@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,6 +47,8 @@ public class EffettuaPrenotazione extends HttpServlet {
 		Calendar now = setTimeToCalendar(dateFormat, currentTime, true);		
 		now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + TEMPO_EFFETTIVO);
 
+		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
+		
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 		int visiteTotali = prenotazioneDao.getTotalVisits();
 		
