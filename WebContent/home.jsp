@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/loader.css">
  	<link rel="stylesheet" href="css/common.css"> 
  	<link rel="stylesheet" href="css/footer-with-map.css">
- 	<link rel="stylesheet" href="css/calendario.css">
+ 	<link rel="stylesheet" href="css/success.css">
  	<script src="js/jquery/jquery-3.2.1.min.js"></script>
  	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
  	<script src="js/jquery/jquery.cookie.js"></script>
@@ -142,7 +142,9 @@
 		<div id="prenotati" title="Clicca qui per prenotarti">
 			<img src="images/prenotati.png" style="width:100%" onclick="window.location='html/prenotazione.html'"/>
 		</div>
-		<button id="prenotati2" onclick="window.location='html/prenotazione.html'">Clicca e prenotati subito!</button>
+		<div>
+			<button id="prenotati2" onclick="window.location='html/prenotazione.html'">Clicca e prenotati subito!</button>
+		</div>
 		
 		<!-- 	COLUMNS	 -->
 		<div class="row">
@@ -173,7 +175,20 @@
 		            <h3 class="modal-title">Impostazioni</h3>
 		          </div>
 		          <div class="modal-body">
-         			 <a href="#" onclick="resetCookies()">Ripristina Cookies</a><br>
+					
+					<!-- RESETCOOKIES -->
+         			 <a onclick="successSetting('cookies');" href="#">Ripristina Cookies</a>
+	         			<div class="check_mark">
+						  <div class="sa-icon sa-success animate">
+						    <span class="sa-line sa-tip animateSuccessTip"></span>
+						    <span class="sa-line sa-long animateSuccessLong"></span>
+						    <div class="sa-placeholder"></div>
+						    <div class="sa-fix"></div>
+						  </div>
+						</div>
+	
+						<!-- ALTRO -->
+         			 <br>
 		        </div>
 		     </div>
 		   </div>
@@ -276,7 +291,6 @@
 	 	<script src="js/login.js"></script>	
 	 	<script src="js/scroll_up.js"></script>
 	 	<script src="js/calendar.js"></script>
-		
-		
+
 </body>
 </html>

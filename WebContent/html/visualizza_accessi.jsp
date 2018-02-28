@@ -4,13 +4,15 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gestione Accessi</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/loader.css">
  	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
  	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
  	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> 
-	<title>Gestione Accessi</title>
+ 	<script src="${pageContext.request.contextPath}/js/scroll_up.js"> </script> 
 </head>
+
 <body>
 	<!-- Navbar -->
 	<nav role="navigation" role="navigation" class="navbar">
@@ -70,7 +72,9 @@
 			<h1> Nessun accesso disponibile </h1>
 		</div>
 	</jstl:if>
-
+	 
+	<!-- SCROLLING -->
+	<a href="#" class="scrollup">Scroll</a>
 	
 </body>
 </html>

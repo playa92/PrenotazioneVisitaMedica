@@ -59,8 +59,27 @@ $(document).ready(function() {
 });
 
 // RESET COOKIES
-function resetCookies(){
-	 $('#rememberTutorial').attr('tutorial', 'checked');
-	 localStorage.chkbox2 = $('#rememberTutorial').val('checked');
+function successSetting(s){
+ 	
+		if(s == "cookies"){
+	 		 $('#rememberTutorial').attr('tutorial', 'checked');
+	 		 localStorage.chkbox2 = $('#rememberTutorial').val('checked');
+	 		 $('#rememberTutorial').prop('checked', true);
+		}
+ 		  // ANIMATION
+ 		  $(".check_mark").show();	
+	 	  $(".sa-success").addClass("hide");
+	 	  setTimeout(function() {
+	 	    $(".sa-success").removeClass("hide");
+	 	  }, 10);
 }
+
+//when any modal is closing
+$('.modal').on('hide.bs.modal', function (e) {
+	
+	if(e.target.id == "settings"){
+		 $(".check_mark").hide();	
+	}
+});
+
 

@@ -99,3 +99,7 @@ function scrollingAndShow() {
 		  }, 400);
 	}, 2000);
 }
+
+if(typeof window.history.pushState == 'function') {
+	$("input[type=text]").val("");
+}

@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
 	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-
 </head>
 
 <body id="Assistenza">
@@ -61,13 +60,11 @@
 	     </div>
 	   </div>
 	</div>
-	<jstl:if test="${not vuoto}">
-		<h1 style="padding: 0 0 0 1em;">Domande frequenti (FAQ)</h1><br><br>
+	<jstl:if test="${not vuoto}"><br><br>
+		<h1 id="faq">Domande frequenti (FAQ)</h1><br><br>
 	
 		<div class="wrapper">  
-		  <div class="half">
-		    <div class="tab"></div>
-		      
+		
 				<jstl:set var="count" value="0" scope="page" /> 
 				 <jstl:forEach var="i" items="${segnalazioni}">
 					<jstl:set var="count" value="${count + 1}" scope="page"/> 
@@ -77,8 +74,7 @@
 				        <div class="tab-content"><p>${i.risposta}.</p></div>
 				    </div>			
 				</jstl:forEach>
-				
-		     </div>
+		
 		</div>
 	</jstl:if>
 	

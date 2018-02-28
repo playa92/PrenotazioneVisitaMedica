@@ -203,6 +203,8 @@ function randHex(len) {
 $('.modal').on('hide.bs.modal', function (e) {
 	if(e.target.id == "riepilogo")
 		window.location.href='../home';
+	if(e.target.id == "notice")
+		$("input[type=text]").val("");
 })
 var flag = false;
  $(document).mousemove(function(event){
@@ -212,3 +214,6 @@ var flag = false;
 	 }
 })
 
+if(typeof window.history.pushState == 'function') {
+	$("input[type=text]").val("");
+}

@@ -96,7 +96,7 @@
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-			    		<textarea id="textarea" placeholder="Scrivi..." rows="10" cols="40" style="width:400px; height:200px;font-size:25px;" name="message" required="required"></textarea><br><br>
+			    		<textarea id="textarea" placeholder="Scrivi..." style="width:100%; height:100%;font-size:25px;" name="message" required="required"></textarea><br><br>
 			    		<button type="submit" class="btn-success btn-lg" onclick="sendMail();">Invia 
          					<span class="glyphicon glyphicon-envelope"></span> 
        					</button>
@@ -106,18 +106,16 @@
 		    </div>
 	     </div>
 		
-<!-- RISOLVI -->
+	    <!-- RISOLVI -->
 		<div id="dialog">
       	  <div class="modal fade" id="risolvi" role="dialog">
 		    <div class="modal-dialog modal-md">
 		      <div class="modal-content">
 		         <div class="modal-header" style="text-align:center; background-color:#ffa500">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-<!-- 	        		<form method="get" action="risolviSegnalazione"> -->
-		        		<textarea id="risposta" name="risposta" placeholder="Rispondi.." style="width:400px; height:200px; font-size:25px;"></textarea><br><br>
+		        		<textarea id="risposta" name="risposta" placeholder="Rispondi.." style="width:100%; height:100%; font-size:25px;"></textarea><br><br>
 		      			<input id="inpt" name="motivazione" type="hidden">
 		      			<button class="btn-success btn-lg" type="submit" onclick="risolvi();">Conferma <span class="glyphicons glyphicons-ok"></span> </button>  	
-<!-- 	          		</form> -->
 	          	  </div>
 		        </div>
 		      </div>
