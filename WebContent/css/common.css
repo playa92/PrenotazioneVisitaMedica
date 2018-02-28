@@ -527,8 +527,8 @@ textarea:required:focus {
 }
 
 .form-assistenza {
-  width: 100%;
-  height: 100%;
+  width: 85%;
+  height: 90%;
   padding-left: 25px;
   padding-right: 25px;
   padding-top: 12px;
@@ -542,13 +542,7 @@ textarea:required:focus {
 } 
 
 .form-assistenza input[type="text"], 
-.form-assistenza input[type="date"], 
-.form-assistenza input[type="datetime"], 
 .form-assistenza input[type="email"], 
-.form-assistenza input[type="number"], 
-.form-assistenza input[type="search"], 
-.form-assistenza input[type="time"], 
-.form-assistenza input[type="url"], 
 .form-assistenza textarea, 
 .form-assistenza select {  
    border-radius: 4px; 
@@ -557,7 +551,7 @@ textarea:required:focus {
    margin: 0; 
    outline: 0; 
    padding: 4px;
-   width: 100%; 
+   width: 85%; 
    box-sizing: border-box; 
    -webkit-box-sizing: border-box; 
    -moz-box-sizing: border-box; 

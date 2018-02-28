@@ -53,11 +53,9 @@
 					  		<option onclick="hideTextField();">Connessione scaduta</option>
 					  		<option onclick="toggleTextField();">Altro</option>
 						</select>
-						<textarea id="textarea" name="commento" required></textarea>
-						<div class="modal-footer" style="text-align:center;">
+						<textarea id="textarea" name="commento" required></textarea><hr>
 		      		 		<input id="submitSegnalazione" type="submit" class="btn btn-md" value="Invia" onclick="send();"/>
 		    		 		<button id="annulla" type="button" class="btn btn-md" data-dismiss="modal" onclick="window.location.href='#'">Annulla</button>
-				  		</div>
 				 </div>
 		      </div>
 	     </div>

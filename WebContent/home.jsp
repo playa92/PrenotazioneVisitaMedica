@@ -18,18 +18,6 @@
 
 <body style="background-image: url('images/studio_medico.jpg')">
 
-<!-- Loader -->
-<!-- 	<div id="preloader" class="container"> -->
-<!-- 		<div class="row"> -->
-<!-- 			<div class="load-overlay"> -->
-<!-- 				<div class="loader"> -->
-<!-- 				  <i></i><i></i><i></i><i></i><i></i> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-
-
     <nav class="navbar navbar-default">
 
         <div class="navbar-header">
@@ -185,18 +173,7 @@
 		            <h3 class="modal-title">Impostazioni</h3>
 		          </div>
 		          <div class="modal-body">
-         			 <a id="cambiaColore" href="#">Cambia colore della barra</a>
-         			 <div id="pannelloColori" style="display:none;">
-         				 <div onclick="changeColor('yellow')" style="width:20px; height:20px; background:yellow;display: inline-block"></div>
-	           			 <div onclick="changeColor('red')" style="width:20px; height:20px; background:red;display: inline-block"></div>
-	           			 <div onclick="changeColor('green')" style="width:20px; height:20px; background:green; display:inline-block"></div>
-	           			 <div onclick="changeColor('gray')" style="width:20px; height:20px; background:gray; display:inline-block"></div>
-	           			 <div onclick="changeColor('blue')" style="width:20px; height:20px; background:blue; display:inline-block"></div><br>
-	           			 <a style="text-decoration:none;color:black" href="#" onclick="changeColor('#092147')">ripristina default</a><br>
-	           			 <button class="btn btn-success" onclick="saveChanges();"><span class="glyphicon glyphicon-floppy-saved"></span> salva</button>			
-         			 </div><br>
          			 <a href="#" onclick="resetCookies()">Ripristina Cookies</a><br>
-	    			 
 		        </div>
 		     </div>
 		   </div>
@@ -231,7 +208,7 @@
 	        			<div id="tutorial">
 							<p>Guarda ora il tutorial, su come prenotarsi!</p>
 							<img src="images/youtube.png"><br>
-							<iframe src="https://www.youtube.com/embed/9V808r_EXGQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>	
+								<iframe src="https://www.youtube.com/embed/gF6OnSFKaaE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 							<label><input id="rememberTutorial" type="checkbox" checked="checked"> Ricordami </label>
 					    </div>
 	         		   </div>

@@ -18,10 +18,6 @@ $(function() {
 });
 
 $(document).ready(function() {
-
-		$("#cambiaColore").click(function() {
-	    $("#pannelloColori").toggle();
-	});
 	
 //	BUBBLE
     var $element = $('#bubble');
@@ -61,19 +57,6 @@ $(document).ready(function() {
     });
    
 });
-
-var color_navbar;
-function changeColor(c) {
-		navbar = c;
-	 $(".navbar").css("background-color",c); 
-	 $(".nav-item #navbar-text").css("background-color",c); 
-}
-
-function saveChanges(){
-	// write on .txt
-	 $("#pannelloColori").hide();
-
-}
 
 // RESET COOKIES
 function resetCookies(){
