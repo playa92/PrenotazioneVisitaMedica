@@ -70,6 +70,6 @@ $('.modal').on('hide.bs.modal', function(e) {
 	}
 });
 
-//if(typeof window.history.pushState == 'function') {
-//    window.history.pushState({}, "Hide", "http://localhost:8080/PrenotazioneVisitaMedica/risolviSegnalazione");
-//}
+if(typeof window.history.pushState == 'function') {
+    window.history.pushState({}, "Hide", "/PrenotazioneVisitaMedica/risolviSegnalazione");
+}
