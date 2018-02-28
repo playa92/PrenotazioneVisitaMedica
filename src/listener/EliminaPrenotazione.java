@@ -17,6 +17,7 @@ public class EliminaPrenotazione implements Runnable {
 	
 	@Override
 	public void run() {
+		
 		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
 
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();

@@ -12,7 +12,7 @@ import it.sauronsoftware.cron4j.Scheduler;
 public class EsecuzioneScheduler implements ServletContextListener {
 
 	private final long DELAY = 0;
-    private final long PERIODO_ESECUZIONE = 5;
+    private final long PERIODO_ESECUZIONE = 10;
     private ScheduledExecutorService scheduler;
     private EliminaPrenotazione eliminaPrenotazione;
     private ResetDatabase resetDatabase;
