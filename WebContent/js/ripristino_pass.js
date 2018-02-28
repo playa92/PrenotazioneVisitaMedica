@@ -29,7 +29,7 @@ function verify(password) {
 	var regex = new RegExp("^[A-z0-9]+$");
 	var p = password;
 	
-	if(p.length > 0 && !regex.test(p)) {
+	if((p.length > 0 && !regex.test(p)) || p == $("input[name=username]").prop("value")) {
 		
 		$("#notice").modal("show");
 		$("#message").text("Attenzione: la password inserita non rispetta i requisiti");
