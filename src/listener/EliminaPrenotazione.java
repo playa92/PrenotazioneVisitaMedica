@@ -3,6 +3,8 @@ package listener;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
+
 import model.CodiceQR;
 import model.Paziente;
 import model.Prenotazione;
@@ -15,7 +17,8 @@ public class EliminaPrenotazione implements Runnable {
 	
 	@Override
 	public void run() {
-		
+		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
+
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
 		List<CodiceQR> codici = codiceQRDao.findAll();
 		

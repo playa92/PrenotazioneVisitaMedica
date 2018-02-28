@@ -31,7 +31,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 	private final int LIMITE_PRENOTAZIONI = 50;
 	private final int TEMPO_EFFETTIVO = 10;
 	
-	private final int CONVALIDA = 10;
+	private final int CONVALIDA = 5;
 	private final int TEMPO_VISITA = 10;
 	private final String ORARIO_INIZIO = "9:00:00"; 
 	private final String ORARIO_FINE = "23:59:00";
@@ -39,6 +39,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
 		String dateFormat = "HH:mm";
 		String currentTime = new SimpleDateFormat(dateFormat).format(new Date());
 		
@@ -47,8 +48,6 @@ public class EffettuaPrenotazione extends HttpServlet {
 		Calendar now = setTimeToCalendar(dateFormat, currentTime, true);		
 		now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + TEMPO_EFFETTIVO);
 
-		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
-		
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
 		int visiteTotali = prenotazioneDao.getTotalVisits();
 		
@@ -72,6 +71,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException ,IOException {
 		
+		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
 		StringBuffer jsonReceived = new StringBuffer();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));		
 		String line = reader.readLine();
@@ -139,6 +139,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 			Calendar now = Calendar.getInstance();
 			now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + TEMPO_EFFETTIVO);
 			
+			
 			Date date1 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000));
 			Date date2 = new Date(now.getTimeInMillis() + (visiteTotali * TEMPO_VISITA * 60000) - (CONVALIDA * 60000));
 			
@@ -146,6 +147,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 			String visita = new SimpleDateFormat(dateFormat).format(date1);
 			String scadenza = new SimpleDateFormat(dateFormat).format(date2);
 			
+		
 			CodiceQR codiceQR = new CodiceQR();
 			codiceQR.setCodice(json.getString("hexcode"));
 			codiceQR.setScadenza(scadenza);

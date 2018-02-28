@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +26,7 @@ public class CercaPrenotazione extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
+		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
 		String hexcode = request.getParameter("hexcode");
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
