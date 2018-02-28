@@ -31,8 +31,7 @@ public class RisolviSegnalazione extends HttpServlet {
 			if(session.getAttribute("loggato").equals(true)) {
 		
 				String risposta = request.getParameter("risposta");
-			    String motivazione = request.getParameter("motivazione");
-			    List<Segnalazione> s = risolviSegnalazione(risposta, motivazione);
+			    List<Segnalazione> s = risolviSegnalazione("", risposta);
 			    
 			    if(s.size() > 0)
 				     request.setAttribute("segnalazioni", s);
@@ -63,30 +62,31 @@ public class RisolviSegnalazione extends HttpServlet {
 			JSONObject json = new JSONObject(jsonReceived.toString());
 			
 			String risposta = json.getString("risposta");
-		    String motivazione = json.getString("motivazione");
+		    String id = json.getString("id");
 		    
-		    risolviSegnalazione(risposta, motivazione);
+		    risolviSegnalazione(id, risposta);
 			
 		} catch(JSONException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	private List<Segnalazione> risolviSegnalazione(String risposta, String motivazione) {
-		
+	private List<Segnalazione> risolviSegnalazione(String id, String risposta) {
 		SegnalazioneDao segnalazioneDao = DatabaseManager.getInstance().getDaoFactory().getSegnalazioneDao();
 		List<Segnalazione> segnalazioni = segnalazioneDao.findAll();
-		    	    		    
-	    for(Segnalazione s:segnalazioni) {
-	    	
-	    	if(s.getMotivazione().equals(motivazione) && !s.getRisolto()) {
-	    		
-	    		s.setRisposta(risposta);
-	            s.setRisolto(true);
-	            segnalazioneDao.update(s);
-	            break; 
-	    	}
-	    }
+		  
+		if(!id.equals("")) {
+		    for(Segnalazione s:segnalazioni) {
+		    	
+		    	if(s.getId().equals(Integer.parseInt(id))) {
+		    		
+		    		s.setRisposta(risposta);
+		            s.setRisolto(true);
+		            segnalazioneDao.update(s);
+		            break; 
+		    	}
+		    }
+		}
 	    return segnalazioni;
 	}
 	

@@ -1,18 +1,21 @@
-function set(idMotivazione, idRisolvi) {
+var id2;
+function set(idMotivazione,id) {
 	$("#inpt").val($("#" + idMotivazione).text());
+	id2=id;
 }
 
-function Risposta(motivazione, risposta) {
+function Risposta(id, risposta) {
 	
-	this.motivazione = motivazione;
+	this.id=id;
 	this.risposta = risposta;
+	
 }
 
 function risolvi() {
 	
-	var risposta = new Risposta(	
-		$("input[name=motivazione]").prop("value"),
-		$("#risposta").val()
+	var risposta = new Risposta(
+		id2,
+		$("#risposta").val()	
 	);
 	
 	$.ajax({

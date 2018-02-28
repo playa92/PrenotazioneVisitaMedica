@@ -33,8 +33,8 @@ public class EffettuaPrenotazione extends HttpServlet {
 	
 	private final int CONVALIDA = 10;
 	private final int TEMPO_VISITA = 10;
-	private final String ORARIO_INIZIO = "9:00:00"; 
-	private final String ORARIO_FINE = "23:59:00";
+	private final String ORARIO_INIZIO = "8:00:00"; 
+	private final String ORARIO_FINE = "19:45:00";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

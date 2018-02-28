@@ -27,7 +27,7 @@ public class EsecuzioneScheduler implements ServletContextListener {
 	     
 	     dailyScheduler = new Scheduler();
 	     resetDatabase = new ResetDatabase();
-	     dailyScheduler.schedule("59 21 * * *", resetDatabase);
+	     dailyScheduler.schedule("00 21 * * *", resetDatabase);
 	     dailyScheduler.start();
 	}
 	
