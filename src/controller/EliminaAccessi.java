@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import persistence.DatabaseManager;
-import persistence.dao.AccessoDao;
+import persistence.dao.LoggingDao;
 
 @SuppressWarnings("serial")
 public class EliminaAccessi extends HttpServlet {
@@ -15,8 +15,8 @@ public class EliminaAccessi extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		AccessoDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getAccessoDao();
-	    accessoDao.deleteAll();
+		LoggingDao loggingDao = DatabaseManager.getInstance().getDaoFactory().getLoggingDao();
+	    loggingDao.deleteAll();
 	   	request.setAttribute("nessun_accesso", true);
 	    
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("html/visualizza_accessi.jsp");

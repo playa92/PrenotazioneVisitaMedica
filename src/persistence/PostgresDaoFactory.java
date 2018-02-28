@@ -1,9 +1,9 @@
 package persistence;
 
-import persistence.dao.AccessoDao;
 import persistence.dao.AmministratoreDao;
 import persistence.dao.CodiceQRDao;
 import persistence.dao.ImpiegatoDao;
+import persistence.dao.LoggingDao;
 import persistence.dao.PazienteDao;
 import persistence.dao.UniversitaDao;
 import persistence.dao.PrenotazioneDao;
@@ -60,8 +60,8 @@ public class PostgresDaoFactory extends DaoFactory {
 	}
 	
 	@Override
-	public AccessoDao getAccessoDao() {
-		return new AccessoDaoJDBC(dataSource);
+	public LoggingDao getLoggingDao() {
+		return new LoggingDaoJDBC(dataSource);
 	}
 	
 	@Override

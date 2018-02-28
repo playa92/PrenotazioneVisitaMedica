@@ -27,6 +27,7 @@ public class CercaPrenotazione extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
+		
 		String hexcode = request.getParameter("hexcode");
 		CodiceQRDao codiceQRDao = DatabaseManager.getInstance().getDaoFactory().getCodiceQRDao();
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();

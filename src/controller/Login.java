@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Accesso;
+import model.Logging;
 import model.Amministratore;
 import model.Impiegato;
 import model.Segnalazione;
 import persistence.DatabaseManager;
-import persistence.dao.AccessoDao;
+import persistence.dao.LoggingDao;
 import persistence.dao.AmministratoreDao;
 import persistence.dao.ImpiegatoDao;
 import persistence.dao.SegnalazioneDao;
@@ -23,7 +23,7 @@ import persistence.dao.SegnalazioneDao;
 @SuppressWarnings("serial")
 public class Login extends HttpServlet {
 
-	private final int SCADENZA_SESSIONE = 120;
+	private final int SCADENZA_SESSIONE = 300;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -94,16 +94,16 @@ public class Login extends HttpServlet {
 	
 	private void registraAccesso(String username, String azione) {
 		
-		AccessoDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getAccessoDao();
-		Accesso accesso = new Accesso();
-		accesso.setAzione(azione);
+		LoggingDao loggingDao = DatabaseManager.getInstance().getDaoFactory().getLoggingDao();
+		Logging logging = new Logging();
+		logging.setAzione(azione);
 		Date date = new Date();
-		int id = accessoDao.assignId() + 1;//Chiave Primaria
-		accesso.setId(id);
-		accesso.setData(date);
-		accesso.setOrario(new SimpleDateFormat("hh:MM:ss").format(date));
-		accesso.setNomeUtente(username);
-		accessoDao.save(accesso);
+		int id = loggingDao.assignId() + 1;//Chiave Primaria
+		logging.setId(id);
+		logging.setData(date);
+		logging.setOrario(new SimpleDateFormat("hh:MM:ss").format(date));
+		logging.setNomeUtente(username);
+		loggingDao.save(logging);
 	}
 	
 	private int contaSegnalazioni() {

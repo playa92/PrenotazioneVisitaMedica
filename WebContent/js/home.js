@@ -23,7 +23,7 @@ $(document).ready(function() {
     var $element = $('#bubble');
     var phrases = [
         'Prenotati subito!',
-        'A cosa aspetti?',
+        'Cosa aspetti?',
         'Affrettati e assicurati la tua prenotazione...',
         '...in modo semplice e veloce.'
     ];

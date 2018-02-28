@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Accesso {
+public class Logging {
 
 	private Integer id;
 	private String azione;
@@ -10,9 +10,9 @@ public class Accesso {
 	private String orario;
 	private String nomeUtente;
 	
-	public Accesso() {}
+	public Logging() {}
 	
-	public Accesso(Integer id, String azione, Date data, String orario, String nomeUtente) {
+	public Logging(Integer id, String azione, Date data, String orario, String nomeUtente) {
 		
 		this.id = id;
 		this.azione = azione;

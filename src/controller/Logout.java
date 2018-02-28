@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Accesso;
+import model.Logging;
 import persistence.DatabaseManager;
-import persistence.dao.AccessoDao;
+import persistence.dao.LoggingDao;
 
 @SuppressWarnings("serial")
 public class Logout extends HttpServlet {
@@ -41,8 +41,8 @@ public class Logout extends HttpServlet {
 	
 	private void registraDisconnessione(String username, String azione) {
 		
-		AccessoDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getAccessoDao();
-		Accesso accesso = new Accesso();
+		LoggingDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getLoggingDao();
+		Logging accesso = new Logging();
 		accesso.setAzione(azione);
 		Date date = new Date();
 		int id = accessoDao.assignId() + 1;

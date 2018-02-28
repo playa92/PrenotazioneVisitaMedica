@@ -7,14 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.Accesso;
-import persistence.dao.AccessoDao;
+import model.Logging;
+import persistence.dao.LoggingDao;
 
-public class AccessoDaoJDBC implements AccessoDao {
+public class LoggingDaoJDBC implements LoggingDao {
 
 	private DataSource dataSource;
 	
-	public AccessoDaoJDBC(DataSource dataSource) {
+	public LoggingDaoJDBC(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 	
@@ -23,7 +23,7 @@ public class AccessoDaoJDBC implements AccessoDao {
 		
 		Connection connection = dataSource.getConnection();
 		try {
-			String query = "select COUNT(*) AS count FROM accesso";
+			String query = "select COUNT(*) AS count FROM logging";
 			PreparedStatement statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
@@ -46,11 +46,11 @@ public class AccessoDaoJDBC implements AccessoDao {
 	}
 	
 	@Override
-	public void save(Accesso accesso) {
+	public void save(Logging accesso) {
 		
 		Connection connection = dataSource.getConnection();
 		try {
-			String insert = "insert INTO accesso(id, azione, data, orario, nome_utente) values(?,?,?,?,?)";
+			String insert = "insert INTO logging(id, azione, data, orario, nome_utente) values(?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setInt(1, accesso.getId());
 			statement.setString(2, accesso.getAzione());
@@ -73,26 +73,26 @@ public class AccessoDaoJDBC implements AccessoDao {
 	}
 
 	@Override
-	public List<Accesso> findAll() {
+	public List<Logging> findAll() {
 		
 		Connection connection = dataSource.getConnection();
-		List<Accesso> accessi = new ArrayList<>();
-		Accesso accesso = null;
+		List<Logging> log = new ArrayList<>();
+		Logging logging = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * FROM accesso";
+			String query = "select * FROM logging";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
 				
-				accesso = new Accesso();
-				accesso.setId(result.getInt("id"));
-				accesso.setAzione(result.getString("azione"));
-				accesso.setData(result.getDate("data"));				
-				accesso.setOrario(result.getString("orario"));
-				accesso.setNomeUtente(result.getString("nome_utente"));
-				accessi.add(accesso);
+				logging = new Logging();
+				logging.setId(result.getInt("id"));
+				logging.setAzione(result.getString("azione"));
+				logging.setData(result.getDate("data"));				
+				logging.setOrario(result.getString("orario"));
+				logging.setNomeUtente(result.getString("nome_utente"));
+				log.add(logging);
 			}
 			
 		} catch(SQLException e) {
@@ -105,7 +105,7 @@ public class AccessoDaoJDBC implements AccessoDao {
 				throw new PersistenceException(e.getMessage());
 			}
 		}	
-		return accessi;
+		return log;
 	}
 
 	@Override
@@ -113,7 +113,7 @@ public class AccessoDaoJDBC implements AccessoDao {
 		
 		Connection connection = dataSource.getConnection();
 		try {
-			String delete = "delete FROM accesso";
+			String delete = "delete FROM logging";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();
 			

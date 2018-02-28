@@ -2,17 +2,15 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import model.Accesso;
+import model.Logging;
 import persistence.DatabaseManager;
-import persistence.dao.AccessoDao;
+import persistence.dao.LoggingDao;
 
 @SuppressWarnings("serial")
 public class ControlloAccessi extends HttpServlet {
@@ -26,11 +24,11 @@ public class ControlloAccessi extends HttpServlet {
 			
 			if(session.getAttribute("loggatoAdmin").equals(true)) {
 		
-				AccessoDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getAccessoDao();
-				List<Accesso> accessi = accessoDao.findAll();
+				LoggingDao loggingDao = DatabaseManager.getInstance().getDaoFactory().getLoggingDao();
+				List<Logging> log = loggingDao.findAll();
 				
-				if(accessi.size() > 0)
-					request.setAttribute("accessi", accessi);
+				if(log.size() > 0)
+					request.setAttribute("accessi", log);
 				else
 					request.setAttribute("nessun_accesso", true);
 			

@@ -29,9 +29,9 @@ import persistence.dao.PrenotazioneDao;
 public class EffettuaPrenotazione extends HttpServlet {
 	
 	private final int LIMITE_PRENOTAZIONI = 50;
-	private final int TEMPO_EFFETTIVO = 10;
+	private final int TEMPO_EFFETTIVO = 20;
 	
-	private final int CONVALIDA = 5;
+	private final int CONVALIDA = 10;
 	private final int TEMPO_VISITA = 10;
 	private final String ORARIO_INIZIO = "9:00:00"; 
 	private final String ORARIO_FINE = "23:59:00";
@@ -40,6 +40,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
+		
 		String dateFormat = "HH:mm";
 		String currentTime = new SimpleDateFormat(dateFormat).format(new Date());
 		
@@ -72,6 +73,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException ,IOException {
 		
 		TimeZone.setDefault(TimeZone.getTimeZone("Europe/Berlin"));
+		
 		StringBuffer jsonReceived = new StringBuffer();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));		
 		String line = reader.readLine();

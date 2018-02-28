@@ -17,7 +17,7 @@ public class UtilDao {
 		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "drop SEQUENCE if EXISTS id;"
-					+ "drop table if EXISTS accesso;"
+					+ "drop table if EXISTS logging;"
 					+ "drop table if EXISTS paziente CASCADE;"
 					+ "drop table if EXISTS università;"
 					+ "drop table if EXISTS amministratore;"
@@ -48,18 +48,18 @@ public class UtilDao {
 		Connection connection = dataSource.getConnection();
 		try {
 			String delete = "create SEQUENCE id;"
-					+ "create table codice_qr(id VARCHAR(255) primary key, orario_scadenza VARCHAR(255), convalida BOOLEAN);"
-					+ "create table università(matricola BIGINT primary key, nome_paziente VARCHAR(255), cognome_paziente VARCHAR(255));"
-					+ "create table paziente(\"codice_fiscale\" VARCHAR(255) primary key, nome VARCHAR(255),"
-					+ "cognome VARCHAR(255), matricola BIGINT, invalidità VARCHAR(255), "
-					+ "id_codice VARCHAR(255) REFERENCES codice_qr(\"id\"));"
-					+ "create table amministratore(username VARCHAR(255) primary key, password VARCHAR(255));"
-					+ "create table prenotazione(id_prenotazione VARCHAR(255) primary key REFERENCES codice_qr(\"id\"),"
-					+ "nome_paziente VARCHAR(255), cognome_paziente VARCHAR(255), orario_visita VARCHAR(255), importo BIGINT);"
-					+ "create table impiegato(username VARCHAR(255) primary key, password VARCHAR(255), ruolo VARCHAR(255));"
-					+ "create table segnalazione(id INT primary key, nome_utente VARCHAR(255), email VARCHAR(255),"
+					+ "create table codice_qr(id VARCHAR(12) primary key, orario_scadenza VARCHAR(5), convalida BOOLEAN);"
+					+ "create table università(matricola BIGINT primary key, nome_paziente VARCHAR(16), cognome_paziente VARCHAR(16));"
+					+ "create table paziente(\"codice_fiscale\" VARCHAR(16) primary key, nome VARCHAR(16),"
+					+ "cognome VARCHAR(16), matricola BIGINT, invalidità VARCHAR(16), "
+					+ "id_codice VARCHAR(12) REFERENCES codice_qr(\"id\"));"
+					+ "create table amministratore(username VARCHAR(16) primary key, password VARCHAR(16));"
+					+ "create table prenotazione(id_prenotazione VARCHAR(12) primary key REFERENCES codice_qr(\"id\"),"
+					+ "nome_paziente VARCHAR(16), cognome_paziente VARCHAR(16), orario_visita VARCHAR(5), importo BIGINT);"
+					+ "create table impiegato(username VARCHAR(16) primary key, password VARCHAR(16), ruolo VARCHAR(16));"
+					+ "create table segnalazione(id INT primary key, nome_utente VARCHAR(16), email VARCHAR(16),"
 					+ "motivazione VARCHAR(255), commento VARCHAR(255), risposta VARCHAR(255), risolto BOOLEAN, mostra BOOLEAN);"
-					+ "create table accesso(id INT primary key, azione VARCHAR(255), data DATE, orario VARCHAR(255), nome_utente VARCHAR(255));";
+					+ "create table logging(id INT primary key, azione VARCHAR(16), data DATE, orario VARCHAR(8), nome_utente VARCHAR(16));";
 			
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();		
@@ -86,10 +86,6 @@ public class UtilDao {
 				PreparedStatement statement = connection.prepareStatement(delete);
 				statement.executeUpdate();
 				
-				delete = "delete FROM università";
-				statement = connection.prepareStatement(delete);
-				statement.executeUpdate();
-				
 				delete = "delete FROM prenotazione";
 				statement = connection.prepareStatement(delete);
 				statement.executeUpdate();
@@ -98,21 +94,7 @@ public class UtilDao {
 				statement = connection.prepareStatement(delete);
 				statement.executeUpdate();
 				
-				delete = "delete FROM amministratore";
-				statement = connection.prepareStatement(delete);
-				statement.executeUpdate();
-				
-				delete = "delete FROM impiegato";
-				statement = connection.prepareStatement(delete);
-				statement.executeUpdate();
-				
-				delete = "delete FROM segnalazione";
-				statement = connection.prepareStatement(delete);
-				statement.executeUpdate();
-				
-				delete = "delete FROM accesso";
-				statement = connection.prepareStatement(delete);
-				statement.executeUpdate();
+				System.out.println("Executed reset database");
 				
 			} catch(SQLException e) {	
 				throw new PersistenceException(e.getMessage());
