@@ -19,15 +19,15 @@ CREDENZIALI DI ACCESSO AL SITO
 ------------------------------
 Amministratore
 
-username:admin1 password:1234
+* username: admin1 password: 1234
 
-username:admin2 password:1234
+* username: admin2 password: 1234
 
 Impiegato
 
-username:employee1 password:1234
+* username: employee1 password: 1234
 
-username:employee2 password:1234 
+* username: employee2 password: 1234 
 
 EVENTUALI BUG
 -------------
