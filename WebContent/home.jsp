@@ -55,7 +55,7 @@
 			     </li>
 			      <jstl:if test="${loggatoEmployee}">
 			     	<li class="dropdown nav-item">
-						<a id="navbar-text" class="nav-link dropdown-toggle" href="html/convalida.html">Convalida
+						<a id="navbar-text" class="nav-link dropdown-toggle" href="html/convalida.jsp">Convalida
 						</a>
 			     	</li>
 			     	<li class="dropdown nav-item">

@@ -1,13 +1,16 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Convalida Prenotazione</title>
-	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/common.css">
-	<script src="../js/jquery/jquery-3.2.1.min.js"></script>
- 	<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> 
- 	<script src="../js/jquery/instascan.min.js"></script>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
+ 	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script> 
+ 	<script src="${pageContext.request.contextPath}/js/jquery/instascan.min.js"></script>
 
 </head>
 <body>
@@ -18,18 +21,21 @@
 				<li class="dropdown nav-item">
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="../home"><span class="glyphicon glyphicon-home"></span> Home</a>
 			     </li>
+			     <li class="dropdown nav-item">
+			     	<a id="navbar-text" class="nav-link dropdown-toggle" style="color:yellow" href="controlloAccessi">Benvenuto <jstl:out value="${username}"></jstl:out></a>
+			     </li>
 	   		</ul>
 		</div>	
 	</nav>
 
 	<div class="jumbotron text-center" style="background:#FFA500;color:white">
   		<h1>Convalida Prenotazione</h1>
-  		<h4>Scegli una delle due modalità per convalidare una prenotazione</h4>
+  		<h4>Scegli una delle due modalitÃ  per convalidare una prenotazione</h4>
 	</div>
 	
 	<div align="center">
-	<p style="font-size:16px">Se disponi un lettore codice QR allora scegli la prima modalità a sinistra,<br> 
-	   in alternativa la seconda modalità a destra ti permette di inserire un codice identificativo da tastiera.</p>
+	<p style="font-size:16px">Se disponi un lettore codice QR allora scegli la prima modalitÃ  a sinistra,<br> 
+	   in alternativa la seconda modalitÃ  a destra ti permette di inserire un codice identificativo da tastiera.</p>
 	 	<button id="QR" class="btn btn-lg myButton" style="background:#FFA500;color:white" title="Scansiona il codice QR">
          	<span class="glyphicon glyphicon-qrcode"></span>
         </button>
@@ -94,11 +100,11 @@
 	  <video style="width:350px;"id="preview"></video>
 	</div>
 	
-	<script src="../js/convalida.js"></script> 
- 	<script src="../js/jquery/jspdf.min.js"></script>
-    <script src="../js/pdf_print.js"></script>
-    <script src="../js/scroll_up.js"> </script>   
-    <script src="../js/qr_scanner.js"></script>
+	<script src="${pageContext.request.contextPath}/js/convalida.js"></script> 
+ 	<script src="${pageContext.request.contextPath}/js/jquery/jspdf.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/pdf_print.js"></script>
+    <script src="${pageContext.request.contextPath}/js/scroll_up.js"> </script>   
+    <script src="${pageContext.request.contextPath}/js/qr_scanner.js"></script>
     <script src="https://momentjs.com/downloads/moment.min.js"></script>
 	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 	

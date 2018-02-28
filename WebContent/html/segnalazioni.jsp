@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Area Segnalazioni</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
-	<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Area Segnalazioni</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+		<script src="${pageContext.request.contextPath}/js/jquery/jquery-3.2.1.min.js"></script>
+		<script src="${pageContext.request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 		<!-- Navbar -->
@@ -24,10 +24,13 @@
 					<a id="navbar-text" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Update <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
 				     	<li><a id="list-element" href="${pageContext.request.contextPath}/update">Nascondi/Mostra Risolti</a></li>
-				       	<li><a id="list-element" href="#">Altro</a></li>
 			        </ul>
 			     </li>
+			    
 			     </jstl:if>
+					<li class="dropdown nav-item">
+			     		<a id="navbar-text" class="nav-link dropdown-toggle" style="color:yellow" href="controlloAccessi">Benvenuto <jstl:out value="${username}"></jstl:out></a>
+			     	</li>
 	   		</ul>
 		</div>	
 	</nav>
