@@ -35,7 +35,7 @@ public class EliminaPrenotazione implements Runnable {
 					pazienteDao.delete(paziente);
 					
 					codiceQRDao.delete(it);
-					System.out.println("deleted");
+//					System.out.println("deleted");
 				}
 			}
 		}
@@ -45,7 +45,6 @@ public class EliminaPrenotazione implements Runnable {
 		
 		Calendar scadenza = Calendar.getInstance();
 		String[] orario = orarioVisita.split(":");
-		
 		scadenza.set(Calendar.HOUR_OF_DAY, Integer.parseInt(orario[0]));
 		scadenza.set(Calendar.MINUTE, Integer.parseInt(orario[1]));
 		

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="model.Universita" project="PrenotazioneVisitaMedica" 
+    file="/PrenotazioneVisitaMedica/src/model/Universita.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="179" x="424" y="-222"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="model.CodiceQR" project="PrenotazioneVisitaMedica" 
+    file="/PrenotazioneVisitaMedica/src/model/CodiceQR.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="268" width="216" x="-72" y="-222"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="model.Impiegato" project="PrenotazioneVisitaMedica" 
+    file="/PrenotazioneVisitaMedica/src/model/Impiegato.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="268" width="200" x="184" y="-222"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="model.Amministratore" project="PrenotazioneVisitaMedica" 
+    file="/PrenotazioneVisitaMedica/src/model/Amministratore.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="214" width="194" x="643" y="-222"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="model.Accesso" project="PrenotazioneVisitaMedica" 
+    file="/PrenotazioneVisitaMedica/src/model/Accesso.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="376" width="269" x="877" y="-222"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="model.Segnalazione" project="PrenotazioneVisitaMedica" 
+    file="/PrenotazioneVisitaMedica/src/model/Segnalazione.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="538" width="392" x="1186" y="-222"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="model.Paziente" project="PrenotazioneVisitaMedica" 
+    file="/PrenotazioneVisitaMedica/src/model/Paziente.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="517" y="532"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="model.Prenotazione" project="PrenotazioneVisitaMedica" 
+    file="/PrenotazioneVisitaMedica/src/model/Prenotazione.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="376" width="302" x="1618" y="-222"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="9">    
+    <bendpoint x="514" y="136"/>    
+    <bendpoint x="514" y="184"/>    
+    <bendpoint x="514" y="272"/>    
+    <bendpoint x="514" y="295"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="10" name="iscritti">        
+        <position height="20" width="43" x="455" y="286"/>      
+      </attribute>      
+      <multiplicity id="11" minimum="0" maximum="2147483647">        
+        <position height="18" width="25" x="531" y="289"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

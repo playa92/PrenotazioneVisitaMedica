@@ -13,12 +13,13 @@ public class EsecuzioneScheduler implements ServletContextListener {
 	private final long DELAY = 0;
     private final long PERIODO_ESECUZIONE = 5;
     private ScheduledExecutorService scheduler;
+    private EliminaPrenotazione eliminaPrenotazione;
     
 	@Override
 	public void contextInitialized(ServletContextEvent servlet) {
 		
 		 scheduler = Executors.newSingleThreadScheduledExecutor();
-	     Runnable eliminaPrenotazione = new EliminaPrenotazione(); 
+	     eliminaPrenotazione = new EliminaPrenotazione(); 
 	     scheduler.scheduleAtFixedRate(eliminaPrenotazione, DELAY, PERIODO_ESECUZIONE, TimeUnit.MINUTES);
 	}
 	
