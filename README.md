@@ -31,7 +31,7 @@ Impiegato
 
 EVENTUALI BUG
 -------------
-Le operazioni di interrogazione al database potrebbero riscontrare rallentamenti o errori di connessione
+Le operazioni di interrogazione al database potrebbero riscontrare rallentamenti o errori di connessione, da quando il database è stato ospitato in remoto.
 
 AUTORI
 ------
