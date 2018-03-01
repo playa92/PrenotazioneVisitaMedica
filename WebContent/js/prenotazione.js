@@ -159,7 +159,7 @@ function automaticPrint(){
 		 
 		 var img=canvas.toDataURL("image/png");
 		 var doc = new jsPDF('p', 'pt', 'a4');
-		 doc.text("Recati allo sportello entro le ore " + orario,150,70);
+		 doc.text("La visita e' alle ore " + orario,200,70);
 		 doc.addImage(img,'JPEG',80,110);
 		 doc.text(hex,233,245);
 		 doc.save('qr_code.pdf');
@@ -203,8 +203,8 @@ function randHex(len) {
 $('.modal').on('hide.bs.modal', function (e) {
 	if(e.target.id == "riepilogo")
 		window.location.href='../home';
-	if(e.target.id == "notice")
-		$("input[type=text]").val("");
+//	if(e.target.id == "notice")
+//		$("input[type=text]").val("");
 })
 var flag = false;
  $(document).mousemove(function(event){

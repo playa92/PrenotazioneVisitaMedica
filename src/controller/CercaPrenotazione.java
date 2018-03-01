@@ -45,7 +45,7 @@ public class CercaPrenotazione extends HttpServlet {
 				response.getWriter().write("false;Prenotazione scaduta");
 			} else {
 				Prenotazione prenotazione = prenotazioneDao.findByPrimaryKey(codiceQR.getCodice());
-				response.getWriter().write("true;" + codiceQR.getScadenza() + ";" + prenotazione.getOrarioVisita() + ";" + hexcode +";"+ codiceQR.isConvalida());
+				response.getWriter().write("true;" + codiceQR.getScadenza() + ";" + prenotazione.getOrarioVisita() + ";" + hexcode + ";" + codiceQR.isConvalida());
 			}
 			
 		} else {

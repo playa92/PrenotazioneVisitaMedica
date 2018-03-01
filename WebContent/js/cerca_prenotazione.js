@@ -59,21 +59,14 @@ var orario_inizio_countdown = null;
 
 function start() {		
 //	var orario_corrente = moment(moment()).format("HH:mm:ss");
-	
-//	if(orario_corrente >= orario_inizio_countdown && orario_corrente <= orario_visita){ 
-		countDown();
-//	} else {
-//		 document.getElementById('countdown').innerHTML = "non disponibile"
-//	     $("#countdown").css({color:"red"});
-//		//TODO se timer attivo disattivare
-//	}
+	countDown();
 }
 
 function countDown() {
 	
 	var ms = moment(orario_visita,"HH:mm:ss").diff(moment(moment(),"HH:mm:ss"));
 	var d = moment.duration(ms);
-	var s = moment.utc(ms).format("mm:ss");
+	var s = moment.utc(ms).format("HH:mm:ss");
 
     document.getElementById('countdown').innerHTML = s;
     t = setTimeout(function () {
@@ -82,7 +75,8 @@ function countDown() {
 }
 
 function checkTime(i) {
-    if (i < 10) {
+	
+    if(i < 10) {
         i = "0" + i;
     }
     return i;

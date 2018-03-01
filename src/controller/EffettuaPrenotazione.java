@@ -33,7 +33,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 	
 	private final int CONVALIDA = 10;
 	private final int TEMPO_VISITA = 10;
-	private final String ORARIO_INIZIO = "8:00:00"; 
+	private final String ORARIO_INIZIO = "08:00:00"; 
 	private final String ORARIO_FINE = "19:45:00";
 	
 	@Override
@@ -44,9 +44,9 @@ public class EffettuaPrenotazione extends HttpServlet {
 		String dateFormat = "HH:mm";
 		String currentTime = new SimpleDateFormat(dateFormat).format(new Date());
 		
-		Calendar start = setTimeToCalendar(dateFormat, ORARIO_INIZIO, false);
-		Calendar end = setTimeToCalendar(dateFormat, ORARIO_FINE, true);
-		Calendar now = setTimeToCalendar(dateFormat, currentTime, true);		
+		Calendar start = setTimeToCalendar(dateFormat, ORARIO_INIZIO);
+		Calendar end = setTimeToCalendar(dateFormat, ORARIO_FINE);
+		Calendar now = setTimeToCalendar(dateFormat, currentTime);		
 		now.set(Calendar.MINUTE, now.get(Calendar.MINUTE) + TEMPO_EFFETTIVO);
 
 		PrenotazioneDao prenotazioneDao = DatabaseManager.getInstance().getDaoFactory().getPrenotazioneDao();
@@ -176,7 +176,7 @@ public class EffettuaPrenotazione extends HttpServlet {
 		}
 	}
 	
-	private Calendar setTimeToCalendar(String dateFormat, String date, boolean addADay) {
+	private Calendar setTimeToCalendar(String dateFormat, String date) {
 	    
 		Date time = null;
 		try {
@@ -187,9 +187,6 @@ public class EffettuaPrenotazione extends HttpServlet {
 	    Calendar calendar = Calendar.getInstance();
 	    calendar.setTime(time);
 
-	    if(addADay) {
-	        calendar.add(Calendar.DATE, 1);
-	    }
 	    return calendar;
 	}
 }
