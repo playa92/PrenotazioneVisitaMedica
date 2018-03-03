@@ -7,19 +7,19 @@ public class Paziente {
 	private String cognome;
 	private Long matricola;
 	private String invalidita;
-	private String codice;
+	private String codiceQR;
 	
 	public Paziente() {}
 	
 	public Paziente(String codiceFiscale, String nome, String cognome, Long matricola, String invalidita, 
-			String codice) {
+			String codiceQR) {
 		
 		this.codiceFiscale = codiceFiscale;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.matricola = matricola;
 		this.invalidita = invalidita;
-		this.codice = codice;
+		this.codiceQR = codiceQR;
 	}
 
 	public String getNome() {
@@ -55,11 +55,11 @@ public class Paziente {
 	}
 
 	public String getCodiceQR() {
-		return codice;
+		return codiceQR;
 	}
 
-	public void setCodiceQR(String codice) {
-		this.codice = codice;
+	public void setCodiceQR(String codiceQR) {
+		this.codiceQR = codiceQR;
 	}
 
 	public String getCodiceFiscale() {

@@ -83,8 +83,6 @@ public class MainJDBC {
 		p1.setCognome("Cosentino");
 		p1.setMatricola(new Long(161782));
 		
-		universitaDao.save(p1);
-		
 		Paziente p2 = new Paziente();
 		p2.setCodiceFiscale("LAODVD92S07Z112K");
 		p2.setNome("Davide");
@@ -108,5 +106,11 @@ public class MainJDBC {
 		p5.setNome("Giuseppe");
 		p5.setCognome("Verdi");
 		p5.setMatricola(new Long(154321));
+		
+		universitaDao.save(p1);
+		universitaDao.save(p2);
+		universitaDao.save(p3);
+		universitaDao.save(p4);
+		universitaDao.save(p5);
 	}
 }

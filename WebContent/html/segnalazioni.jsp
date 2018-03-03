@@ -60,7 +60,13 @@
 				<td>${i.id}</td>
 				<jstl:choose>
 					<jstl:when test="${i.email != 'Nessuna'}">
-						<td><a data-toggle="modal" data-target="#send" href="#" onclick="setAddress('${i.email}')">${i.email}</a></td>
+						<jstl:if test="${loggatoAdmin}">
+							<td><a data-toggle="modal" data-target="#send" href="#" onclick="setAddress('${i.email}')">${i.email}</a></td>
+						</jstl:if>
+						<jstl:if test="${not loggatoAdmin}">
+							<td><a id=mail data-target="#notice" href="#">${i.email}</a></td>
+						</jstl:if>
+						
 					</jstl:when>
 					<jstl:otherwise>
 						<td>${i.email}</td>

@@ -26,7 +26,7 @@ function restore() {
 
 function verify(password) {
 	
-	var regex = new RegExp("^[A-z0-9]+$");
+	var regex = new RegExp("^[A-z0-9]{4,16}$");
 	var p = password;
 	
 	if((p.length > 0 && !regex.test(p)) || p == $("input[name=username]").prop("value")) {

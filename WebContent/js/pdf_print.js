@@ -1,6 +1,6 @@
 
 // PDF-PRINT
-$(document).ready(function(){
+$(document).ready(function() {
 		
 	// STAMPA RIEPILOGO
 	$('#cmd').click(function() {

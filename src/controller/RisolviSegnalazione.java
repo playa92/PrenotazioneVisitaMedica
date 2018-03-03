@@ -65,6 +65,8 @@ public class RisolviSegnalazione extends HttpServlet {
 		    String id = json.getString("id");
 		    
 		    risolviSegnalazione(id, risposta);
+		    
+//		    response.setContentType("text/html");
 			
 		} catch(JSONException e) {
 			e.printStackTrace();

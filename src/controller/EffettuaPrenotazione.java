@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,12 +28,12 @@ import persistence.dao.PrenotazioneDao;
 public class EffettuaPrenotazione extends HttpServlet {
 	
 	private final int LIMITE_PRENOTAZIONI = 50;
-	private final int TEMPO_EFFETTIVO = 20;
+	private final int TEMPO_EFFETTIVO = 15;
 	
 	private final int CONVALIDA = 10;
 	private final int TEMPO_VISITA = 10;
-	private final String ORARIO_INIZIO = "08:00:00"; 
-	private final String ORARIO_FINE = "19:45:00";
+	private final String ORARIO_INIZIO = "00:00:00"; 
+	private final String ORARIO_FINE = "23:59:00";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -148,12 +147,12 @@ public class EffettuaPrenotazione extends HttpServlet {
 			String dateFormat = "HH:mm";
 			String visita = new SimpleDateFormat(dateFormat).format(date1);
 			String scadenza = new SimpleDateFormat(dateFormat).format(date2);
-			
 		
 			CodiceQR codiceQR = new CodiceQR();
 			codiceQR.setCodice(json.getString("hexcode"));
 			codiceQR.setScadenza(scadenza);
 			codiceQR.setConvalida(false);
+			
 			paziente.setCodiceQR(codiceQR.getCodice());
 			
 			Prenotazione prenotazione = new Prenotazione();
@@ -166,10 +165,9 @@ public class EffettuaPrenotazione extends HttpServlet {
 			codiceQRDao.save(codiceQR);
 			pazienteDao.save(paziente);
 			prenotazioneDao.save(prenotazione); 
-							
-			out.println("true;" + paziente.getCodiceFiscale() + "|" + paziente.getNome() + "|" + paziente.getCognome() + "|" +
-						String.valueOf(paziente.getMatricola() == null ? "Nessuna" : paziente.getMatricola()) + "|" + 
-						paziente.getInvalidita() + "|" + String.valueOf(prenotazione.getImporto()) + "|" + codiceQR.getCodice());
+			
+			JSONObject pazienteJson = new JSONObject(paziente);
+			out.println("true;" + pazienteJson.toString() + ";" + String.valueOf(prenotazione.getImporto()));
 			
 		} catch(JSONException e) {
 			e.printStackTrace();

@@ -20,11 +20,12 @@ public class UtilDao {
 					+ "drop table if EXISTS logging;"
 					+ "drop table if EXISTS paziente CASCADE;"
 					+ "drop table if EXISTS università;"
-					+ "drop table if EXISTS amministratore;"
+					+ "drop table if EXISTS amministratore CASCADE;"
 					+ "drop table if EXISTS impiegato;"
 					+ "drop table if EXISTS codice_qr CASCADE;"
 					+ "drop table if EXISTS prenotazione;"
-					+ "drop table if EXISTS segnalazione;";
+					+ "drop table if EXISTS segnalazione;"
+					+ "drop table if EXISTS email;";
 				
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();
@@ -57,9 +58,10 @@ public class UtilDao {
 					+ "create table prenotazione(id_prenotazione VARCHAR(12) primary key REFERENCES codice_qr(\"id\"),"
 					+ "nome_paziente VARCHAR(16), cognome_paziente VARCHAR(16), orario_visita VARCHAR(5), importo BIGINT);"
 					+ "create table impiegato(username VARCHAR(16) primary key, password VARCHAR(16), ruolo VARCHAR(16));"
-					+ "create table segnalazione(id INT primary key, nome_utente VARCHAR(20), email VARCHAR(32),"
+					+ "create table segnalazione(id INT primary key, nome_utente VARCHAR(20), email VARCHAR(50),"
 					+ "motivazione VARCHAR(32), commento VARCHAR(255), risposta VARCHAR(255), risolto BOOLEAN, mostra BOOLEAN);"
-					+ "create table logging(id INT primary key, azione VARCHAR(16), data DATE, orario VARCHAR(8), nome_utente VARCHAR(16));";
+					+ "create table logging(id INT primary key, azione VARCHAR(16), data DATE, orario VARCHAR(8), nome_utente VARCHAR(16));"
+					+ "create table email(admin VARCHAR(16) REFERENCES amministratore(\"username\"), messaggio VARCHAR(255), emittente VARCHAR(50), destinatario VARCHAR(50));";
 			
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.executeUpdate();		

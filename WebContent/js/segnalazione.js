@@ -62,6 +62,12 @@ function sendMail() {
 	});
 }
 
+$("#mail").click(function() {
+	
+	$("#notice").modal("show");
+	$("#message").text("Non hai i permessi per mandare un'email");
+});
+
 $(document).ready(function() {
 	$("textarea").val('');
 })

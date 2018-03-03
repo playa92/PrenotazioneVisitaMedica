@@ -2,6 +2,7 @@ package persistence;
 
 import persistence.dao.AmministratoreDao;
 import persistence.dao.CodiceQRDao;
+import persistence.dao.EmailDao;
 import persistence.dao.ImpiegatoDao;
 import persistence.dao.LoggingDao;
 import persistence.dao.PazienteDao;
@@ -16,8 +17,8 @@ public class PostgresDaoFactory extends DaoFactory {
 	static {
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();
-			dataSource = new DataSource("jdbc:postgresql://prenotazione.c8me4gj6vybs.eu-west-1.rds.amazonaws.com:5432/Prenotazione","postgres","postgres");
-//			dataSource = new DataSource("jdbc:postgresql://localhost:5432/Prenotazione","postgres","postgres");
+//			dataSource = new DataSource("jdbc:postgresql://prenotazione.c8me4gj6vybs.eu-west-1.rds.amazonaws.com:5432/Prenotazione","postgres","postgres");
+			dataSource = new DataSource("jdbc:postgresql://localhost:5432/Prenotazione","postgres","postgres");
 			
 		} catch(Exception e) {
 			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n" + e);
@@ -62,6 +63,11 @@ public class PostgresDaoFactory extends DaoFactory {
 	@Override
 	public LoggingDao getLoggingDao() {
 		return new LoggingDaoJDBC(dataSource);
+	}
+	
+	@Override
+	public EmailDao getEmailDao() {
+		return new EmailDaoJDBC(dataSource);
 	}
 	
 	@Override

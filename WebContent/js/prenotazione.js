@@ -126,26 +126,31 @@ function sendForm() {
 		data:JSON.stringify(paziente),
 		success:function(data) {
 			
-			var values = data.split(";");
-			
-			if(values[0] == "true") {
-				var strings = values[1].split("|");
+			var response = data.split(";");
 				
-				for(var i = 0; i < strings.length; i++) {
+			if(response[0] == "true") {
+				
+				var paziente = JSON.parse(response[1]);
+				var matricola = paziente.matricola == null ? "Nessuna" : paziente.matricola;
+				var importo = response[2];
+				var values = [paziente.codiceFiscale, paziente.nome, paziente.cognome,
+					matricola, paziente.invalidita, importo, paziente.codiceQR];
+				
+				for(var i = 0; i < array.length; i++) {
 				
 					if(i == 5) {
-						$("#" + (i + 1)).text(array[i] + strings[i] + "0\u20ac");
+						$("#" + (i + 1)).text(array[i] + values[i] + "\u20ac");
 					} else {
-						$("#" + (i + 1)).text(array[i] + strings[i]);
+						$("#" + (i + 1)).text(array[i] + values[i]);
 					}
 				}
-				$("#text").val(strings[6]);
+				$("#text").val(values[6]);
 				makeCode();
 				success();
 				
 			} else {
 				$("#notice").modal("show");	
-				$("#message").text(values[1]);
+				$("#message").text(response[1]);
 			}
 		}
 	});

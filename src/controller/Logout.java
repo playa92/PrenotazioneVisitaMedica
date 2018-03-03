@@ -42,14 +42,14 @@ public class Logout extends HttpServlet {
 	private void registraDisconnessione(String username, String azione) {
 		
 		LoggingDao accessoDao = DatabaseManager.getInstance().getDaoFactory().getLoggingDao();
-		Logging accesso = new Logging();
-		accesso.setAzione(azione);
+		Logging logging = new Logging();
+		logging.setAzione(azione);
 		Date date = new Date();
 		int id = accessoDao.assignId() + 1;
-		accesso.setId(id);
-		accesso.setData(date);
-		accesso.setOrario(new SimpleDateFormat("hh:MM:ss").format(date));
-		accesso.setNomeUtente(username);
-		accessoDao.save(accesso);
+		logging.setId(id);
+		logging.setData(date);
+		logging.setOrario(new SimpleDateFormat("hh:MM:ss").format(date));
+		logging.setNomeUtente(username);
+		accessoDao.save(logging);
 	}
 }

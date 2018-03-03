@@ -8,9 +8,10 @@ function validate(code) {
 		url:"../convalidaPrenotazione",
 		data:{hexcode:code},
 		success: function(data) {
-			var values = data.split(";");
 			
-			if(values[0] =="true"){
+			var values = data.split(";");
+						
+			if(values[0] =="true") {
 
 				$("#notice").modal("show");
 				$("#message").text(values[1]);

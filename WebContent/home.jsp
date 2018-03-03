@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="css/loader.css">
  	<link rel="stylesheet" href="css/common.css"> 
  	<link rel="stylesheet" href="css/footer-with-map.css">
+ 	<link rel="stylesheet" href="css/map.css">
  	<link rel="stylesheet" href="css/success.css">
  	<script src="js/jquery/jquery-3.2.1.min.js"></script>
  	<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -256,28 +257,50 @@
 	<!-- FOOTER -->
 	    <footer id="myFooter">
 	        <div class="container">
-	            <div class="row">
-	                <div class="col-sm-4">
-	                    <h5>Get started</h5>
-	                    <ul>
-	                        <li><a href="home">Home</a></li>
-	                    </ul>
-	                </div>
-	                <div class="col-sm-4">
-	                    <h5>About us</h5>
-	                    <ul>
-	                        <li><a href="restituisciSegnalazioni">Contact us</a></li>
-	                    </ul>
-	                </div>
-	                <div class="col-sm-4">
-	                    <h5>Support</h5>
-	                    <ul>
-	                        <li><a href="html/assistenza.jsp">FAQ</a></li>
-	                        <li><a href="html/info.html">Info</a></li>
-	                    </ul>
-	                </div>
-	            </div>
-	            <iframe id="map-container" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12340.397684446334!2d16.2251544!3d39.3539851!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf6b18e10a7cdcd49!2sCUS+-+Unical!5e0!3m2!1sit!2sit!4v1517741768804"></iframe>
+	       		<div class="row">
+                <div class="col-sm-3">
+                      <h5>Get started</h5>
+                      <ul>
+                          <li><a href="home">Home</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-3">
+                      <h5>About us</h5>
+                      <ul>
+                          <li><a href="restituisciSegnalazioni">Contact us</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-3">
+                      <h5>Support</h5>
+                      <ul>
+                          <li><a href="html/assistenza.jsp">FAQ</a></li>
+                          <li><a href="html/info.html">Info</a></li>
+                      </ul>
+                  </div>
+                    <div class="col-sm-3">
+                      <h5>Social</h5>
+                      <ul>
+                          <li> 
+                            <a href="https://www.youtube.com/channel/UCCzP0HYi5dfhi4gDy8z6u2g?view_as=subscriber"><img class="social" width="50" height="50" src="images/youtube2.png"></a>
+                          </li>
+                          <li>   
+                            <a href="https://www.facebook.com/CUP-Unical-803705986627639/"><img class="social" width="50" height="50" src="images/facebook.png"></a>
+                          </li>
+                     
+                      </ul>
+                  </div>
+                  <div class="col-sm-2">
+                  		<div id="fb-root"></div>
+    			  		<div class="fb-like" data-href="https://www.facebook.com/CUP-Unical-803705986627639/" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+           		  </div>  
+                </div><br/>
+	        	 <div id="floating-panel">
+			    	<b style="color: #092147;">Partenza: </b>
+			    	<input id="start" type="text" style="color:black;">
+			    	<b style="color: #092147;">Arrivo: </b>
+			    	<input id="end" type="text" value="Università della Calabria" style="text-align:center; color:black;">
+			    </div>
+			    <div id="map"></div>
 	        </div>
 	        <div class="footer-copyright">
 	            <p>© 2018 Copyright Text</p>
@@ -291,6 +314,7 @@
 	 	<script src="js/login.js"></script>	
 	 	<script src="js/scroll_up.js"></script>
 	 	<script src="js/calendar.js"></script>
-
+	 	<script src="js/map.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxb_Bnm8d3aWl9wWiQUdk5P0lm00YkB04&callback=initMap"></script>
 </body>
 </html>

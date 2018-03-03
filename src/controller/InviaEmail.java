@@ -7,6 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import model.Email;
+import persistence.DatabaseManager;
+import persistence.dao.EmailDao;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 
@@ -37,6 +42,7 @@ public class InviaEmail extends HttpServlet {
 		
 			String to = json.getString("to");
 		    String from = json.getString("from");
+		    String mex = json.getString("message");
 			
 		    String host = "smtp.gmail.com";
 		    Properties properties = System.getProperties();
@@ -64,14 +70,25 @@ public class InviaEmail extends HttpServlet {
 			    message.setFrom(new InternetAddress(from));
 			    message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			    message.setSubject("[SOLVED] Risposta FAQ");
-			    message.setText(json.getString("message"));
+			    message.setText(mex);
 			    Transport.send(message);
-			    
-			    response.getWriter().write("Email inviata con successo");
 		      
-		   } catch(MessagingException mex) {
-		      mex.printStackTrace();
+		   } catch(MessagingException me) {
+		      me.printStackTrace();
 		   }
+		   
+		   String admin = request.getSession().getAttribute("username").toString(); 
+		   
+		   EmailDao emailDao = DatabaseManager.getInstance().getDaoFactory().getEmailDao();
+		   Email email = new Email();
+		   email.setAdmin(admin);
+		   email.setMessaggio(mex);
+		   email.setEmittente(from);
+		   email.setDestinatario(to);
+		    
+		   emailDao.save(email);
+		    
+		   response.getWriter().write("Email inviata con successo");
 	   
 		} catch(JSONException e) {
 			e.printStackTrace();

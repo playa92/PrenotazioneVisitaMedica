@@ -9,7 +9,9 @@ Software utilizzati
 
 3. pgAdmin3 LTS | Download: https://www.openscg.com/bigsql/pgadmin3
 
-Repository GIT | Download: https://github.com/playa92/PrenotazioneVisitaMedica
+Repository GIT
+--------------
+https://github.com/playa92/PrenotazioneVisitaMedica
 
 NOTE 
 ----

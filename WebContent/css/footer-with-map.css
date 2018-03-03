@@ -4,13 +4,13 @@
     padding-top: 20px;
 }
 
-#map-container {
-	border:0;
-    height: 240px;
-    width: 100%;
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
+/* #map-container { */
+/* 	border:0; */
+/*     height: 240px; */
+/*     width: 100%; */
+/*     margin-top: 30px; */
+/*     margin-bottom: 10px; */
+/* } */
 
 #myFooter .row {
     margin: 0 85px;

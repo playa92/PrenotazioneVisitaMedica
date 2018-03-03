@@ -23,7 +23,7 @@ public class PazienteDaoJDBC implements PazienteDao {
 			
 		Connection connection = dataSource.getConnection();
 		try {
-			String insert = "insert INTO paziente(codice_fiscale, nome, cognome, matricola, invalidità, id_codice) values (?,?,?,?,?,?)";
+			String insert = "insert INTO paziente(codice_fiscale, nome, cognome, matricola, invalidità, id_codice) values(?,?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, paziente.getCodiceFiscale());
 			statement.setString(2, paziente.getNome());

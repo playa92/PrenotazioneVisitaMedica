@@ -95,6 +95,13 @@ nav.navbar-default{
 /* /////////////////////// Home ////////////////////// */
 /* /////////////////////////////////////////////////// */
 
+.social:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+  cursor: pointer;
+}
+
 #bubble {
   font-size: 2vw;
   font-family: Comic Sans MS, Verdana, monospace;
