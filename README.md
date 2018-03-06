@@ -12,11 +12,8 @@ Repository GIT
 --------------
 https://github.com/playa92/PrenotazioneVisitaMedica
 
-NOTE 
-----
-Il progetto è stato testato ed eseguito utilizzando il browser Mozilla Firefox.
 
-CREDENZIALI DI ACCESSO AL SITO
+Credenziali di accesso al sito
 ------------------------------
 Amministratore
 
@@ -29,6 +26,10 @@ Impiegato
 * username: employee1 password: 1234
 
 * username: employee2 password: 1234 
+
+NOTE 
+----
+Il progetto è stato testato ed eseguito utilizzando il browser Mozilla Firefox.
 
 AUTORI
 ------
