@@ -1,4 +1,9 @@
 # PrenotazioneVisitaMedica
+Alcune funzionalità del sistema:
+* convalida prenotazione attraverso un codice identificativo;
+* possibilità di notificare gli amministratori in caso di problemi nell'utilizzo della piattaforma web;
+* stampa di un documento in formato PDF contenente le informazioni relative ad una prenotazione;
+* ricezione email;
 
 Software utilizzati
 -------------------
@@ -29,7 +34,7 @@ Impiegato
 
 NOTE 
 ----
-Il progetto � stato testato ed eseguito utilizzando il browser Mozilla Firefox.
+Il progetto è stato testato ed eseguito utilizzando il browser Mozilla Firefox.
 
 AUTORI
 ------
