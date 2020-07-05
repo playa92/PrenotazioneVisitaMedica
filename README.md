@@ -1,4 +1,4 @@
-# PrenotazioneVisitaMedica
+# Servizio di Prenotazione CUP online
 Alcune funzionalità del sistema:
 * convalida prenotazione attraverso un codice identificativo;
 * possibilità di notificare gli amministratori in caso di problemi nell'utilizzo della piattaforma web;
